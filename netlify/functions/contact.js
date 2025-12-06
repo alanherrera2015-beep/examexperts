@@ -10,7 +10,13 @@ const TO_EMAIL = process.env.TO_EMAIL;     // e.g. examexpertscontact@gmail.com
 const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET; // optional
 const SENDGRID_DATA_RESIDENCY = process.env.SENDGRID_DATA_RESIDENCY; // 'eu' for EU subusers
 
-if (SENDGRID_API_KEY) sgMail.setApiKey(SENDGRID_API_KEY);
+// Validate SendGrid API key format (must start with "SG.")
+if (SENDGRID_API_KEY) {
+  if (!SENDGRID_API_KEY.startsWith('SG.')) {
+    console.error('Invalid SENDGRID_API_KEY format: API key must start with "SG."');
+  }
+  sgMail.setApiKey(SENDGRID_API_KEY);
+}
 
 // Enable EU Data Residency if configured (for EU-pinned subusers)
 if (SENDGRID_DATA_RESIDENCY === 'eu') {
@@ -60,6 +66,12 @@ exports.handler = async function (event) {
     if (!SENDGRID_API_KEY || !FROM_EMAIL || !TO_EMAIL) {
       console.error('Missing SendGrid/env config');
       return { statusCode: 500, body: JSON.stringify({ success: false, error: 'Email service not configured' }) };
+    }
+
+    // Validate API key format before attempting to send
+    if (!SENDGRID_API_KEY.startsWith('SG.')) {
+      console.error('Invalid SENDGRID_API_KEY: Key must start with "SG." - please update the environment variable with a valid SendGrid API key');
+      return { statusCode: 500, body: JSON.stringify({ success: false, error: 'Email service configuration error' }) };
     }
 
     const emailHtml = `
