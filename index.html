@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exam Experts - Online Tutoring & Test Prep</title>
+  <link rel="icon" href="logo.png" type="image/png">
+  <style>
+    :root {
+      --color-white: #ffffff;
+      --color-black: #000000;
+      --color-cream-50: #fcfcf9;
+      --color-cream-100: #fffffd;
+      --color-gray-200: #f5f5f5;
+      --color-gray-300: #a7a9a9;
+      --color-gray-400: #777c7c;
+      --color-slate-500: #626c71;
+      --navy: #1e3d5c;
+      --gold: #d4af37;
+      --text-dark: #333333;
+      --text-light: #f8f9fa;
+      --accent-light: #f8f9fa;
+      --section-bg: #f5f8fa;
+    }
+
+    body {
+      background: var(--color-white);
+      font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+      color: var(--text-dark);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    a {
+      color: var(--navy);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover,
+    a.active {
+      color: var(--gold);
+    }
+    .navbar {
+      background: var(--navy);
+      color: var(--gold);
+      padding: 0.7rem 0;
+      box-shadow: 0 2px 8px rgba(30, 61, 92, 0.07);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .navbar-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+    .navbar-brand img {
+      height: 60px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    .navbar-brand .tagline {
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+    .navbar-menu {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-link {
+      color: var(--text-light);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--gold);
+    }
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      color: var(--gold);
+      font-size: 2rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--section-bg);
+      padding: 64px 0 48px 0;
+      text-align: center;
+    }
+    .hero-content {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1.2rem;
+    }
+    .hero-description {
+      font-size: 1.25rem;
+      color: var(--navy);
+    }
+    .hero-actions {
+      margin-top: 2rem;
+    }
+    .btn {
+      padding: 0.75rem 2.25rem;
+      font-size: 1.09rem;
+      border-radius: 6px;
+      background: var(--navy);
+      color: var(--gold);
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn--primary {
+      background: var(--gold);
+      color: var(--navy);
+    }
+    .btn--primary:hover {
+      background: #c49e25;
+      color: #fff;
+    }
+    .btn--lg {
+      font-size: 1.15rem;
+    }
+
+    /* Section Layouts */
+    .section {
+      padding: 56px 0;
+      margin-top: 16px;
+    }
+    .section-header {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--navy);
+      margin-bottom: 2.5rem;
+      font-weight: 700;
+    }
+    .section-content {
+      max-width: 950px;
+      margin: 0 auto;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .services-list,
+    .benefits-list,
+    .test-prep-list,
+    .testimonials-list,
+    .team-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      justify-content: center;
+    }
+    .card {
+      background: var(--section-bg);
+      border-radius: 10px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 6px 20px rgba(30, 61, 92, 0.06);
+      min-width: 240px;
+      min-height: 150px;
+      flex: 1 1 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: flex-start;
+      margin-bottom: 1rem;
+    }
+    .card .icon {
+      font-size: 2.2rem;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .card-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .card-desc {
+      color: var(--color-black);
+      font-size: 1rem;
+    }
+    .price-card {
+      border: 2px solid var(--gold);
+      background: #fff;
+      min-width: 180px;
+      margin: 1rem;
+      align-items: center;
+      text-align: center;
+    }
+    .price-card h3 {
+      color: var(--navy);
+      font-size: 1.22rem;
+    }
+    .price-card .price {
+      color: var(--gold);
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    .testimonials-section {
+      background: var(--section-bg);
+    }
+    .testimonial {
+      font-style: italic;
+      color: var(--navy);
+      margin-bottom: 0.7rem;
+    }
+    .testimonial-author {
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .team-photo {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-bottom: 1rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 2rem;
+      border-radius: 12px;
+      background: var(--section-bg);
+      box-shadow: 0 6px 16px rgba(30, 61, 92, 0.05);
+    }
+    label {
+      font-weight: 600;
+      color: var(--navy);
+    }
+    input,
+    select,
+    textarea {
+      padding: 0.7rem;
+      border-radius: 6px;
+      border: 1px solid var(--color-gray-300);
+      font-size: 1rem;
+      background: #fff;
+      color: var(--text-dark);
+      transition: border 0.2s;
+    }
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--gold);
+      outline: none;
+    }
+    button[type="submit"] {
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 1.08rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      padding: 0.7rem 0;
+      cursor: pointer;
+      margin-top: 1.2rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    button[type="submit"]:hover {
+      background: var(--navy);
+      color: var(--gold);
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(44%) sepia(93%) saturate(2109%) hue-rotate(6deg) brightness(91%) contrast(90%);
+    }
+    .faq-list {
+      margin-top: 2rem;
+    }
+    .faq-item {
+      margin-bottom: 1.4rem;
+    }
+    .faq-question {
+      font-weight: 600;
+    }
+    footer {
+      background: var(--navy);
+      color: var(--gold);
+      padding: 2rem 0 1rem 0;
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 1rem;
+    }
+    @media (max-width: 900px) {
+      .navbar-content,
+      .container,
+      .section-content {
+        max-width: 900px;
+        padding: 0 1rem;
+      }
+      .services-list,
+      .benefits-list,
+      .test-prep-list {
+        gap: 1.2rem;
+      }
+    }
+    @media (max-width: 720px) {
+      .navbar-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .navbar-menu {
+        display: none;
+        flex-direction: column;
+        gap: 1.5rem;
+        background: var(--navy);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        left: 0;
+        z-index: 60;
+        padding: 1.5rem 2rem;
+      }
+      .navbar-menu.open {
+        display: flex;
+      }
+      .mobile-menu-btn {
+        display: block;
+        margin-top: 8px;
+      }
+      .section {
+        padding: 32px 0;
+      }
+      .services-list,
+      .benefits-list,
+      .test-prep-list {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .container {
+        padding: 0 0.5rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero-content h1,
+      .section-header {
+        font-size: 1.6rem;
+      }
+      .card,
+      .price-card {
+        min-width: 110px;
+        padding: 1.2rem 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Header -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-content">
+        <div class="navbar-brand">
+          <img src="logo.png" alt="Exam Experts Logo">
+          <span class="tagline">Master Your Exams, Excel in Your Future</span>
+        </div>
+        <div class="navbar-menu">
+          <a href="#home" class="nav-link active" data-page="home">Home</a>
+          <a href="#services" class="nav-link" data-page="services">Services</a>
+          <a href="#about" class="nav-link" data-page="about">About</a>
+          <a href="#booking" class="nav-link" data-page="booking">Booking</a>
+          <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+          <a href="#pricing" class="nav-link" data-page="pricing">Pricing</a>
+        </div>
+        <button class="mobile-menu-btn">☰</button>
+      </div>
+    </div>
+  </nav>
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Home Page -->
+    <div id="home" class="page active">
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <h1>Online Tutoring for Academic Success and Test Prep Mastery</h1>
+            <p class="hero-description">
+              Expert online tutoring for all subjects up to college level<br>
+              ACT, SAT, GRE, MCAT, NCLEX, ASVAB, and more!
+            </p>
+            <div class="hero-actions">
+              <button class="btn btn--primary btn--lg" data-page="booking">Book a Session</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="section-header">Our Services</div>
+        <div class="services-list">
+          <div class="card">
+            <div class="icon">📚</div>
+            <div class="card-title">Academic Subjects</div>
+            <div class="card-desc">Math, Science, English, History, and Languages (Elem. through College)</div>
+          </div>
+          <div class="card">
+            <div class="icon">📝</div>
+            <div class="card-title">Test Prep</div>
+            <div class="card-desc">SAT, ACT, GRE, MCAT, NCLEX, ASVAB, and more</div>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="section-header">Why Choose Exam Experts?</div>
+        <div class="benefits-list">
+          <div class="card">
+            <div class="icon">🎓</div>
+            <div class="card-title">Expert Tutors</div>
+            <div class="card-desc">PhD & Masters-level instructors with proven records</div>
+          </div>
+          <div class="card">
+            <div class="icon">🕔</div>
+            <div class="card-title">Flexible Scheduling</div>
+            <div class="card-desc">Sessions 7 days a week, book anytime</div>
+          </div>
+          <div class="card">
+            <div class="icon">✅</div>
+            <div class="card-title">Proven Results</div>
+            <div class="card-desc">95% of students improve grades or test scores within 8 weeks</div>
+          </div>
+          <div class="card">
+            <div class="icon">💻</div>
+            <div class="card-title">Online Only</div>
+            <div class="card-desc">Learn from anywhere via our virtual classroom</div>
+          </div>
+        </div>
+      </section>
+      <section class="section testimonials-section">
+        <div class="section-header">Success Stories</div>
+        <div class="testimonials-list">
+          <div class="card testimonial">
+            "Exam Experts helped me improve my SAT score by 200 points! The online format was so convenient."
+            <div class="testimonial-author">– Sarah M., High School Senior</div>
+          </div>
+          <div class="card testimonial">
+            "The GRE prep was outstanding. I scored in the 90th percentile thanks to their expert guidance."
+            <div class="testimonial-author">– Michael R., College Student</div>
+          </div>
+          <div class="card testimonial">
+            "Passed the NCLEX on my first try! The practice questions and strategies were invaluable."
+            <div class="testimonial-author">– Jennifer L., Nursing Student</div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- Services Page -->
+    <div id="services" class="page">
+      <section class="section">
+        <div class="section-header">Academic Subjects</div>
+        <div class="services-list">
+          <div class="card"><div class="card-title">Mathematics</div><div class="card-desc">Algebra, Geometry, Calculus, Statistics, and more</div></div>
+          <div class="card"><div class="card-title">Science</div><div class="card-desc">Biology, Chemistry, Physics, Earth Science</div></div>
+          <div class="card"><div class="card-title">English</div><div class="card-desc">Writing, Literature, Grammar, Reading</div></div>
+          <div class="card"><div class="card-title">History</div><div class="card-desc">World History, US History, Government</div></div>
+          <div class="card"><div class="card-title">Foreign Languages</div><div class="card-desc">Spanish, French, and more</div></div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="section-header">Test Preparation</div>
+        <div class="test-prep-list">
+          <div class="card"><div class="card-title">SAT</div><div class="card-desc">All sections covered (8–12 weeks)</div></div>
+          <div class="card"><div class="card-title">ACT</div><div class="card-desc">Math, English, Reading, Science (8–12 weeks)</div></div>
+          <div class="card"><div class="card-title">GRE</div><div class="card-desc">Graduate admission test (10–16 weeks)</div></div>
+          <div class="card"><div class="card-title">MCAT</div><div class="card-desc">Medical school exam prep (12–20 weeks)</div></div>
+          <div class="card"><div class="card-title">NCLEX</div><div class="card-desc">Nursing licensure prep (6–10 weeks)</div></div>
+          <div class="card"><div class="card-title">ASVAB</div><div class="card-desc">Military entrance (4–8 weeks)</div></div>
+        </div>
+      </section>
+    </div>
+    <!-- About Page -->
+    <div id="about" class="page">
+      <section class="section">
+        <div class="section-header">About Exam Experts</div>
+        <div class="section-content">
+          <p>Exam Experts was founded to help students conquer their goals and unlock their fullest potential. Our mission is to deliver top-quality online tutoring for everyone, anywhere. All our tutors have advanced degrees, proven results, and a passion for teaching.</p>
+          <ul>
+            <li>Online-only, no in-person appointments</li>
+            <li>Success rate: 95% students improve within 8 weeks</li>
+            <li>Flexible schedule—sessions available 7 days a week</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <!-- Booking Page -->
+    <div id="booking" class="page">
+      <section class="section">
+        <div class="section-header">Book an Online Session</div>
+        <form id="bookingForm">
+          <label for="name">Your Name</label>
+          <input id="name" name="name" type="text" required>
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required>
+
+          <label for="serviceType">Service Type</label>
+          <select id="serviceType" name="serviceType" required>
+            <option value="academic">Academic Subject</option>
+            <option value="test-prep">Test Prep</option>
+          </select>
+
+          <label for="subject">Subject/Exam</label>
+          <select id="subject" name="subject" required></select>
+
+          <label for="sessionDate">Date</label>
+          <input id="sessionDate" name="date" type="date" required>
+
+          <label for="sessionTime">Time (Central Time)</label>
+          <select id="sessionTime" name="time" required>
+            <option value="">Select...</option>
+            <option>08:00 AM</option>
+            <option>09:00 AM</option>
+            <option>10:00 AM</option>
+            <option>11:00 AM</option>
+            <option>12:00 PM</option>
+            <option>01:00 PM</option>
+            <option>02:00 PM</option>
+            <option>03:00 PM</option>
+            <option>04:00 PM</option>
+            <option>05:00 PM</option>
+            <option>06:00 PM</option>
+            <option>07:00 PM</option>
+            <option>08:00 PM</option>
+          </select>
+
+          <button type="submit">Book Session</button>
+        </form>
+        <div id="successModal" style="display:none;">
+          <div class="modalMessage" id="modalMessage"></div>
+        </div>
+      </section>
+    </div>
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+      <section class="section">
+        <div class="section-header">Contact Us</div>
+        <form id="contactForm">
+          <label for="contactName">Your Name</label>
+          <input id="contactName" name="name" type="text" required>
+
+          <label for="contactEmail">Email</label>
+          <input id="contactEmail" name="email" type="email" required>
+
+          <label for="contactSubject">Subject</label>
+          <input id="contactSubject" name="subject" type="text" required>
+
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" name="message" required></textarea>
+
+          <button type="submit">Send Message</button>
+        </form>
+        <div>
+          <p>Email: info@examexperts.com</p>
+          <p>Phone: (555) 123-EXAM</p>
+          <p>Business Hours: Monday-Sunday, 8 AM – 10 PM EST</p>
+          <p>Expect response within 2 hours during business hours.</p>
+        </div>
+      </section>
+    </div>
+    <!-- Pricing Page -->
+    <div id="pricing" class="page">
+      <section class="section">
+        <div class="section-header">Pricing</div>
+        <div class="services-list">
+          <div class="price-card">
+            <h3>Academic Tutoring</h3>
+            <div class="price">$45</div>
+            <div>Single Session</div>
+            <div>$200 — 5-Session Package</div>
+            <div>$380 — 10-Session Package</div>
+          </div>
+          <div class="price-card">
+            <h3>Test Prep Tutoring</h3>
+            <div class="price">$65</div>
+            <div>Single Session</div>
+            <div>$300 — 5-Session Package</div>
+            <div>$575 — 10-Session Package</div>
+          </div>
+        </div>
+        <p style="margin-top:2rem;">All lessons are online. Payment via credit card or PayPal accepted. No in-person sessions.</p>
+      </section>
+    </div>
+  </main>
+  <!-- Footer -->
+  <footer>
+    <div>
+      &copy; 2025 Exam Experts. All Rights Reserved.
+    </div>
+  </footer>
+  <script>
+    // DOM Elements
+    const navLinks = document.querySelectorAll('.nav-link');
+    const pages = document.querySelectorAll('.page');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navbarMenu = document.querySelector('.navbar-menu');
+    const bookingForm = document.getElementById('bookingForm');
+    const contactForm = document.getElementById('contactForm');
+    const serviceTypeSelect = document.getElementById('serviceType');
+    const subjectSelect = document.getElementById('subject');
+    const sessionDateInput = document.getElementById('sessionDate');
+    const successModal = document.getElementById('successModal');
+    const modalMessage = document.getElementById('modalMessage');
+    const subjects = {
+      academic: [
+        { value: 'mathematics', text: 'Mathematics' },
+        { value: 'science', text: 'Science' },
+        { value: 'english', text: 'English' },
+        { value: 'history', text: 'History' },
+        { value: 'foreign-languages', text: 'Foreign Languages' }
+      ],
+      'test-prep': [
+        { value: 'sat', text: 'SAT' },
+        { value: 'act', text: 'ACT' },
+        { value: 'gre', text: 'GRE' },
+        { value: 'mcat', text: 'MCAT' },
+        { value: 'nclex', text: 'NCLEX' },
+        { value: 'asvab', text: 'ASVAB' }
+      ]
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeNavigation();
+      initializeForms();
+      initializeDateValidation();
+      initializeMobileMenu();
+    });
+
+    function initializeNavigation() {
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetPage = this.getAttribute('data-page');
+          showPage(targetPage);
+          updateActiveNavLink(this);
+        });
+      });
+
+      document.querySelectorAll('[data-page]').forEach(button => {
+        if (!button.classList.contains('nav-link')) {
+          button.addEventListener('click', function(e) {
+            const targetPage = this.getAttribute('data-page');
+            showPage(targetPage);
+            updateActiveNavLink(document.querySelector(`.nav-link[data-page='${targetPage}']`));
+          });
+        }
+      });
+    }
+    function showPage(pageId) {
+      pages.forEach(page => {
+        page.classList.toggle('active', page.id === pageId);
+      });
+      if (window.innerWidth <= 720) {
+        navbarMenu.classList.remove('open');
+      }
+    }
+    function updateActiveNavLink(activeLink) {
+      navLinks.forEach(link => link.classList.remove('active'));
+      if (activeLink) activeLink.classList.add('active');
+    }
+    function initializeMobileMenu() {
+      mobileMenuBtn.addEventListener('click', () => {
+        navbarMenu.classList.toggle('open');
+      });
+    }
+    function initializeForms() {
+      if (serviceTypeSelect && subjectSelect) {
+        serviceTypeSelect.addEventListener('change', function() {
+          subjectSelect.innerHTML = "";
+          const type = this.value;
+          subjects[type].forEach(opt => {
+            let option = document.createElement('option');
+            option.value = opt.value;
+            option.text = opt.text;
+            subjectSelect.appendChild(option);
+          });
+        });
+        serviceTypeSelect.dispatchEvent(new Event('change'));
+      }
+
+      if (bookingForm) {
+        bookingForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          showModal("Your session has been booked! You will receive a confirmation email soon.");
+          bookingForm.reset();
+        });
+      }
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          showModal("Thank you for contacting us! We'll reply as soon as possible.");
+          contactForm.reset();
+        });
+      }
+    }
+    function showModal(message) {
+      if (successModal && modalMessage) {
+        modalMessage.textContent = message;
+        successModal.style.display = 'block';
+        setTimeout(() => {
+          successModal.style.display = 'none';
+        }, 2750);
+      }
+    }
+    function initializeDateValidation() {
+      if (sessionDateInput) {
+        let today = new Date();
+        let day = ('0' + today.getDate()).slice(-2);
+        let month = ('0' + (today.getMonth() + 1)).slice(-2);
+        let dateStr = today.getFullYear() + '-' + month + '-' + day;
+        sessionDateInput.setAttribute('min', dateStr);
+      }
+    }
+  </script>
+</body>
+</html>
