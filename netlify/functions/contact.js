@@ -8,8 +8,14 @@ const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 const FROM_EMAIL = process.env.FROM_EMAIL; // e.g. examexpertscontact@gmail.com
 const TO_EMAIL = process.env.TO_EMAIL;     // e.g. examexpertscontact@gmail.com
 const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET; // optional
+const SENDGRID_DATA_RESIDENCY = process.env.SENDGRID_DATA_RESIDENCY; // 'eu' for EU subusers
 
 if (SENDGRID_API_KEY) sgMail.setApiKey(SENDGRID_API_KEY);
+
+// Enable EU Data Residency if configured (for EU-pinned subusers)
+if (SENDGRID_DATA_RESIDENCY === 'eu') {
+  sgMail.setDataResidency('eu');
+}
 
 exports.handler = async function (event) {
   try {
