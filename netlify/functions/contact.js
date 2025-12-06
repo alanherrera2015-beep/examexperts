@@ -93,10 +93,30 @@ exports.handler = async function (event) {
     };
 
     await sgMail.send(msg);
+    console.log('Email sent successfully');
 
     return { statusCode: 200, body: JSON.stringify({ success: true }) };
   } catch (err) {
     console.error('Contact function error:', err);
+
+    // Provide more detailed error info for SendGrid errors
+    if (err.response) {
+      const { statusCode, body } = err.response;
+      console.error('SendGrid response status:', statusCode);
+      console.error('SendGrid response body:', JSON.stringify(body));
+
+      // Common SendGrid errors with user-friendly messages
+      if (statusCode === 403) {
+        // Sender verification issue
+        console.error('SendGrid 403 error - likely sender verification issue. The FROM_EMAIL address must be verified in SendGrid.');
+        return { statusCode: 500, body: JSON.stringify({ success: false, error: 'Email sender not verified. Please verify the sender email in SendGrid.' }) };
+      }
+      if (statusCode === 401) {
+        console.error('SendGrid 401 error - API key is invalid or revoked');
+        return { statusCode: 500, body: JSON.stringify({ success: false, error: 'Email service authentication failed' }) };
+      }
+    }
+
     return { statusCode: 500, body: JSON.stringify({ success: false, error: 'Internal server error' }) };
   }
 };
