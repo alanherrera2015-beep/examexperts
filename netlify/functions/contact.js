@@ -8,8 +8,20 @@ const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 const FROM_EMAIL = process.env.FROM_EMAIL; // e.g. examexpertscontact@gmail.com
 const TO_EMAIL = process.env.TO_EMAIL;     // e.g. examexpertscontact@gmail.com
 const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET; // optional
+const SENDGRID_DATA_RESIDENCY = process.env.SENDGRID_DATA_RESIDENCY; // 'eu' for EU subusers
 
-if (SENDGRID_API_KEY) sgMail.setApiKey(SENDGRID_API_KEY);
+// Validate SendGrid API key format (must start with "SG.")
+if (SENDGRID_API_KEY) {
+  if (!SENDGRID_API_KEY.startsWith('SG.')) {
+    console.error('Invalid SENDGRID_API_KEY format: API key must start with "SG."');
+  }
+  sgMail.setApiKey(SENDGRID_API_KEY);
+}
+
+// Enable EU Data Residency if configured (for EU-pinned subusers)
+if (SENDGRID_DATA_RESIDENCY === 'eu') {
+  sgMail.setDataResidency('eu');
+}
 
 exports.handler = async function (event) {
   try {
@@ -56,6 +68,12 @@ exports.handler = async function (event) {
       return { statusCode: 500, body: JSON.stringify({ success: false, error: 'Email service not configured' }) };
     }
 
+    // Validate API key format before attempting to send
+    if (!SENDGRID_API_KEY.startsWith('SG.')) {
+      console.error('Invalid SENDGRID_API_KEY: Key must start with "SG." - please update the environment variable with a valid SendGrid API key');
+      return { statusCode: 500, body: JSON.stringify({ success: false, error: 'Email service configuration error' }) };
+    }
+
     const emailHtml = `
       <p>You received a new message from your contact form.</p>
       <p><strong>Name:</strong> ${escapeHtml(name)}</p>
@@ -75,10 +93,30 @@ exports.handler = async function (event) {
     };
 
     await sgMail.send(msg);
+    console.log('Email sent successfully');
 
     return { statusCode: 200, body: JSON.stringify({ success: true }) };
   } catch (err) {
     console.error('Contact function error:', err);
+
+    // Provide more detailed error info for SendGrid errors
+    if (err.response) {
+      const { statusCode, body } = err.response;
+      console.error('SendGrid response status:', statusCode);
+      console.error('SendGrid response body:', JSON.stringify(body));
+
+      // Common SendGrid errors with user-friendly messages
+      if (statusCode === 403) {
+        // Sender verification issue
+        console.error('SendGrid 403 error - likely sender verification issue. The FROM_EMAIL address must be verified in SendGrid.');
+        return { statusCode: 500, body: JSON.stringify({ success: false, error: 'Email sender not verified. Please verify the sender email in SendGrid.' }) };
+      }
+      if (statusCode === 401) {
+        console.error('SendGrid 401 error - API key is invalid or revoked');
+        return { statusCode: 500, body: JSON.stringify({ success: false, error: 'Email service authentication failed' }) };
+      }
+    }
+
     return { statusCode: 500, body: JSON.stringify({ success: false, error: 'Internal server error' }) };
   }
 };

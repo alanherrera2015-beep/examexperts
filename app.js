@@ -107,39 +107,82 @@ faqQuestions.forEach(question => {
 // Contact Form Submission with Magic Effect
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', (e) => {
+contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+
     const submitBtn = contactForm.querySelector('.btn-submit');
     const originalText = submitBtn.textContent;
-    
+
+    // Gather form data
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    };
+
     // Add loading state with magic
     submitBtn.textContent = 'Sending Magic... ✨';
     submitBtn.style.background = 'linear-gradient(135deg, #10B981, #34D399)';
     submitBtn.disabled = true;
-    
-    setTimeout(() => {
-        // Show success with sparkles
-        submitBtn.textContent = 'Message Sent! 🎉';
-        
-        // Create success sparkle burst
-        for (let i = 0; i < 10; i++) {
+
+    try {
+        // Send form data to the Netlify function
+        const response = await fetch('/.netlify/functions/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+            // Show success with sparkles
+            submitBtn.textContent = 'Message Sent! 🎉';
+
+            // Create success sparkle burst
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const rect = submitBtn.getBoundingClientRect();
+                    const x = rect.left + rect.width / 2 + window.scrollX;
+                    const y = rect.top + rect.height / 2 + window.scrollY;
+                    createMagicSparkle(x + (Math.random() - 0.5) * 100, y + (Math.random() - 0.5) * 100);
+                }, i * 50);
+            }
+
+            // Reset form and button
             setTimeout(() => {
-                const rect = submitBtn.getBoundingClientRect();
-                const x = rect.left + rect.width / 2 + window.scrollX;
-                const y = rect.top + rect.height / 2 + window.scrollY;
-                createMagicSparkle(x + (Math.random() - 0.5) * 100, y + (Math.random() - 0.5) * 100);
-            }, i * 50);
+                contactForm.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = 'linear-gradient(135deg, #8B5CF6, #EC4899)';
+                submitBtn.disabled = false;
+            }, 2000);
+        } else {
+            // Show error
+            submitBtn.textContent = 'Error - Try Again';
+            submitBtn.style.background = 'linear-gradient(135deg, #EF4444, #F87171)';
+
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = 'linear-gradient(135deg, #8B5CF6, #EC4899)';
+                submitBtn.disabled = false;
+            }, 3000);
         }
-        
-        // Reset form and button
+    } catch (error) {
+        console.error('Contact form error:', error);
+
+        // Show error
+        submitBtn.textContent = 'Error - Try Again';
+        submitBtn.style.background = 'linear-gradient(135deg, #EF4444, #F87171)';
+
         setTimeout(() => {
-            contactForm.reset();
             submitBtn.textContent = originalText;
             submitBtn.style.background = 'linear-gradient(135deg, #8B5CF6, #EC4899)';
             submitBtn.disabled = false;
-        }, 2000);
-    }, 1500);
+        }, 3000);
+    }
 });
 
 // Smooth Scroll for All Links
