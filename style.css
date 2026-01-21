@@ -1196,7 +1196,7 @@ section::before {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
@@ -1317,7 +1317,7 @@ section::before {
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
@@ -1414,7 +1414,7 @@ section::before {
 .subjects-grid,
 .test-prep-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: 25px;
     max-width: 1200px;
     margin: 0 auto;
@@ -1498,7 +1498,7 @@ section::before {
 
 .testimonials-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
@@ -1708,7 +1708,7 @@ section::before {
 
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 40px;
     max-width: 900px;
     margin: 0 auto 40px;
@@ -1724,6 +1724,9 @@ section::before {
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .pricing-card::before {
@@ -2460,6 +2463,63 @@ section::before {
 
     .testimonial-card {
         padding: 25px;
+    }
+
+    /* Fix horizontal overflow on mobile */
+    * {
+        max-width: 100%;
+    }
+
+    /* Ensure all grids use small minmax for mobile */
+    .services-grid,
+    .features-grid,
+    .subjects-grid,
+    .test-prep-grid,
+    .pricing-grid,
+    .testimonials-grid,
+    .contact-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Text wrapping to prevent overflow */
+    p, h1, h2, h3, h4, h5, h6, span, div, a, button {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+
+    /* Ensure pricing cards fit within viewport */
+    .pricing-card {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .pricing-title {
+        font-size: 24px;
+        word-wrap: break-word;
+    }
+
+    /* Fix button text wrapping */
+    .btn, .btn-primary, .btn-pricing {
+        white-space: normal;
+        word-wrap: break-word;
+        padding: 12px 20px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Prevent horizontal scroll */
+    body, html {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+
+    section {
+        overflow-x: hidden;
+        max-width: 100vw;
     }
 }
 
