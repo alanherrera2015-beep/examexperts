@@ -2192,7 +2192,7 @@ section::before {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
     gap: 40px;
     max-width: 1200px;
     margin: 0 auto 40px;
@@ -2477,7 +2477,9 @@ section::before {
     .test-prep-grid,
     .pricing-grid,
     .testimonials-grid,
-    .contact-grid {
+    .contact-grid,
+    .about-content,
+    .footer-grid {
         grid-template-columns: 1fr !important;
     }
 
