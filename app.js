@@ -287,7 +287,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe all cards and sections with enhanced animations
 const animateElements = document.querySelectorAll(
-    '.service-card, .feature-card, .subject-card, .test-card, .testimonial-card, .pricing-card, .stat-card'
+    '.service-card, .feature-card, .subject-card, .test-card, .testimonial-card, .stat-card'
 );
 
 animateElements.forEach(el => {
