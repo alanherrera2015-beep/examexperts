@@ -215,13 +215,18 @@ bookSessionBtns.forEach(btn => {
             }, i * 30);
         }
         
-        const contactSection = document.getElementById('contact');
-        if (contactSection) {
-            const offsetTop = contactSection.offsetTop - 70;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
+        // If button is a link to Calendly, let it open normally
+        // Otherwise, scroll to contact section
+        if (!btn.hasAttribute('href') || !btn.getAttribute('href').includes('calendly')) {
+            e.preventDefault();
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                const offsetTop = contactSection.offsetTop - 70;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
         }
     });
 });
