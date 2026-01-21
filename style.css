@@ -2348,12 +2348,6 @@ section::before {
         gap: 35px;
     }
 
-    .about-content,
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
     section {
         padding: 70px 30px;
     }
@@ -2425,13 +2419,6 @@ section::before {
     .pricing-grid {
         grid-template-columns: 1fr;
         gap: 30px;
-    }
-
-    /* Ensure two-column grids collapse to single column */
-    .about-content,
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
     }
 
     /* Reduce large font sizes on mobile */
