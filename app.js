@@ -217,7 +217,8 @@ bookSessionBtns.forEach(btn => {
         
         // If button is a link to Calendly, let it open normally
         // Otherwise, scroll to contact section
-        if (!btn.hasAttribute('href') || !btn.getAttribute('href').includes('calendly')) {
+        const isCalendlyLink = btn.tagName === 'A' && btn.href && btn.href.includes('calendly');
+        if (!isCalendlyLink) {
             e.preventDefault();
             const contactSection = document.getElementById('contact');
             if (contactSection) {
