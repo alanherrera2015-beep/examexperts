@@ -1765,6 +1765,15 @@ section::before {
     box-shadow: 0 20px 45px rgba(16, 185, 129, 0.4), 0 0 40px rgba(16, 185, 129, 0.2);
 }
 
+.pricing-orange {
+    border-color: #F59E0B;
+}
+
+.pricing-orange:hover {
+    border-color: #D97706;
+    box-shadow: 0 20px 45px rgba(245, 158, 11, 0.4), 0 0 40px rgba(245, 158, 11, 0.2);
+}
+
 .pricing-title {
     font-family: 'Fredoka', cursive;
     font-size: 30px;
@@ -1775,6 +1784,27 @@ section::before {
     background-clip: text;
     margin-bottom: 20px;
     text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.pricing-price {
+    font-family: 'Fredoka', cursive;
+    font-size: 48px;
+    font-weight: 700;
+    color: #667EEA;
+    text-align: center;
+    margin: 20px 0 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.pricing-period {
+    font-size: 16px;
+    color: #6B7280;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 500;
     position: relative;
     z-index: 1;
 }
