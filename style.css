@@ -2412,7 +2412,7 @@ section::before {
         font-size: 28px;
     }
 
-    /* Fix grid minmax values for small screens */
+    /* Force single column layout on mobile */
     .services-grid,
     .features-grid,
     .subjects-grid,
