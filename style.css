@@ -2351,7 +2351,7 @@ section::before {
     .about-content,
     .contact-grid {
         grid-template-columns: 1fr;
-        gap: 50px;
+        gap: 40px;
     }
 
     section {
@@ -2363,15 +2363,15 @@ section::before {
     }
 
     .hero-title {
-        font-size: 40px;
+        font-size: 38px;
     }
 
     .hero-subtitle {
-        font-size: 20px;
+        font-size: 19px;
     }
 
     .section-title {
-        font-size: 36px;
+        font-size: 34px;
     }
 }
 
@@ -2412,27 +2412,12 @@ section::before {
         font-size: 28px;
     }
 
+    /* Fix grid minmax values for small screens */
     .services-grid,
     .features-grid,
     .subjects-grid,
     .test-prep-grid,
     .testimonials-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Fix grid minmax values for small screens */
-    .services-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .features-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .subjects-grid,
-    .test-prep-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
