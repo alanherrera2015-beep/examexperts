@@ -29,20 +29,34 @@ Set these in Netlify Site → Settings → Build & deploy → Environment:
   - Get this from https://dashboard.stripe.com/apikeys
   - Use test keys for development (starts with sk_test_)
   - Use live keys for production (starts with sk_live_)
+- STRIPE_WEBHOOK_SECRET — your Stripe webhook signing secret (for processing successful payments)
+  - Get this from https://dashboard.stripe.com/webhooks after creating a webhook endpoint
+  - Point webhook to: https://your-site.netlify.app/.netlify/functions/stripe-webhook
+  - Subscribe to event: checkout.session.completed
 
 Important: do NOT paste real secrets into public places. Use the Netlify UI to set these variables.
 
-## Setting up Stripe for Product Sales
+## Setting up Stripe for Product Sales with Downloads
 
 1. Create a Stripe account at https://stripe.com
 2. Get your API keys from https://dashboard.stripe.com/apikeys
-3. For testing:
+3. Set up webhook endpoint:
+   - Go to https://dashboard.stripe.com/webhooks
+   - Click "Add endpoint"
+   - URL: https://your-site.netlify.app/.netlify/functions/stripe-webhook
+   - Events to send: Select "checkout.session.completed"
+   - Copy the signing secret and set it as STRIPE_WEBHOOK_SECRET
+4. For testing:
    - Use test mode keys (starts with sk_test_)
    - Use test credit card: 4242 4242 4242 4242, any future expiry, any CVC
-4. For production:
+5. For production:
    - Switch to live mode and use live keys (starts with sk_live_)
    - Complete Stripe account setup and business verification
-5. Set STRIPE_SECRET_KEY in Netlify environment variables
+6. Set environment variables in Netlify:
+   - STRIPE_SECRET_KEY
+   - STRIPE_WEBHOOK_SECRET
+   - SENDGRID_API_KEY (for sending download links)
+   - FROM_EMAIL (verified sender email)
 
 ## Products Available
 
@@ -50,15 +64,32 @@ The website now includes a Products section with the following items for sale:
 
 ### Workbooks
 - SAT Math Mastery Workbook - $49.99
-- ACT Science Workbook - $44.99
-- GRE Vocabulary Builder - $39.99
+- Chemistry Mastery Workbook - $44.99
+- Physics Mastery Workbook - $44.99
 
 ### Course Guides
-- Complete SAT Prep Course Guide - $149.99 (Featured)
-- MCAT Biology Course Guide - $129.99
-- NCLEX Study Guide Bundle - $119.99
+- Complete SAT Prep Course Guide - $149.99 (Featured/Bestseller)
+- Biology Complete Course Guide - $89.99
+- Advanced Math Course Guide - $99.99
 
 All products are configured in the Stripe checkout function and can be easily modified or expanded.
+
+## Download Delivery
+
+After a successful purchase:
+1. Customer completes payment via Stripe Checkout
+2. Stripe sends webhook to our function
+3. Function automatically emails download link to customer
+4. Customer receives email with direct download link to their purchased product
+
+**Note:** You need to upload your PDF files and update the download URLs in both:
+- netlify/functions/create-checkout.js
+- netlify/functions/stripe-webhook.js
+
+Replace placeholder URLs (https://example.com/downloads/...) with actual file URLs. You can:
+- Host files on Netlify (add to static folder)
+- Use cloud storage (AWS S3, Google Cloud Storage, etc.)
+- Use a CDN for better performance
 
 Frontend changes required
 - Insert reCAPTCHA client snippet in index.html (replace the placeholder with your site key)

@@ -8,32 +8,38 @@ const PRODUCTS = {
     'sat-math-workbook': {
         name: 'SAT Math Mastery Workbook',
         price: 4999, // Price in cents
-        description: '500+ practice problems with detailed solutions'
+        description: '500+ practice problems with detailed solutions',
+        downloadUrl: 'https://example.com/downloads/sat-math-workbook.pdf' // Placeholder - update with actual URL
     },
-    'act-science-workbook': {
-        name: 'ACT Science Workbook',
+    'chemistry-workbook': {
+        name: 'Chemistry Mastery Workbook',
         price: 4499,
-        description: 'Master ACT Science section with 300+ passages'
+        description: 'Master chemistry from basics to advanced topics',
+        downloadUrl: 'https://example.com/downloads/chemistry-workbook.pdf' // Placeholder - update with actual URL
     },
-    'gre-vocab-workbook': {
-        name: 'GRE Vocabulary Builder',
-        price: 3999,
-        description: '2000+ essential GRE words with mnemonics'
+    'physics-workbook': {
+        name: 'Physics Mastery Workbook',
+        price: 4499,
+        description: 'Comprehensive physics workbook',
+        downloadUrl: 'https://example.com/downloads/physics-workbook.pdf' // Placeholder - update with actual URL
     },
     'complete-sat-guide': {
         name: 'Complete SAT Prep Course Guide',
         price: 14999,
-        description: 'Comprehensive SAT preparation resource'
+        description: 'Comprehensive SAT preparation resource',
+        downloadUrl: 'https://example.com/downloads/complete-sat-guide.pdf' // Placeholder - update with actual URL
     },
-    'mcat-bio-guide': {
-        name: 'MCAT Biology Course Guide',
-        price: 12999,
-        description: 'Comprehensive MCAT Biology review'
+    'biology-guide': {
+        name: 'Biology Complete Course Guide',
+        price: 8999,
+        description: 'Comprehensive biology guide from cell biology to ecology',
+        downloadUrl: 'https://example.com/downloads/biology-guide.pdf' // Placeholder - update with actual URL
     },
-    'nclex-bundle': {
-        name: 'NCLEX Study Guide Bundle',
-        price: 11999,
-        description: 'Complete NCLEX exam preparation'
+    'advanced-math-guide': {
+        name: 'Advanced Math Course Guide',
+        price: 9999,
+        description: 'Master advanced mathematics including calculus',
+        downloadUrl: 'https://example.com/downloads/advanced-math-guide.pdf' // Placeholder - update with actual URL
     }
 };
 
