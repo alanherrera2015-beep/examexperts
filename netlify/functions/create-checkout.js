@@ -4,6 +4,8 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // Product catalog with pricing
+// IMPORTANT: Replace placeholder download URLs with actual file URLs before deploying to production
+// Update these URLs in both create-checkout.js and stripe-webhook.js
 const PRODUCTS = {
     'sat-math-workbook': {
         name: 'SAT Math Mastery Workbook',

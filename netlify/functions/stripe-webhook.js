@@ -7,6 +7,11 @@ const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // Product catalog with download URLs (must match create-checkout.js)
+// IMPORTANT: Replace placeholder URLs with actual file URLs before deploying to production
+// Options for hosting files:
+// 1. Netlify static files: Upload to /public folder, use https://your-site.netlify.app/downloads/filename.pdf
+// 2. Cloud storage: AWS S3, Google Cloud Storage, Azure Blob Storage
+// 3. CDN: Cloudflare, CloudFront for better performance
 const PRODUCTS = {
     'sat-math-workbook': {
         name: 'SAT Math Mastery Workbook',
@@ -40,6 +45,15 @@ exports.handler = async (event, context) => {
         return {
             statusCode: 405,
             body: JSON.stringify({ error: 'Method not allowed' })
+        };
+    }
+
+    // Check required environment variables
+    if (!process.env.FROM_EMAIL) {
+        console.error('FROM_EMAIL environment variable is not set');
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ error: 'Server configuration error' })
         };
     }
 
@@ -84,7 +98,7 @@ exports.handler = async (event, context) => {
         // Send email with download link
         const msg = {
             to: customerEmail,
-            from: process.env.FROM_EMAIL || 'examexpertscontact@gmail.com',
+            from: process.env.FROM_EMAIL,
             subject: `Your Purchase: ${product.name}`,
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -126,10 +140,12 @@ exports.handler = async (event, context) => {
 
         try {
             await sgMail.send(msg);
-            console.log('Download email sent to:', customerEmail);
+            console.log('Download email sent to:', customerEmail, 'for product:', productId);
         } catch (error) {
-            console.error('Error sending email:', error);
-            // Don't fail the webhook if email fails
+            console.error('Error sending email to', customerEmail, 'for product', productId, ':', error);
+            // Don't fail the webhook if email fails - customer can contact support
+            // Log the session ID for manual processing if needed
+            console.error('Stripe session ID:', session.id);
         }
     }
 
