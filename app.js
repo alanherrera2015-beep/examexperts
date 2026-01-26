@@ -428,3 +428,138 @@ pulseStyle.textContent = `
     }
 `;
 document.head.appendChild(pulseStyle);
+
+// ===================================
+// PRODUCTS - PAYMENT HANDLING
+// ===================================
+
+// Check for purchase success/cancel on page load
+window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const success = urlParams.get('success');
+    const canceled = urlParams.get('canceled');
+    const productId = urlParams.get('product');
+    
+    if (success === 'true') {
+        // Show success message
+        showPurchaseMessage('success', 'Purchase Successful! 🎉', 
+            'Thank you for your purchase! You will receive an email with download instructions shortly.');
+        
+        // Clear URL parameters
+        window.history.replaceState({}, document.title, window.location.pathname);
+        
+        // Create celebration sparkles
+        for (let i = 0; i < 20; i++) {
+            setTimeout(() => {
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                createMagicSparkle(x, y);
+            }, i * 100);
+        }
+    } else if (canceled === 'true') {
+        // Show cancellation message
+        showPurchaseMessage('info', 'Purchase Canceled', 
+            'Your purchase was canceled. No charges were made to your account.');
+        
+        // Clear URL parameters
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+});
+
+function showPurchaseMessage(type, title, message) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `purchase-message purchase-message-${type}`;
+    messageDiv.innerHTML = `
+        <div class="purchase-message-content">
+            <h3>${title}</h3>
+            <p>${message}</p>
+            <button class="btn-close-message" onclick="this.parentElement.parentElement.remove()">Close</button>
+        </div>
+    `;
+    
+    document.body.appendChild(messageDiv);
+    
+    // Auto-remove after 10 seconds
+    setTimeout(() => {
+        if (messageDiv.parentElement) {
+            messageDiv.remove();
+        }
+    }, 10000);
+}
+
+// Product Purchase Handler
+const buyButtons = document.querySelectorAll('.btn-buy');
+
+buyButtons.forEach(button => {
+    button.addEventListener('click', async (e) => {
+        e.preventDefault();
+        
+        const productId = button.getAttribute('data-product');
+        const productTitle = button.closest('.product-card').querySelector('.product-title').textContent;
+        
+        // Create sparkle burst on click
+        const rect = button.getBoundingClientRect();
+        const x = rect.left + rect.width / 2 + window.scrollX;
+        const y = rect.top + rect.height / 2 + window.scrollY;
+        
+        for (let i = 0; i < 8; i++) {
+            setTimeout(() => {
+                createMagicSparkle(x + (Math.random() - 0.5) * 80, y + (Math.random() - 0.5) * 80);
+            }, i * 30);
+        }
+        
+        // Update button state
+        const originalText = button.textContent;
+        button.textContent = 'Processing... ✨';
+        button.disabled = true;
+        
+        try {
+            // Send purchase request to Netlify function
+            const response = await fetch('/.netlify/functions/create-checkout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    productId: productId,
+                    productName: productTitle
+                })
+            });
+            
+            const result = await response.json();
+            
+            if (response.ok && result.url) {
+                // Redirect to Stripe Checkout
+                window.location.href = result.url;
+            } else {
+                // Show error
+                button.textContent = 'Error - Try Again';
+                button.style.background = 'linear-gradient(135deg, #EF4444, #F87171)';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = 'linear-gradient(135deg, #8B5CF6, #EC4899)';
+                    button.disabled = false;
+                }, 3000);
+            }
+        } catch (error) {
+            console.error('Purchase error:', error);
+            
+            // For now, show a message to contact for purchase
+            // This allows the functionality to work even without Stripe setup
+            if (confirm(`To purchase "${productTitle}", please contact us at examexpertscontact@gmail.com or book a call to discuss. Would you like to go to the contact section?`)) {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    const offsetTop = contactSection.offsetTop - 70;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+            
+            button.textContent = originalText;
+            button.disabled = false;
+        }
+    });
+});
