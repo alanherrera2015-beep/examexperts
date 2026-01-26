@@ -4,6 +4,7 @@
   "private": true,
   "description": "Exam Experts website with Netlify Functions",
   "dependencies": {
-    "@sendgrid/mail": "^8.1.6"
+    "@sendgrid/mail": "^8.1.6",
+    "stripe": "^14.0.0"
   }
 }
