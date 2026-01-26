@@ -76,8 +76,8 @@ exports.handler = async (event, context) => {
                 },
             ],
             mode: 'payment',
-            success_url: `${process.env.URL || event.headers.referer}?success=true&product=${productId}`,
-            cancel_url: `${process.env.URL || event.headers.referer}?canceled=true`,
+            success_url: `${process.env.URL || 'https://examexperts.netlify.app'}?success=true&product=${productId}`,
+            cancel_url: `${process.env.URL || 'https://examexperts.netlify.app'}?canceled=true`,
             metadata: {
                 productId: productId,
             },

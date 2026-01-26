@@ -433,6 +433,60 @@ document.head.appendChild(pulseStyle);
 // PRODUCTS - PAYMENT HANDLING
 // ===================================
 
+// Check for purchase success/cancel on page load
+window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const success = urlParams.get('success');
+    const canceled = urlParams.get('canceled');
+    const productId = urlParams.get('product');
+    
+    if (success === 'true') {
+        // Show success message
+        showPurchaseMessage('success', 'Purchase Successful! 🎉', 
+            'Thank you for your purchase! You will receive an email with download instructions shortly.');
+        
+        // Clear URL parameters
+        window.history.replaceState({}, document.title, window.location.pathname);
+        
+        // Create celebration sparkles
+        for (let i = 0; i < 20; i++) {
+            setTimeout(() => {
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                createMagicSparkle(x, y);
+            }, i * 100);
+        }
+    } else if (canceled === 'true') {
+        // Show cancellation message
+        showPurchaseMessage('info', 'Purchase Canceled', 
+            'Your purchase was canceled. No charges were made to your account.');
+        
+        // Clear URL parameters
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+});
+
+function showPurchaseMessage(type, title, message) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `purchase-message purchase-message-${type}`;
+    messageDiv.innerHTML = `
+        <div class="purchase-message-content">
+            <h3>${title}</h3>
+            <p>${message}</p>
+            <button class="btn-close-message" onclick="this.parentElement.parentElement.remove()">Close</button>
+        </div>
+    `;
+    
+    document.body.appendChild(messageDiv);
+    
+    // Auto-remove after 10 seconds
+    setTimeout(() => {
+        if (messageDiv.parentElement) {
+            messageDiv.remove();
+        }
+    }, 10000);
+}
+
 // Product Purchase Handler
 const buyButtons = document.querySelectorAll('.btn-buy');
 
@@ -441,7 +495,6 @@ buyButtons.forEach(button => {
         e.preventDefault();
         
         const productId = button.getAttribute('data-product');
-        const price = button.getAttribute('data-price');
         const productTitle = button.closest('.product-card').querySelector('.product-title').textContent;
         
         // Create sparkle burst on click
@@ -469,7 +522,6 @@ buyButtons.forEach(button => {
                 },
                 body: JSON.stringify({
                     productId: productId,
-                    price: price,
                     productName: productTitle
                 })
             });
