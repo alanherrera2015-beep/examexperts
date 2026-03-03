@@ -2953,6 +2953,144 @@ section::before {
     -webkit-text-fill-color: #166534;
 }
 
+/* Nursing Pricing Purple */
+.pricing-purple {
+    border-top: 4px solid #7C3AED;
+}
+.pricing-purple .pricing-title {
+    color: #7C3AED;
+}
+.pricing-purple .pricing-price {
+    background: linear-gradient(135deg, #7C3AED, #9F67FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Teaching Approach Section */
+.approach {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #F8FAFF 0%, #F0F4FF 100%);
+}
+
+.approach-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 860px;
+    margin: 48px auto 0;
+}
+
+.approach-connector {
+    text-align: center;
+    font-size: 28px;
+    color: #94A3B8;
+    line-height: 1;
+    margin: -4px 0;
+}
+
+.approach-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: white;
+    border-radius: 16px;
+    padding: 28px 28px 28px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    border-left: 5px solid #2563EB;
+    position: relative;
+}
+
+.approach-step-blue  { border-left-color: #2563EB; }
+.approach-step-green { border-left-color: #16A34A; }
+.approach-step-orange { border-left-color: #EA580C; }
+.approach-step-purple { border-left-color: #7C3AED; }
+.approach-step-teal  { border-left-color: #0D9488; }
+
+.approach-step-number {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #1E40AF;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+.approach-step-blue  .approach-step-number { background: #2563EB; }
+.approach-step-green .approach-step-number { background: #16A34A; }
+.approach-step-orange .approach-step-number { background: #EA580C; }
+.approach-step-purple .approach-step-number { background: #7C3AED; }
+.approach-step-teal  .approach-step-number { background: #0D9488; }
+
+.approach-step-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    line-height: 1.2;
+}
+
+.approach-step-content {
+    flex: 1;
+}
+
+.approach-step-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1E293B;
+    margin: 0 0 8px;
+}
+
+.approach-step-desc {
+    font-size: 15px;
+    color: #475569;
+    line-height: 1.6;
+    margin: 0 0 12px;
+}
+
+.approach-example {
+    background: #F8FAFF;
+    border-left: 3px solid #CBD5E1;
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #334155;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+.approach-example-label {
+    font-style: normal;
+    font-weight: 700;
+    color: #1E293B;
+}
+
+.approach-cta {
+    text-align: center;
+    margin-top: 48px;
+}
+
+.approach-cta p {
+    font-size: 17px;
+    color: #475569;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 640px) {
+    .approach-step {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    .approach-step-icon {
+        display: none;
+    }
+}
+
 /* Responsive hero */
 @media (max-width: 968px) {
     .hero-container {
