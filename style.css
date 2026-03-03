@@ -2672,7 +2672,7 @@ section::before {
     p, h1, h2, h3, h4, h5, h6, span, div, a, button {
         word-wrap: break-word;
         overflow-wrap: break-word;
-        hyphens: auto;
+        hyphens: none;
     }
 
     /* Ensure pricing cards fit within viewport */
