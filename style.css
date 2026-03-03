@@ -1234,8 +1234,29 @@ button {
 
 /* Section Styles */
 section {
-    padding: 80px 20px;
+    padding: 130px 20px;
     position: relative;
+}
+
+/* Scroll offset so sticky nav doesn't obscure anchored sections */
+section[id] {
+    scroll-margin-top: 70px;
+}
+
+/* Decorative top separator pill — marks the start of every non-hero section.
+   Note: section::before (below) fills the section as a texture overlay (z-index auto/0).
+   This ::after sits at the very top edge above it (z-index: 2). */
+section:not(.hero)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 5px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #667EEA, #764BA2, #EC4899);
+    z-index: 2;
 }
 
 section::before {
@@ -1249,6 +1270,7 @@ section::before {
         radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.03) 0%, transparent 50%),
         radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.03) 0%, transparent 50%);
     pointer-events: none;
+    z-index: 0;
 }
 
 .section-title {
@@ -1732,6 +1754,31 @@ section::before {
     text-align: left;
 }
 
+.about-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.about-highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.about-highlight-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.about-highlight-heading {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 6px;
+}
+
 .about-paragraph {
     font-size: 16px;
     color: #4B5563;
@@ -1995,6 +2042,54 @@ section::before {
     border: 1px solid #E5E7EB;
 }
 
+.pricing-info-heading {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 16px;
+}
+
+.pricing-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pricing-info-list li {
+    font-size: 15px;
+    color: #4B5563;
+    line-height: 1.5;
+    padding: 10px 14px;
+    background: #F9FAFB;
+    border-radius: 8px;
+    border-left: 3px solid #D1D5DB;
+}
+
+.pricing-policy {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px;
+    background: #F9FAFB;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+}
+
+.pricing-policy-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.pricing-policy p {
+    font-size: 14px;
+    color: #4B5563;
+    line-height: 1.6;
+    margin: 0;
+}
+
 .pricing-info p {
     font-size: 15px;
     color: #4B5563;
@@ -2033,7 +2128,7 @@ section::before {
 /* Institution / Advisors Section */
 .institution-section {
     background: linear-gradient(135deg, #EDE9FE 0%, #E0F2FE 100%);
-    padding: 80px 20px;
+    padding: 130px 20px;
 }
 
 .institution-callout {
@@ -2562,7 +2657,7 @@ section::before {
     }
 
     section {
-        padding: 70px 30px;
+        padding: 100px 30px;
     }
 
     .hero {
@@ -2612,7 +2707,7 @@ section::before {
     }
 
     section {
-        padding: 60px 20px;
+        padding: 75px 20px;
     }
 
     .section-title {
@@ -2843,7 +2938,7 @@ section::before {
 /* How It Works Section */
 .how-it-works {
     background: #ffffff;
-    padding: 80px 20px;
+    padding: 130px 20px;
 }
 
 .steps-grid {
@@ -3243,7 +3338,7 @@ section::before {
 
 /* Teaching Approach Section */
 .approach {
-    padding: 80px 0;
+    padding: 130px 0;
     background: linear-gradient(135deg, #F8FAFF 0%, #F0F4FF 100%);
 }
 
