@@ -1384,6 +1384,16 @@ section::before {
     box-shadow: 0 20px 40px rgba(139, 92, 246, 0.4);
 }
 
+.service-teal {
+    border-color: #CCFBF1;
+}
+
+.service-teal:hover {
+    border-color: #0D9488;
+    background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(255, 255, 255, 0.9));
+    box-shadow: 0 20px 40px rgba(13, 148, 136, 0.4);
+}
+
 .service-icon {
     font-size: 60px;
     margin-bottom: 20px;
