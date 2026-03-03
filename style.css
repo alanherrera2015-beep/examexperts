@@ -812,7 +812,9 @@ button {
 }
 
 .logo-icon {
-    font-size: 28px;
+    display: inline-block;
+    height: 40px;
+    width: auto;
 }
 
 .nav-menu {
