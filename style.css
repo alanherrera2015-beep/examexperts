@@ -2778,8 +2778,11 @@ section::before {
 @media print {
     .navbar,
     .hero,
+    .how-it-works,
+    .services,
     .why-choose,
     .detailed-services,
+    .approach,
     .testimonials,
     .about,
     .faq,
