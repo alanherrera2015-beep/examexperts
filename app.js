@@ -130,18 +130,22 @@ contactForm.addEventListener('submit', async (e) => {
     submitBtn.disabled = true;
 
     try {
-        // Send form data to the Netlify function
-        const response = await fetch('/.netlify/functions/contact', {
+        // Send form data via Netlify built-in form handling
+        const response = await fetch('/', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: JSON.stringify(formData)
+            body: new URLSearchParams({
+                'form-name': 'contact',
+                name: formData.name,
+                email: formData.email,
+                subject: formData.subject,
+                message: formData.message
+            }).toString()
         });
 
-        const result = await response.json();
-
-        if (response.ok && result.success) {
+        if (response.ok) {
             // Show success with sparkles
             submitBtn.textContent = 'Message Sent! 🎉';
 
