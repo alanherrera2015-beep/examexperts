@@ -16,26 +16,29 @@ navLinks.forEach(link => {
     });
 });
 
-// Active Navigation Link on Scroll
-window.addEventListener('scroll', () => {
-    let current = '';
-    const sections = document.querySelectorAll('section');
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - 150) {
-            current = section.getAttribute('id');
-        }
-    });
-    
+// Active Navigation Link based on current page URL
+(function() {
+    const path = window.location.pathname;
+    const pageMap = {
+        'index.html': 'index.html',
+        '': 'index.html',
+        '/': 'index.html',
+        'services.html': 'services.html',
+        'about.html': 'about.html',
+        'approach.html': 'approach.html',
+        'pricing.html': 'pricing.html',
+        'contact.html': 'contact.html',
+    };
+    const currentFile = path.split('/').pop() || 'index.html';
+    const activePage = pageMap[currentFile] || currentFile;
     navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === activePage || (activePage === 'index.html' && linkHref === 'index.html')) {
             link.classList.add('active');
         }
     });
-});
+})();
 
 // Enhanced Navbar Scroll Effect with Color Change
 const navbar = document.getElementById('navbar');
@@ -185,12 +188,13 @@ contactForm.addEventListener('submit', async (e) => {
     }
 });
 
-// Smooth Scroll for All Links
+// Smooth Scroll for same-page anchor links only
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const href = this.getAttribute('href');
+        const target = document.querySelector(href);
         if (target) {
+            e.preventDefault();
             const offsetTop = target.offsetTop - 70;
             window.scrollTo({
                 top: offsetTop,
@@ -216,18 +220,11 @@ bookSessionBtns.forEach(btn => {
         }
         
         // If button is a link to Calendly, let it open normally
-        // Otherwise, scroll to contact section
+        // Otherwise, navigate to contact page
         const isCalendlyLink = btn.tagName === 'A' && btn.href && btn.href.includes('calendly');
         if (!isCalendlyLink) {
             e.preventDefault();
-            const contactSection = document.getElementById('contact');
-            if (contactSection) {
-                const offsetTop = contactSection.offsetTop - 70;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
+            window.location.href = 'contact.html';
         }
     });
 });
@@ -247,14 +244,7 @@ if (viewServicesBtn) {
             }, i * 30);
         }
         
-        const servicesSection = document.getElementById('services');
-        if (servicesSection) {
-            const offsetTop = servicesSection.offsetTop - 70;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
+        window.location.href = 'services.html';
     });
 }
 
