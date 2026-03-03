@@ -3086,6 +3086,60 @@ section::before {
     border-top: 1px solid #F3F4F6;
 }
 
+/* Mobile comparison cards — hidden on desktop, shown on mobile */
+.pricing-comparison-cards {
+    display: none;
+}
+
+.comparison-card {
+    padding: 14px 16px;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.comparison-card:last-child {
+    border-bottom: none;
+}
+
+.comparison-card-featured {
+    background: rgba(255, 107, 53, 0.05);
+}
+
+.comparison-card-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+.comparison-card-name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #111827;
+}
+
+.comparison-card-price {
+    font-family: 'Fredoka', cursive;
+    font-size: 20px;
+    font-weight: 700;
+    color: #667EEA;
+    margin-bottom: 2px;
+}
+
+.comparison-card-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #6B7280;
+    margin-bottom: 2px;
+}
+
+.comparison-card-best {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #374151;
+}
+
 /* Pricing Group Labels */
 .pricing-section-group {
     margin-bottom: 48px;
@@ -3355,5 +3409,14 @@ section::before {
     .pricing-comparison-table th,
     .pricing-comparison-table td {
         padding: 9px 8px;
+    }
+
+    /* Hide table, show cards on mobile */
+    .pricing-comparison-scroll {
+        display: none;
+    }
+
+    .pricing-comparison-cards {
+        display: block;
     }
 }
