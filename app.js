@@ -345,17 +345,7 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Add Magic Sparkle Effect on Mouse Move
-let lastSparkleTime = 0;
-const sparkleInterval = 500; // milliseconds
 
-document.addEventListener('mousemove', (e) => {
-    const currentTime = Date.now();
-    if (currentTime - lastSparkleTime > sparkleInterval) {
-        createMagicSparkle(e.pageX, e.pageY);
-        lastSparkleTime = currentTime;
-    }
-});
 
 function createMagicSparkle(x, y) {
     const sparkle = document.createElement('div');
