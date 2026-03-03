@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="240" height="80" role="img" aria-label="Exam Experts logo">
+  <!-- Graduation cap icon -->
+  <g transform="translate(0, 8)">
+    <!-- Cap base -->
+    <polygon points="32,28 52,18 72,28 52,38" fill="#ffffff"/>
+    <!-- Cap top -->
+    <polygon points="32,28 52,18 52,22 36,30" fill="rgba(255,255,255,0.7)"/>
+    <!-- Tassel -->
+    <line x1="72" y1="28" x2="72" y2="40" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="72" cy="42" r="3" fill="#ffffff"/>
+  </g>
+  <!-- Company name text -->
+  <text x="86" y="34" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" fill="#ffffff" letter-spacing="-0.5">Exam</text>
+  <text x="86" y="58" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" fill="rgba(255,255,255,0.85)" letter-spacing="-0.5">Experts</text>
+  <!-- Accent line -->
+  <rect x="86" y="62" width="120" height="2.5" rx="1.25" fill="rgba(255,255,255,0.4)"/>
+</svg>
