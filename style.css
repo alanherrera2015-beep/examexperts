@@ -812,7 +812,9 @@ button {
 }
 
 .logo-icon {
-    font-size: 28px;
+    display: inline-block;
+    height: 40px;
+    width: auto;
 }
 
 .nav-menu {
@@ -928,10 +930,13 @@ button {
 
 .hero-logo {
     display: block;
-    width: 200px;
+    width: 160px;
     height: auto;
     margin-bottom: 28px;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
 }
 
 .hero-trust-badge {
@@ -1035,7 +1040,9 @@ button {
 }
 
 .hero-card-icon {
-    font-size: 32px;
+    display: inline-block;
+    height: 48px;
+    width: auto;
 }
 
 .hero-card-label {
