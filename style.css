@@ -3688,6 +3688,20 @@ section::before {
     margin-bottom: 24px;
 }
 
+.resource-card .btn-outline {
+    background: transparent;
+    color: #4F46E5;
+    border-color: #6366F1;
+    box-shadow: none;
+}
+
+.resource-card .btn-outline:hover {
+    background: #4F46E5;
+    color: #ffffff;
+    border-color: #4F46E5;
+    box-shadow: 0 10px 30px rgba(79, 70, 229, 0.3);
+}
+
 /* Social Proof Banner */
 .social-proof-banner {
     background: linear-gradient(135deg, #1E3A5F 0%, #1a2e4a 100%);
