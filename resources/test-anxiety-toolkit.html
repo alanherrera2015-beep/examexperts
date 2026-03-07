@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test-Anxiety Toolkit — Exam Experts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F8FAFC;
+            color: #1F2937;
+            min-height: 100vh;
+        }
+
+        .download-bar {
+            background: linear-gradient(135deg, #9D174D 0%, #7C3AED 100%);
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .download-bar p { color: #FCE7F3; font-size: 14px; font-weight: 500; }
+        .download-bar a { color: #FCE7F3; font-size: 13px; text-decoration: underline; margin-right: 16px; }
+
+        .btn-print {
+            background: #FDE68A;
+            color: #92400E;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+
+        .btn-print:hover { background: #FCD34D; }
+
+        .document {
+            max-width: 800px;
+            margin: 32px auto;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            overflow: hidden;
+        }
+
+        .doc-header {
+            background: linear-gradient(135deg, #9D174D 0%, #7C3AED 100%);
+            padding: 36px 40px 28px;
+            color: #ffffff;
+        }
+
+        .doc-header .brand {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: #FBCFE8;
+            margin-bottom: 8px;
+            letter-spacing: 0.04em;
+        }
+
+        .doc-header h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .doc-header p { font-size: 15px; color: #FBCFE8; line-height: 1.5; }
+
+        .doc-body { padding: 36px 40px 40px; }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6B7280;
+            margin-bottom: 16px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #E5E7EB;
+        }
+
+        .intro-box {
+            background: #FFF1F2;
+            border: 1.5px solid #FBCFE8;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 32px;
+            font-size: 14px;
+            color: #9D174D;
+            line-height: 1.6;
+        }
+
+        /* Tool Cards */
+        .tool-section {
+            margin-bottom: 32px;
+        }
+
+        .tool-card {
+            border: 2px solid;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .tool-card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 24px;
+        }
+
+        .tool-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .tool-emoji { font-size: 28px; }
+
+        .tool-card-header h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .tool-card-body {
+            padding: 20px 24px 24px;
+            background: #ffffff;
+        }
+
+        .tool-card-body p {
+            font-size: 15px;
+            line-height: 1.65;
+            margin-bottom: 16px;
+            color: #374151;
+        }
+
+        /* Breathing card */
+        .tool-breathing { border-color: #93C5FD; }
+        .tool-breathing .tool-card-header { background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); }
+        .tool-breathing .tool-card-header h2 { color: #1E40AF; }
+        .tool-breathing .tool-number { background: #2563EB; }
+
+        .breathing-steps {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .breath-step {
+            background: #EFF6FF;
+            border: 1.5px solid #BFDBFE;
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .breath-step .count {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #2563EB;
+            display: block;
+        }
+
+        .breath-step .label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #1E40AF;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .breath-step .desc {
+            font-size: 12px;
+            color: #6B7280;
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        /* Routine card */
+        .tool-routine { border-color: #6EE7B7; }
+        .tool-routine .tool-card-header { background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%); }
+        .tool-routine .tool-card-header h2 { color: #065F46; }
+        .tool-routine .tool-number { background: #059669; }
+
+        .routine-timeline {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+        }
+
+        .routine-timeline::before {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #D1FAE5;
+        }
+
+        .routine-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding-bottom: 18px;
+            position: relative;
+        }
+
+        .routine-dot {
+            width: 20px;
+            height: 20px;
+            background: #059669;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 2px;
+            z-index: 1;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 2px #059669;
+        }
+
+        .routine-time {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #059669;
+            margin-bottom: 3px;
+        }
+
+        .routine-item p {
+            font-size: 14px;
+            color: #374151;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Timed Practice card */
+        .tool-timed { border-color: #FCA5A5; }
+        .tool-timed .tool-card-header { background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%); }
+        .tool-timed .tool-card-header h2 { color: #9F1239; }
+        .tool-timed .tool-number { background: #E11D48; }
+
+        .timed-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .timed-item {
+            background: #FFF1F2;
+            border: 1.5px solid #FECDD3;
+            border-radius: 10px;
+            padding: 14px;
+        }
+
+        .timed-item .timed-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #9F1239;
+            margin-bottom: 6px;
+        }
+
+        .timed-item p {
+            font-size: 13px;
+            color: #374151;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Reframing card */
+        .tool-reframe { border-color: #C4B5FD; }
+        .tool-reframe .tool-card-header { background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%); }
+        .tool-reframe .tool-card-header h2 { color: #4C1D95; }
+        .tool-reframe .tool-number { background: #7C3AED; }
+
+        .script-card {
+            background: #F5F3FF;
+            border: 1.5px solid #DDD6FE;
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin-bottom: 12px;
+        }
+
+        .script-situation {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #7C3AED;
+            margin-bottom: 8px;
+        }
+
+        .script-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .script-col {
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .script-col.bad {
+            background: #FEE2E2;
+            border: 1px solid #FCA5A5;
+            color: #7F1D1D;
+        }
+
+        .script-col.good {
+            background: #F0FDF4;
+            border: 1px solid #86EFAC;
+            color: #14532D;
+        }
+
+        .script-col strong {
+            display: block;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        /* Reference card */
+        .reference-card {
+            margin-top: 32px;
+            background: #FFFBEB;
+            border: 2px solid #FDE68A;
+            border-radius: 14px;
+            padding: 24px 28px;
+        }
+
+        .reference-card h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #92400E;
+            margin-bottom: 14px;
+        }
+
+        .reference-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .reference-item {
+            background: rgba(255,255,255,0.7);
+            border: 1px solid #FDE68A;
+            border-radius: 8px;
+            padding: 12px 14px;
+        }
+
+        .reference-item .ref-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #92400E;
+            margin-bottom: 4px;
+        }
+
+        .reference-item p {
+            font-size: 13px;
+            color: #374151;
+            line-height: 1.5;
+        }
+
+        .cta-box {
+            margin-top: 32px;
+            background: linear-gradient(135deg, #FFF1F2 0%, #FCE7F3 100%);
+            border: 2px solid #FBCFE8;
+            border-radius: 14px;
+            padding: 24px 28px;
+            text-align: center;
+        }
+
+        .cta-box p { font-size: 15px; color: #1F2937; margin-bottom: 16px; line-height: 1.6; }
+
+        .cta-box a {
+            display: inline-block;
+            background: linear-gradient(135deg, #9D174D 0%, #7C3AED 100%);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 9px;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .doc-footer {
+            background: #F3F4F6;
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .doc-footer p { font-size: 12px; color: #9CA3AF; }
+
+        @media print {
+            .download-bar { display: none; }
+            body { background: #fff; }
+            .document { box-shadow: none; border-radius: 0; margin: 0; }
+            .tool-card { page-break-inside: avoid; }
+        }
+
+        @media (max-width: 600px) {
+            .doc-header, .doc-body { padding: 24px 20px; }
+            .doc-footer { padding: 14px 20px; }
+            .breathing-steps, .timed-grid, .script-row, .reference-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="download-bar">
+        <p>📥 Save this toolkit: use your browser's <strong>File → Print → Save as PDF</strong></p>
+        <div>
+            <a href="../approach.html">← Back to Our Approach</a>
+            <button class="btn-print" onclick="window.print()">🖨️ Download / Print</button>
+        </div>
+    </div>
+
+    <div class="document">
+        <div class="doc-header">
+            <div class="brand">EXAM EXPERTS — FREE RESOURCE</div>
+            <h1>Test-Anxiety Toolkit</h1>
+            <p>Four practical tools to help you manage exam-day anxiety — so the real test feels familiar, not terrifying. Keep this with you and practice each technique before your next exam.</p>
+        </div>
+
+        <div class="doc-body">
+
+            <div class="section-label">Why Anxiety Management Matters</div>
+            <div class="intro-box">
+                Test anxiety isn't just about nerves — it physically impairs recall and decision-making by flooding your brain with cortisol. The good news: these are learnable, science-backed techniques. Students who practice them before their exam consistently report lower anxiety scores and better performance. Practice each tool at least once before exam day so it's already familiar when you need it.
+            </div>
+
+            <!-- Tool 1: Box Breathing -->
+            <div class="tool-section">
+                <div class="tool-card tool-breathing">
+                    <div class="tool-card-header">
+                        <span class="tool-number">1</span>
+                        <span class="tool-emoji">🌬️</span>
+                        <h2>Box Breathing</h2>
+                    </div>
+                    <div class="tool-card-body">
+                        <p>Box breathing (also called 4-4-4-4 breathing) activates your parasympathetic nervous system — the body's "calm down" mode — within 60–90 seconds. Use it the night before, the morning of, and in the 2 minutes before the exam begins.</p>
+
+                        <div class="breathing-steps">
+                            <div class="breath-step">
+                                <span class="count">4</span>
+                                <span class="label">Inhale</span>
+                                <span class="desc">Breathe in slowly through your nose for 4 counts</span>
+                            </div>
+                            <div class="breath-step">
+                                <span class="count">4</span>
+                                <span class="label">Hold</span>
+                                <span class="desc">Hold your breath at the top for 4 counts</span>
+                            </div>
+                            <div class="breath-step">
+                                <span class="count">4</span>
+                                <span class="label">Exhale</span>
+                                <span class="desc">Breathe out slowly through your mouth for 4 counts</span>
+                            </div>
+                            <div class="breath-step">
+                                <span class="count">4</span>
+                                <span class="label">Hold</span>
+                                <span class="desc">Hold empty lungs for 4 counts before next inhale</span>
+                            </div>
+                        </div>
+
+                        <p><strong>How to use it:</strong> Repeat the cycle 4–6 times. One complete round takes about 60–90 seconds. You can do this silently in your seat before the exam starts — no one will notice.</p>
+                        <p style="background:#EFF6FF;border-radius:8px;padding:12px 14px;font-size:13px;color:#1E40AF;margin:0;"><strong>📋 Practice note:</strong> Do this once right now as you read it. Set a timer for 2 minutes and complete 3 full cycles. Your goal is for this to feel automatic by exam day.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tool 2: Pre-Exam Routine -->
+            <div class="tool-section">
+                <div class="tool-card tool-routine">
+                    <div class="tool-card-header">
+                        <span class="tool-number">2</span>
+                        <span class="tool-emoji">📅</span>
+                        <h2>Pre-Exam Routine</h2>
+                    </div>
+                    <div class="tool-card-body">
+                        <p>Anxiety often spikes because the day feels unpredictable. A written routine eliminates decision fatigue and signals to your brain that everything is under control. Follow this the evening before and morning of your exam.</p>
+
+                        <ul class="routine-timeline">
+                            <li class="routine-item">
+                                <span class="routine-dot"></span>
+                                <div>
+                                    <div class="routine-time">Night Before — 8–9 PM</div>
+                                    <p>Do a light 20-minute review only: key terms and formulas you already know. No new content. Pack your bag. Set your alarm (and a backup). Tell yourself: "I've done the work. Tonight is rest."</p>
+                                </div>
+                            </li>
+                            <li class="routine-item">
+                                <span class="routine-dot"></span>
+                                <div>
+                                    <div class="routine-time">Night Before — 9 PM onward</div>
+                                    <p>Stop all studying. Do something relaxing — a walk, a show, a light meal. Avoid social media anxiety spirals. In bed by 10 PM. Your performance on 8 hours of sleep beats 4 hours of cramming every time.</p>
+                                </div>
+                            </li>
+                            <li class="routine-item">
+                                <span class="routine-dot"></span>
+                                <div>
+                                    <div class="routine-time">Morning of — Wake Up</div>
+                                    <p>Eat a proper breakfast with protein (eggs, yogurt, nuts). Avoid heavy sugar. Hydrate. Don't look at your notes unless you planned it — and even then, limit to 15 minutes of high-yield items only.</p>
+                                </div>
+                            </li>
+                            <li class="routine-item">
+                                <span class="routine-dot"></span>
+                                <div>
+                                    <div class="routine-time">30 Minutes Before</div>
+                                    <p>Arrive early. Use your box breathing. If you feel a spiral coming, say your reset script (see Tool 4). Avoid classmates who are panicking — anxiety is contagious. Find a quiet spot.</p>
+                                </div>
+                            </li>
+                            <li class="routine-item" style="padding-bottom:0;">
+                                <span class="routine-dot"></span>
+                                <div>
+                                    <div class="routine-time">When the Exam Starts</div>
+                                    <p>Read the first question slowly. Don't rush. Take one breath before answering. You've prepared. You know this material. Now execute.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tool 3: Timed Practice Simulation -->
+            <div class="tool-section">
+                <div class="tool-card tool-timed">
+                    <div class="tool-card-header">
+                        <span class="tool-number">3</span>
+                        <span class="tool-emoji">⏱️</span>
+                        <h2>Timed Practice Simulation</h2>
+                    </div>
+                    <div class="tool-card-body">
+                        <p>The biggest source of exam-day anxiety is the feeling that everything is <em>different</em> from how you studied. Timed simulation practice makes the exam environment feel familiar — familiar feels safe. Familiar feels manageable.</p>
+
+                        <div class="timed-grid">
+                            <div class="timed-item">
+                                <div class="timed-label">Set Up Your Environment</div>
+                                <p>Sit at a desk. Close other tabs. Set a timer for your exam's time limit. Put your phone in another room. Replicate the testing conditions as closely as possible.</p>
+                            </div>
+                            <div class="timed-item">
+                                <div class="timed-label">Track Your Pacing</div>
+                                <p>For most exams: aim for 1–1.5 minutes per question. If you're spending more than 2 minutes on a single question, mark it and move on — return at the end.</p>
+                            </div>
+                            <div class="timed-item">
+                                <div class="timed-label">Practice the Skip Rule</div>
+                                <p>Mark uncertain questions and keep moving. Students who get stuck on hard questions run out of time for easy ones. Train this habit before the real exam.</p>
+                            </div>
+                            <div class="timed-item">
+                                <div class="timed-label">Debrief After Each Sim</div>
+                                <p>After every timed practice session, note: Did anxiety peak? When? On what question types? Use that data to target your next practice session.</p>
+                            </div>
+                        </div>
+
+                        <p style="background:#FFF1F2;border-radius:8px;padding:12px 14px;font-size:13px;color:#9F1239;margin:0;"><strong>🎯 Goal:</strong> Do at least 2 full timed simulations before exam day. By the second one, the pressure should feel noticeably more normal. If it doesn't, add a third session.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tool 4: Cognitive Reframing -->
+            <div class="tool-section">
+                <div class="tool-card tool-reframe">
+                    <div class="tool-card-header">
+                        <span class="tool-number">4</span>
+                        <span class="tool-emoji">🧠</span>
+                        <h2>Cognitive Reframing</h2>
+                    </div>
+                    <div class="tool-card-body">
+                        <p>Anxiety spirals from automatic negative thoughts (ANTs) that feel true but aren't. Reframing interrupts the spiral by replacing catastrophizing self-talk with accurate, grounding statements. Memorize your two or three personal reset scripts before exam day.</p>
+
+                        <div class="script-card">
+                            <div class="script-situation">When you blank on a question</div>
+                            <div class="script-row">
+                                <div class="script-col bad"><strong>❌ Panic thought</strong>"I don't remember anything. I'm going to fail. I'm not smart enough for this."</div>
+                                <div class="script-col good"><strong>✅ Reset script</strong>"I've studied this. Skip, breathe, come back. Blanking doesn't mean I don't know it — it means I'm stressed. Let me move forward."</div>
+                            </div>
+                        </div>
+
+                        <div class="script-card">
+                            <div class="script-situation">When you see a question you didn't expect</div>
+                            <div class="script-row">
+                                <div class="script-col bad"><strong>❌ Panic thought</strong>"I've never seen this before. Everyone else probably knows this. I'm behind."</div>
+                                <div class="script-col good"><strong>✅ Reset script</strong>"Hard questions are hard for everyone. I'll eliminate what I know is wrong and make a logical choice. That's exactly what test-taking strategy is."</div>
+                            </div>
+                        </div>
+
+                        <div class="script-card">
+                            <div class="script-situation">When you start spiraling mid-exam</div>
+                            <div class="script-row">
+                                <div class="script-col bad"><strong>❌ Panic thought</strong>"I've already gotten too many wrong. There's no point. I'm going to fail."</div>
+                                <div class="script-col good"><strong>✅ Reset script</strong>"I can't undo past questions. I can only control the next one. One question at a time. Breathe. Focus."</div>
+                            </div>
+                        </div>
+
+                        <p style="background:#F5F3FF;border-radius:8px;padding:12px 14px;font-size:13px;color:#4C1D95;margin-top:16px;margin-bottom:0;"><strong>📝 Your personal scripts:</strong> Write your own reset scripts below for the specific thoughts that tend to come up for you. Practice saying them out loud once a day in the week before your exam so they're automatic when you need them.</p>
+                        <div style="border:1.5px dashed #C4B5FD;border-radius:8px;padding:16px;margin-top:12px;min-height:80px;color:#6B7280;font-size:14px;">My reset script: ________________________________________________________________<br><br>My reset script: ________________________________________________________________</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Reference Card -->
+            <div class="reference-card">
+                <h2>📌 Quick Reference — Exam Day Checklist</h2>
+                <div class="reference-grid">
+                    <div class="reference-item">
+                        <div class="ref-label">Night Before</div>
+                        <p>✅ Light review only (20 min max)<br>✅ Pack everything<br>✅ Sleep by 10 PM</p>
+                    </div>
+                    <div class="reference-item">
+                        <div class="ref-label">Morning Of</div>
+                        <p>✅ Protein breakfast<br>✅ Hydrate<br>✅ Arrive 20 min early</p>
+                    </div>
+                    <div class="reference-item">
+                        <div class="ref-label">Before the Exam</div>
+                        <p>✅ 3–4 rounds of box breathing<br>✅ Quiet space, no panicking classmates<br>✅ Say your reset script</p>
+                    </div>
+                    <div class="reference-item">
+                        <div class="ref-label">During the Exam</div>
+                        <p>✅ Read each question fully before answering<br>✅ Skip + mark difficult questions, return later<br>✅ One question at a time</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-box">
+                <p>Want a mentor to walk you through these tools in a live session — and build them into your full exam prep plan? That's exactly what we do at Exam Experts.</p>
+                <a href="https://calendly.com/examexpertscontact" target="_blank">Book Free Strategy Call →</a>
+            </div>
+
+        </div>
+
+        <div class="doc-footer">
+            <p>© 2025–2026 Exam Experts · examexpertscontact@gmail.com · 281-541-5928</p>
+            <p>examexperts.netlify.app</p>
+        </div>
+    </div>
+
+</body>
+</html>

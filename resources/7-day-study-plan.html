@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7-Day Study Plan — Exam Experts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F8FAFC;
+            color: #1F2937;
+            min-height: 100vh;
+        }
+
+        .download-bar {
+            background: linear-gradient(135deg, #059669 0%, #0D9488 100%);
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .download-bar p { color: #ECFDF5; font-size: 14px; font-weight: 500; }
+        .download-bar a { color: #ECFDF5; font-size: 13px; text-decoration: underline; margin-right: 16px; }
+
+        .btn-print {
+            background: #FDE68A;
+            color: #92400E;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+
+        .btn-print:hover { background: #FCD34D; }
+
+        .document {
+            max-width: 800px;
+            margin: 32px auto;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            overflow: hidden;
+        }
+
+        .doc-header {
+            background: linear-gradient(135deg, #059669 0%, #0D9488 100%);
+            padding: 36px 40px 28px;
+            color: #ffffff;
+        }
+
+        .doc-header .brand {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: #A7F3D0;
+            margin-bottom: 8px;
+            letter-spacing: 0.04em;
+        }
+
+        .doc-header h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .doc-header p { font-size: 15px; color: #A7F3D0; line-height: 1.5; }
+
+        .doc-body { padding: 36px 40px 40px; }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6B7280;
+            margin-bottom: 16px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #E5E7EB;
+        }
+
+        .instructions {
+            background: #F0FDF4;
+            border: 1.5px solid #86EFAC;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 28px;
+            font-size: 14px;
+            color: #166534;
+            line-height: 1.55;
+        }
+
+        .day-card {
+            margin-bottom: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1.5px solid #E5E7EB;
+        }
+
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 20px;
+            background: #F9FAFB;
+            border-bottom: 1.5px solid #E5E7EB;
+        }
+
+        .day-badge {
+            background: #059669;
+            color: #fff;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .day-header h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .day-header .day-theme {
+            font-size: 13px;
+            color: #6B7280;
+            margin-top: 2px;
+        }
+
+        .day-body {
+            padding: 16px 20px;
+        }
+
+        .task-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .task-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+            color: #374151;
+            line-height: 1.5;
+        }
+
+        .task-list li .checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #D1D5DB;
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 1px;
+            background: #fff;
+        }
+
+        .task-list li .time-tag {
+            background: #F3F4F6;
+            border-radius: 4px;
+            padding: 1px 7px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #6B7280;
+            white-space: nowrap;
+            margin-top: 2px;
+        }
+
+        .day-body .tip {
+            margin-top: 12px;
+            padding: 10px 14px;
+            background: #FFFBEB;
+            border-left: 3px solid #F59E0B;
+            border-radius: 0 6px 6px 0;
+            font-size: 13px;
+            color: #92400E;
+            font-style: italic;
+        }
+
+        .principles-box {
+            margin-top: 32px;
+            background: #EFF6FF;
+            border: 2px solid #BFDBFE;
+            border-radius: 14px;
+            padding: 24px 28px;
+        }
+
+        .principles-box h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #1E40AF;
+            margin-bottom: 14px;
+        }
+
+        .principle-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .principle-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .principle-item p {
+            font-size: 14px;
+            color: #1F2937;
+            line-height: 1.5;
+        }
+
+        .cta-box {
+            margin-top: 32px;
+            background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%);
+            border: 2px solid #86EFAC;
+            border-radius: 14px;
+            padding: 24px 28px;
+            text-align: center;
+        }
+
+        .cta-box p { font-size: 15px; color: #1F2937; margin-bottom: 16px; line-height: 1.6; }
+
+        .cta-box a {
+            display: inline-block;
+            background: linear-gradient(135deg, #059669 0%, #0D9488 100%);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 9px;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .doc-footer {
+            background: #F3F4F6;
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .doc-footer p { font-size: 12px; color: #9CA3AF; }
+
+        @media print {
+            .download-bar { display: none; }
+            body { background: #fff; }
+            .document { box-shadow: none; border-radius: 0; margin: 0; }
+        }
+
+        @media (max-width: 600px) {
+            .doc-header, .doc-body { padding: 24px 20px; }
+            .doc-footer { padding: 14px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="download-bar">
+        <p>📥 Save this plan: use your browser's <strong>File → Print → Save as PDF</strong></p>
+        <div>
+            <a href="../index.html">← Back to Exam Experts</a>
+            <button class="btn-print" onclick="window.print()">🖨️ Download / Print</button>
+        </div>
+    </div>
+
+    <div class="document">
+        <div class="doc-header">
+            <div class="brand">EXAM EXPERTS — FREE RESOURCE</div>
+            <h1>7-Day Exam Sprint Plan</h1>
+            <p>A structured, day-by-day study plan for any nursing or STEM exam. Customise each day's focus to your subject — the framework works for NCLEX, A&amp;P, Pharmacology, TEAS/HESI, or any college-level exam.</p>
+        </div>
+
+        <div class="doc-body">
+
+            <div class="section-label">How to Adapt This Plan</div>
+            <div class="instructions">
+                Fill in <strong>[Your Exam Subject]</strong> with your actual exam topic each day. In the checkbox tasks, replace the bracketed placeholders with your specific chapters, drug classes, organ systems, or question banks. Start on Day 1 regardless of how far away your exam is — if you have more than 7 days, repeat the Day 2–5 cycle for each major topic block.
+            </div>
+
+            <!-- Day 1 -->
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-badge">Day 1</span>
+                    <div>
+                        <h3>Diagnose &amp; Plan</h3>
+                        <div class="day-theme">Know exactly where you stand before you study anything</div>
+                    </div>
+                </div>
+                <div class="day-body">
+                    <ul class="task-list">
+                        <li><span class="checkbox"></span><span class="time-tag">30 min</span> Take a timed diagnostic: 20–25 practice questions covering the full scope of your exam. Don't look anything up — let it reveal the gaps.</li>
+                        <li><span class="checkbox"></span><span class="time-tag">20 min</span> Review every wrong answer and categorize mistakes: Do I not know the concept? Did I misread the question? Did I second-guess a right answer?</li>
+                        <li><span class="checkbox"></span><span class="time-tag">20 min</span> Write your Top 3 Weakest Topics from the diagnostic. These become your priority for Days 2–5.</li>
+                        <li><span class="checkbox"></span><span class="time-tag">10 min</span> Block out your study sessions for Days 2–7 in your calendar right now.</li>
+                    </ul>
+                    <p class="tip">💡 Tip: If you skip the diagnostic and jump straight into content review, you'll waste days studying things you already know.</p>
+                </div>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-badge">Day 2</span>
+                    <div>
+                        <h3>Weakest Topic #1 — Deep Dive</h3>
+                        <div class="day-theme">Topic: ________________________________</div>
+                    </div>
+                </div>
+                <div class="day-body">
+                    <ul class="task-list">
+                        <li><span class="checkbox"></span><span class="time-tag">15 min</span> Read or watch one concise explanation of the core concept (textbook, professor notes, or a 10-min explainer video). No more — don't fall into passive content consumption.</li>
+                        <li><span class="checkbox"></span><span class="time-tag">25 min</span> Do 15–20 exam-style practice questions on this topic only. Check each answer immediately.</li>
+                        <li><span class="checkbox"></span><span class="time-tag">20 min</span> For every wrong answer, write out: (1) why the right answer is correct and (2) why yours was wrong in 1–2 sentences.</li>
+                        <li><span class="checkbox"></span><span class="time-tag">10 min</span> Do 5 more questions on this topic as a mini re-test. Aim to improve from your earlier session.</li>
+                    </ul>
+                    <p class="tip">💡 Tip: Active recall (testing yourself) is 3× more effective than re-reading. Every study block should end with questions, not notes.</p>
+                </div>
+            </div>
+
+            <!-- Day 3 -->
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-badge">Day 3</span>
+                    <div>
+                        <h3>Weakest Topic #2 — Deep Dive</h3>
+                        <div class="day-theme">Topic: ________________________________</div>
+                    </div>
+                </div>
+                <div class="day-body">
+                    <ul class="task-list">
+                        <li><span class="checkbox"></span><span class="time-tag">15 min</span> Targeted review: one focused explanation of the core concept. Avoid reviewing the whole chapter — go straight to your weak area.</li>
+                        <li><span class="checkbox"></span><span class="time-tag">25 min</span> 15–20 practice questions on this topic. Time yourself (aim for 1–1.5 min per question for most exams).</li>
+                        <li><span class="checkbox"></span><span class="time-tag">20 min</span> Error review: explain each wrong answer in writing as if you're teaching someone else.</li>
+                        <li><span class="checkbox"></span><span class="time-tag">10 min</span> Quick review of Day 2 topic: 5 questions to reinforce retention from yesterday.</li>
+                    </ul>
+                    <p class="tip">💡 Tip: Teaching a concept out loud (or in writing) is one of the most powerful ways to solidify understanding. Don't skip the error review.</p>
+                </div>
+            </div>
+
+            <!-- Day 4 -->
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-badge">Day 4</span>
+                    <div>
+                        <h3>Weakest Topic #3 — Deep Dive</h3>
+                        <div class="day-theme">Topic: ________________________________</div>
+                    </div>
+                </div>
+                <div class="day-body">
+                    <ul class="task-list">
+                        <li><span class="checkbox"></span><span class="time-tag">15 min</span> Focused concept review for Topic #3.</li>
+                        <li><span class="checkbox"></span><span class="time-tag">25 min</span> 15–20 practice questions. If this is a NCLEX-style exam, practice with Next Generation NCLEX (NGN) question formats if available.</li>
+                        <li><span class="checkbox"></span><span class="time-tag">20 min</span> Written error analysis.</li>
+                        <li><span class="checkbox"></span><span class="time-tag">10 min</span> Mixed review: 5 questions from Topics #1 and #2 to prevent forgetting.</li>
+                    </ul>
+                    <p class="tip">💡 Tip: By Day 4 you should feel Topic #1 starting to solidify. If Topic #3 still feels totally foreign after this session, flag it for extra time on Day 6.</p>
+                </div>
+            </div>
+
+            <!-- Day 5 -->
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-badge">Day 5</span>
+                    <div>
+                        <h3>High-Yield Content Sweep</h3>
+                        <div class="day-theme">Cover remaining content at a high level + shore up any remaining gaps</div>
+                    </div>
+                </div>
+                <div class="day-body">
+                    <ul class="task-list">
+                        <li><span class="checkbox"></span><span class="time-tag">20 min</span> Review your syllabus or exam blueprint. Mark any remaining topics you haven't touched yet.</li>
+                        <li><span class="checkbox"></span><span class="time-tag">30 min</span> Do a quick pass on each remaining topic — aim for high-yield facts, definitions, and formulas only. Not deep dives — just enough to recognize the concept.</li>
+                        <li><span class="checkbox"></span><span class="time-tag">20 min</span> 20 mixed practice questions across all topics covered so far.</li>
+                        <li><span class="checkbox"></span><span class="time-tag">10 min</span> Log any new weak areas that appeared during today's questions for Day 6 review.</li>
+                    </ul>
+                    <p class="tip">💡 Tip: Don't try to learn brand-new heavy content on Day 5. Skim + recognize is the goal for unfamiliar material this close to the exam.</p>
+                </div>
+            </div>
+
+            <!-- Day 6 -->
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-badge">Day 6</span>
+                    <div>
+                        <h3>Full-Length Practice Exam</h3>
+                        <div class="day-theme">Simulate real exam conditions — timed, no interruptions</div>
+                    </div>
+                </div>
+                <div class="day-body">
+                    <ul class="task-list">
+                        <li><span class="checkbox"></span><span class="time-tag">Full set</span> Take a full-length practice exam under real conditions: timed, no phone, no pausing. Aim for at least 50–75 questions (or the actual exam length if known).</li>
+                        <li><span class="checkbox"></span><span class="time-tag">30 min</span> Score your exam and identify patterns in your wrong answers — are they concentrated in specific topics or question types?</li>
+                        <li><span class="checkbox"></span><span class="time-tag">20 min</span> Targeted review of your top 3 wrong-answer categories from today's practice exam.</li>
+                        <li><span class="checkbox"></span><span class="time-tag">10 min</span> Prepare your exam-day logistics: location, ID, supplies, route/timing. Eliminate the mental load so tomorrow is just about performing.</li>
+                    </ul>
+                    <p class="tip">💡 Tip: Your score on the practice exam is less important than what you learn from reviewing the errors. The debrief is more valuable than the score.</p>
+                </div>
+            </div>
+
+            <!-- Day 7 -->
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-badge">Day 7</span>
+                    <div>
+                        <h3>Exam Day Preparation</h3>
+                        <div class="day-theme">Light review, mind reset, and exam-day routine</div>
+                    </div>
+                </div>
+                <div class="day-body">
+                    <ul class="task-list">
+                        <li><span class="checkbox"></span><span class="time-tag">20 min</span> Do a light review of your 1-page summary notes only (key terms, formulas, high-yield facts). No new content — only reinforce what you already know.</li>
+                        <li><span class="checkbox"></span><span class="time-tag">10 min</span> Do 10 easy practice questions in your strongest topic to build confidence, not test gaps.</li>
+                        <li><span class="checkbox"></span><span class="time-tag">—</span> After midday: stop studying. Your brain needs consolidation time, not more information.</li>
+                        <li><span class="checkbox"></span><span class="time-tag">Evening</span> Set out everything you need for tomorrow. Eat a proper meal. Sleep 7–8 hours. This is not optional — sleep deprivation measurably reduces exam performance.</li>
+                        <li><span class="checkbox"></span><span class="time-tag">Morning</span> Arrive early. Use your breathing technique (see Test-Anxiety Toolkit) before you open the exam. You've done the work. Trust it.</li>
+                    </ul>
+                    <p class="tip">💡 Tip: Students who study intensely the night before almost always perform worse, not better. The sleep is the prep.</p>
+                </div>
+            </div>
+
+            <!-- Study Principles -->
+            <div class="principles-box">
+                <h2>📌 Core Principles Behind This Plan</h2>
+                <div class="principle-item">
+                    <span class="principle-icon">🎯</span>
+                    <p><strong>Weaknesses first.</strong> Every hour spent on a topic you already know is an hour stolen from a topic that will actually cost you points.</p>
+                </div>
+                <div class="principle-item">
+                    <span class="principle-icon">✍️</span>
+                    <p><strong>Active recall over passive review.</strong> Practice questions, not re-reading. Every session ends with testing — not notes.</p>
+                </div>
+                <div class="principle-item">
+                    <span class="principle-icon">🔁</span>
+                    <p><strong>Spaced repetition.</strong> Revisit earlier topics with quick question sets every 2 days so they stay sharp as you add new material.</p>
+                </div>
+                <div class="principle-item">
+                    <span class="principle-icon">📊</span>
+                    <p><strong>Error analysis.</strong> Every wrong answer is data. Understanding why you got it wrong is worth more than ten new questions.</p>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-box">
+                <p>Want a mentor to customise this plan to your specific exam, syllabus, and timeline — and coach you through every session? That's exactly what we do.</p>
+                <a href="https://calendly.com/examexpertscontact" target="_blank">Book Free Strategy Call →</a>
+            </div>
+
+        </div>
+
+        <div class="doc-footer">
+            <p>© 2025–2026 Exam Experts · examexpertscontact@gmail.com · 281-541-5928</p>
+            <p>examexperts.netlify.app</p>
+        </div>
+    </div>
+
+</body>
+</html>
