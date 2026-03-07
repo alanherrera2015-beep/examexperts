@@ -3800,6 +3800,21 @@ section::before {
     margin-top: 48px;
 }
 
+.anxiety-module .btn-outline {
+    background: #9D174D;
+    color: #ffffff;
+    border-color: #9D174D;
+    box-shadow: 0 4px 16px rgba(157, 23, 77, 0.25);
+}
+
+.anxiety-module .btn-outline:hover {
+    background: #831843;
+    border-color: #831843;
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(157, 23, 77, 0.4);
+    transform: translateY(-3px);
+}
+
 /* Low-Pressure CTA block */
 .low-pressure-note {
     font-size: 14px;
