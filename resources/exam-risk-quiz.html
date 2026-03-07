@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Risk Self-Quiz — Exam Experts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F8FAFC;
+            color: #1F2937;
+            min-height: 100vh;
+        }
+
+        .download-bar {
+            background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .download-bar p {
+            color: #EFF6FF;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .download-bar a {
+            color: #EFF6FF;
+            font-size: 13px;
+            text-decoration: underline;
+            margin-right: 16px;
+        }
+
+        .btn-print {
+            background: #FDE68A;
+            color: #92400E;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+
+        .btn-print:hover { background: #FCD34D; }
+
+        .document {
+            max-width: 800px;
+            margin: 32px auto;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            overflow: hidden;
+        }
+
+        .doc-header {
+            background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+            padding: 36px 40px 28px;
+            color: #ffffff;
+        }
+
+        .doc-header .brand {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: #BFDBFE;
+            margin-bottom: 8px;
+            letter-spacing: 0.04em;
+        }
+
+        .doc-header h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .doc-header p {
+            font-size: 15px;
+            color: #BFDBFE;
+            line-height: 1.5;
+        }
+
+        .doc-body {
+            padding: 36px 40px 40px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6B7280;
+            margin-bottom: 16px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #E5E7EB;
+        }
+
+        .instructions {
+            background: #EFF6FF;
+            border: 1.5px solid #BFDBFE;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 28px;
+            font-size: 14px;
+            color: #1E40AF;
+            line-height: 1.55;
+        }
+
+        .question-block {
+            margin-bottom: 28px;
+            padding: 20px 22px;
+            border-radius: 12px;
+            border: 1.5px solid #E5E7EB;
+            background: #FAFAFA;
+        }
+
+        .question-block h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 14px;
+            line-height: 1.45;
+        }
+
+        .options {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .options li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .options li .opt-box {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #D1D5DB;
+            border-radius: 4px;
+            flex-shrink: 0;
+            background: #fff;
+        }
+
+        .score-guide {
+            margin-top: 36px;
+            background: linear-gradient(135deg, #FFF7ED 0%, #FFFBEB 100%);
+            border: 2px solid #FDE68A;
+            border-radius: 14px;
+            padding: 24px 28px;
+        }
+
+        .score-guide h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #92400E;
+            margin-bottom: 16px;
+        }
+
+        .score-row {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            margin-bottom: 14px;
+        }
+
+        .score-badge {
+            background: #FEF3C7;
+            border: 1.5px solid #F59E0B;
+            border-radius: 8px;
+            padding: 4px 12px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #92400E;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .score-row p {
+            font-size: 14px;
+            color: #374151;
+            line-height: 1.5;
+        }
+
+        .cta-box {
+            margin-top: 32px;
+            background: linear-gradient(135deg, #EFF6FF 0%, #E0E7FF 100%);
+            border: 2px solid #C7D2FE;
+            border-radius: 14px;
+            padding: 24px 28px;
+            text-align: center;
+        }
+
+        .cta-box p {
+            font-size: 15px;
+            color: #1F2937;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .cta-box a {
+            display: inline-block;
+            background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 9px;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .doc-footer {
+            background: #F3F4F6;
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .doc-footer p {
+            font-size: 12px;
+            color: #9CA3AF;
+        }
+
+        @media print {
+            .download-bar { display: none; }
+            body { background: #fff; }
+            .document { box-shadow: none; border-radius: 0; margin: 0; }
+        }
+
+        @media (max-width: 600px) {
+            .doc-header, .doc-body { padding: 24px 20px; }
+            .doc-footer { padding: 14px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="download-bar">
+        <p>📥 Save this quiz: use your browser's <strong>File → Print → Save as PDF</strong></p>
+        <div>
+            <a href="../index.html">← Back to Exam Experts</a>
+            <button class="btn-print" onclick="window.print()">🖨️ Download / Print</button>
+        </div>
+    </div>
+
+    <div class="document">
+        <div class="doc-header">
+            <div class="brand">EXAM EXPERTS — FREE RESOURCE</div>
+            <h1>Exam Risk Self-Quiz</h1>
+            <p>A 10-question self-assessment to identify your highest-risk areas before your next exam — so you know exactly where to focus your study time.</p>
+        </div>
+
+        <div class="doc-body">
+
+            <div class="section-label">How to Use This Quiz</div>
+            <div class="instructions">
+                For each question, circle or tick the answer that best describes you right now. Tally your score at the end using the scoring guide. Be honest — the more accurate your answers, the more useful your results will be.
+            </div>
+
+            <!-- Q1 -->
+            <div class="question-block">
+                <h3>1. How many days before your exam do you typically start studying?</h3>
+                <ul class="options">
+                    <li><span class="opt-box"></span> A) 4+ weeks in advance <span style="margin-left:auto;font-size:12px;color:#6B7280;">(0 pts)</span></li>
+                    <li><span class="opt-box"></span> B) 1–3 weeks before <span style="margin-left:auto;font-size:12px;color:#6B7280;">(1 pt)</span></li>
+                    <li><span class="opt-box"></span> C) Less than a week before <span style="margin-left:auto;font-size:12px;color:#F59E0B;">(2 pts)</span></li>
+                    <li><span class="opt-box"></span> D) I cram the night before <span style="margin-left:auto;font-size:12px;color:#EF4444;">(3 pts)</span></li>
+                </ul>
+            </div>
+
+            <!-- Q2 -->
+            <div class="question-block">
+                <h3>2. When you study, which best describes your method?</h3>
+                <ul class="options">
+                    <li><span class="opt-box"></span> A) I use practice questions and test myself regularly <span style="margin-left:auto;font-size:12px;color:#6B7280;">(0 pts)</span></li>
+                    <li><span class="opt-box"></span> B) I re-read notes and highlight key sections <span style="margin-left:auto;font-size:12px;color:#F59E0B;">(2 pts)</span></li>
+                    <li><span class="opt-box"></span> C) I watch YouTube videos and hope it sticks <span style="margin-left:auto;font-size:12px;color:#EF4444;">(3 pts)</span></li>
+                    <li><span class="opt-box"></span> D) I haven't really found a method that works <span style="margin-left:auto;font-size:12px;color:#EF4444;">(3 pts)</span></li>
+                </ul>
+            </div>
+
+            <!-- Q3 -->
+            <div class="question-block">
+                <h3>3. How do you feel the night before a major exam?</h3>
+                <ul class="options">
+                    <li><span class="opt-box"></span> A) Calm and prepared — I know what to expect <span style="margin-left:auto;font-size:12px;color:#6B7280;">(0 pts)</span></li>
+                    <li><span class="opt-box"></span> B) A little nervous but manageable <span style="margin-left:auto;font-size:12px;color:#6B7280;">(1 pt)</span></li>
+                    <li><span class="opt-box"></span> C) Stressed and still trying to cram more material <span style="margin-left:auto;font-size:12px;color:#F59E0B;">(2 pts)</span></li>
+                    <li><span class="opt-box"></span> D) Panicking — I feel like I don't know anything <span style="margin-left:auto;font-size:12px;color:#EF4444;">(3 pts)</span></li>
+                </ul>
+            </div>
+
+            <!-- Q4 -->
+            <div class="question-block">
+                <h3>4. During the exam, how often do you experience anxiety that affects your performance?</h3>
+                <ul class="options">
+                    <li><span class="opt-box"></span> A) Rarely — I stay focused <span style="margin-left:auto;font-size:12px;color:#6B7280;">(0 pts)</span></li>
+                    <li><span class="opt-box"></span> B) Sometimes, but I push through <span style="margin-left:auto;font-size:12px;color:#6B7280;">(1 pt)</span></li>
+                    <li><span class="opt-box"></span> C) Often — I blank out on things I studied <span style="margin-left:auto;font-size:12px;color:#F59E0B;">(2 pts)</span></li>
+                    <li><span class="opt-box"></span> D) Almost always — I feel frozen or rush through <span style="margin-left:auto;font-size:12px;color:#EF4444;">(3 pts)</span></li>
+                </ul>
+            </div>
+
+            <!-- Q5 -->
+            <div class="question-block">
+                <h3>5. Have you failed or narrowly passed this exam (or a similar one) before?</h3>
+                <ul class="options">
+                    <li><span class="opt-box"></span> A) No — first attempt <span style="margin-left:auto;font-size:12px;color:#6B7280;">(0 pts)</span></li>
+                    <li><span class="opt-box"></span> B) I passed but barely made it <span style="margin-left:auto;font-size:12px;color:#6B7280;">(1 pt)</span></li>
+                    <li><span class="opt-box"></span> C) Yes, I failed once <span style="margin-left:auto;font-size:12px;color:#F59E0B;">(2 pts)</span></li>
+                    <li><span class="opt-box"></span> D) Yes, I have failed more than once <span style="margin-left:auto;font-size:12px;color:#EF4444;">(3 pts)</span></li>
+                </ul>
+            </div>
+
+            <!-- Q6 -->
+            <div class="question-block">
+                <h3>6. How well do you understand the exam format and question types you'll face?</h3>
+                <ul class="options">
+                    <li><span class="opt-box"></span> A) Very well — I've done practice exams in that format <span style="margin-left:auto;font-size:12px;color:#6B7280;">(0 pts)</span></li>
+                    <li><span class="opt-box"></span> B) Somewhat — I've reviewed the format but not practiced it <span style="margin-left:auto;font-size:12px;color:#6B7280;">(1 pt)</span></li>
+                    <li><span class="opt-box"></span> C) Not really — I just study the content <span style="margin-left:auto;font-size:12px;color:#F59E0B;">(2 pts)</span></li>
+                    <li><span class="opt-box"></span> D) Not at all — I didn't know I should look at the format <span style="margin-left:auto;font-size:12px;color:#EF4444;">(3 pts)</span></li>
+                </ul>
+            </div>
+
+            <!-- Q7 -->
+            <div class="question-block">
+                <h3>7. Do you have a clear, written study schedule for the time between now and your exam?</h3>
+                <ul class="options">
+                    <li><span class="opt-box"></span> A) Yes — mapped out day by day <span style="margin-left:auto;font-size:12px;color:#6B7280;">(0 pts)</span></li>
+                    <li><span class="opt-box"></span> B) I have a rough idea but nothing written <span style="margin-left:auto;font-size:12px;color:#6B7280;">(1 pt)</span></li>
+                    <li><span class="opt-box"></span> C) Not really — I just study when I have time <span style="margin-left:auto;font-size:12px;color:#F59E0B;">(2 pts)</span></li>
+                    <li><span class="opt-box"></span> D) No plan at all <span style="margin-left:auto;font-size:12px;color:#EF4444;">(3 pts)</span></li>
+                </ul>
+            </div>
+
+            <!-- Q8 -->
+            <div class="question-block">
+                <h3>8. How confident do you feel about your highest-risk topics right now?</h3>
+                <ul class="options">
+                    <li><span class="opt-box"></span> A) Confident — I've tested myself and I know them <span style="margin-left:auto;font-size:12px;color:#6B7280;">(0 pts)</span></li>
+                    <li><span class="opt-box"></span> B) Somewhat — I recognize them but get questions wrong sometimes <span style="margin-left:auto;font-size:12px;color:#6B7280;">(1 pt)</span></li>
+                    <li><span class="opt-box"></span> C) Not confident — I still get confused by core concepts <span style="margin-left:auto;font-size:12px;color:#F59E0B;">(2 pts)</span></li>
+                    <li><span class="opt-box"></span> D) I'm not sure what my highest-risk topics even are <span style="margin-left:auto;font-size:12px;color:#EF4444;">(3 pts)</span></li>
+                </ul>
+            </div>
+
+            <!-- Q9 -->
+            <div class="question-block">
+                <h3>9. How much is riding on the outcome of this exam for you?</h3>
+                <ul class="options">
+                    <li><span class="opt-box"></span> A) It matters, but there are other options if I don't pass <span style="margin-left:auto;font-size:12px;color:#6B7280;">(0 pts)</span></li>
+                    <li><span class="opt-box"></span> B) It matters quite a bit for my grade or progress <span style="margin-left:auto;font-size:12px;color:#6B7280;">(1 pt)</span></li>
+                    <li><span class="opt-box"></span> C) It's critical — failing delays graduation or costs me money <span style="margin-left:auto;font-size:12px;color:#F59E0B;">(2 pts)</span></li>
+                    <li><span class="opt-box"></span> D) Everything — failing ends my program or career path <span style="margin-left:auto;font-size:12px;color:#EF4444;">(3 pts)</span></li>
+                </ul>
+            </div>
+
+            <!-- Q10 -->
+            <div class="question-block">
+                <h3>10. How much time do you realistically have to study between now and your exam?</h3>
+                <ul class="options">
+                    <li><span class="opt-box"></span> A) Plenty of time — 4+ weeks with consistent study hours <span style="margin-left:auto;font-size:12px;color:#6B7280;">(0 pts)</span></li>
+                    <li><span class="opt-box"></span> B) 2–4 weeks but my schedule is busy <span style="margin-left:auto;font-size:12px;color:#6B7280;">(1 pt)</span></li>
+                    <li><span class="opt-box"></span> C) About a week — it's tight <span style="margin-left:auto;font-size:12px;color:#F59E0B;">(2 pts)</span></li>
+                    <li><span class="opt-box"></span> D) Less than a week or I'm not sure <span style="margin-left:auto;font-size:12px;color:#EF4444;">(3 pts)</span></li>
+                </ul>
+            </div>
+
+            <!-- Score Guide -->
+            <div class="score-guide">
+                <h2>📊 Score Your Results</h2>
+                <p style="font-size:14px;color:#374151;margin-bottom:20px;line-height:1.55;">Add up your points from all 10 questions and find your risk level below.</p>
+
+                <div class="score-row">
+                    <span class="score-badge" style="background:#DCFCE7;border-color:#86EFAC;color:#166534;">0–8 pts</span>
+                    <p><strong>Low Risk.</strong> You have solid habits in place. Focus on maintaining your schedule, drilling weak spots with practice questions, and managing exam-day nerves.</p>
+                </div>
+                <div class="score-row">
+                    <span class="score-badge" style="background:#FEF9C3;border-color:#FDE047;color:#713F12;">9–16 pts</span>
+                    <p><strong>Moderate Risk.</strong> Some gaps in your study approach or timing could cost you points. Review questions 2, 6, and 7 — those areas typically have the biggest ROI for improvement.</p>
+                </div>
+                <div class="score-row">
+                    <span class="score-badge" style="background:#FEE2E2;border-color:#FCA5A5;color:#991B1B;">17–24 pts</span>
+                    <p><strong>High Risk.</strong> Multiple factors are working against you right now. You need a structured plan, exam-style practice, and ideally expert support before your test date. Don't wait — address this now.</p>
+                </div>
+                <div class="score-row">
+                    <span class="score-badge" style="background:#EDE9FE;border-color:#A78BFA;color:#4C1D95;">25–30 pts</span>
+                    <p><strong>Critical Risk.</strong> Your situation is serious, but it is fixable. Students who score in this range often turn it around completely with structured mentoring focused on the right areas. This is exactly what Exam Experts was built for.</p>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-box">
+                <p>Scored 9 or higher? <strong>Book a free 15-minute strategy call</strong> — we'll walk through your results together and give you a personalized plan you can act on today.</p>
+                <a href="https://calendly.com/examexpertscontact" target="_blank">Book Free Strategy Call →</a>
+            </div>
+
+        </div>
+
+        <div class="doc-footer">
+            <p>© 2025–2026 Exam Experts · examexpertscontact@gmail.com · 281-541-5928</p>
+            <p>examexperts.netlify.app</p>
+        </div>
+    </div>
+
+    <script>
+        // Auto-scroll to top on load
+        window.scrollTo(0, 0);
+    </script>
+</body>
+</html>
