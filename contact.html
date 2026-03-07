@@ -40,6 +40,15 @@
             <div class="faq-container">
                 <div class="faq-item">
                     <button class="faq-question">
+                        <span>I've already failed this exam before — can you still help me?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes — and you're not alone. Most of our students come to us after one or more failed attempts. Failing once (or twice) doesn't mean you're not capable; it usually means the study approach wasn't matched to how the exam actually tests material. We'll look at what happened, identify the gaps, and give you a structured plan so the next attempt is different. It's more common than you think, and it's exactly what we're here for.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
                         <span>How do online mentoring sessions work?</span>
                         <span class="faq-icon">+</span>
                     </button>
@@ -99,7 +108,7 @@
     <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">Ready to start your learning journey?</p>
+            <p class="section-subtitle">Ready to take the next step? Reach out — no pressure, no obligation. We'll talk through what's going on and give you a plan you can use right away.</p>
             <div class="contact-grid">
                 <div class="contact-info">
                     <div class="contact-item">
@@ -155,11 +164,26 @@
                             <option value="general">General Inquiry</option>
                         </select>
                     </div>
+                    <div class="form-group form-group-highlight">
+                        <label for="biggest-worry">What are you most worried about right now? (optional)</label>
+                        <select id="biggest-worry" name="biggest-worry">
+                            <option value="">Select what applies most</option>
+                            <option value="failing-again">Failing this exam again</option>
+                            <option value="losing-financial-aid">Losing financial aid or scholarship</option>
+                            <option value="delayed-graduation">Delaying graduation</option>
+                            <option value="test-anxiety">Test anxiety — I blank out during exams</option>
+                            <option value="nothing-sticking">Studying a lot but nothing is sticking</option>
+                            <option value="family-pressure">Family or personal pressure to pass</option>
+                            <option value="last-attempt">This is my last allowed attempt</option>
+                            <option value="other">Something else</option>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="message">Message</label>
                         <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-submit">Send Message</button>
+                    <p class="low-pressure-note">No pressure to decide anything right away. We'll send you the information in writing so you can look it over and compare options at your own pace.</p>
                 </form>
             </div>
         </div>

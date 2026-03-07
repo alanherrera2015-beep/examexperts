@@ -3565,3 +3565,254 @@ section::before {
         display: block;
     }
 }
+
+/* ============================================================
+   ETHICAL PERSUASION STRATEGY SECTIONS
+   ============================================================ */
+
+/* Pain Points Section */
+.pain-points {
+    background: linear-gradient(135deg, #FFF7ED 0%, #FEF3C7 50%, #ECFDF5 100%);
+    padding: 100px 20px;
+}
+
+.pain-points-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pain-point-card {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 32px 28px;
+    border: 2px solid #FDE68A;
+    box-shadow: 0 4px 16px rgba(251, 191, 36, 0.15);
+    transition: all 0.35s ease;
+}
+
+.pain-point-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 36px rgba(251, 191, 36, 0.25);
+    border-color: #F59E0B;
+}
+
+.pain-point-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.pain-point-text {
+    font-size: 16px;
+    font-style: italic;
+    color: #374151;
+    margin-bottom: 20px;
+    line-height: 1.55;
+    border-left: 3px solid #F59E0B;
+    padding-left: 14px;
+}
+
+.pain-point-solution {
+    background: #F0FDF4;
+    border-radius: 10px;
+    padding: 16px;
+    border: 1px solid #BBF7D0;
+}
+
+.solution-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #059669;
+    margin-bottom: 6px;
+}
+
+.pain-point-solution p {
+    font-size: 14px;
+    color: #1F2937;
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* Free Resources Section (Reciprocity) */
+.free-resources {
+    background: linear-gradient(135deg, #EFF6FF 0%, #E0E7FF 50%, #EDE9FE 100%);
+    padding: 100px 20px;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 28px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.resource-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 36px 28px;
+    text-align: center;
+    border: 2px solid #C7D2FE;
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.12);
+    transition: all 0.35s ease;
+}
+
+.resource-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 36px rgba(99, 102, 241, 0.22);
+    border-color: #818CF8;
+}
+
+.resource-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.resource-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 12px;
+}
+
+.resource-card p {
+    font-size: 15px;
+    color: #6B7280;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+/* Social Proof Banner */
+.social-proof-banner {
+    background: linear-gradient(135deg, #1E3A5F 0%, #1a2e4a 100%);
+    padding: 28px 20px;
+    text-align: center;
+}
+
+.social-proof-banner p {
+    color: #E0F2FE;
+    font-size: 18px;
+    font-weight: 500;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+.social-proof-banner strong {
+    color: #FDE68A;
+}
+
+/* De-shame / Normalizing Banner */
+.deshame-banner {
+    background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%);
+    border: 1.5px solid #86EFAC;
+    border-radius: 14px;
+    padding: 28px 32px;
+    max-width: 860px;
+    margin: 0 auto 48px;
+    text-align: center;
+}
+
+.deshame-banner p {
+    font-size: 17px;
+    color: #1F2937;
+    line-height: 1.65;
+    margin: 0;
+}
+
+.deshame-banner strong {
+    color: #059669;
+}
+
+/* Test-Anxiety Module */
+.anxiety-module {
+    background: linear-gradient(135deg, #FFF1F2 0%, #FCE7F3 100%);
+    border: 2px solid #FBCFE8;
+    border-radius: 16px;
+    padding: 40px 36px;
+    max-width: 860px;
+    margin: 0 auto 40px;
+}
+
+.anxiety-module h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #9D174D;
+    margin-bottom: 12px;
+}
+
+.anxiety-module p {
+    font-size: 16px;
+    color: #374151;
+    line-height: 1.65;
+    margin-bottom: 20px;
+}
+
+.anxiety-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.anxiety-tool-item {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid #FBCFE8;
+}
+
+.anxiety-tool-item .tool-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.anxiety-tool-item p {
+    font-size: 14px;
+    color: #374151;
+    margin: 0;
+    line-height: 1.45;
+}
+
+/* Low-Pressure CTA block */
+.low-pressure-note {
+    font-size: 14px;
+    color: #6B7280;
+    margin-top: 12px;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Intake form extra field */
+.form-group-highlight {
+    background: #FFFBEB;
+    border: 1.5px solid #FDE68A;
+    border-radius: 10px;
+    padding: 18px 16px 8px;
+}
+
+.form-group-highlight label {
+    color: #92400E;
+    font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .pain-points-grid,
+    .resources-grid,
+    .anxiety-tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .deshame-banner,
+    .anxiety-module {
+        padding: 24px 20px;
+    }
+}
