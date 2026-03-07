@@ -3795,6 +3795,11 @@ section::before {
     line-height: 1.45;
 }
 
+/* Test-Anxiety module inside Free Resources section */
+.free-resources .anxiety-module {
+    margin-top: 48px;
+}
+
 /* Low-Pressure CTA block */
 .low-pressure-note {
     font-size: 14px;
