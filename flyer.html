@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Experts – School Flyer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ── Reset & base ───────────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f4f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 32px 16px 48px;
+            min-height: 100vh;
+        }
+
+        /* ── Screen-only toolbar ────────────────────────────────────── */
+        .toolbar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 28px;
+            align-items: center;
+        }
+
+        .btn-print {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #21808d;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 9999px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .btn-print:hover { background: #1a6870; }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #21808d;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border: 2px solid #21808d;
+            padding: 8px 18px;
+            border-radius: 9999px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn-back:hover { background: #21808d; color: #fff; }
+
+        /* ── Flyer page wrapper — US Letter 8.5×11″ ────────────────── */
+        .flyer {
+            width: 8.5in;
+            min-height: 11in;
+            background: #fff;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ── Header band ────────────────────────────────────────────── */
+        .flyer-header {
+            background: linear-gradient(135deg, #13343b 0%, #21808d 100%);
+            padding: 28px 48px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .header-logo {
+            width: 56px;
+            height: 56px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
+        .header-name {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 34px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .header-tagline {
+            font-size: 13px;
+            color: rgba(255,255,255,0.82);
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .header-badge {
+            background: rgba(255,255,255,0.15);
+            border: 1.5px solid rgba(255,255,255,0.4);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            white-space: nowrap;
+            letter-spacing: 0.2px;
+        }
+
+        /* ── Hero band ──────────────────────────────────────────────── */
+        .flyer-hero {
+            background: linear-gradient(135deg, #21808d 0%, #32b8c6 100%);
+            padding: 32px 48px 28px;
+            text-align: center;
+        }
+
+        .flyer-hero h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 12px;
+        }
+
+        .flyer-hero h1 em {
+            font-style: normal;
+            color: #ffe28a;
+        }
+
+        .flyer-hero p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.92);
+            line-height: 1.6;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* ── Stats row ──────────────────────────────────────────────── */
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            background: #13343b;
+        }
+
+        .stat-item {
+            flex: 1;
+            text-align: center;
+            padding: 16px 8px;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+        .stat-item:last-child { border-right: none; }
+
+        .stat-number {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            color: #32b8c6;
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.7);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 3px;
+            display: block;
+        }
+
+        /* ── Body content ───────────────────────────────────────────── */
+        .flyer-body {
+            flex: 1;
+            padding: 32px 48px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Services grid */
+        .section-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #13343b;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, #21808d, transparent);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .service-card {
+            background: #f7fbfc;
+            border: 1.5px solid rgba(33,128,141,0.15);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .service-icon {
+            font-size: 22px;
+            line-height: 1;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .service-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #13343b;
+            margin-bottom: 2px;
+        }
+
+        .service-desc {
+            font-size: 11.5px;
+            color: #626c71;
+            line-height: 1.4;
+        }
+
+        /* Why choose us */
+        .reasons-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .reason-card {
+            flex: 1;
+            background: linear-gradient(135deg, rgba(33,128,141,0.07) 0%, rgba(50,184,198,0.07) 100%);
+            border: 1.5px solid rgba(33,128,141,0.18);
+            border-radius: 10px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+
+        .reason-icon {
+            font-size: 20px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .reason-text {
+            font-size: 12px;
+            font-weight: 600;
+            color: #13343b;
+            line-height: 1.4;
+        }
+
+        /* Free offer highlight */
+        .offer-band {
+            background: linear-gradient(135deg, #e87d5a 0%, #d45a2e 100%);
+            border-radius: 12px;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .offer-text h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .offer-text p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.4;
+        }
+
+        .offer-cta {
+            background: #fff;
+            color: #d45a2e;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 12px 22px;
+            border-radius: 9999px;
+            text-decoration: none;
+            white-space: nowrap;
+            flex-shrink: 0;
+            display: inline-block;
+            letter-spacing: -0.2px;
+        }
+
+        /* Contact info row */
+        .contact-row {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f3f8f9;
+            border: 1.5px solid rgba(33,128,141,0.2);
+            border-radius: 9999px;
+            padding: 8px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #13343b;
+        }
+
+        .contact-item-icon {
+            font-size: 16px;
+        }
+
+        /* ── Tear-off tabs ──────────────────────────────────────────── */
+        .tear-strip {
+            margin: 0 48px;
+            border-top: 2px dashed rgba(33,128,141,0.4);
+            padding-top: 10px;
+            margin-bottom: 0;
+        }
+
+        .tear-strip-label {
+            text-align: center;
+            font-size: 10px;
+            color: #626c71;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .tear-tabs {
+            display: flex;
+            gap: 0;
+        }
+
+        .tear-tab {
+            flex: 1;
+            border-right: 1px dashed rgba(33,128,141,0.35);
+            padding: 6px 4px 14px;
+            text-align: center;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-size: 9.5px;
+            font-weight: 700;
+            color: #21808d;
+            line-height: 1.3;
+            letter-spacing: 0.3px;
+        }
+        .tear-tab:last-child { border-right: none; }
+
+        .tear-tab span {
+            display: block;
+            font-weight: 500;
+            font-size: 9px;
+            color: #626c71;
+        }
+
+        /* ── Footer bar ─────────────────────────────────────────────── */
+        .flyer-footer {
+            background: #13343b;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            font-size: 10.5px;
+            padding: 8px 16px;
+            letter-spacing: 0.2px;
+        }
+
+        /* ── Print styles ───────────────────────────────────────────── */
+        @media print {
+            @page {
+                size: letter portrait;
+                margin: 0;
+            }
+
+            body {
+                background: none;
+                padding: 0;
+                display: block;
+            }
+
+            .toolbar { display: none !important; }
+
+            .flyer {
+                width: 100%;
+                min-height: 100vh;
+                box-shadow: none;
+                border-radius: 0;
+                page-break-after: avoid;
+            }
+
+            a { text-decoration: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Screen-only print toolbar -->
+    <div class="toolbar">
+        <a href="index.html" class="btn-back">← Back to Site</a>
+        <button class="btn-print" onclick="window.print()">
+            🖨️ Print / Save as PDF
+        </button>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════
+         FLYER  (8.5 × 11 inch)
+         ════════════════════════════════════════════════════════════ -->
+    <div class="flyer">
+
+        <!-- Header -->
+        <header class="flyer-header">
+            <div class="header-brand">
+                <img src="images/logo.png" alt="Exam Experts Logo" class="header-logo">
+                <div>
+                    <div class="header-name">Exam Experts</div>
+                    <div class="header-tagline">Expert Online Education Mentoring</div>
+                </div>
+            </div>
+            <div class="header-badge">📚 Trusted by 200+ Students</div>
+        </header>
+
+        <!-- Hero -->
+        <div class="flyer-hero">
+            <h1>Struggling with Exams?<br><em>We'll Help You Pass — For Real.</em></h1>
+            <p>Personalized 1-on-1 online tutoring from certified education mentors. We build an exam-specific study plan so you stop guessing and start passing.</p>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-row">
+            <div class="stat-item">
+                <span class="stat-number">95%</span>
+                <span class="stat-label">Student Success Rate</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">200+</span>
+                <span class="stat-label">Students Helped</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">15+</span>
+                <span class="stat-label">Expert Mentors</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">7 Days</span>
+                <span class="stat-label">a Week · 8 AM–10 PM</span>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="flyer-body">
+
+            <!-- Services -->
+            <div>
+                <div class="section-title">What We Help With</div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <span class="service-icon">🔬</span>
+                        <div>
+                            <div class="service-name">STEM &amp; Sciences</div>
+                            <div class="service-desc">Math, Biology, Chemistry, Physics, Anatomy &amp; Physiology</div>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">💉</span>
+                        <div>
+                            <div class="service-name">Nursing Exams</div>
+                            <div class="service-desc">NCLEX prep, Pharmacology, Pathophysiology, A&amp;P</div>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">📝</span>
+                        <div>
+                            <div class="service-name">Standardized Tests</div>
+                            <div class="service-desc">SAT, ACT, GRE, MCAT, ASVAB &amp; more</div>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">📖</span>
+                        <div>
+                            <div class="service-name">Academic Subjects</div>
+                            <div class="service-desc">English, History, Writing — all core high school &amp; college courses</div>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">🌎</span>
+                        <div>
+                            <div class="service-name">Bilingual Support</div>
+                            <div class="service-desc">Spanish-English tutoring for ESL &amp; bilingual students</div>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">💻</span>
+                        <div>
+                            <div class="service-name">100% Online</div>
+                            <div class="service-desc">Zoom sessions with interactive whiteboard — learn from anywhere</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why choose us -->
+            <div>
+                <div class="section-title">Why Students Choose Us</div>
+                <div class="reasons-row">
+                    <div class="reason-card">
+                        <span class="reason-icon">🎯</span>
+                        <div class="reason-text">Exam-Specific Study Plans</div>
+                    </div>
+                    <div class="reason-card">
+                        <span class="reason-icon">👩‍🏫</span>
+                        <div class="reason-text">Certified Expert Mentors</div>
+                    </div>
+                    <div class="reason-card">
+                        <span class="reason-icon">⚡</span>
+                        <div class="reason-text">Proven 5-Step Method</div>
+                    </div>
+                    <div class="reason-card">
+                        <span class="reason-icon">💳</span>
+                        <div class="reason-text">Flexible Payment Plans</div>
+                    </div>
+                    <div class="reason-card">
+                        <span class="reason-icon">🏆</span>
+                        <div class="reason-text">95% Pass Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Free intro call offer -->
+            <div class="offer-band">
+                <div class="offer-text">
+                    <h3>🎁 Book a FREE Intro Call Today</h3>
+                    <p>Talk to a mentor, get a personalized plan, and see exactly how we can help you pass — no commitment, no pressure.</p>
+                </div>
+                <a href="https://calendly.com/examexpertscontact" class="offer-cta">Book Free Call →</a>
+            </div>
+
+            <!-- Contact info -->
+            <div class="contact-row">
+                <div class="contact-item">
+                    <span class="contact-item-icon">📞</span>
+                    281-541-5928
+                </div>
+                <div class="contact-item">
+                    <span class="contact-item-icon">✉️</span>
+                    examexpertscontact@gmail.com
+                </div>
+                <div class="contact-item">
+                    <span class="contact-item-icon">🌐</span>
+                    examexperts.netlify.app
+                </div>
+            </div>
+
+        </div><!-- /flyer-body -->
+
+        <!-- Tear-off tabs -->
+        <div class="tear-strip">
+            <div class="tear-strip-label">✂ Tear off a tab &amp; contact us!</div>
+            <div class="tear-tabs">
+                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
+                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
+                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
+                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
+                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
+                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
+                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
+                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
+                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
+                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="flyer-footer">
+            Exam Experts · Online Education Mentoring · examexpertscontact@gmail.com · 281-541-5928 · Mon–Sun 8 AM–10 PM EST
+        </footer>
+
+    </div><!-- /flyer -->
+
+</body>
+</html>
