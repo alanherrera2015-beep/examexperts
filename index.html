@@ -40,15 +40,17 @@
     <meta name="twitter:image" content="https://examexperts.org/images/logo.png">
     <meta name="twitter:image:alt" content="Exam Experts – Online Tutoring &amp; Exam Prep">
 
-    <!-- Structured Data: EducationalOrganization with AggregateRating -->
+    <!-- Structured Data: Organization / EducationalOrganization with AggregateRating -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "EducationalOrganization",
+      "@type": ["Organization", "EducationalOrganization"],
+      "@id": "https://examexperts.org/#organization",
       "name": "Exam Experts",
       "url": "https://examexperts.org",
       "logo": {
         "@type": "ImageObject",
+        "@id": "https://examexperts.org/#logo",
         "url": "https://examexperts.org/images/logo.png",
         "width": 1024,
         "height": 1024
@@ -155,8 +157,12 @@
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": "https://examexperts.org/#website",
       "name": "Exam Experts",
       "url": "https://examexperts.org",
+      "publisher": {
+        "@id": "https://examexperts.org/#organization"
+      },
       "potentialAction": {
         "@type": "SearchAction",
         "target": {
@@ -172,7 +178,8 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "EducationalOrganization",
+      "@type": ["Organization", "EducationalOrganization"],
+      "@id": "https://examexperts.org/#organization",
       "name": "Exam Experts",
       "url": "https://examexperts.org",
       "review": [
@@ -218,7 +225,7 @@
             "@type": "Course",
             "name": "NCLEX-RN Exam Prep",
             "description": "Intensive online NCLEX-RN preparation tutoring with personalized study plans, practice questions, and expert guidance. 95% first-time pass rate.",
-            "provider": { "@type": "Organization", "name": "Exam Experts", "url": "https://examexperts.org" },
+            "provider": { "@id": "https://examexperts.org/#organization" },
             "url": "https://examexperts.org/services.html",
             "educationalLevel": "Professional",
             "teaches": "NCLEX-RN nursing licensure exam preparation"
@@ -231,7 +238,7 @@
             "@type": "Course",
             "name": "SAT &amp; ACT Test Prep Tutoring",
             "description": "1-on-1 online SAT and ACT tutoring sessions targeting your weak areas to maximize your score. Flexible scheduling 7 days a week.",
-            "provider": { "@type": "Organization", "name": "Exam Experts", "url": "https://examexperts.org" },
+            "provider": { "@id": "https://examexperts.org/#organization" },
             "url": "https://examexperts.org/services.html",
             "educationalLevel": "HighSchool",
             "teaches": "SAT and ACT standardized test preparation"
@@ -244,7 +251,7 @@
             "@type": "Course",
             "name": "Nursing School Subject Tutoring",
             "description": "Expert online tutoring for Anatomy &amp; Physiology, Pharmacology, Pathophysiology, and all nursing school core subjects.",
-            "provider": { "@type": "Organization", "name": "Exam Experts", "url": "https://examexperts.org" },
+            "provider": { "@id": "https://examexperts.org/#organization" },
             "url": "https://examexperts.org/services.html",
             "educationalLevel": "College",
             "teaches": "Nursing school subjects including anatomy, pharmacology, and pathophysiology"
