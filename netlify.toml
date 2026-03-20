@@ -2,5 +2,12 @@
   publish = "."
   functions = "netlify/functions"
 
+# Redirect www to non-www (canonical domain)
+[[redirects]]
+  from = "https://www.examexperts.org/*"
+  to   = "https://examexperts.org/:splat"
+  status = 301
+  force  = true
+
 [[plugins]]
   package = "@netlify/plugin-functions-install-core"
