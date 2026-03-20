@@ -1,5 +1,21 @@
 # Netlify contact function (SendGrid + reCAPTCHA)
 
+## Google Search Console setup
+
+To make the site appear in Google search results, verify ownership in Google Search Console:
+
+1. Go to [Google Search Console](https://search.google.com/search-console/welcome) and add `https://examexperts.org` as a property.
+2. Choose the **HTML tag** verification method and copy the verification `content` value.
+3. Add the meta tag to the `<head>` of `index.html` (and optionally all other pages):
+   ```html
+   <meta name="google-site-verification" content="PASTE_YOUR_CODE_HERE">
+   ```
+4. Deploy the change to Netlify, then click **Verify** in Google Search Console.
+5. After verification, go to **Sitemaps** and submit `https://examexperts.org/sitemap.xml`.
+6. Use the **URL Inspection** tool to request indexing for the homepage and key pages.
+
+> **Note:** Google indexing can take anywhere from a few days to a few weeks for a new site. You can use the URL Inspection tool to check indexing status.
+
 What this adds
 - netlify/functions/contact.js — receives contact form POSTs and sends email using SendGrid (optional server-side reCAPTCHA verification).
 - package.json — includes @sendgrid/mail dependency for Netlify functions.
