@@ -953,6 +953,15 @@ button {
     margin-bottom: 24px;
 }
 
+.hero-keyword-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+}
+
 .hero-title {
     font-family: 'Inter', sans-serif;
     font-size: 52px;
