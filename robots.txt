@@ -3,4 +3,14 @@ Allow: /
 Disallow: /.netlify/functions/
 Disallow: /nohup.out
 
+# Allow all major search engine crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /images/
+
+User-agent: Bingbot
+Allow: /
+
 Sitemap: https://examexperts.org/sitemap.xml
