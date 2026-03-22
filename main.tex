@@ -1,0 +1,769 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{multicol}
+
+% ----------------------------------------------------------------
+% Colors
+% ----------------------------------------------------------------
+\definecolor{examplecolor}{RGB}{220,240,255}
+\definecolor{theoremcolor}{RGB}{255,245,220}
+\definecolor{definitioncolor}{RGB}{240,255,240}
+\definecolor{analogycolor}{RGB}{255,255,220}
+\definecolor{skillcolor}{RGB}{255,235,245}
+\definecolor{contextcolor}{RGB}{245,245,250}
+
+% ----------------------------------------------------------------
+% Custom tcolorboxes - DOMAIN ADAPTIVE
+% ----------------------------------------------------------------
+
+% ALWAYS USE: Definition (for core concepts)
+\newtcolorbox{definition}{
+  colback=definitioncolor,
+  colframe=green!50!black,
+  title=Definition,
+  fonttitle=\bfseries
+}
+
+% USE FOR: Math theorems, Scientific laws, Historical facts, Musical theory
+\newtcolorbox{theorem}{
+  colback=theoremcolor,
+  colframe=orange!80!black,
+  title=Key Principle, % ADAPT: "Theorem" | "Law" | "Principle" | "Rule"
+  fonttitle=\bfseries
+}
+
+% ALWAYS USE: Examples
+\newtcolorbox{example}{
+  colback=examplecolor,
+  colframe=blue!70!black,
+  title=Example,
+  fonttitle=\bfseries
+}
+
+% ALWAYS USE: Solutions
+\newtcolorbox{solution}{
+  colback=white,
+  colframe=gray!60!black,
+  title=Solution,
+  fonttitle=\bfseries
+}
+
+% ALWAYS USE: 5th Grade Analogies
+\newtcolorbox{analogy}{
+  colback=analogycolor,
+  colframe=purple!70!black,
+  title=5th Grade Analogy,
+  fonttitle=\bfseries
+}
+
+% USE FOR: Skills, techniques, procedures
+\newtcolorbox{skillbox}{
+  colback=skillcolor,
+  colframe=red!70!black,
+  title=Skill, % ADAPT: "Technique" | "Method" | "Procedure"
+  fonttitle=\bfseries
+}
+
+% USE FOR: Historical context, real-world applications
+\newtcolorbox{contextbox}{
+  colback=contextcolor,
+  colframe=blue!50!black,
+  title=Context, % ADAPT: "History" | "Application" | "Real World"
+  fonttitle=\bfseries
+}
+
+% ----------------------------------------------------------------
+% Header / Footer
+% ----------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Exam Experts}
+\rhead{Comprehensive Guide}
+\cfoot{\thepage}
+
+% ----------------------------------------------------------------
+% Title info (EDIT PER UNIT)
+% ----------------------------------------------------------------
+\title{
+  \textbf{Unit X: [TOPIC NAME]}\\[4pt]
+  \Large Complete Comprehensive Guide with 5th Grade Analogies\\[4pt]
+  \large Exam Experts
+}
+\date{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+% ================================================================
+% SECTION 1: FOUNDATIONS - THE "WHAT"
+% ================================================================
+
+\section{Introduction to [TOPIC]}
+
+\subsection{What Is [TOPIC]?}
+
+\begin{definition}
+A \textbf{[CORE CONCEPT]} is [clear, concise definition].
+% ADAPT: Define the central object/concept/skill being taught
+% Examples: "exponential function" | "violin bow technique" |
+%           "supply and demand" | "photosynthesis"
+\end{definition}
+
+[Explain the big picture in 2--3 paragraphs. Why does this topic exist?
+What problems does it solve? Where does it fit in the larger field?]
+
+\begin{analogy}
+[5th-grade analogy that captures the essence]
+% EXAMPLES:
+% Math:      "A function is like a vending machine..."
+% Violin:    "Vibrato is like wiggling your finger when you wave hello..."
+% Chemistry: "Ionic bonding is like magnets sticking together..."
+% History:   "The Industrial Revolution was like when your whole school
+%             switches from paper to iPads..."
+\end{analogy}
+
+% ----------------------------------------------------------------
+% SUBSECTION: DOMAIN-SPECIFIC CLASSIFICATION
+% ----------------------------------------------------------------
+
+\subsection{Types/Categories/Styles of [TOPIC]}
+% ADAPT THIS SECTION BASED ON DOMAIN:
+% Math:     Types of functions, equation forms
+% Music:    Playing styles, techniques, genres
+% Science:  Categories, classes, types of phenomena
+% History:  Eras, movements, schools of thought
+% Business: Models, strategies, approaches
+
+\begin{enumerate}[label=\arabic*.]
+  \item \textbf{[Type 1]:} [Description and when/where it's used]
+  \item \textbf{[Type 2]:} [Description and when/where it's used]
+  \item \textbf{[Type 3]:} [Description and when/where it's used]
+  % Add more as needed
+\end{enumerate}
+
+% ----------------------------------------------------------------
+% SUBSECTION: KEY CHARACTERISTICS
+% ----------------------------------------------------------------
+
+\subsection{Key Characteristics of [TOPIC]}
+% ADAPT: Choose characteristics relevant to your domain
+% DELETE sections that don't apply
+
+\begin{enumerate}
+  \item \textbf{[Characteristic 1]:} [Description]
+  % Math:    Domain, Range, Asymptotes
+  % Music:   Pitch range, Timbre, Dynamics
+  % Science: Properties, Behavior, Conditions
+  % History: Time period, Key figures, Impact
+  % Business: Market size, Competition, Resources
+  \item \textbf{[Characteristic 2]:} [Description]
+  \item \textbf{[Characteristic 3]:} [Description]
+  \item \textbf{[Characteristic 4]:} [Description]
+  \item \textbf{[Characteristic 5]:} [Description]
+\end{enumerate}
+
+\begin{example}
+[Concrete example illustrating identification of type, characteristics, or key features]
+% Math:      "Identify the domain and range of $f(x) = 2^x$"
+% Violin:    "Identify the bow technique in this passage: [musical notation]"
+% Chemistry: "Identify the type of bond in NaCl"
+% History:   "Identify the era and key characteristics of the Renaissance"
+\end{example}
+
+\begin{solution}
+[Step-by-step solution for the example above]
+\end{solution}
+
+% ================================================================
+% SECTION 2: FUNDAMENTALS - THE "HOW"
+% ================================================================
+
+\section{Working with [TOPIC]}
+
+\subsection{Basic Operations/Skills}
+% ADAPT: What are the foundational skills needed?
+% Math:     Evaluation, computation, manipulation
+% Music:    Reading notation, finger placement, breath control
+% Science:  Measurement, observation, calculation
+% History:  Analysis, chronology, source evaluation
+% Business: Calculation, modeling, decision-making
+
+[Explain the most basic way to work with or apply this topic]
+
+\begin{example}
+[Give 3--4 short tasks that practice the fundamental skill]
+% Math:      "Evaluate $f(x)$ at $x = 0$, $2$, $-1$"
+% Violin:    "Play these three notes using proper bow hold: [notation]"
+% Chemistry: "Balance this equation: $\text{H}_2 + \text{O}_2 \to \text{H}_2\text{O}$"
+% History:   "Place these events in chronological order: [events]"
+\end{example}
+
+\begin{solution}
+[Show computations or steps cleanly, one line per step]
+\end{solution}
+
+\begin{analogy}
+[Tie the fundamental skill to something familiar]
+% "Evaluating a function is like following a recipe..."
+% "Proper bow hold is like holding a pencil but more relaxed..."
+% "Balancing equations is like making sure both sides of a scale are equal..."
+\end{analogy}
+
+% ----------------------------------------------------------------
+% SUBSECTION: INTERPRETATION & UNDERSTANDING
+% ----------------------------------------------------------------
+
+\subsection{Reading and Interpreting [DOMAIN-SPECIFIC TERM]}
+% ADAPT: What needs to be "read" or "interpreted"?
+% Math:     Parameters, coefficients, notation
+% Music:    Notation, dynamics, tempo markings
+% Science:  Data, graphs, experimental results
+% History:  Primary sources, timelines, maps
+% Business: Financial statements, market data, metrics
+
+[Explain how to extract meaning from symbols, notation, or representations]
+
+\begin{example}
+[Problem requiring interpretation of notation or representation]
+\end{example}
+
+\begin{solution}
+[State each parameter or element and what it means in words]
+\end{solution}
+
+% ================================================================
+% SECTION 3: VISUALIZATION & REPRESENTATION
+% (ADAPT OR REMOVE IF NOT APPLICABLE)
+% ================================================================
+
+\section{Visualizing [TOPIC]}
+% DELETE THIS SECTION IF:
+%   - The topic has no visual/spatial component
+%   - There are no graphs, diagrams, or representations
+% ADAPT FOR:
+%   Math:     Graphing, coordinate systems
+%   Music:    Musical notation, score reading
+%   Science:  Diagrams, models, schematics
+%   History:  Maps, timelines, infographics
+%   Business: Charts, organizational diagrams
+
+\subsection{Basic Representation}
+
+[Describe the standard way this topic is visually represented]
+
+% Optional TikZ graphic:
+% \begin{center}
+% \begin{tikzpicture}
+%   \begin{axis}[
+%     axis lines = center,
+%     xlabel = $x$,
+%     ylabel = $y$,
+%     xmin=..., xmax=...,
+%     ymin=..., ymax=...,
+%     grid = major,
+%     width=10cm,
+%     height=7cm
+%   ]
+%   \addplot[
+%     domain=...:...,
+%     samples=100,
+%     color=blue,
+%     very thick
+%   ]{};
+%   \addlegendentry{$f(x) = \dots$}
+%   \end{axis}
+% \end{tikzpicture}
+% \end{center}
+
+\subsection{Variations and Transformations}
+% ADAPT: How do representations change?
+% Math:     Transformations (shifts, stretches, reflections)
+% Music:    Transposition, arrangement, interpretation
+% Science:  Different scales, perspectives, models
+% History:  Different map projections, timeline formats
+% Business: Different chart types, data visualizations
+
+[Explain how the representation changes and what those changes mean]
+
+\begin{analogy}
+[Use a visual analogy kids understand]
+% "Shifting a graph is like moving a picture on graph paper..."
+% "Transposing music is like singing the same song but starting on a different note..."
+% "Changing map projections is like flattening an orange peel different ways..."
+\end{analogy}
+
+\begin{example}
+[Give a specific representation and ask students to:]
+\begin{itemize}
+  \item Describe what they see
+  \item Identify key features
+  \item Explain what changes were made
+\end{itemize}
+\end{example}
+
+\begin{solution}
+[Describe transformations in order; compute at least one key point; state domain, range, etc.]
+\end{solution}
+
+% ================================================================
+% SECTION 4: APPLICATIONS & CONTEXT
+% ================================================================
+
+\section{Applications and Real-World Context}
+
+\subsection{Why [TOPIC] Matters}
+
+[Explain the practical importance and real-world applications]
+
+\begin{contextbox}
+\textbf{Historical Context / Real-World Use:}
+
+[Provide context: Who developed this? When? Why was it needed? How is it used today?]
+% Math:      "Logarithms were invented to simplify calculations before calculators..."
+% Music:     "Vibrato became standard in Western classical music during the Romantic period..."
+% Chemistry: "Understanding chemical bonds led to plastics, medicines, and materials..."
+% Business:  "Supply and demand theory explains everything from concert ticket prices to gas prices..."
+\end{contextbox}
+
+\subsection{Worked Applications}
+
+\begin{example}
+[Detailed application problem -- could be word problem, performance task, analysis, etc.]
+% Math:     Population growth, compound interest, physics problems
+% Music:    Performance technique in a real piece
+% Science:  Laboratory scenario, field observation
+% History:  Analyzing a primary source, explaining an event's impact
+% Business: Case study, financial analysis, market strategy
+\end{example}
+
+\begin{solution}
+[Set up the model/approach, substitute values or evidence, interpret the answer in a sentence]
+\end{solution}
+
+% ================================================================
+% SECTION 5: CONNECTIONS & RELATED CONCEPTS
+% (ADAPT OR REMOVE IF NOT APPLICABLE)
+% ================================================================
+
+\section{Related Concepts and Connections}
+% USE THIS SECTION FOR:
+%   Math:     Inverse functions, related operations
+%   Music:    Related techniques, complementary skills
+%   Science:  Related phenomena, connected principles
+%   History:  Related events, parallel movements
+%   Business: Related strategies, complementary methods
+
+\begin{definition}
+[Define the related concept and explain its connection to the main topic]
+% "Logarithms are the inverse of exponentials..."
+% "Pizzicato is the complementary technique to bowing..."
+% "Oxidation is always paired with reduction..."
+% "The Renaissance was a response to Medieval culture..."
+\end{definition}
+
+\begin{analogy}
+[Use a "connection" analogy]
+% "Inverse functions are like addition vs.\ subtraction -- they undo each other..."
+% "Pizzicato vs.\ bowing is like typing vs.\ writing -- different ways to do the same job..."
+\end{analogy}
+
+\subsection{Key Relationships}
+
+[Describe how the main topic and related concepts interact]
+
+\begin{enumerate}
+  \item \textbf{[Relationship 1]:} [Description]
+  \item \textbf{[Relationship 2]:} [Description]
+  \item \textbf{[Relationship 3]:} [Description]
+\end{enumerate}
+
+% ================================================================
+% SECTION 6: ADVANCED TECHNIQUES & PROPERTIES
+% ================================================================
+
+\section{Important Techniques and Properties}
+% ADAPT: What are the "rules of the game"?
+%   Math:     Algebraic properties, laws, identities
+%   Music:    Performance techniques, practice methods
+%   Science:  Laboratory techniques, analytical methods
+%   History:  Analysis frameworks, historiographical methods
+%   Business: Strategic frameworks, analytical tools
+
+\begin{skillbox}
+\textbf{[Technique/Property Name]:}
+
+[Explain the technique, when to use it, and why it works]
+\end{skillbox}
+
+\begin{theorem}
+\textbf{[Key Principle/Rule]:}
+
+[State the rule formally]
+% Math:      "Product of powers: $x^a \cdot x^b = x^{a+b}$"
+% Music:     "Proper bow distribution ensures even tone across the stroke"
+% Chemistry: "Law of Conservation of Mass: Matter cannot be created or destroyed"
+% History:   "Primary sources provide direct evidence; secondary sources provide interpretation"
+\end{theorem}
+
+\begin{analogy}
+[Explain at least one property in kid-friendly language]
+% "Multiplying inside the exponent means adding outside..."
+\end{analogy}
+
+\begin{example}
+[Have students apply, expand, condense, or manipulate using the properties/techniques]
+\end{example}
+
+\begin{solution}
+[Show the algebraic or analytical steps, naming which property is used where]
+\end{solution}
+
+% ================================================================
+% SECTION 7: COMMON MISTAKES & TROUBLESHOOTING
+% ================================================================
+
+\section{Common Mistakes and How to Avoid Them}
+
+\subsection{Mistake \#1: [Description]}
+
+\textbf{Why it happens:} [Explanation]
+
+\textbf{How to avoid it:} [Strategy]
+
+\subsection{Mistake \#2: [Description]}
+
+\textbf{Why it happens:} [Explanation]
+
+\textbf{How to avoid it:} [Strategy]
+
+\subsection{Mistake \#3: [Description]}
+
+\textbf{Why it happens:} [Explanation]
+
+\textbf{How to avoid it:} [Strategy]
+
+\subsection{Mistake \#4: [Description]}
+
+\textbf{Why it happens:} [Explanation]
+
+\textbf{How to avoid it:} [Strategy]
+
+% ================================================================
+% SECTION 8: PRACTICE PROBLEMS
+% ================================================================
+
+\newpage
+
+\section{Practice Problems}
+\label{sec:practice}
+
+\subsection*{Instructions}
+
+For each group, the problem numbers match the section numbers of the notes.
+Show all work and present your final answer clearly.
+
+% ---------- SECTION 1: FOUNDATIONS ----------
+
+\subsection{Section 1: Foundations}
+
+\textbf{Problem 1.1}
+
+[Problem aligned with definitions and identification]
+
+\vspace{12pt}
+
+\textbf{Problem 1.2}
+
+[Problem aligned with types/categories]
+
+\vspace{12pt}
+
+\textbf{Problem 1.3}
+
+[Problem aligned with characteristics]
+
+\vspace{12pt}
+
+% ---------- SECTION 2: FUNDAMENTALS ----------
+
+\subsection{Section 2: Fundamentals}
+
+\textbf{Problem 2.1}
+
+[Problem aligned with basic operations/skills]
+
+\vspace{12pt}
+
+\textbf{Problem 2.2}
+
+[Problem aligned with interpretation]
+
+\vspace{12pt}
+
+% ---------- SECTION 3: VISUALIZATION ----------
+
+\subsection{Section 3: Visualization}
+% SKIP IF SECTION 3 WAS DELETED
+
+\textbf{Problem 3.1}
+
+[Problem aligned with representation]
+
+\vspace{12pt}
+
+\textbf{Problem 3.2}
+
+[Problem aligned with transformations/variations]
+
+\vspace{12pt}
+
+% ---------- SECTION 4: APPLICATIONS ----------
+
+\subsection{Section 4: Applications}
+
+\textbf{Problem 4.1}
+
+[Application/word problem/real-world scenario]
+
+\vspace{12pt}
+
+\textbf{Problem 4.2}
+
+[Application/word problem/real-world scenario]
+
+\vspace{12pt}
+
+% ---------- SECTION 5: CONNECTIONS ----------
+
+\subsection{Section 5: Connections}
+% SKIP IF SECTION 5 WAS DELETED
+
+\textbf{Problem 5.1}
+
+[Problem showing relationship between concepts]
+
+\vspace{12pt}
+
+% ---------- SECTION 6: ADVANCED ----------
+
+\subsection{Section 6: Advanced Techniques}
+
+\textbf{Problem 6.1}
+
+[Problem requiring technique/property application]
+
+\vspace{12pt}
+
+\textbf{Problem 6.2}
+
+[Multi-step problem combining multiple techniques]
+
+\vspace{12pt}
+
+% ---------- MIXED REVIEW ----------
+
+\subsection{Mixed Review}
+
+\textbf{Problem MR.1}
+
+[Challenging problem integrating multiple sections]
+
+\vspace{12pt}
+
+\textbf{Problem MR.2}
+
+[Challenging problem integrating multiple sections]
+
+\vspace{12pt}
+
+\textbf{Problem MR.3}
+
+[Challenging problem integrating multiple sections]
+
+% ================================================================
+% SECTION 9: SOLUTIONS TO PRACTICE PROBLEMS
+% ================================================================
+
+\newpage
+
+\section{Solutions to Practice Problems}
+
+\subsection{Solutions for Section 1: Foundations}
+
+\textbf{Problem 1.1}
+
+\begin{solution}
+[Full worked solution]
+\end{solution}
+
+\textbf{Problem 1.2}
+
+\begin{solution}
+[Full worked solution]
+\end{solution}
+
+\textbf{Problem 1.3}
+
+\begin{solution}
+[Full worked solution]
+\end{solution}
+
+% ----------------------------------------------------------------
+
+\subsection{Solutions for Section 2: Fundamentals}
+
+\textbf{Problem 2.1}
+
+\begin{solution}
+[Full worked solution]
+\end{solution}
+
+\textbf{Problem 2.2}
+
+\begin{solution}
+[Full worked solution]
+\end{solution}
+
+% ----------------------------------------------------------------
+
+\subsection{Solutions for Section 3: Visualization}
+% SKIP IF SECTION 3 WAS DELETED
+
+\textbf{Problem 3.1}
+
+\begin{solution}
+[Full worked solution]
+\end{solution}
+
+\textbf{Problem 3.2}
+
+\begin{solution}
+[Full worked solution]
+\end{solution}
+
+% ----------------------------------------------------------------
+
+\subsection{Solutions for Section 4: Applications}
+
+\textbf{Problem 4.1}
+
+\begin{solution}
+[Full worked solution]
+\end{solution}
+
+\textbf{Problem 4.2}
+
+\begin{solution}
+[Full worked solution]
+\end{solution}
+
+% ----------------------------------------------------------------
+
+\subsection{Solutions for Section 5: Connections}
+% SKIP IF SECTION 5 WAS DELETED
+
+\textbf{Problem 5.1}
+
+\begin{solution}
+[Full worked solution]
+\end{solution}
+
+% ----------------------------------------------------------------
+
+\subsection{Solutions for Section 6: Advanced Techniques}
+
+\textbf{Problem 6.1}
+
+\begin{solution}
+[Full worked solution]
+\end{solution}
+
+\textbf{Problem 6.2}
+
+\begin{solution}
+[Full worked solution]
+\end{solution}
+
+% ----------------------------------------------------------------
+
+\subsection{Solutions for Mixed Review}
+
+\textbf{Problem MR.1}
+
+\begin{solution}
+[Full worked solution]
+\end{solution}
+
+\textbf{Problem MR.2}
+
+\begin{solution}
+[Full worked solution]
+\end{solution}
+
+\textbf{Problem MR.3}
+
+\begin{solution}
+[Full worked solution]
+\end{solution}
+
+% ================================================================
+% APPENDIX: QUICK REFERENCE
+% ================================================================
+
+\appendix
+
+\section{Quick Reference Guide}
+
+\subsection{Key Definitions}
+
+\begin{itemize}
+  \item \textbf{[Term 1]:} [Brief definition]
+  \item \textbf{[Term 2]:} [Brief definition]
+  \item \textbf{[Term 3]:} [Brief definition]
+  % Add all major terms
+\end{itemize}
+
+\subsection{Important Formulas/Rules/Techniques}
+% ADAPT: This could be:
+%   Math:     Formula sheet
+%   Music:    Fingering chart, technique summary
+%   Science:  Key equations, procedural checklist
+%   History:  Timeline, key figures
+%   Business: Framework diagram, calculation formulas
+
+\begin{enumerate}
+  \item [Key item 1]
+  \item [Key item 2]
+  \item [Key item 3]
+\end{enumerate}
+
+\subsection{Study Checklist}
+
+Before moving to the next unit, make sure you can:
+
+\begin{itemize}
+  \item[$\square$] Define [core concept] in your own words
+  \item[$\square$] Identify different types/categories of [topic]
+  \item[$\square$] Perform basic operations/skills confidently
+  \item[$\square$] Interpret and read [notation/symbols/representations]
+  \item[$\square$] Apply [topic] to real-world problems
+  \item[$\square$] Recognize common mistakes and avoid them
+  \item[$\square$] Connect [topic] to related concepts
+  \item[$\square$] Use advanced techniques when appropriate
+\end{itemize}
+
+\end{document}
