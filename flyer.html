@@ -532,6 +532,13 @@
         @media print {
             @page { size: 8.5in 11in portrait; margin: 0; }
 
+            /* Preserve all background colours, gradients and images in print/PDF */
+            *, *::before, *::after {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
             body { background: none; padding: 0; display: block; }
 
             .toolbar { display: none !important; }
@@ -539,7 +546,9 @@
             .flyer {
                 width: 8.5in;
                 min-height: 11in;
-                max-height: 11in;
+                /* Remove max-height and overflow:hidden so content is never clipped */
+                max-height: none;
+                overflow: visible;
                 box-shadow: none;
                 border-radius: 0;
                 page-break-after: avoid;
