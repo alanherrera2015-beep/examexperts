@@ -530,15 +530,16 @@
 
         /* ── Print styles ───────────────────────────────────────────── */
         @media print {
-            @page { size: letter portrait; margin: 0; }
+            @page { size: 8.5in 11in portrait; margin: 0; }
 
             body { background: none; padding: 0; display: block; }
 
             .toolbar { display: none !important; }
 
             .flyer {
-                width: 100%;
-                min-height: 100vh;
+                width: 8.5in;
+                min-height: 11in;
+                max-height: 11in;
                 box-shadow: none;
                 border-radius: 0;
                 page-break-after: avoid;
