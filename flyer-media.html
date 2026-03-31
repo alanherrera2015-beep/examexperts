@@ -313,6 +313,45 @@
             border-radius: 2px;
         }
 
+        /* "Does this sound like you?" pain-point cards */
+        .pain-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .pain-card {
+            background: #F8FAFF;
+            border: 2px solid rgba(37,99,235,0.14);
+            border-radius: 12px;
+            padding: 18px 20px;
+        }
+
+        .pain-quote {
+            font-size: 17px;
+            font-style: italic;
+            color: #374151;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        .pain-quote::before { content: '"'; color: #2563EB; font-weight: 800; font-style: normal; }
+        .pain-quote::after  { content: '"'; color: #2563EB; font-weight: 800; font-style: normal; }
+
+        .pain-fix {
+            font-size: 13px;
+            color: #2563EB;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .pain-answer {
+            font-size: 15px;
+            color: #4B5563;
+            line-height: 1.5;
+        }
+
         /* Services grid */
         .services-grid {
             display: grid;
@@ -531,10 +570,51 @@
         <!-- Body -->
         <div class="flyer-body">
 
+            <!-- "Does this sound like you?" pain points -->
+            <div>
+                <div class="section-heading">Does This Sound Like You?</div>
+                <div class="pain-grid">
+                    <div class="pain-card">
+                        <div class="pain-quote">I've already failed this exam once and I can't afford to fail again.</div>
+                        <div class="pain-fix">How we fix it:</div>
+                        <div class="pain-answer">We map every topic on your exam to your weakest areas and give you structured, exam-style practice so you walk in prepared.</div>
+                    </div>
+                    <div class="pain-card">
+                        <div class="pain-quote">I'm spending hours studying but nothing is actually sticking.</div>
+                        <div class="pain-fix">How we fix it:</div>
+                        <div class="pain-answer">Our method builds real understanding — not passive re-reading. You apply concepts with exam-style questions every session.</div>
+                    </div>
+                    <div class="pain-card">
+                        <div class="pain-quote">My child is struggling in school and falling behind their class.</div>
+                        <div class="pain-fix">How we fix it:</div>
+                        <div class="pain-answer">We work with K-12 students at their level, rebuild confidence, and create a custom plan around their school schedule.</div>
+                    </div>
+                    <div class="pain-card">
+                        <div class="pain-quote">I blank out during tests even when I've studied everything.</div>
+                        <div class="pain-fix">How we fix it:</div>
+                        <div class="pain-answer">We include test-anxiety strategies — breathing techniques, pre-exam routines, and timed practice so the real exam feels familiar.</div>
+                    </div>
+                </div>
+            </div>
+
             <!-- What we help with -->
             <div>
                 <div class="section-heading">What We Help With</div>
                 <div class="services-grid">
+                    <div class="service-item">
+                        <span class="service-icon">🏫</span>
+                        <div>
+                            <div class="service-name">K-12 Tutoring</div>
+                            <div class="service-desc">All grades, all subjects — elementary to high school</div>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <span class="service-icon">🎓</span>
+                        <div>
+                            <div class="service-name">All Undergrad Courses</div>
+                            <div class="service-desc">Any college course — freshman to senior year</div>
+                        </div>
+                    </div>
                     <div class="service-item">
                         <span class="service-icon">🔬</span>
                         <div>
