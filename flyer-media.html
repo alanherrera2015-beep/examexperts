@@ -287,203 +287,90 @@
         /* ── Body ───────────────────────────────────────────────────── */
         .flyer-body {
             flex: 1;
-            padding: 36px 56px 28px;
+            padding: 28px 48px 36px;
             display: flex;
             flex-direction: column;
-            gap: 28px;
+            gap: 16px;
             background: #fff;
         }
 
-        /* Section title */
-        .section-heading {
-            font-size: 24px;
+        /* Combined section heading (no rule) */
+        .body-heading {
+            font-size: 26px;
             font-weight: 800;
             color: #111827;
             letter-spacing: -0.01em;
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .section-heading::after {
-            content: '';
-            flex: 1;
-            height: 3px;
-            background: linear-gradient(90deg, #2563EB 0%, transparent 100%);
-            border-radius: 2px;
         }
 
-        /* "Does this sound like you?" pain-point cards */
+        /* Pain-point cards */
         .pain-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 14px;
+            gap: 12px;
         }
 
         .pain-card {
             background: #F8FAFF;
             border: 2px solid rgba(37,99,235,0.14);
             border-radius: 12px;
-            padding: 18px 20px;
+            padding: 14px 16px;
         }
 
         .pain-quote {
-            font-size: 17px;
+            font-size: 16px;
             font-style: italic;
             color: #374151;
-            margin-bottom: 8px;
-            line-height: 1.5;
+            margin-bottom: 6px;
+            line-height: 1.45;
         }
         .pain-quote::before { content: '"'; color: #2563EB; font-weight: 800; font-style: normal; }
         .pain-quote::after  { content: '"'; color: #2563EB; font-weight: 800; font-style: normal; }
 
         .pain-fix {
-            font-size: 13px;
+            font-size: 12px;
             color: #2563EB;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
 
         .pain-answer {
-            font-size: 15px;
+            font-size: 14px;
             color: #4B5563;
-            line-height: 1.5;
+            line-height: 1.45;
         }
 
         /* Services grid */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
+            gap: 10px;
         }
 
         .service-item {
             background: #F0F9FF;
             border: 2px solid rgba(37,99,235,0.12);
-            border-radius: 12px;
-            padding: 18px 20px;
+            border-radius: 10px;
+            padding: 12px 14px;
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
         }
 
-        .service-icon { font-size: 32px; flex-shrink: 0; }
+        .service-icon { font-size: 26px; flex-shrink: 0; }
 
         .service-name {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 800;
             color: #1e3a5f;
         }
 
         .service-desc {
-            font-size: 14px;
+            font-size: 13px;
             color: #6B7280;
-            line-height: 1.4;
-            margin-top: 3px;
-        }
-
-        /* Orange CTA band */
-        .offer-band {
-            background: linear-gradient(135deg, #F59E0B 0%, #EA580C 100%);
-            border-radius: 16px;
-            padding: 28px 36px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .offer-text h3 {
-            font-size: 28px;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 6px;
-            letter-spacing: -0.02em;
-        }
-
-        .offer-text p {
-            font-size: 18px;
-            color: rgba(255,255,255,0.95);
-            line-height: 1.5;
-        }
-
-        .offer-cta {
-            background: #fff;
-            color: #EA580C;
-            font-size: 22px;
-            font-weight: 800;
-            padding: 16px 32px;
-            border-radius: 9999px;
-            text-decoration: none;
-            white-space: nowrap;
-            flex-shrink: 0;
-            letter-spacing: -0.01em;
-        }
-
-        /* Contact row */
-        .contact-row {
-            display: flex;
-            gap: 14px;
-            justify-content: center;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: #EFF6FF;
-            border: 2px solid rgba(37,99,235,0.2);
-            border-radius: 9999px;
-            padding: 12px 26px;
-            font-size: 18px;
-            font-weight: 700;
-            color: #1e3a5f;
-        }
-
-        /* ── Tear-off tabs ──────────────────────────────────────────── */
-        .tear-strip {
-            margin: 0 56px;
-            border-top: 2px dashed rgba(37,99,235,0.35);
-            padding-top: 10px;
-        }
-
-        .tear-strip-label {
-            text-align: center;
-            font-size: 13px;
-            color: #9CA3AF;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .tear-tabs { display: flex; }
-
-        .tear-tab {
-            flex: 1;
-            border-right: 1px dashed rgba(37,99,235,0.3);
-            padding: 6px 3px 14px;
-            text-align: center;
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-            font-size: 13px;
-            font-weight: 700;
-            color: #2563EB;
-            line-height: 1.3;
-        }
-        .tear-tab:last-child { border-right: none; }
-        .tear-tab span { display: block; font-weight: 500; font-size: 12px; color: #6B7280; }
-
-        /* ── Footer bar ─────────────────────────────────────────────── */
-        .flyer-footer {
-            background: #1e3a5f;
-            color: rgba(255,255,255,0.7);
-            text-align: center;
-            font-size: 14px;
-            padding: 10px 16px;
-            letter-spacing: 0.2px;
+            line-height: 1.35;
+            margin-top: 2px;
         }
 
         /* ── Print styles ───────────────────────────────────────────── */
@@ -570,135 +457,77 @@
         <!-- Body -->
         <div class="flyer-body">
 
-            <!-- "Does this sound like you?" pain points -->
-            <div>
-                <div class="section-heading">Does This Sound Like You?</div>
-                <div class="pain-grid">
-                    <div class="pain-card">
-                        <div class="pain-quote">I've already failed this exam once and I can't afford to fail again.</div>
-                        <div class="pain-fix">How we fix it:</div>
-                        <div class="pain-answer">We map every topic on your exam to your weakest areas and give you structured, exam-style practice so you walk in prepared.</div>
-                    </div>
-                    <div class="pain-card">
-                        <div class="pain-quote">I'm spending hours studying but nothing is actually sticking.</div>
-                        <div class="pain-fix">How we fix it:</div>
-                        <div class="pain-answer">Our method builds real understanding — not passive re-reading. You apply concepts with exam-style questions every session.</div>
-                    </div>
-                    <div class="pain-card">
-                        <div class="pain-quote">My child is struggling in school and falling behind their class.</div>
-                        <div class="pain-fix">How we fix it:</div>
-                        <div class="pain-answer">We work with K-12 students at their level, rebuild confidence, and create a custom plan around their school schedule.</div>
-                    </div>
-                    <div class="pain-card">
-                        <div class="pain-quote">I blank out during tests even when I've studied everything.</div>
-                        <div class="pain-fix">How we fix it:</div>
-                        <div class="pain-answer">We include test-anxiety strategies — breathing techniques, pre-exam routines, and timed practice so the real exam feels familiar.</div>
-                    </div>
+            <h2 class="body-heading">Does This Sound Like You?</h2>
+
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <div class="pain-quote">I've already failed this exam once and I can't afford to fail again.</div>
+                    <div class="pain-fix">How we fix it:</div>
+                    <div class="pain-answer">We map every topic on your exam to your weakest areas and give you structured, exam-style practice so you walk in prepared.</div>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-quote">My child is struggling in school and falling behind their class.</div>
+                    <div class="pain-fix">How we fix it:</div>
+                    <div class="pain-answer">We work with K-12 students at their level, rebuild confidence, and create a custom plan around their school schedule.</div>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-quote">I'm spending hours studying but nothing is actually sticking.</div>
+                    <div class="pain-fix">How we fix it:</div>
+                    <div class="pain-answer">Our method builds real understanding — not passive re-reading. You apply concepts with exam-style questions every session.</div>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-quote">I blank out during tests even when I've studied everything.</div>
+                    <div class="pain-fix">How we fix it:</div>
+                    <div class="pain-answer">We include test-anxiety strategies — breathing techniques, pre-exam routines, and timed practice so the real exam feels familiar.</div>
                 </div>
             </div>
 
-            <!-- What we help with -->
-            <div>
-                <div class="section-heading">What We Help With</div>
-                <div class="services-grid">
-                    <div class="service-item">
-                        <span class="service-icon">🏫</span>
-                        <div>
-                            <div class="service-name">K-12 Tutoring</div>
-                            <div class="service-desc">All grades, all subjects — elementary to high school</div>
-                        </div>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-icon">🎓</span>
-                        <div>
-                            <div class="service-name">All Undergrad Courses</div>
-                            <div class="service-desc">Any college course — freshman to senior year</div>
-                        </div>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-icon">🔬</span>
-                        <div>
-                            <div class="service-name">STEM &amp; Sciences</div>
-                            <div class="service-desc">Math, Biology, Chemistry, A&amp;P, Physics</div>
-                        </div>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-icon">💉</span>
-                        <div>
-                            <div class="service-name">Nursing Exams</div>
-                            <div class="service-desc">NCLEX, Pharmacology, Pathophysiology</div>
-                        </div>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-icon">📝</span>
-                        <div>
-                            <div class="service-name">Standardized Tests</div>
-                            <div class="service-desc">SAT, ACT, GRE, MCAT, ASVAB</div>
-                        </div>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-icon">📖</span>
-                        <div>
-                            <div class="service-name">All Academic Subjects</div>
-                            <div class="service-desc">English, History, Writing &amp; more</div>
-                        </div>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-icon">🌎</span>
-                        <div>
-                            <div class="service-name">Bilingual Support</div>
-                            <div class="service-desc">Spanish-English tutoring for ESL students</div>
-                        </div>
-                    </div>
-                    <div class="service-item">
-                        <span class="service-icon">💻</span>
-                        <div>
-                            <div class="service-name">100% Online</div>
-                            <div class="service-desc">Zoom + interactive whiteboard, anywhere</div>
-                        </div>
+            <div class="services-grid">
+                <div class="service-item">
+                    <span class="service-icon">🏫</span>
+                    <div>
+                        <div class="service-name">K-12 Tutoring</div>
+                        <div class="service-desc">All grades, all subjects — elementary to high school</div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Free intro call CTA -->
-            <div class="offer-band">
-                <div class="offer-text">
-                    <h3>🎁 Book a FREE 15-Min Intro Call</h3>
-                    <p>A mentor will give you a tailored study plan — no pressure, no pitch.</p>
+                <div class="service-item">
+                    <span class="service-icon">💉</span>
+                    <div>
+                        <div class="service-name">Nursing Exams</div>
+                        <div class="service-desc">NCLEX, Pharmacology, Pathophysiology</div>
+                    </div>
                 </div>
-                <a href="tel:2815415928" class="offer-cta">📞 281 541 5928</a>
-            </div>
-
-            <!-- Contact info -->
-            <div class="contact-row">
-                <div class="contact-item">📞 281-541-5928</div>
-                <div class="contact-item">✉️ examexpertscontact@gmail.com</div>
-                <div class="contact-item">🌐 examexperts.org</div>
+                <div class="service-item">
+                    <span class="service-icon">🌎</span>
+                    <div>
+                        <div class="service-name">Bilingual Support</div>
+                        <div class="service-desc">Spanish-English tutoring for ESL students</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">🎓</span>
+                    <div>
+                        <div class="service-name">All Undergrad Courses</div>
+                        <div class="service-desc">Any college course — freshman to senior year</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">📝</span>
+                    <div>
+                        <div class="service-name">Standardized Tests</div>
+                        <div class="service-desc">SAT, ACT, GRE, MCAT, ASVAB</div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">💻</span>
+                    <div>
+                        <div class="service-name">100% Online</div>
+                        <div class="service-desc">Zoom + interactive whiteboard, anywhere</div>
+                    </div>
+                </div>
             </div>
 
         </div><!-- /flyer-body -->
-
-        <!-- Tear-off tabs -->
-        <div class="tear-strip">
-            <div class="tear-strip-label">✂ Tear off a tab &amp; contact us!</div>
-            <div class="tear-tabs">
-                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
-                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
-                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
-                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
-                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
-                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
-                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
-                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
-                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
-                <div class="tear-tab">Exam Experts<span>📞 281-541-5928</span></div>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <footer class="flyer-footer">
-            Exam Experts · Online Education Mentoring · examexpertscontact@gmail.com · 281-541-5928 · Mon-Sun, 8 AM to 10 PM EST
-        </footer>
 
     </div><!-- /flyer -->
 
