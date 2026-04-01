@@ -146,17 +146,17 @@
         }
 
         /* Decorative circles matching website hero */
-        .flyer-hero::before,
-        .flyer-hero::after {
-            content: '';
+        /* Using real <div> elements instead of ::before/::after so that
+           html2canvas correctly clips them via the parent overflow:hidden */
+        .hero-deco-circle {
             position: absolute;
             border-radius: 50%;
             opacity: 0.08;
             background: #fff;
             pointer-events: none;
         }
-        .flyer-hero::before { width: 280px; height: 280px; top: -80px; right: -60px; }
-        .flyer-hero::after  { width: 180px; height: 180px; bottom: -60px; left: 60px; }
+        .hero-deco-circle-1 { width: 280px; height: 280px; top: -80px; right: -60px; }
+        .hero-deco-circle-2 { width: 180px; height: 180px; bottom: -60px; left: 60px; }
 
         .hero-top {
             display: flex;
@@ -602,6 +602,9 @@
 
         <!-- Hero — matches website hero blue gradient exactly -->
         <div class="flyer-hero">
+            <!-- Decorative circles: real divs so html2canvas clips them correctly -->
+            <div class="hero-deco-circle hero-deco-circle-1" aria-hidden="true"></div>
+            <div class="hero-deco-circle hero-deco-circle-2" aria-hidden="true"></div>
             <div class="hero-top">
                 <div class="hero-brand">
                     <img src="images/logo.png" alt="Exam Experts Logo" class="hero-logo">
