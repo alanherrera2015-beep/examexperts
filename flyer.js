@@ -32,15 +32,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     format: [8.5, 11]
                 });
 
-                // Fit image to page preserving aspect ratio
-                var pdfW = 8.5;
-                var pdfH = 11;
-                var imgAspect = canvas.width / canvas.height;
-                var pageAspect = pdfW / pdfH;
-                var imgW = imgAspect >= pageAspect ? pdfW : pdfH * imgAspect;
-                var imgH = imgAspect >= pageAspect ? pdfW / imgAspect : pdfH;
-
-                pdf.addImage(imgData, 'PNG', 0, 0, imgW, imgH);
+                // Stretch image to fill the full PDF page (8.5" × 11"); any minor
+                // aspect-ratio difference is negligible for a letter-sized flyer
+                pdf.addImage(imgData, 'PNG', 0, 0, 8.5, 11);
                 pdf.save('examexperts-flyer.pdf');
 
             } catch (err) {
