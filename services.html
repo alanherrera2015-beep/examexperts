@@ -240,6 +240,9 @@
             
             <!-- Academic Mentoring Content -->
             <div class="tab-content active" id="academic">
+                <div class="ai-search-bar">
+                    <button class="btn-ai-search-open" data-category="Academic Mentoring">🤖 AI Deep Search</button>
+                </div>
                 <div class="subjects-grid">
                     <div class="subject-card">
                         <h3>Mathematics</h3>
@@ -271,6 +274,9 @@
             
             <!-- Test Prep Content -->
             <div class="tab-content" id="test-prep">
+                <div class="ai-search-bar">
+                    <button class="btn-ai-search-open" data-category="Test Preparation">🤖 AI Deep Search</button>
+                </div>
                 <div class="test-prep-grid">
                     <div class="test-card">
                         <h3>SAT</h3>
@@ -307,6 +313,9 @@
 
             <!-- Nursing Programs Content -->
             <div class="tab-content" id="nursing">
+                <div class="ai-search-bar">
+                    <button class="btn-ai-search-open" data-category="Nursing Programs">🤖 AI Deep Search</button>
+                </div>
                 <!-- De-shame Banner -->
                 <div class="deshame-banner">
                     <p>If you've failed a nursing exam before, <strong>you are not alone and you are not "bad at nursing."</strong> Most of our nursing students come to us after one or more failed attempts. The problem is the exam format and study method — not your intelligence or your future.</p>
@@ -355,6 +364,9 @@
 
             <!-- Bilingual Support Content -->
             <div class="tab-content" id="bilingual">
+                <div class="ai-search-bar">
+                    <button class="btn-ai-search-open" data-category="Bilingual Support">🤖 AI Deep Search</button>
+                </div>
                 <div class="subjects-grid">
                     <div class="subject-card">
                         <h3>English Language Learning</h3>
@@ -380,6 +392,33 @@
             </div>
         </div>
     </section>
+
+    <!-- AI Deep Search Modal -->
+    <div id="aiDeepSearchModal" class="ai-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="aiModalTitle">
+        <div class="ai-modal-container">
+            <button class="ai-modal-close" id="aiModalClose" aria-label="Close AI search">&times;</button>
+            <div class="ai-modal-header">
+                <span class="ai-modal-icon">🤖</span>
+                <h2 class="ai-modal-title" id="aiModalTitle">AI Deep Search</h2>
+            </div>
+            <p class="ai-modal-category" id="aiModalCategory"></p>
+            <div class="ai-modal-field">
+                <label for="aiModelSelect">AI Model</label>
+                <select id="aiModelSelect" class="ai-modal-select">
+                    <option value="google/gemini-3-flash-preview">Google Gemini 3 Flash Preview</option>
+                </select>
+            </div>
+            <div class="ai-modal-field">
+                <label for="aiQueryInput">Your Question</label>
+                <textarea id="aiQueryInput" class="ai-modal-textarea" placeholder="Ask anything about this topic…" rows="3"></textarea>
+            </div>
+            <button id="aiSearchSubmit" class="btn-ai-submit">Search with AI ✨</button>
+            <div id="aiResultsArea" class="ai-results-area" aria-live="polite">
+                <div class="ai-results-label">AI Response</div>
+                <div id="aiResultsContent" class="ai-results-content"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">

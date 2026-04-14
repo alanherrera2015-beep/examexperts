@@ -412,3 +412,106 @@ pulseStyle.textContent = `
     }
 `;
 document.head.appendChild(pulseStyle);
+
+// =============================================
+// AI Deep Search Modal
+// =============================================
+(function () {
+    const modal = document.getElementById('aiDeepSearchModal');
+    if (!modal) return;
+
+    const modalClose = document.getElementById('aiModalClose');
+    const modalCategory = document.getElementById('aiModalCategory');
+    const modelSelect = document.getElementById('aiModelSelect');
+    const queryInput = document.getElementById('aiQueryInput');
+    const submitBtn = document.getElementById('aiSearchSubmit');
+    const resultsArea = document.getElementById('aiResultsArea');
+    const resultsContent = document.getElementById('aiResultsContent');
+
+    function openModal(category) {
+        modalCategory.textContent = category ? `Category: ${category}` : '';
+        modal.dataset.category = category || '';
+        queryInput.value = '';
+        resultsArea.classList.remove('visible');
+        resultsContent.textContent = '';
+        resultsContent.className = 'ai-results-content';
+        modal.classList.add('active');
+        modal.removeAttribute('aria-hidden');
+        queryInput.focus();
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    // Open modal when any AI Deep Search button is clicked
+    document.querySelectorAll('.btn-ai-search-open').forEach(btn => {
+        btn.addEventListener('click', () => {
+            openModal(btn.dataset.category || '');
+        });
+    });
+
+    // Close on × button
+    modalClose.addEventListener('click', closeModal);
+
+    // Close on overlay click (outside modal container)
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    });
+
+    // Submit search
+    submitBtn.addEventListener('click', async () => {
+        const query = queryInput.value.trim();
+        if (!query) {
+            queryInput.focus();
+            return;
+        }
+
+        const model = modelSelect.value;
+        const category = modal.dataset.category || '';
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Searching… ✨';
+        resultsArea.classList.add('visible');
+        resultsContent.className = 'ai-results-content';
+        resultsContent.textContent = 'Thinking…';
+
+        try {
+            const response = await fetch('/.netlify/functions/ai-search', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query, model, category })
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.answer) {
+                resultsContent.textContent = data.answer;
+            } else {
+                resultsContent.className = 'ai-results-error';
+                resultsContent.textContent = data.error || 'Something went wrong. Please try again.';
+            }
+        } catch (err) {
+            resultsContent.className = 'ai-results-error';
+            resultsContent.textContent = 'Network error. Please check your connection and try again.';
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Search with AI ✨';
+        }
+    });
+
+    // Allow submitting with Enter (Ctrl/Cmd + Enter) in the textarea
+    queryInput.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+            submitBtn.click();
+        }
+    });
+})();
