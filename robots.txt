@@ -2,6 +2,8 @@ User-agent: *
 Allow: /
 Disallow: /.netlify/functions/
 Disallow: /nohup.out
+Disallow: /flyer
+Disallow: /flyer-media
 
 # Allow all major search engine crawlers
 User-agent: Googlebot
