@@ -9,6 +9,37 @@
         gtag('js', new Date());
         gtag('config', 'G-XXXXXXXXXX');
     </script>
+
+    <!-- Structured Data: Service + Provider -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://examexperts.org/services#online-tutoring-service",
+      "name": "Online Tutoring Services",
+      "serviceType": "1-on-1 Online Tutoring",
+      "url": "https://examexperts.org/services",
+      "provider": {
+        "@type": ["LocalBusiness", "EducationalOrganization"],
+        "name": "Exam Experts",
+        "url": "https://examexperts.org",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Houston",
+          "addressRegion": "TX",
+          "addressCountry": "US"
+        },
+        "telephone": "281-541-5928"
+      },
+      "areaServed": ["US", { "@type": "City", "name": "Houston" }],
+      "offers": {
+        "@type": "Offer",
+        "price": "58",
+        "priceCurrency": "USD",
+        "url": "https://examexperts.org/pricing"
+      }
+    }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Online Tutoring Services | Exam Experts – SAT, ACT, NCLEX &amp; More | Houston, TX</title>
@@ -62,7 +93,7 @@
       "@context": "https://schema.org",
       "@type": "ItemList",
       "name": "Exam Experts Online Tutoring Services",
-      "url": "https://examexperts.org/services.html",
+      "url": "https://examexperts.org/services",
       "itemListElement": [
         {
           "@type": "Service",
@@ -103,7 +134,7 @@
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://examexperts.org/" },
-        { "@type": "ListItem", "position": 2, "name": "Tutoring Services", "item": "https://examexperts.org/services.html" }
+        { "@type": "ListItem", "position": 2, "name": "Tutoring Services", "item": "https://examexperts.org/services" }
       ]
     }
     </script>
@@ -134,6 +165,7 @@
                 <li><a href="/pricing" class="nav-link">Pricing</a></li>
                 <li><a href="/contact" class="nav-link">Contact</a></li>
                 <li><a href="/houston-tutoring" class="nav-link">Houston Tutoring</a></li>
+                <li><a href="/online-tutoring" class="nav-link">Online Tutoring</a></li>
             </ul>
             <a href="https://calendly.com/examexpertscontact" class="btn-book-session" target="_blank" rel="noopener noreferrer">Book Session</a>
             <div class="hamburger" id="hamburger">
@@ -381,6 +413,18 @@
         </div>
     </section>
 
+    
+    <section id="seo-intent-links" style="padding:50px 20px;background:#f8f7ff;">
+        <div class="container" style="max-width:860px;">
+            <h2 class="section-title" style="margin-bottom:10px;">Compare Houston Tutoring and Online Tutoring</h2>
+            <p style="text-align:center;color:#555;max-width:720px;margin:0 auto 22px;">Looking for the right fit? Explore our <a href="/houston-tutoring" style="color:#6c63ff;font-weight:600;">Houston tutoring services</a> for local students and our <a href="/online-tutoring" style="color:#6c63ff;font-weight:600;">online tutoring services</a> for flexible 1-on-1 support anywhere in the U.S.</p>
+            <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+                <a href="/houston-tutoring" class="btn btn-outline">Houston Tutoring Details</a>
+                <a href="/online-tutoring" class="btn btn-primary btn-shimmer">Online Tutoring Details</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-stars">
@@ -407,15 +451,15 @@
                         <li><a href="/about">About</a></li>
                         <li><a href="/pricing">Pricing</a></li>
                         <li><a href="/contact">Contact</a></li>
-                        <li><a href="/flyer">School Flyer</a></li>
-                        <li><a href="/flyer-media">Media Flyer</a></li>
+                        <li><a href="/houston-tutoring">Houston Tutoring</a></li>
+                        <li><a href="/online-tutoring">Online Tutoring</a></li>
                     </ul>
                 <div class="footer-column">
                     <h4>Services</h4>
                     <ul class="footer-links">
                         <li><a href="/services">Academic Mentoring</a></li>
                         <li><a href="/services">Test Preparation</a></li>
-                        <li><a href="/services">Online Learning</a></li>
+                        <li><a href="/online-tutoring">Online Tutoring</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
