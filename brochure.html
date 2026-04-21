@@ -375,8 +375,9 @@
                 if (!response.ok) throw new Error(`Failed to fetch main.tex: ${response.status} ${response.statusText}`);
                 const tex = await response.text();
                 const lines = tex.split('\n');
-                // Approximation for 11in panel height at 9px font and 1.25 line-height.
-                // 95 lines is tuned to keep each panel readable without overflow.
+                // Approximation for one 11in panel:
+                // 11in * 96px/in = 1056px; 9px * 1.25 = 11.25px/line; 1056 / 11.25 ≈ 93.8.
+                // Rounded/tuned to 95 lines to keep each panel readable without overflow.
                 const LINES_PER_PANEL = 95;
                 const panelChunks = [];
                 for (let i = 0; i < lines.length; i += LINES_PER_PANEL) {
@@ -418,7 +419,7 @@
                 const content = document.createElement('div');
                 content.className = 'content';
                 const message = document.createElement('p');
-                message.textContent = `Please verify /main.tex is available. ${String(error && error.message ? error.message : 'Unknown error')}`;
+                message.textContent = `Please verify /main.tex is available. ${error?.message || 'Unknown error'}`;
                 content.appendChild(message);
                 panel.appendChild(band);
                 panel.appendChild(content);
