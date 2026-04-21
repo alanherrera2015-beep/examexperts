@@ -181,6 +181,22 @@
         }
         .footer.crimson { background: var(--crimson); border-top-color: var(--gold); }
 
+        .tex-sheet-title {
+            width: 8.5in;
+            text-align: center;
+            font-weight: 800;
+            color: var(--navy);
+            margin: 2px 0;
+            font-size: 14px;
+        }
+        .tex-panel pre {
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 9px;
+            line-height: 1.25;
+        }
+
         @media print {
             @page { size: 8.5in 11in portrait; margin: 0; }
             body { background: none; padding: 0; }
@@ -342,8 +358,75 @@
                 <div class="footer">Personalized Support for Every Learning Stage</div>
             </article>
         </section>
+
+        <section aria-label="Complete source content from main.tex">
+            <h2 class="tex-sheet-title">Complete Source Content (main.tex)</h2>
+            <div id="mtex-content-target" aria-live="polite"></div>
+        </section>
     </div>
 
     <script src="/flyer.js"></script>
+    <script>
+        (async function loadMainTexIntoTriFold() {
+            const target = document.getElementById('mtex-content-target');
+            if (!target) return;
+            try {
+                const response = await fetch('/main.tex');
+                if (!response.ok) throw new Error(`Failed to fetch main.tex: ${response.status} ${response.statusText}`);
+                const tex = await response.text();
+                const lines = tex.split('\n');
+                // Approximation for one 11in panel:
+                // 11in * 96px/in = 1056px; 9px * 1.25 = 11.25px/line; 1056 / 11.25 ≈ 93.8.
+                // Rounded/tuned to 95 lines to keep each panel readable without overflow.
+                const LINES_PER_PANEL = 95;
+                const panelChunks = [];
+                for (let i = 0; i < lines.length; i += LINES_PER_PANEL) {
+                    panelChunks.push(lines.slice(i, i + LINES_PER_PANEL).join('\n'));
+                }
+                for (let i = 0; i < panelChunks.length; i += 3) {
+                    const panelsThisSheet = Math.min(3, panelChunks.length - i);
+                    const sheet = document.createElement('section');
+                    sheet.className = 'sheet';
+                    if (panelsThisSheet < 3) {
+                        sheet.style.gridTemplateColumns = `repeat(${panelsThisSheet}, 1fr)`;
+                    }
+                    sheet.setAttribute('aria-label', `main.tex tri-fold content page ${Math.floor(i / 3) + 1}`);
+                    for (let j = 0; j < panelsThisSheet; j += 1) {
+                        const panel = document.createElement('article');
+                        panel.className = 'panel ivory tex-panel';
+                        const band = document.createElement('div');
+                        band.className = j % 2 === 0 ? 'band navy' : 'band crimson';
+                        band.textContent = `main.tex Panel ${i + j + 1}`;
+                        const content = document.createElement('div');
+                        content.className = 'content';
+                        const pre = document.createElement('pre');
+                        pre.textContent = panelChunks[i + j] || '';
+                        content.appendChild(pre);
+                        panel.appendChild(band);
+                        panel.appendChild(content);
+                        sheet.appendChild(panel);
+                    }
+                    target.appendChild(sheet);
+                }
+            } catch (error) {
+                const fallback = document.createElement('section');
+                fallback.className = 'sheet';
+                const panel = document.createElement('article');
+                panel.className = 'panel ivory';
+                const band = document.createElement('div');
+                band.className = 'band crimson';
+                band.textContent = 'Unable to load main.tex';
+                const content = document.createElement('div');
+                content.className = 'content';
+                const message = document.createElement('p');
+                message.textContent = `Please verify /main.tex is available. ${error?.message || 'Unknown error'}`;
+                content.appendChild(message);
+                panel.appendChild(band);
+                panel.appendChild(content);
+                fallback.appendChild(panel);
+                target.appendChild(fallback);
+            }
+        })();
+    </script>
 </body>
 </html>
