@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <title>Exam Experts – Vertical Tri-Fold Brochure</title>
+    <meta name="description" content="Vertical tri-fold brochure for Exam Experts with printable inside/outside panels and SVG export.">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy: #0D1B2A;
+            --crimson: #A51C30;
+            --gold: #C5960C;
+            --ivory: #FAF8F2;
+            --linen: #F5F0E8;
+            --slate: #4A4A4A;
+            --soft-blue: #E8EDF2;
+            --soft-red: #F9E8EB;
+        }
+
+        body {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #EFF6FF;
+            color: var(--slate);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            padding: 24px 12px 36px;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            border: none;
+            border-radius: 9999px;
+            padding: 10px 18px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-back { border: 2px solid #2563EB; color: #2563EB; background: #fff; }
+        .btn-print { color: #fff; background: linear-gradient(135deg, #F59E0B, #EA580C); }
+        .btn-svg { color: #fff; background: linear-gradient(135deg, #10B981, #059669); }
+        .btn-svg:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .flyer {
+            width: 8.5in;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25in;
+        }
+
+        .sheet {
+            width: 8.5in;
+            min-height: 11in;
+            background: #fff;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .panel {
+            border-right: 1px dashed rgba(13, 27, 42, 0.25);
+            display: flex;
+            flex-direction: column;
+            min-height: 11in;
+        }
+        .panel:last-child { border-right: none; }
+
+        .band {
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+            font-size: 15px;
+            padding: 14px 16px;
+        }
+        .band.navy { background: var(--navy); border-bottom: 4px solid var(--gold); }
+        .band.crimson { background: var(--crimson); border-bottom: 4px solid var(--gold); }
+
+        .content { padding: 16px 14px 12px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+        .ivory { background: var(--ivory); }
+        .linen { background: var(--linen); }
+        .navy-bg { background: var(--navy); color: #fff; }
+
+        h1, h2, h3 { line-height: 1.2; }
+        h2 { color: var(--navy); font-size: 15px; }
+        h3 { color: var(--crimson); font-size: 13px; }
+
+        ul { padding-left: 16px; }
+        li { margin-bottom: 6px; font-size: 12px; line-height: 1.35; }
+        p { font-size: 12px; line-height: 1.45; }
+
+        .card {
+            border: 1px solid rgba(13, 27, 42, 0.15);
+            border-radius: 10px;
+            background: #fff;
+            padding: 10px;
+        }
+        .soft-blue { background: var(--soft-blue); border-color: rgba(13, 27, 42, 0.2); }
+        .soft-red { background: var(--soft-red); border-color: rgba(165, 28, 48, 0.2); }
+
+        .framework-step {
+            border-left: 4px solid var(--gold);
+            background: #fff;
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-size: 12px;
+        }
+        .framework-step strong { color: var(--navy); }
+
+        .price {
+            text-align: center;
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            background: #fff7e5;
+            padding: 12px 8px;
+        }
+        .price .amount {
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--crimson);
+        }
+
+        .front-brand {
+            text-align: center;
+            padding-top: 24px;
+        }
+        .front-brand img {
+            width: 86px;
+            height: 86px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.95);
+            padding: 6px;
+            margin-bottom: 10px;
+        }
+        .front-brand h1 {
+            color: #fff;
+            font-size: 40px;
+            line-height: 0.95;
+        }
+        .front-brand h1 span { color: var(--gold); }
+        .front-sub { color: #e5e7eb; font-size: 13px; margin-top: 10px; text-align: center; }
+        .front-pills { display: grid; gap: 8px; margin-top: 18px; }
+        .pill {
+            border: 1px solid rgba(197,150,12,0.4);
+            border-radius: 999px;
+            padding: 7px 10px;
+            text-align: center;
+            font-size: 11px;
+            color: #fff;
+            background: rgba(255,255,255,0.08);
+            font-weight: 700;
+        }
+
+        .footer {
+            margin-top: auto;
+            background: rgba(13,27,42,0.95);
+            color: #f3f4f6;
+            font-size: 10px;
+            text-align: center;
+            padding: 8px 10px;
+            border-top: 3px solid var(--gold);
+        }
+        .footer.crimson { background: var(--crimson); border-top-color: var(--gold); }
+
+        @media print {
+            @page { size: 8.5in 11in portrait; margin: 0; }
+            body { background: none; padding: 0; }
+            .toolbar { display: none !important; }
+            .sheet { box-shadow: none; page-break-after: always; }
+            .sheet:last-child { page-break-after: auto; }
+        }
+    </style>
+    <script src="/vendor/html-to-image.js"></script>
+</head>
+<body>
+    <div class="toolbar">
+        <a href="/flyer" class="btn btn-back">← Back to Flyer</a>
+        <button class="btn btn-print" id="btn-print">🖨️ Print / Save as PDF</button>
+        <button class="btn btn-svg" id="btn-download-svg">⬇️ Download SVG (Vector)</button>
+    </div>
+
+    <div class="flyer">
+        <!-- PAGE 1 — INSIDE -->
+        <section class="sheet" aria-label="Inside brochure page">
+            <article class="panel ivory">
+                <div class="band navy">What We Help With</div>
+                <div class="content">
+                    <div>
+                        <h3>Test Preparation</h3>
+                        <ul>
+                            <li><strong>STAAR:</strong> grade-level readiness + confidence.</li>
+                            <li><strong>AP Support:</strong> concept mastery + exam strategy.</li>
+                            <li><strong>SAT/ACT:</strong> timed practice with score-focused coaching.</li>
+                            <li><strong>MCAT/GRE:</strong> structured prep plans and drills.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Academic Subjects</h3>
+                        <ul>
+                            <li>Math from arithmetic through college-level courses.</li>
+                            <li>Reading/ELA: comprehension, writing, and vocabulary.</li>
+                            <li>Science: biology, chemistry, and physics support.</li>
+                        </ul>
+                    </div>
+                    <div class="card soft-blue">
+                        <h3>Specialized Support</h3>
+                        <ul>
+                            <li>Nursing coursework and exam prep.</li>
+                            <li>Study systems, note-taking, and test confidence.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer">Building Confidence • Mastering Content • Achieving Results</div>
+            </article>
+
+            <article class="panel linen">
+                <div class="band crimson">Our 5-Step Learning Framework</div>
+                <div class="content">
+                    <p><em>A research-informed progression that builds understanding before speed.</em></p>
+                    <div class="framework-step"><strong>1) Analogy:</strong> connect new ideas to what students already know.</div>
+                    <div class="framework-step"><strong>2) Definition:</strong> introduce precise language and core rules.</div>
+                    <div class="framework-step"><strong>3) Demonstration:</strong> tutor models the skill with worked examples.</div>
+                    <div class="framework-step"><strong>4) Guided Practice:</strong> student solves with coaching and immediate feedback.</div>
+                    <div class="framework-step"><strong>5) Independent Mastery:</strong> student applies skills confidently alone.</div>
+                    <div class="card">
+                        <h3>Example: Physics</h3>
+                        <p><strong>Problem:</strong> A 2 kg object accelerates at 3 m/s². Find net force.</p>
+                        <p><strong>Formula:</strong> F = ma → F = 2 × 3 = <strong>6 N</strong></p>
+                    </div>
+                </div>
+                <div class="footer crimson">Research-Informed • Personalized • Results-Driven</div>
+            </article>
+
+            <article class="panel ivory">
+                <div class="band navy">Session Format & Pricing</div>
+                <div class="content">
+                    <div class="card">
+                        <h2>Flexible 1-on-1 Online</h2>
+                        <p>Live tutoring tailored to your schedule, including evenings and weekends.</p>
+                    </div>
+                    <div class="card">
+                        <h2>Personalized Roadmap</h2>
+                        <p>Diagnostic assessment + targeted lesson plan for measurable growth.</p>
+                    </div>
+                    <div class="card">
+                        <h2>Progress Tracking</h2>
+                        <p>Check-ins and updates so families always know next steps.</p>
+                    </div>
+                    <div class="price">
+                        <div style="font-size:13px;font-weight:800;color:var(--navy);">Brochure Special</div>
+                        <div class="amount">$65</div>
+                        <div style="font-size:12px;">/ session</div>
+                        <p style="margin-top:8px;">No long-term contracts • Cancel anytime</p>
+                    </div>
+                    <div class="card soft-red">
+                        <h2 style="color:var(--crimson)">FREE Consultation</h2>
+                        <p>Discuss current performance, identify gaps, and get a custom support plan.</p>
+                    </div>
+                </div>
+                <div class="footer">Every Student Deserves Expert Support</div>
+            </article>
+        </section>
+
+        <!-- PAGE 2 — OUTSIDE -->
+        <section class="sheet" aria-label="Outside brochure page">
+            <article class="panel ivory">
+                <div class="band navy">Contact Us</div>
+                <div class="content">
+                    <div class="card">
+                        <p><strong>Phone:</strong> (281) 541-5928</p>
+                        <p><strong>Email:</strong> examexpertscontact@gmail.com</p>
+                        <p><strong>Website:</strong> www.examexperts.org</p>
+                        <p><strong>Social:</strong> @ExamExperts</p>
+                    </div>
+                    <div class="card">
+                        <h2>Serving Students Online</h2>
+                        <p>K–12, college, and nursing support across Texas and beyond.</p>
+                    </div>
+                    <div class="card soft-blue">
+                        <h2>Scan to Book</h2>
+                        <p>Use your phone camera to schedule a free consultation.</p>
+                        <p style="font-size:40px;text-align:center;line-height:1;">▦</p>
+                    </div>
+                    <div class="card">
+                        <p><em>“My daughter’s STAAR score improved by two performance levels in 8 weeks.”</em></p>
+                        <p style="font-size:11px;margin-top:6px;"><strong>— Parent, Houston TX</strong></p>
+                    </div>
+                </div>
+                <div class="footer">© 2026 Exam Experts. All rights reserved.</div>
+            </article>
+
+            <article class="panel navy-bg">
+                <div class="band navy">Front Cover</div>
+                <div class="content" style="background:transparent;">
+                    <div class="front-brand">
+                        <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
+                        <h1>EXAM<br><span>EXPERTS</span></h1>
+                    </div>
+                    <p class="front-sub">One-on-One Tutoring & Exam Prep for K–12, College, and Nursing Students</p>
+                    <div class="front-pills">
+                        <div class="pill">Live 1-on-1 Sessions</div>
+                        <div class="pill">Expert Vetted Tutors</div>
+                        <div class="pill">Personalized Learning Plans</div>
+                        <div class="pill">Proven Results</div>
+                    </div>
+                    <div style="margin-top:auto;text-align:center;padding-top:16px;">
+                        <div style="color:#fef3c7;font-weight:700;font-size:13px;">www.examexperts.org</div>
+                    </div>
+                </div>
+                <div class="footer crimson">Schedule Your FREE Consultation Today</div>
+            </article>
+
+            <article class="panel ivory">
+                <div class="band crimson">Why Choose Exam Experts?</div>
+                <div class="content">
+                    <div class="card"><h2>Expert, Vetted Tutors</h2><p>Strong content knowledge with clear teaching communication.</p></div>
+                    <div class="card"><h2>Truly Personalized Plans</h2><p>We diagnose gaps first and target exactly what matters most.</p></div>
+                    <div class="card"><h2>Research-Based Methodology</h2><p>Our 5-step framework emphasizes deep understanding and transfer.</p></div>
+                    <div class="card"><h2>Transparent Progress Tracking</h2><p>Regular updates and measurable outcomes keep momentum visible.</p></div>
+                    <div class="card soft-red"><h2>No Long-Term Contracts</h2><p>Flexible scheduling with evenings/weekends and cancel-anytime terms.</p></div>
+                    <div class="card"><h2>Who We Serve</h2><p>K–12 • AP • SAT/ACT • MCAT/GRE • Nursing • College coursework</p></div>
+                </div>
+                <div class="footer">Personalized Support for Every Learning Stage</div>
+            </article>
+        </section>
+    </div>
+
+    <script src="/flyer.js"></script>
+</body>
+</html>
