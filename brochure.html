@@ -359,7 +359,7 @@
             </article>
         </section>
 
-        <h2 class="tex-sheet-title">All Content from main.tex</h2>
+        <h2 class="tex-sheet-title">Complete Source Content (main.tex)</h2>
         <div id="mtex-content-target" aria-live="polite"></div>
     </div>
 
@@ -370,10 +370,11 @@
             if (!target) return;
             try {
                 const response = await fetch('/main.tex');
-                if (!response.ok) throw new Error('Failed to fetch main.tex');
+                if (!response.ok) throw new Error(`Failed to fetch main.tex: ${response.status} ${response.statusText}`);
                 const tex = await response.text();
                 const lines = tex.split('\n');
-                // Tuned for 9px monospace content to fit one tri-fold panel cleanly.
+                // Approximation for 11in panel height at 9px font and 1.25 line-height.
+                // 95 lines is tuned to keep each panel readable without overflow.
                 const linesPerPanel = 95;
                 const panelChunks = [];
                 for (let i = 0; i < lines.length; i += linesPerPanel) {
