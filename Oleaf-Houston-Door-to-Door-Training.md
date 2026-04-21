@@ -67,11 +67,11 @@ For every qualified conversation, collect:
 5. Confirm next-day assignments.
 
 ## Performance Targets (Daily)
-- Doors approached
-- Conversations started
-- Qualified leads collected
-- Consultations booked
-- Follow-up completion rate
+- Doors approached: 50-75
+- Conversations started: 20-30
+- Qualified leads collected: 8-12
+- Consultations booked: 3-5
+- Follow-up completion rate: 90%+
 
 ## Team Reminder
 Represent Exam Experts with professionalism, consistency, and respect. Every conversation should leave the community with a positive impression of the brand.
