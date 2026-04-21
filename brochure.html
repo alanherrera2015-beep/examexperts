@@ -359,8 +359,10 @@
             </article>
         </section>
 
-        <h2 class="tex-sheet-title">Complete Source Content (main.tex)</h2>
-        <div id="mtex-content-target" aria-live="polite"></div>
+        <section aria-label="Complete source content from main.tex">
+            <h2 class="tex-sheet-title">Complete Source Content (main.tex)</h2>
+            <div id="mtex-content-target" aria-live="polite"></div>
+        </section>
     </div>
 
     <script src="/flyer.js"></script>
@@ -375,10 +377,10 @@
                 const lines = tex.split('\n');
                 // Approximation for 11in panel height at 9px font and 1.25 line-height.
                 // 95 lines is tuned to keep each panel readable without overflow.
-                const linesPerPanel = 95;
+                const LINES_PER_PANEL = 95;
                 const panelChunks = [];
-                for (let i = 0; i < lines.length; i += linesPerPanel) {
-                    panelChunks.push(lines.slice(i, i + linesPerPanel).join('\n'));
+                for (let i = 0; i < lines.length; i += LINES_PER_PANEL) {
+                    panelChunks.push(lines.slice(i, i + LINES_PER_PANEL).join('\n'));
                 }
                 for (let i = 0; i < panelChunks.length; i += 3) {
                     const panelsThisSheet = Math.min(3, panelChunks.length - i);
@@ -387,7 +389,7 @@
                     if (panelsThisSheet < 3) {
                         sheet.style.gridTemplateColumns = `repeat(${panelsThisSheet}, 1fr)`;
                     }
-                    sheet.setAttribute('aria-label', 'main.tex tri-fold content page');
+                    sheet.setAttribute('aria-label', `main.tex tri-fold content page ${Math.floor(i / 3) + 1}`);
                     for (let j = 0; j < panelsThisSheet; j += 1) {
                         const panel = document.createElement('article');
                         panel.className = 'panel ivory tex-panel';
@@ -408,14 +410,19 @@
             } catch (error) {
                 const fallback = document.createElement('section');
                 fallback.className = 'sheet';
-                fallback.innerHTML = `
-                    <article class="panel ivory">
-                        <div class="band crimson">Unable to load main.tex</div>
-                        <div class="content"><p>Please verify <code>/main.tex</code> is available.</p></div>
-                    </article>
-                    <article class="panel ivory"><div class="content"></div></article>
-                    <article class="panel ivory"><div class="content"></div></article>
-                `;
+                const panel = document.createElement('article');
+                panel.className = 'panel ivory';
+                const band = document.createElement('div');
+                band.className = 'band crimson';
+                band.textContent = 'Unable to load main.tex';
+                const content = document.createElement('div');
+                content.className = 'content';
+                const message = document.createElement('p');
+                message.textContent = `Please verify /main.tex is available. ${String(error && error.message ? error.message : 'Unknown error')}`;
+                content.appendChild(message);
+                panel.appendChild(band);
+                panel.appendChild(content);
+                fallback.appendChild(panel);
                 target.appendChild(fallback);
             }
         })();
