@@ -3704,6 +3704,10 @@ section::before {
     box-shadow: none;
 }
 
+.resource-card .btn-outline + .btn-outline {
+    margin-top: 10px;
+}
+
 .resource-card .btn-outline:hover {
     background: #4F46E5;
     color: #ffffff;
