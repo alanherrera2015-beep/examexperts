@@ -359,7 +359,7 @@
             </article>
         </section>
 
-        <h2 class="tex-sheet-title">All Content from main.tex (m.tex)</h2>
+        <h2 class="tex-sheet-title">All Content from main.tex</h2>
         <div id="mtex-content-target" aria-live="polite"></div>
     </div>
 
@@ -369,20 +369,25 @@
             const target = document.getElementById('mtex-content-target');
             if (!target) return;
             try {
-                const response = await fetch('/main.tex', { cache: 'no-store' });
+                const response = await fetch('/main.tex');
                 if (!response.ok) throw new Error('Failed to fetch main.tex');
                 const tex = await response.text();
                 const lines = tex.split('\n');
+                // Tuned for 9px monospace content to fit one tri-fold panel cleanly.
                 const linesPerPanel = 95;
                 const panelChunks = [];
                 for (let i = 0; i < lines.length; i += linesPerPanel) {
                     panelChunks.push(lines.slice(i, i + linesPerPanel).join('\n'));
                 }
                 for (let i = 0; i < panelChunks.length; i += 3) {
+                    const panelsThisSheet = Math.min(3, panelChunks.length - i);
                     const sheet = document.createElement('section');
                     sheet.className = 'sheet';
+                    if (panelsThisSheet < 3) {
+                        sheet.style.gridTemplateColumns = `repeat(${panelsThisSheet}, 1fr)`;
+                    }
                     sheet.setAttribute('aria-label', 'main.tex tri-fold content page');
-                    for (let j = 0; j < 3; j += 1) {
+                    for (let j = 0; j < panelsThisSheet; j += 1) {
                         const panel = document.createElement('article');
                         panel.className = 'panel ivory tex-panel';
                         const band = document.createElement('div');
