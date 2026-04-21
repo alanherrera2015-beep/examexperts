@@ -181,6 +181,22 @@
         }
         .footer.crimson { background: var(--crimson); border-top-color: var(--gold); }
 
+        .tex-sheet-title {
+            width: 8.5in;
+            text-align: center;
+            font-weight: 800;
+            color: var(--navy);
+            margin: 2px 0;
+            font-size: 14px;
+        }
+        .tex-panel pre {
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 9px;
+            line-height: 1.25;
+        }
+
         @media print {
             @page { size: 8.5in 11in portrait; margin: 0; }
             body { background: none; padding: 0; }
@@ -342,8 +358,61 @@
                 <div class="footer">Personalized Support for Every Learning Stage</div>
             </article>
         </section>
+
+        <h2 class="tex-sheet-title">All Content from main.tex (m.tex)</h2>
+        <div id="mtex-content-target" aria-live="polite"></div>
     </div>
 
     <script src="/flyer.js"></script>
+    <script>
+        (async function loadMainTexIntoTriFold() {
+            const target = document.getElementById('mtex-content-target');
+            if (!target) return;
+            try {
+                const response = await fetch('/main.tex', { cache: 'no-store' });
+                if (!response.ok) throw new Error('Failed to fetch main.tex');
+                const tex = await response.text();
+                const lines = tex.split('\n');
+                const linesPerPanel = 95;
+                const panelChunks = [];
+                for (let i = 0; i < lines.length; i += linesPerPanel) {
+                    panelChunks.push(lines.slice(i, i + linesPerPanel).join('\n'));
+                }
+                for (let i = 0; i < panelChunks.length; i += 3) {
+                    const sheet = document.createElement('section');
+                    sheet.className = 'sheet';
+                    sheet.setAttribute('aria-label', 'main.tex tri-fold content page');
+                    for (let j = 0; j < 3; j += 1) {
+                        const panel = document.createElement('article');
+                        panel.className = 'panel ivory tex-panel';
+                        const band = document.createElement('div');
+                        band.className = j % 2 === 0 ? 'band navy' : 'band crimson';
+                        band.textContent = `main.tex Panel ${i + j + 1}`;
+                        const content = document.createElement('div');
+                        content.className = 'content';
+                        const pre = document.createElement('pre');
+                        pre.textContent = panelChunks[i + j] || '';
+                        content.appendChild(pre);
+                        panel.appendChild(band);
+                        panel.appendChild(content);
+                        sheet.appendChild(panel);
+                    }
+                    target.appendChild(sheet);
+                }
+            } catch (error) {
+                const fallback = document.createElement('section');
+                fallback.className = 'sheet';
+                fallback.innerHTML = `
+                    <article class="panel ivory">
+                        <div class="band crimson">Unable to load main.tex</div>
+                        <div class="content"><p>Please verify <code>/main.tex</code> is available.</p></div>
+                    </article>
+                    <article class="panel ivory"><div class="content"></div></article>
+                    <article class="panel ivory"><div class="content"></div></article>
+                `;
+                target.appendChild(fallback);
+            }
+        })();
+    </script>
 </body>
 </html>
