@@ -59,7 +59,7 @@
   </g>
 
   <!-- Placeholder QR block for print layout mockup. -->
-  <!-- Production replacement: SVG QR encoding https://examexperts.org, final print asset >=1024x1024 px, error correction H. -->
+  <!-- Production replacement: SVG QR encoding https://examexperts.org; current 560x560 block is mockup-only, scale to >=1024x1024 px for print with error correction H. -->
   <g transform="translate(3250, 1660)" role="presentation" aria-hidden="true">
     <rect x="0" y="0" width="560" height="560" fill="#ffffff" rx="20"/>
     <rect x="34" y="34" width="140" height="140" fill="#050811"/>
@@ -86,5 +86,5 @@
   </g>
 
   <text x="3530" y="2315" text-anchor="middle" class="cta">Scan to start free</text>
-  <text x="3530" y="2420" text-anchor="middle" class="small">examexperts.org • @examexperts</text>
+  <text x="3530" y="2420" text-anchor="middle" class="small">https://examexperts.org • @examexperts</text>
 </svg>
