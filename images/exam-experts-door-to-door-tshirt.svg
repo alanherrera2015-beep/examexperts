@@ -58,8 +58,8 @@
     <text x="90" y="22" class="bullet">Proven study plans</text>
   </g>
 
-  <!-- Placeholder QR block for print mockup; replace with production SVG QR (e.g., https://www.qr-code-generator.com/) linking to signup landing page -->
-  <g transform="translate(3250, 1660)" role="img" aria-label="Placeholder QR code for Exam Experts signup link">
+  <!-- Placeholder QR block for print mockup; replace with production SVG QR encoding https://examexperts.org (recommended print size >= 1024x1024 px, error correction level H) -->
+  <g transform="translate(3250, 1660)" role="img" aria-label="Placeholder QR code mockup linking to https://examexperts.org">
     <rect x="0" y="0" width="560" height="560" fill="#ffffff" rx="20"/>
     <rect x="34" y="34" width="140" height="140" fill="#050811"/>
     <rect x="62" y="62" width="84" height="84" fill="#ffffff"/>
