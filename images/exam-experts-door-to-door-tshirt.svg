@@ -58,8 +58,9 @@
     <text x="90" y="22" class="bullet">Proven study plans</text>
   </g>
 
-  <!-- Placeholder QR block for print mockup; replace with production SVG QR encoding https://examexperts.org (final print QR asset: >=1024x1024 px, error correction H; current 560x560 block is layout placeholder) -->
-  <g transform="translate(3250, 1660)" role="img" aria-label="Placeholder QR code mockup linking to https://examexperts.org">
+  <!-- Placeholder QR block for print layout mockup. -->
+  <!-- Production replacement: SVG QR encoding https://examexperts.org, final print asset >=1024x1024 px, error correction H. -->
+  <g transform="translate(3250, 1660)" role="presentation" aria-hidden="true">
     <rect x="0" y="0" width="560" height="560" fill="#ffffff" rx="20"/>
     <rect x="34" y="34" width="140" height="140" fill="#050811"/>
     <rect x="62" y="62" width="84" height="84" fill="#ffffff"/>
