@@ -28,34 +28,28 @@
   <line x1="2400" y1="260" x2="2400" y2="2650" class="stroke"/>
 
   <!-- Front design -->
-  <g transform="translate(1210, 1060)">
-    <circle cx="0" cy="-220" r="170" fill="none" stroke="#ffffff" stroke-width="16"/>
-    <path d="M-80 -235 L80 -235 L0 -330 Z" fill="#ffffff"/>
-    <rect x="-52" y="-232" width="104" height="34" rx="8" fill="#ffffff"/>
-    <rect x="-10" y="-198" width="20" height="70" rx="7" fill="#ffffff"/>
-    <circle cx="0" cy="-106" r="14" fill="#ffffff"/>
-  </g>
+  <image x="1020" y="740" width="380" height="380" href="Logo.svg.svg" preserveAspectRatio="xMidYMid meet"/>
   <text x="1210" y="1260" text-anchor="middle" class="title">EXAM EXPERTS</text>
-  <text x="1210" y="1470" text-anchor="middle" class="headline">Pass Smarter.</text>
-  <text x="1210" y="1605" text-anchor="middle" class="subline">Prep with Exam Experts</text>
+  <text x="1210" y="1470" text-anchor="middle" class="headline">Pass Smarter. Score Higher.</text>
+  <text x="1210" y="1605" text-anchor="middle" class="subline">Expert prep built for exam-day confidence</text>
 
   <!-- Back design -->
-  <text x="3590" y="930" text-anchor="middle" class="back-title">ACE YOUR NEXT EXAM</text>
+  <text x="3590" y="930" text-anchor="middle" class="back-title">ACE YOUR NEXT EXAM FAST</text>
 
   <g transform="translate(2960, 1140)">
     <circle cx="0" cy="0" r="26" class="accent"/>
     <path d="M-10 0 L-1 10 L13 -10" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="90" y="22" class="bullet">Practice tests</text>
+    <text x="90" y="22" class="bullet">Real exam-style questions</text>
   </g>
   <g transform="translate(2960, 1300)">
     <circle cx="0" cy="0" r="26" class="accent"/>
     <path d="M-10 0 L-1 10 L13 -10" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="90" y="22" class="bullet">Expert explanations</text>
+    <text x="90" y="22" class="bullet">Step-by-step explanations</text>
   </g>
   <g transform="translate(2960, 1460)">
     <circle cx="0" cy="0" r="26" class="accent"/>
     <path d="M-10 0 L-1 10 L13 -10" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="90" y="22" class="bullet">Proven study plans</text>
+    <text x="90" y="22" class="bullet">Personalized study plans</text>
   </g>
 
   <!-- Placeholder QR block for print layout mockup. -->
@@ -85,6 +79,6 @@
     <rect x="328" y="490" width="44" height="44" fill="#050811"/>
   </g>
 
-  <text x="3530" y="2315" text-anchor="middle" class="cta">Scan to start free</text>
-  <text x="3530" y="2420" text-anchor="middle" class="small">https://examexperts.org • @examexperts</text>
+  <text x="3530" y="2315" text-anchor="middle" class="cta">Scan for a free practice test</text>
+  <text x="3530" y="2420" text-anchor="middle" class="small">examexperts.org (281) 541-5928</text>
 </svg>
