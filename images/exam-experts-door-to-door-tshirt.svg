@@ -28,13 +28,7 @@
   <line x1="2400" y1="260" x2="2400" y2="2650" class="stroke"/>
 
   <!-- Front design -->
-  <g transform="translate(1210, 1060)">
-    <circle cx="0" cy="-220" r="170" fill="none" stroke="#ffffff" stroke-width="16"/>
-    <path d="M-80 -235 L80 -235 L0 -330 Z" fill="#ffffff"/>
-    <rect x="-52" y="-232" width="104" height="34" rx="8" fill="#ffffff"/>
-    <rect x="-10" y="-198" width="20" height="70" rx="7" fill="#ffffff"/>
-    <circle cx="0" cy="-106" r="14" fill="#ffffff"/>
-  </g>
+  <image x="1020" y="740" width="380" height="380" href="Logo.svg.svg" preserveAspectRatio="xMidYMid meet"/>
   <text x="1210" y="1260" text-anchor="middle" class="title">EXAM EXPERTS</text>
   <text x="1210" y="1470" text-anchor="middle" class="headline">Pass Smarter.</text>
   <text x="1210" y="1605" text-anchor="middle" class="subline">Prep with Exam Experts</text>
