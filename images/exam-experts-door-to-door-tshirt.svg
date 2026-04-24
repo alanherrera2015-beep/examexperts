@@ -28,10 +28,9 @@
   <line x1="2400" y1="260" x2="2400" y2="2650" class="stroke"/>
 
   <!-- Front design -->
-  <image x="1020" y="740" width="380" height="380" href="Logo.svg.svg" preserveAspectRatio="xMidYMid meet"/>
-  <text x="1210" y="1260" text-anchor="middle" class="title">EXAM EXPERTS</text>
-  <text x="1210" y="1470" text-anchor="middle" class="headline">Pass Smarter. Score Higher.</text>
-  <text x="1210" y="1605" text-anchor="middle" class="subline">Expert prep built for exam-day confidence</text>
+  <image x="860" y="660" width="700" height="700" href="Logo.svg.svg" preserveAspectRatio="xMidYMid meet"/>
+  <text x="1210" y="1480" text-anchor="middle" class="headline">Pass Smarter. Score Higher.</text>
+  <text x="1210" y="1615" text-anchor="middle" class="subline">Expert prep built for exam-day confidence</text>
 
   <!-- Back design -->
   <text x="3590" y="930" text-anchor="middle" class="back-title">ACE YOUR NEXT EXAM FAST</text>
