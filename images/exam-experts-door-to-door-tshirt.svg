@@ -5,7 +5,7 @@
       .title { font: 900 180px 'Inter', 'Arial', sans-serif; fill: #ffffff; letter-spacing: 2px; }
       .headline { font: 900 132px 'Inter', 'Arial', sans-serif; fill: #ffffff; letter-spacing: 1px; }
       .subline { font: 700 70px 'Inter', 'Arial', sans-serif; fill: #ffffff; }
-      .back-title { font: 900 170px 'Inter', 'Arial', sans-serif; fill: #ffffff; letter-spacing: 2px; }
+      .back-title { font: 900 120px 'Inter', 'Arial', sans-serif; fill: #ffffff; letter-spacing: 2px; }
       .bullet { font: 800 74px 'Inter', 'Arial', sans-serif; fill: #ffffff; }
       .accent { fill: #6c63ff; }
       .cta { font: 900 88px 'Inter', 'Arial', sans-serif; fill: #6c63ff; letter-spacing: 1px; }
