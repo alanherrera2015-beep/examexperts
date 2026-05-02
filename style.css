@@ -4014,6 +4014,13 @@ section::before {
     color: #6D28D9;
 }
 
+.privacy-notice {
+    margin: 8px 0 0 0;
+    font-size: 12px;
+    color: #6B7280;
+    line-height: 1.5;
+}
+
 /* Intake form extra field */
 .form-group-highlight {
     background: #FFFBEB;
