@@ -3982,6 +3982,38 @@ section::before {
     text-align: center;
 }
 
+/* Privacy policy checkbox */
+.form-group-privacy {
+    margin-bottom: 20px;
+}
+
+.privacy-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: #374151;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.privacy-label input[type="checkbox"] {
+    width: auto;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: #8B5CF6;
+    cursor: pointer;
+}
+
+.privacy-label a {
+    color: #8B5CF6;
+    text-decoration: underline;
+}
+
+.privacy-label a:hover {
+    color: #6D28D9;
+}
+
 /* Intake form extra field */
 .form-group-highlight {
     background: #FFFBEB;
