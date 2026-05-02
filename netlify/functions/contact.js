@@ -36,6 +36,7 @@ exports.handler = async function (event) {
     const body = JSON.parse(event.body || '{}');
     const name = (body.name || '').trim();
     const email = (body.email || '').trim();
+    const phone = (body.phone || '').trim();
     const subject = (body.subject || '').trim();
     const message = (body.message || '').trim();
     const recaptchaToken = body.recaptchaToken || '';
@@ -78,6 +79,7 @@ exports.handler = async function (event) {
       <p>You received a new message from your contact form.</p>
       <p><strong>Name:</strong> ${escapeHtml(name)}</p>
       <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+      ${phone ? `<p><strong>Phone:</strong> ${escapeHtml(phone)}</p>` : ''}
       <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
       <hr/>
       <p>${escapeHtml(message).replace(/\n/g, '<br/>')}</p>
@@ -88,7 +90,7 @@ exports.handler = async function (event) {
       from: FROM_EMAIL,
       replyTo: email,
       subject: `Contact form: ${subject} — ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\n${message}`,
+      text: `Name: ${name}\nEmail: ${email}\n${phone ? `Phone: ${phone}\n` : ''}Subject: ${subject}\n\n${message}`,
       html: emailHtml
     };
 

@@ -120,6 +120,7 @@ contactForm.addEventListener('submit', async (e) => {
     const formData = {
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
         subject: document.getElementById('subject').value,
         message: document.getElementById('message').value
     };
@@ -140,6 +141,7 @@ contactForm.addEventListener('submit', async (e) => {
                 'form-name': 'contact',
                 name: formData.name,
                 email: formData.email,
+                phone: formData.phone,
                 subject: formData.subject,
                 message: formData.message
             }).toString()
