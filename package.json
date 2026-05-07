@@ -4,6 +4,11 @@
   "private": true,
   "description": "Exam Experts website with Netlify Functions",
   "dependencies": {
-    "@sendgrid/mail": "^8.1.6"
+    "@sendgrid/mail": "^8.1.6",
+    "stripe": "^22.1.1"
+  },
+  "overrides": {
+    "axios": "1.16.0",
+    "follow-redirects": "1.16.0"
   }
 }

@@ -159,6 +159,62 @@
             <h2 class="section-title">Exam Experts Pricing</h2>
             <p class="section-subtitle">Choose the package that fits your goals — every plan includes our signature 5-step analogy method</p>
 
+            <div class="pricing-signup" id="signup">
+                <div class="pricing-signup-copy">
+                    <span class="pricing-signup-badge">⚡ Easy Stripe Sign-Up</span>
+                    <h3 class="pricing-signup-title">Start the 5-Step Analogy Method With Secure Stripe Checkout</h3>
+                    <p class="pricing-signup-text">Pick the option that fits your school year, fill out one short form, and head straight to Stripe to lock in your spot.</p>
+                </div>
+                <div class="pricing-signup-options">
+                    <label class="signup-plan-card signup-plan-card-featured">
+                        <input type="radio" name="signup-plan" value="school-year" checked form="signupForm">
+                        <span class="signup-plan-badge">Best value</span>
+                        <span class="signup-plan-name">School Year Plan</span>
+                        <span class="signup-plan-price">$100 enrollment + $50/hr</span>
+                        <span class="signup-plan-desc">Pay the one-time enrollment in Stripe now, then keep your tutoring rate at $50/hr for the rest of the school year.</span>
+                    </label>
+                    <label class="signup-plan-card">
+                        <input type="radio" name="signup-plan" value="pay-as-you-go" form="signupForm">
+                        <span class="signup-plan-name">No Enrollment Plan</span>
+                        <span class="signup-plan-price">$75/hr with no enrollment fee</span>
+                        <span class="signup-plan-desc">Use Stripe to pay for your first hour now, then keep booking at $75/hr with no enrollment cost.</span>
+                    </label>
+                </div>
+                <form class="contact-form signup-form" id="signupForm">
+                    <div class="signup-form-grid">
+                        <div class="form-group">
+                            <label for="signup-name">Student Name</label>
+                            <input type="text" id="signup-name" name="name" autocomplete="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-email">Email</label>
+                            <input type="email" id="signup-email" name="email" autocomplete="email" required>
+                        </div>
+                    </div>
+                    <div class="signup-form-grid">
+                        <div class="form-group">
+                            <label for="signup-phone">Phone Number (optional)</label>
+                            <input type="tel" id="signup-phone" name="phone" autocomplete="tel" placeholder="e.g. 281-541-5928">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-subject">What do you need help with?</label>
+                            <input type="text" id="signup-subject" name="subject" placeholder="NCLEX, Pharmacology, Calculus, SAT..." required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-goals">Anything we should know before checkout? (optional)</label>
+                        <textarea id="signup-goals" name="goals" rows="4" placeholder="Exam date, school, biggest challenge, or what you want the 5-step analogy method to help you fix."></textarea>
+                    </div>
+                    <div class="pricing-policy signup-plan-note-wrap">
+                        <span class="pricing-policy-icon">💳</span>
+                        <p id="signupPlanNote"><strong>School Year Plan:</strong> Stripe will charge your one-time $100 enrollment today. After that, your tutoring rate is $50/hr for the rest of the school year.</p>
+                    </div>
+                    <p class="signup-form-status" id="signupStatus" aria-live="polite"></p>
+                    <button type="submit" class="btn btn-submit">Continue to Stripe Checkout</button>
+                    <p class="low-pressure-note">Secure checkout is powered by Stripe. If you would rather ask questions first, call <a href="tel:2815415928">281-541-5928</a> or email <a href="mailto:examexpertscontact@gmail.com">examexpertscontact@gmail.com</a>.</p>
+                </form>
+            </div>
+
             <!-- Competitor Comparison Banner -->
             <div class="competitor-banner">
                 <div class="competitor-banner-inner">
@@ -562,7 +618,7 @@
                     <li>📚 <strong>General Tutoring:</strong> Single Session ($99/hr) or 4-Hour Power Session ($75/hr, any subject); Semester Success Retainer (~$58/hr) is the best value for semester-long support</li>
                     <li>🏥 <strong>Nursing Programs:</strong> Single Session ($85/hr), Semester Bundle (~$69/hr), and NCLEX Intensive (~$50/hr) for targeted exam prep</li>
                     <li>🌟 <strong>Nursing Career Mentorship:</strong> $399/mo adds career guidance, resume review, and job search coaching alongside your coursework</li>
-                    <li>💳 <strong>Payment Plans:</strong> Available for all multi-session packages — ask us during your free intro call</li>
+                    <li>💳 <strong>Easy Stripe Sign-Up:</strong> Start the 5-Step Analogy Method with either $100 enrollment + $50/hr for the school year or $75/hr with no enrollment fee</li>
                 </ul>
                 <div class="pricing-policy">
                     <span class="pricing-policy-icon">📋</span>
