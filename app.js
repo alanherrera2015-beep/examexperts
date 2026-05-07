@@ -206,10 +206,12 @@ if (signupForm) {
     const signupPlanInputs = signupForm.querySelectorAll('input[name="signup-plan"]');
     const signupPlanContent = {
         'school-year': {
+            planName: 'School Year Plan',
             label: 'School Year Plan:',
             body: 'Stripe will charge your one-time $100 enrollment today. After that, your tutoring rate is $50/hr for the rest of the school year.'
         },
         'pay-as-you-go': {
+            planName: 'No Enrollment Plan',
             label: 'No Enrollment Plan:',
             body: 'Stripe will charge your first $75 hour today. After that, you can keep booking at $75/hr with no enrollment fee.'
         }
@@ -250,7 +252,8 @@ if (signupForm) {
     const signupParams = new URLSearchParams(window.location.search);
     const signupResult = signupParams.get('signup');
     if (signupResult === 'success') {
-        const planLabel = signupParams.get('plan') === 'pay-as-you-go' ? 'No Enrollment Plan' : 'School Year Plan';
+        const completedPlan = signupParams.get('plan') || 'school-year';
+        const planLabel = signupPlanContent[completedPlan]?.planName || signupPlanContent['school-year'].planName;
         setSignupStatus(`Stripe checkout completed for the ${planLabel}. We will follow up shortly with your next steps.`, 'success');
         signupForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else if (signupResult === 'canceled') {

@@ -152,9 +152,14 @@ function normalizeOrigin(value) {
 
 function truncate(value, maxLength) {
   const normalized = String(value || '');
+  const ellipsis = '...';
   if (normalized.length <= maxLength) {
     return normalized;
   }
 
-  return `${normalized.slice(0, Math.max(0, maxLength - 1))}…`;
+  if (maxLength <= ellipsis.length) {
+    return ellipsis.slice(0, maxLength);
+  }
+
+  return `${normalized.slice(0, maxLength - ellipsis.length)}${ellipsis}`;
 }
