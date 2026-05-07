@@ -110,7 +110,8 @@ faqQuestions.forEach(question => {
 // Contact Form Submission with Magic Effect
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', async (e) => {
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const submitBtn = contactForm.querySelector('.btn-submit');
@@ -193,6 +194,130 @@ contactForm.addEventListener('submit', async (e) => {
         }, 3000);
     }
 });
+}
+
+// Easy Stripe sign-up form
+const signupForm = document.getElementById('signupForm');
+
+if (signupForm) {
+    const signupStatus = document.getElementById('signupStatus');
+    const signupPlanNote = document.getElementById('signupPlanNote');
+    const signupSubmitBtn = signupForm.querySelector('.btn-submit');
+    const signupPlanInputs = signupForm.querySelectorAll('input[name="signup-plan"]');
+    const signupPlanContent = {
+        'school-year': {
+            planName: 'School Year Plan',
+            label: 'School Year Plan:',
+            body: 'Stripe will charge your one-time $100 enrollment today. After that, your tutoring rate is $50/hr for the rest of the school year.'
+        },
+        'pay-as-you-go': {
+            planName: 'No Enrollment Plan',
+            label: 'No Enrollment Plan:',
+            body: 'Stripe will charge your first $75 hour today. After that, you can keep booking at $75/hr with no enrollment fee.'
+        }
+    };
+
+    const updateSignupPlan = () => {
+        const selectedPlan = signupForm.querySelector('input[name="signup-plan"]:checked')?.value || 'school-year';
+        signupPlanInputs.forEach(input => {
+            input.closest('.signup-plan-card')?.classList.toggle('signup-plan-card-active', input.checked);
+        });
+        if (signupPlanNote) {
+            const noteLabel = signupPlanNote.querySelector('.signup-plan-note-label');
+            const noteBody = signupPlanNote.querySelector('.signup-plan-note-body');
+            if (noteLabel) {
+                noteLabel.textContent = signupPlanContent[selectedPlan].label;
+            }
+            if (noteBody) {
+                noteBody.textContent = signupPlanContent[selectedPlan].body;
+            }
+        }
+    };
+
+    const setSignupStatus = (message = '', type = '') => {
+        if (!signupStatus) return;
+        signupStatus.textContent = message;
+        signupStatus.className = 'signup-form-status';
+        if (type) {
+            signupStatus.classList.add(`signup-form-status-${type}`);
+        }
+    };
+
+    signupPlanInputs.forEach(input => {
+        input.addEventListener('change', updateSignupPlan);
+    });
+
+    updateSignupPlan();
+
+    const signupParams = new URLSearchParams(window.location.search);
+    const signupResult = signupParams.get('signup');
+    if (signupResult === 'success') {
+        const completedPlan = signupParams.get('plan') || 'school-year';
+        const planLabel = signupPlanContent[completedPlan]?.planName || signupPlanContent['school-year'].planName;
+        setSignupStatus(`Stripe checkout completed for the ${planLabel}. We will follow up shortly with your next steps.`, 'success');
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        signupForm.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+    } else if (signupResult === 'canceled') {
+        setSignupStatus('Stripe checkout was canceled. You can update your info or choose a different plan below.', 'error');
+    }
+
+    signupForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = signupForm.name.value.trim();
+        const email = signupForm.email.value.trim();
+        const subject = signupForm.subject.value.trim();
+        const goals = signupForm.goals.value.trim();
+        const phone = signupForm.phone.value.trim();
+        const plan = signupForm.querySelector('input[name="signup-plan"]:checked')?.value;
+
+        if (!name || !email || !subject || !plan) {
+            setSignupStatus('Please complete your name, email, study focus, and plan before continuing.', 'error');
+            return;
+        }
+
+        setSignupStatus('Redirecting you to secure Stripe checkout...', 'pending');
+        signupSubmitBtn.disabled = true;
+        signupSubmitBtn.textContent = 'Opening Stripe...';
+
+        try {
+            const response = await fetch('/.netlify/functions/create-checkout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, email, phone, subject, goals, plan })
+            });
+
+            const result = await response.json();
+
+            if (!response.ok || !result.url) {
+                throw new Error(result.error || 'Unable to start checkout right now.');
+            }
+
+            if (!isStripeCheckoutUrl(result.url)) {
+                throw new Error('Received an unexpected checkout URL. Please contact us directly.');
+            }
+
+            window.location.href = result.url;
+        } catch (error) {
+            console.error('Stripe sign-up error:', error);
+            setSignupStatus(error.message || 'Unable to start checkout right now. Please try again or contact us directly.', 'error');
+            signupSubmitBtn.disabled = false;
+            signupSubmitBtn.textContent = 'Continue to Stripe Checkout';
+        }
+    });
+}
+
+
+function isStripeCheckoutUrl(url) {
+    try {
+        const parsed = new URL(url);
+        return parsed.protocol === 'https:' && (parsed.hostname === 'checkout.stripe.com' || parsed.hostname.endsWith('.stripe.com'));
+    } catch (error) {
+        return false;
+    }
+}
 
 // Smooth Scroll for same-page anchor links only
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

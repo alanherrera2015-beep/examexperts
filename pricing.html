@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Houston Tutoring Pricing &amp; Plans | Exam Experts – From $58/hr</title>
-    <meta name="description" content="Houston tutoring pricing from $58/hr. Single sessions, semester bundles, NCLEX intensive programs, and nursing specialty plans for Houston, TX students. Payment plans via Klarna.">
+    <meta name="description" content="Tutoring plans from $58/hr, all built around the Exam Experts 5-step analogy method. Single sessions, semester bundles, NCLEX intensives, and nursing support.">
     <meta name="keywords" content="Houston tutoring price, tutoring cost Houston, affordable tutor Houston TX, NCLEX prep cost Houston, nursing tutoring Houston price, tutoring packages Houston">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="author" content="Exam Experts">
@@ -41,7 +41,7 @@
     <meta property="og:locale" content="en_US">
     <meta property="og:url" content="https://examexperts.org/pricing">
     <meta property="og:title" content="Online Tutoring Pricing &amp; Plans | Exam Experts – From $58/hr">
-    <meta property="og:description" content="Transparent, affordable online tutoring plans: single sessions, semester bundles, nursing specialty packages, and intensive programs. From $58/hr with payment plans available.">
+    <meta property="og:description" content="Transparent tutoring plans from $58/hr, all built around the Exam Experts 5-step analogy method and personalized exam prep.">
     <meta property="og:image" content="https://examexperts.org/images/logo.png">
     <meta property="og:image:alt" content="Exam Experts – Online Tutoring &amp; Exam Prep">
     <meta property="og:image:type" content="image/png">
@@ -52,7 +52,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Online Tutoring Pricing &amp; Plans | Exam Experts – From $58/hr">
-    <meta name="twitter:description" content="Transparent, affordable online tutoring plans: single sessions, semester bundles, nursing specialty packages, and intensive programs. From $58/hr with payment plans available.">
+    <meta name="twitter:description" content="Transparent tutoring plans from $58/hr, all built around the Exam Experts 5-step analogy method and personalized exam prep.">
     <meta name="twitter:image" content="https://examexperts.org/images/logo.png">
     <meta name="twitter:image:alt" content="Exam Experts – Online Tutoring &amp; Exam Prep">
 
@@ -157,7 +157,63 @@
     <section class="pricing" id="pricing">
         <div class="container">
             <h2 class="section-title">Exam Experts Pricing</h2>
-            <p class="section-subtitle">Choose the package that fits your learning goals</p>
+            <p class="section-subtitle">Choose the package that fits your goals — every plan includes our signature 5-step analogy method</p>
+
+            <div class="pricing-signup" id="signup">
+                <div class="pricing-signup-copy">
+                    <span class="pricing-signup-badge">⚡ Easy Stripe Sign-Up</span>
+                    <h3 class="pricing-signup-title">Start the 5-Step Analogy Method With Secure Stripe Checkout</h3>
+                    <p class="pricing-signup-text">Pick the option that fits your school year, fill out one short form, and head straight to Stripe to lock in your spot.</p>
+                </div>
+                <div class="pricing-signup-options">
+                    <label class="signup-plan-card signup-plan-card-featured">
+                        <input type="radio" name="signup-plan" value="school-year" checked form="signupForm">
+                        <span class="signup-plan-badge">Best value</span>
+                        <span class="signup-plan-name">School Year Plan</span>
+                        <span class="signup-plan-price">$100 enrollment + $50/hr</span>
+                        <span class="signup-plan-desc">Pay the one-time enrollment in Stripe now, then keep your tutoring rate at $50/hr for the rest of the school year.</span>
+                    </label>
+                    <label class="signup-plan-card">
+                        <input type="radio" name="signup-plan" value="pay-as-you-go" form="signupForm">
+                        <span class="signup-plan-name">No Enrollment Plan</span>
+                        <span class="signup-plan-price">$75/hr with no enrollment fee</span>
+                        <span class="signup-plan-desc">Use Stripe to pay for your first hour now, then keep booking at $75/hr with no enrollment cost.</span>
+                    </label>
+                </div>
+                <form class="contact-form signup-form" id="signupForm">
+                    <div class="signup-form-grid">
+                        <div class="form-group">
+                            <label for="signup-name">Student Name</label>
+                            <input type="text" id="signup-name" name="name" autocomplete="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-email">Email</label>
+                            <input type="email" id="signup-email" name="email" autocomplete="email" required>
+                        </div>
+                    </div>
+                    <div class="signup-form-grid">
+                        <div class="form-group">
+                            <label for="signup-phone">Phone Number (optional)</label>
+                            <input type="tel" id="signup-phone" name="phone" autocomplete="tel" placeholder="e.g. 281-541-5928">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-subject">What do you need help with?</label>
+                            <input type="text" id="signup-subject" name="subject" placeholder="NCLEX, Pharmacology, Calculus, SAT..." required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-goals">Anything we should know before checkout? (optional)</label>
+                        <textarea id="signup-goals" name="goals" rows="4" placeholder="Exam date, school, biggest challenge, or what you want the 5-step analogy method to help you fix."></textarea>
+                    </div>
+                    <div class="pricing-policy signup-plan-note-wrap">
+                        <span class="pricing-policy-icon">💳</span>
+                        <p id="signupPlanNote"><strong class="signup-plan-note-label"></strong> <span class="signup-plan-note-body"></span></p>
+                    </div>
+                    <p class="signup-form-status" id="signupStatus" aria-live="polite"></p>
+                    <button type="submit" class="btn btn-submit">Continue to Stripe Checkout</button>
+                    <p class="low-pressure-note">Secure checkout is powered by Stripe. If you would rather ask questions first, call <a href="tel:2815415928">281-541-5928</a> or email <a href="mailto:examexpertscontact@gmail.com">examexpertscontact@gmail.com</a>.</p>
+                </form>
+            </div>
 
             <!-- Competitor Comparison Banner -->
             <div class="competitor-banner">
@@ -354,7 +410,7 @@
                         <div class="comparison-card-best">Coursework + career coaching</div>
                     </div>
                 </div>
-                <p class="pricing-comparison-note">All plans include our proven 5-step teaching method. Payment plans available for all multi-session packages.</p>
+                <p class="pricing-comparison-note">All plans include our signature 5-step analogy method. Payment plans available for all multi-session packages.</p>
             </div>
 
             <!-- Group 1: General Tutoring -->
@@ -488,7 +544,7 @@
                             <p><strong>A&amp;P, Pharm, Patho, Fundamentals &amp; more</strong></p>
                             <ul class="pricing-features">
                                 <li>✓ Focused Zoom session on any nursing subject</li>
-                                <li>✓ Our 5-step teaching method every session</li>
+                                <li>✓ Our 5-step analogy method every session</li>
                                 <li>✓ NCLEX-style question practice</li>
                                 <li>✓ No commitment required</li>
                             </ul>
@@ -562,7 +618,7 @@
                     <li>📚 <strong>General Tutoring:</strong> Single Session ($99/hr) or 4-Hour Power Session ($75/hr, any subject); Semester Success Retainer (~$58/hr) is the best value for semester-long support</li>
                     <li>🏥 <strong>Nursing Programs:</strong> Single Session ($85/hr), Semester Bundle (~$69/hr), and NCLEX Intensive (~$50/hr) for targeted exam prep</li>
                     <li>🌟 <strong>Nursing Career Mentorship:</strong> $399/mo adds career guidance, resume review, and job search coaching alongside your coursework</li>
-                    <li>💳 <strong>Payment Plans:</strong> Available for all multi-session packages — ask us during your free intro call</li>
+                    <li>💳 <strong>Easy Stripe Sign-Up:</strong> Start the 5-Step Analogy Method with either $100 enrollment + $50/hr for the school year or $75/hr with no enrollment fee</li>
                 </ul>
                 <div class="pricing-policy">
                     <span class="pricing-policy-icon">📋</span>
