@@ -157,5 +157,6 @@ function truncate(value, maxLength) {
     return ellipsis.slice(0, maxLength);
   }
 
-  return `${normalized.slice(0, maxLength - ellipsis.length)}${ellipsis}`;
+  const visibleLength = maxLength - ellipsis.length;
+  return `${normalized.slice(0, visibleLength)}${ellipsis}`;
 }
