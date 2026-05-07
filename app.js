@@ -203,7 +203,7 @@ if (signupForm) {
     const signupStatus = document.getElementById('signupStatus');
     const signupPlanNote = document.getElementById('signupPlanNote');
     const signupSubmitBtn = signupForm.querySelector('.btn-submit');
-    const signupPlanInputs = signupForm.querySelectorAll('input[name="signup-plan"]');
+    const signupPlanInputs = document.querySelectorAll('input[name="signup-plan"]');
     const signupPlanContent = {
         'school-year': {
             planName: 'School Year Plan',
@@ -218,7 +218,7 @@ if (signupForm) {
     };
 
     const updateSignupPlan = () => {
-        const selectedPlan = signupForm.querySelector('input[name="signup-plan"]:checked')?.value || 'school-year';
+        const selectedPlan = document.querySelector('input[name="signup-plan"]:checked')?.value || 'school-year';
         signupPlanInputs.forEach(input => {
             input.closest('.signup-plan-card')?.classList.toggle('signup-plan-card-active', input.checked);
         });
@@ -269,7 +269,7 @@ if (signupForm) {
         const subject = signupForm.subject.value.trim();
         const goals = signupForm.goals.value.trim();
         const phone = signupForm.phone.value.trim();
-        const plan = signupForm.querySelector('input[name="signup-plan"]:checked')?.value;
+        const plan = document.querySelector('input[name="signup-plan"]:checked')?.value;
 
         if (!name || !email || !subject || !plan) {
             setSignupStatus('Please complete your name, email, study focus, and plan before continuing.', 'error');
