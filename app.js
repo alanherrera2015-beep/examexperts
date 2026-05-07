@@ -206,10 +206,12 @@ if (signupForm) {
     const signupPlanInputs = signupForm.querySelectorAll('input[name="signup-plan"]');
     const signupPlanContent = {
         'school-year': {
-            note: '<strong>School Year Plan:</strong> Stripe will charge your one-time $100 enrollment today. After that, your tutoring rate is $50/hr for the rest of the school year.'
+            label: 'School Year Plan:',
+            body: 'Stripe will charge your one-time $100 enrollment today. After that, your tutoring rate is $50/hr for the rest of the school year.'
         },
         'pay-as-you-go': {
-            note: '<strong>No Enrollment Plan:</strong> Stripe will charge your first $75 hour today. After that, you can keep booking at $75/hr with no enrollment fee.'
+            label: 'No Enrollment Plan:',
+            body: 'Stripe will charge your first $75 hour today. After that, you can keep booking at $75/hr with no enrollment fee.'
         }
     };
 
@@ -219,7 +221,14 @@ if (signupForm) {
             input.closest('.signup-plan-card')?.classList.toggle('signup-plan-card-active', input.checked);
         });
         if (signupPlanNote) {
-            signupPlanNote.innerHTML = signupPlanContent[selectedPlan].note;
+            const noteLabel = signupPlanNote.querySelector('.signup-plan-note-label');
+            const noteBody = signupPlanNote.querySelector('.signup-plan-note-body');
+            if (noteLabel) {
+                noteLabel.textContent = signupPlanContent[selectedPlan].label;
+            }
+            if (noteBody) {
+                noteBody.textContent = signupPlanContent[selectedPlan].body;
+            }
         }
     };
 
@@ -244,8 +253,8 @@ if (signupForm) {
         const planLabel = signupParams.get('plan') === 'pay-as-you-go' ? 'No Enrollment Plan' : 'School Year Plan';
         setSignupStatus(`Stripe checkout completed for the ${planLabel}. We will follow up shortly with your next steps.`, 'success');
         signupForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else if (signupResult === 'cancelled') {
-        setSignupStatus('Stripe checkout was cancelled. You can update your info or choose a different plan below.', 'error');
+    } else if (signupResult === 'canceled') {
+        setSignupStatus('Stripe checkout was canceled. You can update your info or choose a different plan below.', 'error');
     }
 
     signupForm.addEventListener('submit', async (e) => {

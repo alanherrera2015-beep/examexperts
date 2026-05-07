@@ -52,7 +52,7 @@ exports.handler = async function (event) {
 
     const baseUrl = getBaseUrl(event);
     const successUrl = `${baseUrl}/pricing?signup=success&plan=${encodeURIComponent(plan)}`;
-    const cancelUrl = `${baseUrl}/pricing?signup=cancelled&plan=${encodeURIComponent(plan)}`;
+    const cancelUrl = `${baseUrl}/pricing?signup=canceled&plan=${encodeURIComponent(plan)}`;
     const selectedPlan = PLAN_CONFIG[plan];
 
     const session = await stripe.checkout.sessions.create({
@@ -98,27 +98,56 @@ exports.handler = async function (event) {
 };
 
 function getBaseUrl(event) {
-  const envUrl = process.env.URL || process.env.DEPLOY_PRIME_URL;
-  const origin = String(event.headers.origin || '').trim();
-  if (isSafeUrl(origin)) {
-    return origin.replace(/\/$/, '');
+  const allowedOrigins = getAllowedOrigins();
+  const origin = normalizeOrigin(event.headers.origin);
+  if (allowedOrigins.has(origin)) {
+    return origin;
   }
 
-  if (isSafeUrl(envUrl)) {
-    return envUrl.replace(/\/$/, '');
+  const envUrl = normalizeOrigin(process.env.URL || process.env.DEPLOY_PRIME_URL);
+  if (allowedOrigins.has(envUrl)) {
+    return envUrl;
   }
 
   const forwardedHost = String(event.headers['x-forwarded-host'] || event.headers.host || '').trim();
-  const forwardedProto = String(event.headers['x-forwarded-proto'] || 'https').trim();
-  if (/^[a-z0-9.-]+(?::\d+)?$/i.test(forwardedHost) && /^(https?|HTTPS?)$/.test(forwardedProto)) {
-    return `${forwardedProto.toLowerCase()}://${forwardedHost}`;
+  const forwardedProto = String(event.headers['x-forwarded-proto'] || 'https').trim().toLowerCase();
+  if (/^[a-z0-9.-]+(?::\d+)?$/i.test(forwardedHost) && /^https?$/.test(forwardedProto)) {
+    const candidateOrigin = normalizeOrigin(`${forwardedProto}://${forwardedHost}`);
+    if (allowedOrigins.has(candidateOrigin)) {
+      return candidateOrigin;
+    }
   }
 
   return 'https://examexperts.org';
 }
 
-function isSafeUrl(value) {
-  return /^https?:\/\/(?:localhost|127\.0\.0\.1|[a-z0-9.-]+)(?::\d+)?$/i.test(String(value || '').trim());
+function getAllowedOrigins() {
+  const origins = new Set([
+    'https://examexperts.org',
+    'https://www.examexperts.org',
+    'http://localhost:8000',
+    'http://localhost:8888',
+    'http://127.0.0.1:8000',
+    'http://127.0.0.1:8888'
+  ]);
+
+  [process.env.URL, process.env.DEPLOY_PRIME_URL].forEach((value) => {
+    const origin = normalizeOrigin(value);
+    if (origin) {
+      origins.add(origin);
+    }
+  });
+
+  return origins;
+}
+
+function normalizeOrigin(value) {
+  try {
+    if (!value) return '';
+    return new URL(String(value).trim()).origin;
+  } catch (error) {
+    return '';
+  }
 }
 
 function truncate(value, maxLength) {
