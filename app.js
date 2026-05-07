@@ -255,7 +255,8 @@ if (signupForm) {
         const completedPlan = signupParams.get('plan') || 'school-year';
         const planLabel = signupPlanContent[completedPlan]?.planName || signupPlanContent['school-year'].planName;
         setSignupStatus(`Stripe checkout completed for the ${planLabel}. We will follow up shortly with your next steps.`, 'success');
-        signupForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        signupForm.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
     } else if (signupResult === 'canceled') {
         setSignupStatus('Stripe checkout was canceled. You can update your info or choose a different plan below.', 'error');
     }
@@ -294,6 +295,10 @@ if (signupForm) {
                 throw new Error(result.error || 'Unable to start checkout right now.');
             }
 
+            if (!isStripeCheckoutUrl(result.url)) {
+                throw new Error('Received an unexpected checkout URL. Please contact us directly.');
+            }
+
             window.location.href = result.url;
         } catch (error) {
             console.error('Stripe sign-up error:', error);
@@ -302,6 +307,16 @@ if (signupForm) {
             signupSubmitBtn.textContent = 'Continue to Stripe Checkout';
         }
     });
+}
+
+
+function isStripeCheckoutUrl(url) {
+    try {
+        const parsed = new URL(url);
+        return parsed.protocol === 'https:' && (parsed.hostname === 'checkout.stripe.com' || parsed.hostname.endsWith('.stripe.com'));
+    } catch (error) {
+        return false;
+    }
 }
 
 // Smooth Scroll for same-page anchor links only

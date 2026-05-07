@@ -54,6 +54,7 @@ exports.handler = async function (event) {
     const successUrl = `${baseUrl}/pricing?signup=success&plan=${encodeURIComponent(plan)}`;
     const cancelUrl = `${baseUrl}/pricing?signup=canceled&plan=${encodeURIComponent(plan)}`;
     const selectedPlan = PLAN_CONFIG[plan];
+    const safeSubject = sanitizeText(subject, 120);
 
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
@@ -70,7 +71,7 @@ exports.handler = async function (event) {
             unit_amount: selectedPlan.amount,
             product_data: {
               name: selectedPlan.name,
-              description: `${selectedPlan.description} Focus: ${subject}`
+              description: `${selectedPlan.description} Focus: ${safeSubject}`
             }
           }
         }
@@ -79,7 +80,7 @@ exports.handler = async function (event) {
         plan,
         student_name: truncate(name, 200),
         phone: truncate(phone, 200),
-        subject: truncate(subject, 200),
+        subject: safeSubject,
         goals: truncate(goals, 500)
       }
     });
@@ -107,15 +108,6 @@ function getBaseUrl(event) {
   const envUrl = normalizeOrigin(process.env.URL || process.env.DEPLOY_PRIME_URL);
   if (allowedOrigins.has(envUrl)) {
     return envUrl;
-  }
-
-  const forwardedHost = String(event.headers['x-forwarded-host'] || event.headers.host || '').trim();
-  const forwardedProto = String(event.headers['x-forwarded-proto'] || 'https').trim().toLowerCase();
-  if (/^[a-z0-9.-]+(?::\d+)?$/i.test(forwardedHost) && /^https?$/.test(forwardedProto)) {
-    const candidateOrigin = normalizeOrigin(`${forwardedProto}://${forwardedHost}`);
-    if (allowedOrigins.has(candidateOrigin)) {
-      return candidateOrigin;
-    }
   }
 
   return 'https://examexperts.org';
@@ -148,6 +140,10 @@ function normalizeOrigin(value) {
   } catch (error) {
     return '';
   }
+}
+
+function sanitizeText(value, maxLength) {
+  return truncate(String(value || '').replace(/[\r\n<>]+/g, ' ').replace(/\s+/g, ' ').trim(), maxLength);
 }
 
 function truncate(value, maxLength) {
