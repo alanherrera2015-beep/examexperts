@@ -264,7 +264,7 @@ if (signupForm) {
     signupForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const name = signupForm.name.value.trim();
+        const name = signupForm.elements['name'].value.trim();
         const email = signupForm.email.value.trim();
         const subject = signupForm.subject.value.trim();
         const goals = signupForm.goals.value.trim();
