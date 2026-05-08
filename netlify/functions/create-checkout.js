@@ -4,15 +4,20 @@ const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
 const stripe = STRIPE_SECRET_KEY ? new Stripe(STRIPE_SECRET_KEY) : null;
 
 const PLAN_CONFIG = {
-  'school-year': {
-    amount: 10000,
-    name: '5-Step Analogy Method Enrollment',
-    description: 'One-time enrollment for the school-year plan. Tutoring continues at $50/hr for the rest of the school year.'
-  },
   'pay-as-you-go': {
     amount: 7500,
-    name: '5-Step Analogy Method First Hour',
-    description: 'First tutoring hour for the no-enrollment plan. Future sessions remain $75/hr with no enrollment fee.'
+    name: 'Pay As You Go – First Hour',
+    description: 'No contract or membership. First tutoring hour at $75. Future sessions continue at $75/hr.'
+  },
+  'four-hour-package': {
+    amount: 26000,
+    name: '4-Hour Tutoring Package',
+    description: 'Four hours of 1:1 tutoring at $65/hr, paid upfront ($260 total). Save $10/hr vs. single sessions.'
+  },
+  'annual-member': {
+    amount: 10000,
+    name: 'Annual Membership Registration',
+    description: 'One-time $100 annual membership registration. Unlocks the $50/hr member tutoring rate for 12 months.'
   }
 };
 
@@ -41,9 +46,21 @@ exports.handler = async function (event) {
     const phone = String(body.phone || '').trim();
     const subject = String(body.subject || '').trim();
     const goals = String(body.goals || '').trim();
+    const promoCode = String(body.promoCode || '').trim().toUpperCase();
 
     if (!PLAN_CONFIG[plan]) {
       return { statusCode: 400, body: JSON.stringify({ error: 'Please choose a valid plan.' }) };
+    }
+
+    if (plan === 'annual-member') {
+      const rawCodes = process.env.MEMBER_PROMO_CODES || '';
+      const validCodes = rawCodes.split(',').map(c => c.trim().toUpperCase()).filter(Boolean);
+      if (!promoCode) {
+        return { statusCode: 400, body: JSON.stringify({ error: 'A rep code is required for the Annual Member rate.' }) };
+      }
+      if (validCodes.length > 0 && !validCodes.includes(promoCode)) {
+        return { statusCode: 400, body: JSON.stringify({ error: 'Invalid rep code. Please check your code and try again.' }) };
+      }
     }
 
     if (!name || !email || !subject) {
@@ -81,7 +98,8 @@ exports.handler = async function (event) {
         student_name: truncate(name, 200),
         phone: truncate(phone, 200),
         subject: safeSubject,
-        goals: truncate(goals, 500)
+        goals: truncate(goals, 500),
+        promo_code: truncate(promoCode, 50)
       }
     });
 
