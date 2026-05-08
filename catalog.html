@@ -643,8 +643,16 @@
         const catalogSearch = document.getElementById('catalogSearch');
         const catalogSearchStatus = document.getElementById('catalogSearchStatus');
         const filterChips = document.querySelectorAll('.catalog-filter-chip');
+        const totalPlans = academicPlans.length + lifeSkillsPlans.length;
+        const NO_FILTER_MATCH = '__no-filter-match__';
 
         const normalizeText = (value) => (value || '').toLowerCase().trim();
+        const escapeHtml = (value) => String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
 
         const filterPlans = (plans, query) => {
             if (!query) return plans;
@@ -677,10 +685,10 @@
             grid.innerHTML = plans.map((plan, index) => `
                 <article class="catalog-card catalog-card-${variant}">
                     <div class="catalog-card-number">Plan ${index + 1}</div>
-                    <h3>${plan.title}</h3>
-                    <p>${plan.summary}</p>
+                    <h3>${escapeHtml(plan.title)}</h3>
+                    <p>${escapeHtml(plan.summary)}</p>
                     <div class="catalog-card-tags">
-                        ${(plan.tags || []).map(tag => `<span class="catalog-card-tag">${tag}</span>`).join('')}
+                        ${plan.tags.map(tag => `<span class="catalog-card-tag">${escapeHtml(tag)}</span>`).join('')}
                     </div>
                 </article>
             `).join('');
@@ -697,14 +705,15 @@
         const renderAllCatalogs = (query = '') => {
             const academicMatches = filterPlans(academicPlans, query);
             const lifeMatches = filterPlans(lifeSkillsPlans, query);
+            const totalMatches = academicMatches.length + lifeMatches.length;
 
             renderCatalog(academicMatches, 'academicCatalogGrid', 'academic');
             renderCatalog(lifeMatches, 'lifeSkillsCatalogGrid', 'life');
             updateCounts(academicMatches.length, lifeMatches.length);
 
             catalogSearchStatus.textContent = query
-                ? `Showing ${academicMatches.length + lifeMatches.length} matching plans for “${query}”.`
-                : `Showing all ${academicPlans.length + lifeSkillsPlans.length} plans.`;
+                ? `Showing ${totalMatches} matching plans for “${query}”.`
+                : `Showing all ${totalPlans} plans.`;
         };
 
         const setQuickFilter = (value) => {
@@ -717,7 +726,7 @@
         const syncQuickFilter = (query) => {
             const normalizedQuery = normalizeText(query);
             const matchingChip = Array.from(filterChips).find(chip => normalizeText(chip.dataset.filter || '') === normalizedQuery);
-            setQuickFilter(matchingChip ? matchingChip.dataset.filter || '' : '__none__');
+            setQuickFilter(matchingChip ? matchingChip.dataset.filter || '' : NO_FILTER_MATCH);
         };
 
         filterChips.forEach(chip => {
