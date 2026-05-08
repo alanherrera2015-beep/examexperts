@@ -20,8 +20,38 @@ const TAG_PAID_PACKAGE = process.env.TAG_PAID_PACKAGE || 'paid package';
 const TAG_NURSING_EXAM = process.env.TAG_NURSING_EXAM || 'nursing exam';
 const TAG_SUBSCRIPTION_MEMBER = process.env.TAG_SUBSCRIPTION_MEMBER || 'subscription member';
 const TAG_PAYMENT_CONFIRMED = process.env.TAG_PAYMENT_CONFIRMED || 'payment confirmed';
+const MAX_TAG_LENGTH = Number(process.env.MAX_TAG_LENGTH || 100);
+const MAX_PACKAGE_TAG_LENGTH = Number(process.env.MAX_PACKAGE_TAG_LENGTH || 60);
+const MAX_EVENT_TAG_LENGTH = Number(process.env.MAX_EVENT_TAG_LENGTH || 120);
+const DEFAULT_FIRST_NAME = process.env.DEFAULT_FIRST_NAME || 'there';
 
-const processedEventIds = new Set();
+const NURSING_KEYWORD_REGEX = buildSafeRegex(
+  process.env.NURSING_KEYWORD_REGEX,
+  /(nursing|nclex|med\s*surg|pharm|patho|fundamentals|anatomy|physiology)/i
+);
+const EMAIL_SUBJECT_TEMPLATE = process.env.PAYMENT_EMAIL_SUBJECT || 'Payment Confirmed — Welcome to Exam Experts 🎉';
+const EMAIL_BODY_TEMPLATE = process.env.PAYMENT_EMAIL_BODY_TEMPLATE || [
+  'Hi {{first_name}},',
+  '',
+  'Thank you for your payment — you’re officially enrolled with Exam Experts.',
+  '',
+  'Order details:',
+  '• Program: {{package_name}}',
+  '• Amount Paid: {{amount}}',
+  '• Payment Date: {{payment_date}}',
+  '• Transaction ID: {{transaction_id}}',
+  '',
+  'Your next steps:',
+  '1. Watch for your onboarding message.',
+  '2. Save this email for your records.',
+  '3. Reply if you need help at any time.',
+  '',
+  'We’re excited to help you pass with confidence.',
+  '— The Exam Experts Team',
+  '{{support_email}} | {{support_phone}}'
+].join('\n');
+const SMS_BODY_TEMPLATE = process.env.PAYMENT_SMS_TEMPLATE ||
+  'Hi {{first_name}}, this is Exam Experts. Your payment of {{amount}} for {{package_name}} is confirmed ✅ We’re excited to have you! Questions? Reply here or contact us at {{support_phone}}.';
 
 if (SENDGRID_API_KEY && SENDGRID_API_KEY.startsWith('SG.')) {
   sgMail.setApiKey(SENDGRID_API_KEY);
@@ -69,13 +99,6 @@ exports.handler = async function handler(event) {
       };
     }
 
-    if (processedEventIds.has(stripeEvent.id)) {
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ received: true, duplicate: true, eventId: stripeEvent.id })
-      };
-    }
-
     const payment = await buildPaymentPayload(stripeEvent);
     if (!payment.email && !payment.phone) {
       return {
@@ -93,7 +116,6 @@ exports.handler = async function handler(event) {
 
     const contactResult = await upsertStudentContact(payment, stripeEvent.id);
     if (contactResult.duplicate) {
-      processedEventIds.add(stripeEvent.id);
       return {
         statusCode: 200,
         body: JSON.stringify({ received: true, duplicate: true, eventId: stripeEvent.id, contactId: contactResult.contact?.id || null })
@@ -112,8 +134,6 @@ exports.handler = async function handler(event) {
       ...(payment.isSubscription ? [TAG_SUBSCRIPTION_MEMBER] : []),
       eventLogTag
     ]);
-
-    processedEventIds.add(stripeEvent.id);
 
     return {
       statusCode: 200,
@@ -141,7 +161,7 @@ async function buildPaymentPayload(stripeEvent) {
   if (stripeEvent.type === 'checkout.session.completed') {
     const session = stripeEvent.data.object;
     const metadata = session.metadata || {};
-    const studentName = metadata.student_name || session.customer_details?.name || session.customer_details?.email || '';
+    const studentNameSource = metadata.student_name || session.customer_details?.name || session.customer_details?.email || '';
     const packageName = inferPackageName(metadata.plan, session);
     const amount = formatMoney(session.amount_total, session.currency || 'usd');
 
@@ -149,8 +169,8 @@ async function buildPaymentPayload(stripeEvent) {
       eventType: stripeEvent.type,
       email: safeText(session.customer_details?.email),
       phone: normalizePhone(session.customer_details?.phone || metadata.phone || ''),
-      firstName: extractFirstName(studentName, session.customer_details?.email),
-      fullName: safeText(studentName),
+      firstName: extractFirstName(studentNameSource, session.customer_details?.email),
+      fullName: safeText(studentNameSource),
       packageName,
       amount,
       paymentDate: formatDate(session.created),
@@ -270,9 +290,10 @@ function extractFirstContact(response) {
 
 async function createContact(payment) {
   const [firstName, ...lastParts] = splitName(payment.fullName || payment.firstName);
+  const normalizedFirstName = firstName || payment.firstName || DEFAULT_FIRST_NAME;
   const payload = {
     locationId: GHL_LOCATION_ID,
-    firstName: firstName || payment.firstName,
+    firstName: normalizedFirstName,
     lastName: lastParts.join(' '),
     email: payment.email || undefined,
     phone: payment.phone || undefined,
@@ -299,8 +320,9 @@ async function createContact(payment) {
 
 async function updateContact(contactId, payment) {
   const [firstName, ...lastParts] = splitName(payment.fullName || payment.firstName);
+  const normalizedFirstName = firstName || payment.firstName || DEFAULT_FIRST_NAME;
   const payload = {
-    firstName: firstName || payment.firstName || undefined,
+    firstName: normalizedFirstName || undefined,
     lastName: lastParts.join(' ') || undefined,
     email: payment.email || undefined,
     phone: payment.phone || undefined
@@ -315,7 +337,7 @@ async function updateContact(contactId, payment) {
 }
 
 async function addTagsToContact(contactId, tags) {
-  const normalizedTags = compact(tags).map(t => safeText(t, 100));
+  const normalizedTags = compact(tags).map(t => safeText(t, MAX_TAG_LENGTH));
   if (normalizedTags.length === 0) return;
 
   await ghlRequest(`/contacts/${encodeURIComponent(contactId)}/tags`, {
@@ -331,30 +353,20 @@ async function sendPaymentConfirmationEmail(payment) {
   }
 
   if (!SENDGRID_API_KEY || !SENDGRID_API_KEY.startsWith('SG.') || !FROM_EMAIL) {
-    throw new Error('Missing email configuration for payment confirmation (SENDGRID_API_KEY/FROM_EMAIL).');
+    throw new Error('Missing or invalid email configuration for payment confirmation (SENDGRID_API_KEY must start with SG., FROM_EMAIL required).');
   }
 
-  const subject = 'Payment Confirmed — Welcome to Exam Experts 🎉';
-  const text = [
-    `Hi ${payment.firstName},`,
-    '',
-    'Thank you for your payment — you’re officially enrolled with Exam Experts.',
-    '',
-    'Order details:',
-    `• Program: ${payment.packageName}`,
-    `• Amount Paid: ${payment.amount}`,
-    `• Payment Date: ${payment.paymentDate}`,
-    `• Transaction ID: ${payment.transactionId}`,
-    '',
-    'Your next steps:',
-    '1. Watch for your onboarding message.',
-    '2. Save this email for your records.',
-    '3. Reply if you need help at any time.',
-    '',
-    'We’re excited to help you pass with confidence.',
-    `— The Exam Experts Team`,
-    `${SUPPORT_EMAIL} | ${SUPPORT_PHONE}`
-  ].join('\n');
+  const templateVars = {
+    first_name: payment.firstName,
+    package_name: payment.packageName,
+    amount: payment.amount,
+    payment_date: payment.paymentDate,
+    transaction_id: payment.transactionId,
+    support_email: SUPPORT_EMAIL,
+    support_phone: SUPPORT_PHONE
+  };
+  const subject = applyTemplate(EMAIL_SUBJECT_TEMPLATE, templateVars);
+  const text = applyTemplate(EMAIL_BODY_TEMPLATE, templateVars);
 
   const html = `
     <p>Hi ${escapeHtml(payment.firstName)},</p>
@@ -391,9 +403,14 @@ async function sendPaymentConfirmationSms(contactId, payment) {
     return;
   }
 
-  const message = `Hi ${payment.firstName}, this is Exam Experts. Your payment of ${payment.amount} for ${payment.packageName} is confirmed ✅ We’re excited to have you! Questions? Reply here or contact us at ${SUPPORT_PHONE}.`;
+  const message = applyTemplate(SMS_BODY_TEMPLATE, {
+    first_name: payment.firstName,
+    amount: payment.amount,
+    package_name: payment.packageName,
+    support_phone: SUPPORT_PHONE
+  });
 
-  const response = await fetch(`${GHL_MESSAGE_API_BASE_URL}/v1/conversations/messages/`, {
+  const response = await fetch(`${GHL_MESSAGE_API_BASE_URL}/v1/conversations/messages`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${GHL_API_KEY}`,
@@ -451,9 +468,9 @@ function getHeader(headers = {}, key) {
 }
 
 function extractFirstName(name = '', email = '') {
-  const source = safeText(name).trim() || safeText(email).split('@')[0] || 'there';
-  const firstWord = source.split(/\s+/)[0] || 'there';
-  return capitalize(firstWord.replace(/[^a-zA-Z\-']/g, '')) || 'there';
+  const source = safeText(name).trim() || safeText(email).split('@')[0] || DEFAULT_FIRST_NAME;
+  const firstWord = source.split(/\s+/)[0] || DEFAULT_FIRST_NAME;
+  return capitalize(firstWord.replace(/[^a-zA-Z\-']/g, '')) || DEFAULT_FIRST_NAME;
 }
 
 function splitName(name = '') {
@@ -464,7 +481,7 @@ function splitName(name = '') {
 
 function inferIsNursing(packageName = '', subject = '') {
   const value = `${packageName} ${subject}`.toLowerCase();
-  return /(nursing|nclex|med\s*surg|pharm|patho|fundamentals|anatomy|physiology)/.test(value);
+  return NURSING_KEYWORD_REGEX.test(value);
 }
 
 function makePackageTag(packageName = '') {
@@ -472,13 +489,13 @@ function makePackageTag(packageName = '') {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
-    .slice(0, 60);
+    .slice(0, MAX_PACKAGE_TAG_LENGTH);
 
   return slug ? `package:${slug}` : 'package:unknown';
 }
 
 function makeEventTag(eventId = '') {
-  return `stripe-event:${safeText(eventId, 120)}`;
+  return `stripe-event:${safeText(eventId, MAX_EVENT_TAG_LENGTH)}`;
 }
 
 function normalizePhone(phone = '') {
@@ -545,6 +562,22 @@ function compact(items) {
 function capitalize(value) {
   if (!value) return value;
   return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function applyTemplate(template, vars) {
+  return String(template || '').replace(/\{\{(\w+)\}\}/g, (_, key) => {
+    return Object.hasOwn(vars, key) ? String(vars[key] ?? '') : '';
+  });
+}
+
+function buildSafeRegex(pattern, fallbackRegex) {
+  if (!pattern) return fallbackRegex;
+  try {
+    return new RegExp(pattern, 'i');
+  } catch (error) {
+    console.warn('Invalid NURSING_KEYWORD_REGEX provided. Falling back to default regex.');
+    return fallbackRegex;
+  }
 }
 
 function escapeHtml(str = '') {
