@@ -179,13 +179,24 @@
                         <span class="signup-plan-price">$65/hr — $260 total</span>
                         <span class="signup-plan-desc">Pre-pay for four hours of tutoring at $65/hr ($260 total). Save $10/hr vs. single sessions — perfect for a deep dive.</span>
                     </label>
-                    <label class="signup-plan-card">
-                        <input type="radio" name="signup-plan" value="annual-member" form="signupForm">
-                        <span class="signup-plan-badge signup-plan-badge-secured">🔐 Rep Code Required</span>
+                    <!-- Annual Member card — hidden until rep code is entered -->
+                    <label class="signup-plan-card signup-plan-card-unlocked" id="annualMemberCard" style="display:none;" aria-hidden="true">
+                        <input type="radio" name="signup-plan" value="annual-member" form="signupForm" id="annualMemberRadio">
+                        <span class="signup-plan-badge signup-plan-badge-secured">🔐 Member Rate Unlocked</span>
                         <span class="signup-plan-name">Annual Member Rate</span>
                         <span class="signup-plan-price">$50/hr + $100/yr membership</span>
-                        <span class="signup-plan-desc">Exclusive rate offered by our door-to-door reps. Pay the $100 annual membership today and tutor at $50/hr for 12 months.</span>
+                        <span class="signup-plan-desc">Exclusive rate for members. Pay the $100 annual membership today and tutor at $50/hr for 12 months.</span>
                     </label>
+                </div>
+
+                <!-- Rep code unlock row — reveals the Annual Member Rate card -->
+                <div class="rep-code-unlock" id="repCodeUnlock">
+                    <p class="rep-code-unlock-label">🔐 Have a rep code? Enter it below to unlock the <strong>$50/hr Annual Member Rate</strong>.</p>
+                    <div class="rep-code-unlock-row">
+                        <input type="text" id="repCodeInput" autocomplete="off" placeholder="Enter your rep code" maxlength="50" class="rep-code-input">
+                        <button type="button" id="repCodeUnlockBtn" class="btn rep-code-btn">Unlock Rate</button>
+                    </div>
+                    <p class="rep-code-unlock-status" id="repCodeStatus" aria-live="polite"></p>
                 </div>
                 <form class="contact-form signup-form" id="signupForm">
                     <div class="signup-form-grid">
@@ -212,10 +223,8 @@
                         <label for="signup-goals">Anything we should know before checkout? (optional)</label>
                         <textarea id="signup-goals" name="goals" rows="4" placeholder="Exam date, school, biggest challenge, or what you want the 5-step analogy method to help you fix."></textarea>
                     </div>
-                    <div class="form-group" id="promoCodeGroup" style="display:none;">
-                        <label for="signup-promo-code">Rep Code <span class="required-indicator">*</span></label>
-                        <input type="text" id="signup-promo-code" name="promoCode" autocomplete="off" placeholder="Enter the code your rep gave you">
-                    </div>
+                    <!-- Hidden: rep code captured by the unlock row above -->
+                    <input type="hidden" id="signup-promo-code" name="promoCode">
                     <div class="pricing-policy signup-plan-note-wrap">
                         <span class="pricing-policy-icon">💳</span>
                         <p id="signupPlanNote"><strong class="signup-plan-note-label"></strong> <span class="signup-plan-note-body"></span></p>

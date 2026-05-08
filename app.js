@@ -230,19 +230,11 @@ if (signupForm) {
         if (signupPlanNote) {
             const noteLabel = signupPlanNote.querySelector('.signup-plan-note-label');
             const noteBody = signupPlanNote.querySelector('.signup-plan-note-body');
-            if (noteLabel) {
+            if (noteLabel && signupPlanContent[selectedPlan]) {
                 noteLabel.textContent = signupPlanContent[selectedPlan].label;
             }
-            if (noteBody) {
+            if (noteBody && signupPlanContent[selectedPlan]) {
                 noteBody.textContent = signupPlanContent[selectedPlan].body;
-            }
-        }
-        const promoGroup = document.getElementById('promoCodeGroup');
-        if (promoGroup) {
-            promoGroup.style.display = selectedPlan === 'annual-member' ? '' : 'none';
-            const promoInput = document.getElementById('signup-promo-code');
-            if (promoInput) {
-                promoInput.required = selectedPlan === 'annual-member';
             }
         }
     };
@@ -262,11 +254,60 @@ if (signupForm) {
 
     updateSignupPlan();
 
+    // Rep code unlock row — reveals the hidden Annual Member Rate card
+    const repCodeInput = document.getElementById('repCodeInput');
+    const repCodeUnlockBtn = document.getElementById('repCodeUnlockBtn');
+    const repCodeStatus = document.getElementById('repCodeStatus');
+    const annualMemberCard = document.getElementById('annualMemberCard');
+    const annualMemberRadio = document.getElementById('annualMemberRadio');
+    const hiddenPromoCode = document.getElementById('signup-promo-code');
+
+    const setRepCodeStatus = (message, type) => {
+        if (!repCodeStatus) return;
+        repCodeStatus.textContent = message;
+        repCodeStatus.className = 'rep-code-unlock-status';
+        if (type) repCodeStatus.classList.add('rep-code-unlock-status-' + type);
+    };
+
+    const unlockAnnualMember = () => {
+        const code = repCodeInput ? repCodeInput.value.trim() : '';
+        if (!code) {
+            setRepCodeStatus('Please enter a rep code.', 'error');
+            return;
+        }
+        if (annualMemberCard) {
+            annualMemberCard.style.display = '';
+            annualMemberCard.removeAttribute('aria-hidden');
+        }
+        if (annualMemberRadio) {
+            annualMemberRadio.checked = true;
+        }
+        if (hiddenPromoCode) {
+            hiddenPromoCode.value = code;
+        }
+        updateSignupPlan();
+        setRepCodeStatus('✅ Annual Member Rate unlocked! Select it above and continue.', 'success');
+        if (repCodeUnlockBtn) repCodeUnlockBtn.disabled = true;
+        if (repCodeInput) repCodeInput.disabled = true;
+    };
+
+    if (repCodeUnlockBtn) {
+        repCodeUnlockBtn.addEventListener('click', unlockAnnualMember);
+    }
+    if (repCodeInput) {
+        repCodeInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                unlockAnnualMember();
+            }
+        });
+    }
+
     const signupParams = new URLSearchParams(window.location.search);
     const signupResult = signupParams.get('signup');
     if (signupResult === 'success') {
-        const completedPlan = signupParams.get('plan') || 'school-year';
-        const planLabel = signupPlanContent[completedPlan]?.planName || signupPlanContent['school-year'].planName;
+        const completedPlan = signupParams.get('plan') || 'pay-as-you-go';
+        const planLabel = signupPlanContent[completedPlan]?.planName || signupPlanContent['pay-as-you-go'].planName;
         setSignupStatus(`Stripe checkout completed for the ${planLabel}. We will follow up shortly with your next steps.`, 'success');
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         signupForm.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
