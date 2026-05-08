@@ -540,7 +540,7 @@
             },
             {
                 title: 'Emotional Intelligence & Reading Social Cues',
-                summary: 'Recognize emotions, social signals, and stronger responses.',
+                summary: 'Recognize emotions, social signals, and better responses.',
                 tags: ['emotional intelligence', 'social skills']
             },
             {
@@ -708,9 +708,16 @@
         };
 
         const setQuickFilter = (value) => {
+            const normalizedValue = normalizeText(value);
             filterChips.forEach(chip => {
-                chip.classList.toggle('is-active', chip.dataset.filter === value);
+                chip.classList.toggle('is-active', normalizeText(chip.dataset.filter || '') === normalizedValue);
             });
+        };
+
+        const syncQuickFilter = (query) => {
+            const normalizedQuery = normalizeText(query);
+            const matchingChip = Array.from(filterChips).find(chip => normalizeText(chip.dataset.filter || '') === normalizedQuery);
+            setQuickFilter(matchingChip ? matchingChip.dataset.filter || '' : '__none__');
         };
 
         filterChips.forEach(chip => {
@@ -727,7 +734,7 @@
         if (catalogSearch) {
             catalogSearch.addEventListener('input', (event) => {
                 const query = normalizeText(event.target.value);
-                setQuickFilter(query);
+                syncQuickFilter(query);
                 renderAllCatalogs(query);
             });
         }
