@@ -333,7 +333,7 @@
             {
                 title: 'Spanish Immersion',
                 summary: 'Build Spanish vocabulary, conversation skills, and confidence.',
-                tags: ['spanish', 'language']
+                tags: ['spanish']
             },
             {
                 title: 'Study Skills & Executive Function',
@@ -644,7 +644,7 @@
         const catalogSearchStatus = document.getElementById('catalogSearchStatus');
         const filterChips = document.querySelectorAll('.catalog-filter-chip');
 
-        const normalizeText = (value) => (value ?? '').toLowerCase().trim();
+        const normalizeText = (value) => (value || '').toLowerCase().trim();
 
         const filterPlans = (plans, query) => {
             if (!query) return plans;
