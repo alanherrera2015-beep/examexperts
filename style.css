@@ -2231,6 +2231,14 @@ section::before {
     font-weight: 700;
 }
 
+.signup-plan-badge-secured {
+    background: #059669;
+}
+
+.required-indicator {
+    color: #b91c1c;
+}
+
 .signup-plan-name {
     font-size: 1.2rem;
     font-weight: 700;
@@ -2261,6 +2269,86 @@ section::before {
 
 .signup-plan-note-wrap {
     margin-bottom: 18px;
+}
+
+.rep-code-unlock {
+    margin: 0 0 28px;
+    padding: 18px 22px;
+    border-radius: 16px;
+    border: 1.5px dashed #a78bfa;
+    background: #f5f3ff;
+}
+
+.rep-code-unlock-label {
+    margin: 0 0 12px;
+    font-size: 14px;
+    color: #4b5563;
+}
+
+.rep-code-unlock-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.rep-code-input {
+    flex: 1;
+    min-width: 180px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1.5px solid #ddd6fe;
+    font-size: 15px;
+    background: #ffffff;
+    color: #111827;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.rep-code-input:focus {
+    border-color: #7c3aed;
+}
+
+.rep-code-btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+}
+
+.rep-code-btn:hover {
+    opacity: 0.9;
+}
+
+.rep-code-btn:disabled,
+.rep-code-input:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.rep-code-unlock-status {
+    min-height: 20px;
+    margin: 10px 0 0;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.rep-code-unlock-status-success {
+    color: #047857;
+}
+
+.rep-code-unlock-status-error {
+    color: #b91c1c;
+}
+
+.signup-plan-card-unlocked {
+    border-color: #059669;
 }
 
 .signup-form-status {

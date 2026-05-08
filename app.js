@@ -205,30 +205,35 @@ if (signupForm) {
     const signupSubmitBtn = signupForm.querySelector('.btn-submit');
     const signupPlanInputs = document.querySelectorAll('input[name="signup-plan"]');
     const signupPlanContent = {
-        'school-year': {
-            planName: 'School Year Plan',
-            label: 'School Year Plan:',
-            body: 'Stripe will charge your one-time $100 enrollment today. After that, your tutoring rate is $50/hr for the rest of the school year.'
-        },
         'pay-as-you-go': {
-            planName: 'No Enrollment Plan',
-            label: 'No Enrollment Plan:',
-            body: 'Stripe will charge your first $75 hour today. After that, you can keep booking at $75/hr with no enrollment fee.'
+            planName: 'Pay As You Go',
+            label: 'Pay As You Go:',
+            body: 'Stripe will charge your first $75 hour today. No contract or membership — future sessions stay at $75/hr.'
+        },
+        'four-hour-package': {
+            planName: '4-Hour Package',
+            label: '4-Hour Package:',
+            body: 'Stripe will charge $260 today for four hours of tutoring at $65/hr. Save $10/hr vs. single sessions.'
+        },
+        'annual-member': {
+            planName: 'Annual Member Rate',
+            label: 'Annual Member Rate:',
+            body: 'Stripe will charge the $100 annual membership registration today. Your tutoring rate is $50/hr for the next 12 months.'
         }
     };
 
     const updateSignupPlan = () => {
-        const selectedPlan = document.querySelector('input[name="signup-plan"]:checked')?.value || 'school-year';
+        const selectedPlan = document.querySelector('input[name="signup-plan"]:checked')?.value || 'pay-as-you-go';
         signupPlanInputs.forEach(input => {
             input.closest('.signup-plan-card')?.classList.toggle('signup-plan-card-active', input.checked);
         });
         if (signupPlanNote) {
             const noteLabel = signupPlanNote.querySelector('.signup-plan-note-label');
             const noteBody = signupPlanNote.querySelector('.signup-plan-note-body');
-            if (noteLabel) {
+            if (noteLabel && signupPlanContent[selectedPlan]) {
                 noteLabel.textContent = signupPlanContent[selectedPlan].label;
             }
-            if (noteBody) {
+            if (noteBody && signupPlanContent[selectedPlan]) {
                 noteBody.textContent = signupPlanContent[selectedPlan].body;
             }
         }
@@ -249,11 +254,61 @@ if (signupForm) {
 
     updateSignupPlan();
 
+    // Rep code unlock row — reveals the hidden Annual Member Rate card
+    const repCodeInput = document.getElementById('repCodeInput');
+    const repCodeUnlockBtn = document.getElementById('repCodeUnlockBtn');
+    const repCodeStatus = document.getElementById('repCodeStatus');
+    const annualMemberCard = document.getElementById('annualMemberCard');
+    const annualMemberRadio = document.getElementById('annualMemberRadio');
+    const hiddenPromoCode = document.getElementById('signup-promo-code');
+
+    const setRepCodeStatus = (message, type) => {
+        if (!repCodeStatus) return;
+        repCodeStatus.textContent = message;
+        repCodeStatus.className = 'rep-code-unlock-status';
+        if (type) repCodeStatus.classList.add('rep-code-unlock-status-' + type);
+    };
+
+    const unlockAnnualMember = () => {
+        const code = repCodeInput ? repCodeInput.value.trim() : '';
+        if (!code) {
+            setRepCodeStatus('Please enter a rep code.', 'error');
+            return;
+        }
+        if (annualMemberCard) {
+            annualMemberCard.style.display = '';
+            annualMemberCard.removeAttribute('aria-hidden');
+            annualMemberCard.classList.add('signup-plan-card-unlocked');
+        }
+        if (annualMemberRadio) {
+            annualMemberRadio.checked = true;
+        }
+        if (hiddenPromoCode) {
+            hiddenPromoCode.value = code;
+        }
+        updateSignupPlan();
+        setRepCodeStatus('✅ Annual Member Rate unlocked! Select it above and continue.', 'success');
+        if (repCodeUnlockBtn) repCodeUnlockBtn.disabled = true;
+        if (repCodeInput) repCodeInput.disabled = true;
+    };
+
+    if (repCodeUnlockBtn) {
+        repCodeUnlockBtn.addEventListener('click', unlockAnnualMember);
+    }
+    if (repCodeInput) {
+        repCodeInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                unlockAnnualMember();
+            }
+        });
+    }
+
     const signupParams = new URLSearchParams(window.location.search);
     const signupResult = signupParams.get('signup');
     if (signupResult === 'success') {
-        const completedPlan = signupParams.get('plan') || 'school-year';
-        const planLabel = signupPlanContent[completedPlan]?.planName || signupPlanContent['school-year'].planName;
+        const completedPlan = signupParams.get('plan') || 'pay-as-you-go';
+        const planLabel = signupPlanContent[completedPlan]?.planName || signupPlanContent['pay-as-you-go'].planName;
         setSignupStatus(`Stripe checkout completed for the ${planLabel}. We will follow up shortly with your next steps.`, 'success');
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         signupForm.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
@@ -270,9 +325,15 @@ if (signupForm) {
         const goals = signupForm.goals.value.trim();
         const phone = signupForm.phone.value.trim();
         const plan = document.querySelector('input[name="signup-plan"]:checked')?.value;
+        const promoCode = (document.getElementById('signup-promo-code')?.value || '').trim();
 
         if (!name || !email || !subject || !plan) {
             setSignupStatus('Please complete your name, email, study focus, and plan before continuing.', 'error');
+            return;
+        }
+
+        if (plan === 'annual-member' && !promoCode) {
+            setSignupStatus('Please enter the rep code to unlock the Annual Member rate.', 'error');
             return;
         }
 
@@ -286,7 +347,7 @@ if (signupForm) {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ name, email, phone, subject, goals, plan })
+                body: JSON.stringify({ name, email, phone, subject, goals, plan, promoCode })
             });
 
             const result = await response.json();

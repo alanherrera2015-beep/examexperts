@@ -11,8 +11,8 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Houston Tutoring Pricing &amp; Plans | Exam Experts – From $58/hr</title>
-    <meta name="description" content="Tutoring plans from $58/hr, all built around the Exam Experts 5-step analogy method. Single sessions, semester bundles, NCLEX intensives, and nursing support.">
+    <title>Houston Tutoring Pricing &amp; Plans | Exam Experts – From $50/hr</title>
+    <meta name="description" content="Tutoring plans from $50/hr, all built around the Exam Experts 5-step analogy method. No-contract sessions, 4-hour packages, and exclusive annual member rates.">
     <meta name="keywords" content="Houston tutoring price, tutoring cost Houston, affordable tutor Houston TX, NCLEX prep cost Houston, nursing tutoring Houston price, tutoring packages Houston">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="author" content="Exam Experts">
@@ -40,8 +40,8 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
     <meta property="og:url" content="https://examexperts.org/pricing">
-    <meta property="og:title" content="Online Tutoring Pricing &amp; Plans | Exam Experts – From $58/hr">
-    <meta property="og:description" content="Transparent tutoring plans from $58/hr, all built around the Exam Experts 5-step analogy method and personalized exam prep.">
+    <meta property="og:title" content="Online Tutoring Pricing &amp; Plans | Exam Experts – From $50/hr">
+    <meta property="og:description" content="Transparent tutoring plans from $50/hr, all built around the Exam Experts 5-step analogy method and personalized exam prep.">
     <meta property="og:image" content="https://examexperts.org/images/logo.png">
     <meta property="og:image:alt" content="Exam Experts – Online Tutoring &amp; Exam Prep">
     <meta property="og:image:type" content="image/png">
@@ -51,8 +51,8 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Online Tutoring Pricing &amp; Plans | Exam Experts – From $58/hr">
-    <meta name="twitter:description" content="Transparent tutoring plans from $58/hr, all built around the Exam Experts 5-step analogy method and personalized exam prep.">
+    <meta name="twitter:title" content="Online Tutoring Pricing &amp; Plans | Exam Experts – From $50/hr">
+    <meta name="twitter:description" content="Transparent tutoring plans from $50/hr, all built around the Exam Experts 5-step analogy method and personalized exam prep.">
     <meta name="twitter:image" content="https://examexperts.org/images/logo.png">
     <meta name="twitter:image:alt" content="Exam Experts – Online Tutoring &amp; Exam Prep">
 
@@ -85,9 +85,9 @@
         {
           "@type": "Offer",
           "position": 3,
-          "name": "NCLEX Intensive Tutoring",
-          "description": "24 online tutoring sessions over 8 weeks of focused NCLEX exam preparation.",
-          "price": "1199.00",
+          "name": "4-Hour Package",
+          "description": "Four hours of 1:1 tutoring at $65/hr, paid upfront ($260 total).",
+          "price": "260.00",
           "priceCurrency": "USD",
           "seller": { "@type": "EducationalOrganization", "name": "Exam Experts", "url": "https://examexperts.org" }
         },
@@ -166,19 +166,37 @@
                     <p class="pricing-signup-text">Pick the option that fits your school year, fill out one short form, and head straight to Stripe to lock in your spot.</p>
                 </div>
                 <div class="pricing-signup-options">
-                    <label class="signup-plan-card signup-plan-card-featured">
-                        <input type="radio" name="signup-plan" value="school-year" checked form="signupForm">
-                        <span class="signup-plan-badge">Best value</span>
-                        <span class="signup-plan-name">School Year Plan</span>
-                        <span class="signup-plan-price">$100 enrollment + $50/hr</span>
-                        <span class="signup-plan-desc">Pay the one-time enrollment in Stripe now, then keep your tutoring rate at $50/hr for the rest of the school year.</span>
-                    </label>
                     <label class="signup-plan-card">
-                        <input type="radio" name="signup-plan" value="pay-as-you-go" form="signupForm">
-                        <span class="signup-plan-name">No Enrollment Plan</span>
-                        <span class="signup-plan-price">$75/hr with no enrollment fee</span>
-                        <span class="signup-plan-desc">Use Stripe to pay for your first hour now, then keep booking at $75/hr with no enrollment cost.</span>
+                        <input type="radio" name="signup-plan" value="pay-as-you-go" checked form="signupForm">
+                        <span class="signup-plan-name">Pay As You Go</span>
+                        <span class="signup-plan-price">$75/hr — no contract</span>
+                        <span class="signup-plan-desc">No membership or commitment. Pay $75 for your first hour today and keep booking at $75/hr anytime.</span>
                     </label>
+                    <label class="signup-plan-card signup-plan-card-featured">
+                        <input type="radio" name="signup-plan" value="four-hour-package" form="signupForm">
+                        <span class="signup-plan-badge">Best value</span>
+                        <span class="signup-plan-name">4-Hour Package</span>
+                        <span class="signup-plan-price">$65/hr — $260 total</span>
+                        <span class="signup-plan-desc">Pre-pay for four hours of tutoring at $65/hr ($260 total). Save $10/hr vs. single sessions — perfect for a deep dive.</span>
+                    </label>
+                    <!-- Annual Member card — hidden until rep code is entered -->
+                    <label class="signup-plan-card" id="annualMemberCard" style="display:none;" aria-hidden="true">
+                        <input type="radio" name="signup-plan" value="annual-member" form="signupForm" id="annualMemberRadio">
+                        <span class="signup-plan-badge signup-plan-badge-secured">🔐 Member Rate Unlocked</span>
+                        <span class="signup-plan-name">Annual Member Rate</span>
+                        <span class="signup-plan-price">$50/hr + $100/yr membership</span>
+                        <span class="signup-plan-desc">Exclusive rate for members. Pay the $100 annual membership today and tutor at $50/hr for 12 months.</span>
+                    </label>
+                </div>
+
+                <!-- Rep code unlock row — reveals the Annual Member Rate card -->
+                <div class="rep-code-unlock" id="repCodeUnlock">
+                    <p class="rep-code-unlock-label">🔐 Have a rep code? Enter it below to unlock the <strong>$50/hr Annual Member Rate</strong>.</p>
+                    <div class="rep-code-unlock-row">
+                        <input type="text" id="repCodeInput" autocomplete="off" placeholder="Enter your rep code" maxlength="50" class="rep-code-input">
+                        <button type="button" id="repCodeUnlockBtn" class="btn rep-code-btn">Unlock Rate</button>
+                    </div>
+                    <p class="rep-code-unlock-status" id="repCodeStatus" aria-live="polite"></p>
                 </div>
                 <form class="contact-form signup-form" id="signupForm">
                     <div class="signup-form-grid">
@@ -205,6 +223,8 @@
                         <label for="signup-goals">Anything we should know before checkout? (optional)</label>
                         <textarea id="signup-goals" name="goals" rows="4" placeholder="Exam date, school, biggest challenge, or what you want the 5-step analogy method to help you fix."></textarea>
                     </div>
+                    <!-- Hidden: rep code captured by the unlock row above -->
+                    <input type="hidden" id="signup-promo-code" name="promoCode">
                     <div class="pricing-policy signup-plan-note-wrap">
                         <span class="pricing-policy-icon">💳</span>
                         <p id="signupPlanNote"><strong class="signup-plan-note-label"></strong> <span class="signup-plan-note-body"></span></p>
@@ -223,7 +243,7 @@
                         <div class="competitor-item competitor-them"><span class="competitor-name">Varsity Tutors</span><span class="competitor-rate">$150–$300/hr</span></div>
                         <div class="competitor-item competitor-them"><span class="competitor-name">Princeton Review</span><span class="competitor-rate">$145–$200/hr</span></div>
                         <div class="competitor-item competitor-them"><span class="competitor-name">Revolution Prep</span><span class="competitor-rate">$89–$149/hr</span></div>
-                        <div class="competitor-item competitor-us"><span class="competitor-name">Exam Experts ✓</span><span class="competitor-rate">from $58/hr</span></div>
+                        <div class="competitor-item competitor-us"><span class="competitor-name">Exam Experts ✓</span><span class="competitor-rate">from $50/hr</span></div>
                     </div>
                 </div>
             </div>
@@ -259,10 +279,10 @@
                                 <td>Pre-med, engineering, semester-long</td>
                             </tr>
                             <tr>
-                                <td class="plan-name">4-Hour Power Session <span class="plan-badge badge-blue">All Subjects</span></td>
-                                <td class="plan-price">$300</td>
+                                <td class="plan-name">4-Hour Package <span class="plan-badge badge-blue">All Subjects</span></td>
+                                <td class="plan-price">$260</td>
                                 <td>1 × 4 hrs</td>
-                                <td>$75/hr</td>
+                                <td>$65/hr</td>
                                 <td>Any subject deep-dive or pre-exam cram</td>
                             </tr>
                             <tr>
@@ -339,11 +359,11 @@
                     </div>
                     <div class="comparison-card">
                         <div class="comparison-card-header">
-                            <span class="comparison-card-name">4-Hour Power Session</span>
+                            <span class="comparison-card-name">4-Hour Package</span>
                             <span class="plan-badge badge-blue">All Subjects</span>
                         </div>
-                        <div class="comparison-card-price">$300</div>
-                        <div class="comparison-card-meta">1 × 4 hrs<span aria-hidden="true"> · </span>$75/hr</div>
+                        <div class="comparison-card-price">$260</div>
+                        <div class="comparison-card-meta">1 × 4 hrs<span aria-hidden="true"> · </span>$65/hr</div>
                         <div class="comparison-card-best">Any subject deep-dive or pre-exam cram</div>
                     </div>
                     <div class="comparison-card">
@@ -453,10 +473,10 @@
                         </div>
                     </div>
 
-                    <!-- 3. 4-Hour Power Session (All Subjects) -->
+                    <!-- 3. 4-Hour Package (All Subjects) -->
                     <div class="pricing-card pricing-blue">
-                        <h3 class="pricing-title">4-Hour Power Session <span class="pricing-tag">All Subjects</span></h3>
-                        <div class="pricing-price">$300</div>
+                        <h3 class="pricing-title">4-Hour Package <span class="pricing-tag">All Subjects</span></h3>
+                        <div class="pricing-price">$260</div>
                         <div class="pricing-period">One 4-hour 1:1 block</div>
                         <div class="pricing-details">
                             <p><strong>Intensive single-day topic mastery — any subject</strong></p>
@@ -465,7 +485,7 @@
                                 <li>✓ Tackle an entire unit in one sitting</li>
                                 <li>✓ Perfect for pre-exam cramming</li>
                                 <li>✓ Covers general &amp; nursing subjects</li>
-                                <li>✓ $75/hr — save vs. single sessions</li>
+                                <li>✓ $65/hr — save vs. single sessions</li>
                             </ul>
                             <a href="https://calendly.com/examexpertscontact" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Schedule Your Free Intro Call</a>
                         </div>
@@ -615,10 +635,10 @@
             <div class="pricing-info">
                 <h4 class="pricing-info-heading">💡 Quick Summary</h4>
                 <ul class="pricing-info-list">
-                    <li>📚 <strong>General Tutoring:</strong> Single Session ($99/hr) or 4-Hour Power Session ($75/hr, any subject); Semester Success Retainer (~$58/hr) is the best value for semester-long support</li>
+                    <li>📚 <strong>General Tutoring:</strong> Pay As You Go ($75/hr, no contract) or 4-Hour Package ($65/hr, $260 total); Semester Success Retainer (~$58/hr) is the best value for semester-long support</li>
                     <li>🏥 <strong>Nursing Programs:</strong> Single Session ($85/hr), Semester Bundle (~$69/hr), and NCLEX Intensive (~$50/hr) for targeted exam prep</li>
                     <li>🌟 <strong>Nursing Career Mentorship:</strong> $399/mo adds career guidance, resume review, and job search coaching alongside your coursework</li>
-                    <li>💳 <strong>Easy Stripe Sign-Up:</strong> Start the 5-Step Analogy Method with either $100 enrollment + $50/hr for the school year or $75/hr with no enrollment fee</li>
+                    <li>💳 <strong>Easy Stripe Sign-Up:</strong> Choose Pay As You Go ($75/hr), the 4-Hour Package ($65/hr), or the Annual Member Rate ($50/hr + $100/yr membership — requires rep code)</li>
                 </ul>
                 <div class="pricing-policy">
                     <span class="pricing-policy-icon">📋</span>
