@@ -11,8 +11,8 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Houston Tutoring Pricing &amp; Plans | Exam Experts – From $50/hr</title>
-    <meta name="description" content="Tutoring plans from $50/hr, all built around the Exam Experts 5-step analogy method. No-contract sessions, 4-hour packages, and exclusive annual member rates.">
+    <title>Houston Tutoring Pricing &amp; Plans | Exam Experts – From $65/hr</title>
+    <meta name="description" content="Tutoring plans from $65/hr, all built around the Exam Experts 5-step analogy method. No-contract sessions and 4-hour packages.">
     <meta name="keywords" content="Houston tutoring price, tutoring cost Houston, affordable tutor Houston TX, NCLEX prep cost Houston, nursing tutoring Houston price, tutoring packages Houston">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="author" content="Exam Experts">
@@ -40,8 +40,8 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
     <meta property="og:url" content="https://examexperts.org/pricing">
-    <meta property="og:title" content="Online Tutoring Pricing &amp; Plans | Exam Experts – From $50/hr">
-    <meta property="og:description" content="Transparent tutoring plans from $50/hr, all built around the Exam Experts 5-step analogy method and personalized exam prep.">
+    <meta property="og:title" content="Online Tutoring Pricing &amp; Plans | Exam Experts – From $65/hr">
+    <meta property="og:description" content="Transparent tutoring plans from $65/hr, all built around the Exam Experts 5-step analogy method and personalized exam prep.">
     <meta property="og:image" content="https://examexperts.org/images/logo.png">
     <meta property="og:image:alt" content="Exam Experts – Online Tutoring &amp; Exam Prep">
     <meta property="og:image:type" content="image/png">
@@ -51,8 +51,8 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Online Tutoring Pricing &amp; Plans | Exam Experts – From $50/hr">
-    <meta name="twitter:description" content="Transparent tutoring plans from $50/hr, all built around the Exam Experts 5-step analogy method and personalized exam prep.">
+    <meta name="twitter:title" content="Online Tutoring Pricing &amp; Plans | Exam Experts – From $65/hr">
+    <meta name="twitter:description" content="Transparent tutoring plans from $65/hr, all built around the Exam Experts 5-step analogy method and personalized exam prep.">
     <meta name="twitter:image" content="https://examexperts.org/images/logo.png">
     <meta name="twitter:image:alt" content="Exam Experts – Online Tutoring &amp; Exam Prep">
 
@@ -79,15 +79,6 @@
           "name": "4-Hour Package",
           "description": "Four hours of 1:1 tutoring at $65/hr, paid upfront ($260 total). Save $10/hr vs. single sessions.",
           "price": "260.00",
-          "priceCurrency": "USD",
-          "seller": { "@type": "EducationalOrganization", "name": "Exam Experts", "url": "https://examexperts.org" }
-        },
-        {
-          "@type": "Offer",
-          "position": 3,
-          "name": "Annual Member Rate",
-          "description": "One-time $100 annual membership registration. Unlocks the $50/hr member tutoring rate for 12 months.",
-          "price": "100.00",
           "priceCurrency": "USD",
           "seller": { "@type": "EducationalOrganization", "name": "Exam Experts", "url": "https://examexperts.org" }
         }
@@ -170,25 +161,8 @@
                         <span class="signup-plan-price">$65/hr — $260 total</span>
                         <span class="signup-plan-desc">Pre-pay for four hours of tutoring at $65/hr ($260 total). Save $10/hr vs. single sessions — perfect for a deep dive.</span>
                     </label>
-                    <!-- Annual Member card — hidden until rep code is entered -->
-                    <label class="signup-plan-card" id="annualMemberCard" style="display:none;" aria-hidden="true">
-                        <input type="radio" name="signup-plan" value="annual-member" form="signupForm" id="annualMemberRadio">
-                        <span class="signup-plan-badge signup-plan-badge-secured">🔐 Member Rate Unlocked</span>
-                        <span class="signup-plan-name">Annual Member Rate</span>
-                        <span class="signup-plan-price">$50/hr + $100/yr membership</span>
-                        <span class="signup-plan-desc">Exclusive rate for members. Pay the $100 annual membership today and tutor at $50/hr for 12 months.</span>
-                    </label>
                 </div>
 
-                <!-- Rep code unlock row — reveals the Annual Member Rate card -->
-                <div class="rep-code-unlock" id="repCodeUnlock">
-                    <p class="rep-code-unlock-label">🔐 Have a rep code?</p>
-                    <div class="rep-code-unlock-row">
-                        <input type="text" id="repCodeInput" autocomplete="off" placeholder="Enter your rep code" maxlength="50" class="rep-code-input">
-                        <button type="button" id="repCodeUnlockBtn" class="btn rep-code-btn">Unlock Rate</button>
-                    </div>
-                    <p class="rep-code-unlock-status" id="repCodeStatus" aria-live="polite"></p>
-                </div>
                 <form class="contact-form signup-form" id="signupForm">
                     <div class="signup-form-grid">
                         <div class="form-group">
@@ -214,8 +188,6 @@
                         <label for="signup-goals">Anything we should know before checkout? (optional)</label>
                         <textarea id="signup-goals" name="goals" rows="4" placeholder="Exam date, school, biggest challenge, or what you want the 5-step analogy method to help you fix."></textarea>
                     </div>
-                    <!-- Hidden: rep code captured by the unlock row above -->
-                    <input type="hidden" id="signup-promo-code" name="promoCode">
                     <div class="pricing-policy signup-plan-note-wrap">
                         <span class="pricing-policy-icon">💳</span>
                         <p id="signupPlanNote"><strong class="signup-plan-note-label"></strong> <span class="signup-plan-note-body"></span></p>
@@ -234,7 +206,7 @@
                         <div class="competitor-item competitor-them"><span class="competitor-name">Varsity Tutors</span><span class="competitor-rate">$150–$300/hr</span></div>
                         <div class="competitor-item competitor-them"><span class="competitor-name">Princeton Review</span><span class="competitor-rate">$145–$200/hr</span></div>
                         <div class="competitor-item competitor-them"><span class="competitor-name">Revolution Prep</span><span class="competitor-rate">$89–$149/hr</span></div>
-                        <div class="competitor-item competitor-us"><span class="competitor-name">Exam Experts ✓</span><span class="competitor-rate">from $50/hr</span></div>
+                        <div class="competitor-item competitor-us"><span class="competitor-name">Exam Experts ✓</span><span class="competitor-rate">from $65/hr</span></div>
                     </div>
                 </div>
             </div>
@@ -242,7 +214,7 @@
             <div class="pricing-info">
                 <h4 class="pricing-info-heading">💡 Quick Summary</h4>
                 <ul class="pricing-info-list">
-                    <li>💳 <strong>Easy Stripe Sign-Up:</strong> Choose Pay As You Go ($75/hr), the 4-Hour Package ($65/hr, $260 total), or the Annual Member Rate ($50/hr + $100/yr membership — requires rep code)</li>
+                    <li>💳 <strong>Easy Stripe Sign-Up:</strong> Choose Pay As You Go ($75/hr) or the 4-Hour Package ($65/hr, $260 total)</li>
                 </ul>
                 <div class="pricing-policy">
                     <span class="pricing-policy-icon">📋</span>
