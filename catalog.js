@@ -40,12 +40,12 @@ const academicPlans = [
         tags: ['summer', 'advanced', 'ap']
     },
     {
-        title: 'Phonics & Early Reading (K\u20132)',
+        title: 'Phonics & Early Reading (K–2)',
         summary: 'Support early readers with phonics, fluency, and decoding practice.',
         tags: ['summer', 'phonics', 'reading', 'elementary']
     },
     {
-        title: 'Math Facts Fluency (K\u20135)',
+        title: 'Math Facts Fluency (K–5)',
         summary: 'Build number speed and confidence for elementary math success.',
         tags: ['summer', 'math', 'fluency', 'elementary']
     },
@@ -100,7 +100,7 @@ const academicPlans = [
         tags: ['summer', 'grammar', 'vocabulary']
     },
     {
-        title: 'Handwriting & Fine Motor (K\u20133)',
+        title: 'Handwriting & Fine Motor (K–3)',
         summary: 'Support handwriting control, spacing, and classroom readiness.',
         tags: ['summer', 'handwriting', 'fine motor', 'elementary']
     },
