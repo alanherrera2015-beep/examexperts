@@ -18,24 +18,26 @@ navLinks.forEach(link => {
 
 // Active Navigation Link based on current page URL
 (function() {
-    const path = window.location.pathname;
-    const pageMap = {
-        'index.html': 'index.html',
-        '': 'index.html',
-        '/': 'index.html',
-        'services.html': 'services.html',
-        'about.html': 'about.html',
-        'approach.html': 'approach.html',
-        'pricing.html': 'pricing.html',
-        'contact.html': 'contact.html',
+    const normalizePath = (value = '') => {
+        const [pathOnly] = value.split(/[?#]/);
+        const cleaned = pathOnly
+            .replace(/index\.html$/, '')
+            .replace(/\.html$/, '')
+            .replace(/\/+$/, '');
+
+        return cleaned || '/';
     };
-    const currentFile = path.split('/').pop() || 'index.html';
-    const activePage = pageMap[currentFile] || currentFile;
+
+    const activePage = normalizePath(window.location.pathname);
+
     navLinks.forEach(link => {
         link.classList.remove('active');
-        const linkHref = link.getAttribute('href');
-        if (linkHref === activePage || (activePage === 'index.html' && linkHref === 'index.html')) {
+        link.removeAttribute('aria-current');
+
+        const linkHref = normalizePath(link.getAttribute('href') || '');
+        if (linkHref === activePage) {
             link.classList.add('active');
+            link.setAttribute('aria-current', 'page');
         }
     });
 })();
