@@ -210,7 +210,7 @@
                         <button type="button" class="catalog-filter-chip" data-filter="safety">Safety</button>
                         <button type="button" class="catalog-filter-chip" data-filter="communication">Communication</button>
                     </div>
-                    <p class="catalog-search-status" id="catalogSearchStatus">Showing all 65 plans.</p>
+                    <p class="catalog-search-status" id="catalogSearchStatus"></p>
                 </div>
             </div>
         </div>
@@ -651,10 +651,10 @@
 
             return plans.filter(plan => {
                 const searchableText = [
-                    plan.title,
-                    plan.summary,
-                    ...(plan.tags || [])
-                ].join(' ').toLowerCase();
+                    normalizeText(plan.title || ''),
+                    normalizeText(plan.summary || ''),
+                    ...((Array.isArray(plan.tags) ? plan.tags : []).map(tag => normalizeText(tag || '')))
+                ].join(' ');
 
                 return searchableText.includes(query);
             });
