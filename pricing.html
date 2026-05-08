@@ -340,6 +340,31 @@
         </div>
     </footer>
 
+    <!-- Checkout Success Overlay — shown when Stripe redirects back with ?signup=success -->
+    <div id="checkoutSuccessOverlay" class="checkout-success-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="checkoutSuccessTitle">
+        <div class="checkout-success-card">
+            <div class="checkout-success-confetti" aria-hidden="true">🎉 ✨ 🎊 ⭐ 🎉</div>
+            <div class="checkout-success-check" aria-hidden="true">✅</div>
+            <h2 class="checkout-success-title" id="checkoutSuccessTitle">Payment Confirmed!</h2>
+            <p class="checkout-success-welcome" id="checkoutSuccessWelcome"></p>
+            <div class="checkout-success-details" id="checkoutSuccessDetails"></div>
+            <div class="checkout-success-next">
+                <h3>📋 What Happens Next</h3>
+                <ol>
+                    <li>Our team will reach out within <strong>24 hours</strong> to schedule your session.</li>
+                    <li>A confirmation email has been sent to your inbox.</li>
+                    <li>You'll receive a calendar invite with Zoom or in-person details.</li>
+                </ol>
+            </div>
+            <div class="checkout-success-contact">
+                <p>Questions right now?</p>
+                <a href="tel:2815415928" class="btn btn-primary">📞 281-541-5928</a>
+                <a href="mailto:examexpertscontact@gmail.com" class="btn btn-outline">✉️ Email Us</a>
+            </div>
+            <button type="button" class="checkout-success-close btn" id="checkoutSuccessClose">Got it, I'm excited! 🎉</button>
+        </div>
+    </div>
+
     <script src="app.js" defer></script>
 </body>
 </html>

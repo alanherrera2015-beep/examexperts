@@ -363,7 +363,38 @@ if (signupForm) {
     if (signupResult === 'success') {
         const completedPlan = signupParams.get('plan') || 'pay-as-you-go';
         const planLabel = signupPlanContent[completedPlan]?.planName || signupPlanContent['pay-as-you-go'].planName;
-        setSignupStatus(`Stripe checkout completed for the ${planLabel}. We will follow up shortly with your next steps.`, 'success');
+
+        // Retrieve stored signup data saved before the Stripe redirect
+        let storedData = {};
+        try {
+            const raw = localStorage.getItem('examexperts_signup');
+            if (raw) storedData = JSON.parse(raw);
+        } catch (e) {}
+
+        // Show the prominent success overlay
+        showCheckoutSuccessOverlay(planLabel, storedData);
+
+        // Also update the inline status (accessible fallback)
+        setSignupStatus(`🎉 Payment confirmed for the ${planLabel}! Check your email for confirmation. We will follow up shortly with your next steps.`, 'success');
+
+        // Send confirmation email in background
+        if (storedData.email) {
+            fetch('/.netlify/functions/send-confirmation', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: storedData.name || '',
+                    email: storedData.email,
+                    phone: storedData.phone || '',
+                    subject: storedData.subject || '',
+                    plan: storedData.plan || completedPlan
+                })
+            }).catch(err => console.error('Confirmation email error:', err));
+        }
+
+        // Clean up localStorage
+        try { localStorage.removeItem('examexperts_signup'); } catch (e) {}
+
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         signupForm.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
     } else if (signupResult === 'canceled') {
@@ -418,6 +449,11 @@ if (signupForm) {
             if (!isStripeCheckoutUrl(result.url)) {
                 throw new Error('Received an unexpected checkout URL. Please contact us directly.');
             }
+
+            // Persist signup data so we can personalise the success screen after redirect
+            try {
+                localStorage.setItem('examexperts_signup', JSON.stringify({ name, email, phone, subject, plan }));
+            } catch (e) {}
 
             window.location.href = result.url;
         } catch (error) {
@@ -659,3 +695,66 @@ pulseStyle.textContent = `
     }
 `;
 document.head.appendChild(pulseStyle);
+
+// Show a full-screen success overlay after a successful Stripe checkout
+function showCheckoutSuccessOverlay(planLabel, storedData) {
+    const overlay = document.getElementById('checkoutSuccessOverlay');
+    if (!overlay) return;
+
+    const welcomeEl = document.getElementById('checkoutSuccessWelcome');
+    const detailsEl = document.getElementById('checkoutSuccessDetails');
+    const closeBtn = document.getElementById('checkoutSuccessClose');
+
+    if (welcomeEl) {
+        const studentName = storedData.name || '';
+        welcomeEl.textContent = studentName
+            ? `Welcome to Exam Experts, ${studentName}! Your spot is confirmed.`
+            : 'Welcome to Exam Experts! Your spot is confirmed.';
+    }
+
+    if (detailsEl) {
+        const studentEmail = storedData.email || '';
+        const studentSubject = storedData.subject || '';
+        const studentPhone = storedData.phone || '';
+        let html = `<p><strong>Plan:</strong> ${escapeHtml(planLabel)}</p>`;
+        if (studentSubject) html += `<p><strong>Focus:</strong> ${escapeHtml(studentSubject)}</p>`;
+        if (studentEmail) html += `<p><strong>Confirmation sent to:</strong> ${escapeHtml(studentEmail)}</p>`;
+        if (studentPhone) html += `<p><strong>Phone:</strong> ${escapeHtml(studentPhone)}</p>`;
+        detailsEl.innerHTML = html;
+    }
+
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    const closeOverlay = () => {
+        overlay.style.display = 'none';
+        document.body.style.overflow = '';
+    };
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeOverlay);
+    }
+
+    // Close on backdrop click
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeOverlay();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function onKeydown(e) {
+        if (e.key === 'Escape') {
+            closeOverlay();
+            document.removeEventListener('keydown', onKeydown);
+        }
+    });
+}
+
+// Safely escape a string for use in innerHTML
+function escapeHtml(str) {
+    return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
