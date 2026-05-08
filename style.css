@@ -4376,6 +4376,94 @@ section::before {
     text-decoration: underline;
 }
 
+.catalog-search-section {
+    padding: 20px 20px 0;
+}
+
+.catalog-search-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 24px;
+    align-items: start;
+    background: #ffffff;
+    border: 1px solid rgba(108, 99, 255, 0.12);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 18px 50px rgba(76, 29, 149, 0.08);
+}
+
+.catalog-search-copy h2 {
+    font-size: 1.7rem;
+    margin-bottom: 12px;
+    color: #1f2937;
+}
+
+.catalog-search-copy p:last-child {
+    margin-bottom: 0;
+    color: #4b5563;
+}
+
+.catalog-search-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.catalog-search-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.catalog-search-input {
+    width: 100%;
+    min-height: 54px;
+    padding: 0 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(108, 99, 255, 0.2);
+    background: #f8f7ff;
+    color: #1f2937;
+    font-size: 1rem;
+    box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.catalog-search-input:focus {
+    outline: none;
+    border-color: #6c63ff;
+    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.14);
+}
+
+.catalog-filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.catalog-filter-chip {
+    border: 1px solid rgba(108, 99, 255, 0.16);
+    background: #ffffff;
+    color: #4338ca;
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.catalog-filter-chip:hover,
+.catalog-filter-chip.is-active {
+    background: rgba(108, 99, 255, 0.1);
+    box-shadow: 0 10px 22px rgba(108, 99, 255, 0.12);
+    transform: translateY(-1px);
+}
+
+.catalog-search-status {
+    margin: 0;
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
 .catalog-section {
     padding: 56px 20px;
 }
@@ -4485,7 +4573,45 @@ section::before {
     font-size: 0.95rem;
 }
 
+.catalog-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.catalog-card-tag {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    background: rgba(108, 99, 255, 0.08);
+    color: #4c1d95;
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.catalog-empty-state {
+    grid-column: 1 / -1;
+    padding: 28px;
+    border-radius: 18px;
+    border: 1px dashed rgba(108, 99, 255, 0.24);
+    background: rgba(255, 255, 255, 0.82);
+    text-align: center;
+}
+
+.catalog-empty-state h3 {
+    margin-bottom: 8px;
+    color: #1f2937;
+}
+
+.catalog-empty-state p {
+    margin: 0;
+}
+
 @media (max-width: 900px) {
+    .catalog-search-panel,
     .catalog-overview-grid,
     .catalog-section-heading {
         grid-template-columns: 1fr;
@@ -4498,9 +4624,19 @@ section::before {
 }
 
 @media (max-width: 640px) {
+    .catalog-search-panel,
     .catalog-overview-card,
     .catalog-card {
         padding: 20px;
+    }
+
+    .catalog-filter-chips {
+        gap: 8px;
+    }
+
+    .catalog-filter-chip {
+        width: 100%;
+        justify-content: center;
     }
 
     .catalog-grid {
