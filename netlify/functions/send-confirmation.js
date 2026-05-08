@@ -124,7 +124,7 @@ exports.handler = async function (event) {
       'Questions? Call 281-541-5928 or email examexpertscontact@gmail.com',
       '',
       'Exam Experts Team'
-    ].filter(line => line !== null).join('\n');
+    ].filter(Boolean).join('\n');
 
     // ── Admin notification email ────────────────────────────────────────────
     const adminHtml = `
@@ -149,7 +149,7 @@ exports.handler = async function (event) {
       phone ? `Phone: ${phone}` : '',
       `Plan: ${planLabel}`,
       subject ? `Focus: ${subject}` : ''
-    ].filter(line => line !== null).join('\n');
+    ].filter(Boolean).join('\n');
 
     const messages = [
       {

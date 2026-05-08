@@ -729,6 +729,11 @@ function showCheckoutSuccessOverlay(planLabel, storedData) {
     const closeOverlay = () => {
         overlay.style.display = 'none';
         document.body.style.overflow = '';
+        document.removeEventListener('keydown', onEscKeydown);
+    };
+
+    const onEscKeydown = (e) => {
+        if (e.key === 'Escape') closeOverlay();
     };
 
     if (closeBtn) {
@@ -741,12 +746,7 @@ function showCheckoutSuccessOverlay(planLabel, storedData) {
     });
 
     // Close on Escape key
-    document.addEventListener('keydown', function onKeydown(e) {
-        if (e.key === 'Escape') {
-            closeOverlay();
-            document.removeEventListener('keydown', onKeydown);
-        }
-    });
+    document.addEventListener('keydown', onEscKeydown);
 }
 
 // Safely escape a string for use in innerHTML
