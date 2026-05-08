@@ -2235,6 +2235,10 @@ section::before {
     background: #059669;
 }
 
+.signup-plan-badge-trial {
+    background: #d97706;
+}
+
 .required-indicator {
     color: #b91c1c;
 }

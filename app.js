@@ -219,6 +219,11 @@ if (signupForm) {
             planName: 'Annual Member Rate',
             label: 'Annual Member Rate:',
             body: 'Stripe will charge the $100 annual membership registration today. Your tutoring rate is $50/hr for the next 12 months.'
+        },
+        'trial': {
+            planName: '$1 Trial Session',
+            label: '$1 Trial:',
+            body: 'Stripe will charge just $1 today. Experience the 5-step analogy method risk-free. Valid promo code required.'
         }
     };
 
@@ -304,6 +309,55 @@ if (signupForm) {
         });
     }
 
+    // Promo code unlock row — reveals the hidden $1 Trial card
+    const promoCodeInput = document.getElementById('promoCodeInput');
+    const promoCodeUnlockBtn = document.getElementById('promoCodeUnlockBtn');
+    const promoCodeStatus = document.getElementById('promoCodeStatus');
+    const trialPlanCard = document.getElementById('trialPlanCard');
+    const trialPlanRadio = document.getElementById('trialPlanRadio');
+
+    const setPromoCodeStatus = (message, type) => {
+        if (!promoCodeStatus) return;
+        promoCodeStatus.textContent = message;
+        promoCodeStatus.className = 'rep-code-unlock-status';
+        if (type) promoCodeStatus.classList.add('rep-code-unlock-status-' + type);
+    };
+
+    const unlockTrial = () => {
+        const code = promoCodeInput ? promoCodeInput.value.trim() : '';
+        if (!code) {
+            setPromoCodeStatus('Please enter a promo code.', 'error');
+            return;
+        }
+        if (trialPlanCard) {
+            trialPlanCard.style.display = '';
+            trialPlanCard.removeAttribute('aria-hidden');
+            trialPlanCard.classList.add('signup-plan-card-unlocked');
+        }
+        if (trialPlanRadio) {
+            trialPlanRadio.checked = true;
+        }
+        if (hiddenPromoCode) {
+            hiddenPromoCode.value = code;
+        }
+        updateSignupPlan();
+        setPromoCodeStatus('✅ $1 Trial unlocked! Select it above and continue.', 'success');
+        if (promoCodeUnlockBtn) promoCodeUnlockBtn.disabled = true;
+        if (promoCodeInput) promoCodeInput.disabled = true;
+    };
+
+    if (promoCodeUnlockBtn) {
+        promoCodeUnlockBtn.addEventListener('click', unlockTrial);
+    }
+    if (promoCodeInput) {
+        promoCodeInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                unlockTrial();
+            }
+        });
+    }
+
     const signupParams = new URLSearchParams(window.location.search);
     const signupResult = signupParams.get('signup');
     if (signupResult === 'success') {
@@ -334,6 +388,11 @@ if (signupForm) {
 
         if (plan === 'annual-member' && !promoCode) {
             setSignupStatus('Please enter the rep code to unlock the Annual Member rate.', 'error');
+            return;
+        }
+
+        if (plan === 'trial' && !promoCode) {
+            setSignupStatus('Please enter the promo code to unlock the $1 Trial.', 'error');
             return;
         }
 
