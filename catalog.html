@@ -644,7 +644,7 @@
         const catalogSearchStatus = document.getElementById('catalogSearchStatus');
         const filterChips = document.querySelectorAll('.catalog-filter-chip');
         const totalPlans = academicPlans.length + lifeSkillsPlans.length;
-        const NO_FILTER_MATCH = '__no-filter-match__';
+        const FILTER_CHIP_NO_MATCH = '__filter-chip-no-match__';
 
         const normalizeText = (value) => (value || '').toLowerCase().trim();
         const escapeHtml = (value) => String(value)
@@ -726,7 +726,7 @@
         const syncQuickFilter = (query) => {
             const normalizedQuery = normalizeText(query);
             const matchingChip = Array.from(filterChips).find(chip => normalizeText(chip.dataset.filter || '') === normalizedQuery);
-            setQuickFilter(matchingChip ? matchingChip.dataset.filter || '' : NO_FILTER_MATCH);
+            setQuickFilter(matchingChip ? matchingChip.dataset.filter || '' : FILTER_CHIP_NO_MATCH);
         };
 
         filterChips.forEach(chip => {
