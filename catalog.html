@@ -129,7 +129,7 @@
                     <a href="#academic-plans" class="btn btn-primary btn-shimmer">Browse Academic Plans</a>
                     <a href="#life-skills-plans" class="btn btn-outline">Browse Life Skills Plans</a>
                 </div>
-                <div class="hero-stats catalog-stats">
+                <div class="hero-stats catalog-stats" aria-live="polite">
                     <div class="hero-stat">
                         <span class="hero-stat-number" id="academicPlanCount">0</span>
                         <span class="hero-stat-label">Academic Plans</span>
@@ -644,7 +644,7 @@
         const catalogSearchStatus = document.getElementById('catalogSearchStatus');
         const filterChips = document.querySelectorAll('.catalog-filter-chip');
 
-        const normalizeText = (value) => (value ?? '').toLowerCase().trim();
+        const normalizeText = (value) => String(value ?? '').toLowerCase().trim();
 
         const filterPlans = (plans, query) => {
             if (!query) return plans;
@@ -653,7 +653,7 @@
                 const searchableText = [
                     normalizeText(plan.title || ''),
                     normalizeText(plan.summary || ''),
-                    ...((Array.isArray(plan.tags) ? plan.tags : []).map(tag => normalizeText(tag || '')))
+                    ...plan.tags.map(tag => normalizeText(tag || ''))
                 ].join(' ');
 
                 return searchableText.includes(query);
@@ -718,7 +718,6 @@
                 const value = chip.dataset.filter || '';
                 if (catalogSearch) {
                     catalogSearch.value = value;
-                    catalogSearch.focus();
                 }
                 setQuickFilter(value);
                 renderAllCatalogs(normalizeText(value));
