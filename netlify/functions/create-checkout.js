@@ -8,6 +8,11 @@ const VALID_REP_CODES = (process.env.MEMBER_PROMO_CODES || '')
   .map(c => c.trim().toUpperCase())
   .filter(Boolean);
 
+const VALID_TRIAL_CODES = (process.env.TRIAL_PROMO_CODES || '')
+  .split(',')
+  .map(c => c.trim().toUpperCase())
+  .filter(Boolean);
+
 const PLAN_CONFIG = {
   'pay-as-you-go': {
     amount: 7500,
@@ -23,6 +28,11 @@ const PLAN_CONFIG = {
     amount: 10000,
     name: 'Annual Membership Registration',
     description: 'One-time $100 annual membership registration. Unlocks the $50/hr member tutoring rate for 12 months.'
+  },
+  'trial': {
+    amount: 100,
+    name: '$1 Trial Session',
+    description: 'Promotional $1 trial — experience the 5-step analogy method risk-free. Valid promo code required.'
   }
 };
 
@@ -63,6 +73,15 @@ exports.handler = async function (event) {
       }
       if (VALID_REP_CODES.length > 0 && !VALID_REP_CODES.includes(repCode)) {
         return { statusCode: 400, body: JSON.stringify({ error: 'Invalid rep code. Please check your code and try again.' }) };
+      }
+    }
+
+    if (plan === 'trial') {
+      if (!repCode) {
+        return { statusCode: 400, body: JSON.stringify({ error: 'A promo code is required for the $1 Trial.' }) };
+      }
+      if (VALID_TRIAL_CODES.length > 0 && !VALID_TRIAL_CODES.includes(repCode)) {
+        return { statusCode: 400, body: JSON.stringify({ error: 'Invalid promo code. Please check your code and try again.' }) };
       }
     }
 

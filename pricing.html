@@ -169,6 +169,14 @@
                         <span class="signup-plan-price">$50/hr + $100/yr membership</span>
                         <span class="signup-plan-desc">Exclusive rate for members. Pay the $100 annual membership today and tutor at $50/hr for 12 months.</span>
                     </label>
+                    <!-- Trial card — hidden until promo code is entered -->
+                    <label class="signup-plan-card" id="trialPlanCard" style="display:none;" aria-hidden="true">
+                        <input type="radio" name="signup-plan" value="trial" form="signupForm" id="trialPlanRadio">
+                        <span class="signup-plan-badge signup-plan-badge-trial">🎟️ Trial Unlocked</span>
+                        <span class="signup-plan-name">$1 Trial Session</span>
+                        <span class="signup-plan-price">$1 today — try it risk-free</span>
+                        <span class="signup-plan-desc">Promotional trial — experience the 5-step analogy method for just $1. Valid promo code required.</span>
+                    </label>
                 </div>
 
                 <!-- Rep code unlock row — reveals the Annual Member Rate card -->
@@ -179,6 +187,15 @@
                         <button type="button" id="repCodeUnlockBtn" class="btn rep-code-btn">Unlock Rate</button>
                     </div>
                     <p class="rep-code-unlock-status" id="repCodeStatus" aria-live="polite"></p>
+                </div>
+                <!-- Promo code unlock row — reveals the $1 Trial card -->
+                <div class="rep-code-unlock" id="promoCodeUnlock">
+                    <p class="rep-code-unlock-label">🎟️ Have a promo code?</p>
+                    <div class="rep-code-unlock-row">
+                        <input type="text" id="promoCodeInput" autocomplete="off" placeholder="Enter your promo code" maxlength="50" class="rep-code-input">
+                        <button type="button" id="promoCodeUnlockBtn" class="btn rep-code-btn">Apply Code</button>
+                    </div>
+                    <p class="rep-code-unlock-status" id="promoCodeStatus" aria-live="polite"></p>
                 </div>
                 <form class="contact-form signup-form" id="signupForm">
                     <div class="signup-form-grid">
