@@ -3,6 +3,11 @@ const Stripe = require('stripe');
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
 const stripe = STRIPE_SECRET_KEY ? new Stripe(STRIPE_SECRET_KEY) : null;
 
+const VALID_REP_CODES = (process.env.MEMBER_PROMO_CODES || '')
+  .split(',')
+  .map(c => c.trim().toUpperCase())
+  .filter(Boolean);
+
 const PLAN_CONFIG = {
   'pay-as-you-go': {
     amount: 7500,
@@ -46,19 +51,17 @@ exports.handler = async function (event) {
     const phone = String(body.phone || '').trim();
     const subject = String(body.subject || '').trim();
     const goals = String(body.goals || '').trim();
-    const promoCode = String(body.promoCode || '').trim().toUpperCase();
+    const repCode = String(body.promoCode || '').trim().toUpperCase();
 
     if (!PLAN_CONFIG[plan]) {
       return { statusCode: 400, body: JSON.stringify({ error: 'Please choose a valid plan.' }) };
     }
 
     if (plan === 'annual-member') {
-      const rawCodes = process.env.MEMBER_PROMO_CODES || '';
-      const validCodes = rawCodes.split(',').map(c => c.trim().toUpperCase()).filter(Boolean);
-      if (!promoCode) {
+      if (!repCode) {
         return { statusCode: 400, body: JSON.stringify({ error: 'A rep code is required for the Annual Member rate.' }) };
       }
-      if (validCodes.length > 0 && !validCodes.includes(promoCode)) {
+      if (VALID_REP_CODES.length > 0 && !VALID_REP_CODES.includes(repCode)) {
         return { statusCode: 400, body: JSON.stringify({ error: 'Invalid rep code. Please check your code and try again.' }) };
       }
     }
@@ -99,7 +102,7 @@ exports.handler = async function (event) {
         phone: truncate(phone, 200),
         subject: safeSubject,
         goals: truncate(goals, 500),
-        promo_code: truncate(promoCode, 50)
+        promo_code: truncate(repCode, 50)
       }
     });
 
