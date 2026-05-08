@@ -278,6 +278,7 @@ if (signupForm) {
         if (annualMemberCard) {
             annualMemberCard.style.display = '';
             annualMemberCard.removeAttribute('aria-hidden');
+            annualMemberCard.classList.add('signup-plan-card-unlocked');
         }
         if (annualMemberRadio) {
             annualMemberRadio.checked = true;
