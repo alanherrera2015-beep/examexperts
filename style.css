@@ -4635,6 +4635,7 @@ section::before {
     }
 
     .catalog-filter-chip {
+        display: flex;
         width: 100%;
         justify-content: center;
     }

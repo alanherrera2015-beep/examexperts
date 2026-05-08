@@ -131,17 +131,17 @@
                 </div>
                 <div class="hero-stats catalog-stats">
                     <div class="hero-stat">
-                        <span class="hero-stat-number" id="academicPlanCount">25</span>
+                        <span class="hero-stat-number" id="academicPlanCount">0</span>
                         <span class="hero-stat-label">Academic Plans</span>
                     </div>
                     <div class="hero-stat-divider"></div>
                     <div class="hero-stat">
-                        <span class="hero-stat-number" id="lifeSkillsPlanCount">40</span>
+                        <span class="hero-stat-number" id="lifeSkillsPlanCount">0</span>
                         <span class="hero-stat-label">Life Skills Plans</span>
                     </div>
                     <div class="hero-stat-divider"></div>
                     <div class="hero-stat">
-                        <span class="hero-stat-number" id="totalPlanCount">65</span>
+                        <span class="hero-stat-number" id="totalPlanCount">0</span>
                         <span class="hero-stat-label">Programs Total</span>
                     </div>
                 </div>
@@ -221,7 +221,7 @@
             <div class="catalog-section-heading">
                 <div>
                     <p class="catalog-section-kicker">Academic Catalog</p>
-                    <h2 class="section-title"><span id="academicHeadingCount">25</span> Academic Plans</h2>
+                    <h2 class="section-title"><span id="academicHeadingCount">0</span> Academic Plans</h2>
                     <p class="section-subtitle">Programs that strengthen subject mastery, study habits, and academic confidence.</p>
                 </div>
                 <span class="catalog-section-badge catalog-section-badge-academic">Academic</span>
@@ -235,7 +235,7 @@
             <div class="catalog-section-heading">
                 <div>
                     <p class="catalog-section-kicker">Life Skills Catalog</p>
-                    <h2 class="section-title"><span id="lifeHeadingCount">40</span> Life Skills Plans</h2>
+                    <h2 class="section-title"><span id="lifeHeadingCount">0</span> Life Skills Plans</h2>
                     <p class="section-subtitle">Programs that teach the practical skills families wish school covered sooner.</p>
                 </div>
                 <span class="catalog-section-badge catalog-section-badge-life">Life Skills</span>
@@ -644,7 +644,7 @@
         const catalogSearchStatus = document.getElementById('catalogSearchStatus');
         const filterChips = document.querySelectorAll('.catalog-filter-chip');
 
-        const normalizeText = (value = '') => value.toLowerCase().trim();
+        const normalizeText = (value) => (value ?? '').toLowerCase().trim();
 
         const filterPlans = (plans, query) => {
             if (!query) return plans;
