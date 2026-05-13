@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <title>Exam Experts – Rep Presentation Sheets</title>
+    <meta name="description" content="Individual presentation sheets for Exam Experts field reps to show homeowners during door-to-door visits.">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy: #0D1B2A;
+            --crimson: #A51C30;
+            --gold: #C5960C;
+            --ivory: #FAF8F2;
+            --linen: #F5F0E8;
+            --slate: #4A4A4A;
+            --soft-blue: #E8EDF2;
+            --soft-red: #F9E8EB;
+        }
+
+        body {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #EFF6FF;
+            color: var(--slate);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            padding: 24px 12px 48px;
+        }
+
+        /* ── Toolbar ─────────────────────────────────────── */
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            width: 8.5in;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            border: none;
+            border-radius: 9999px;
+            padding: 10px 18px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-back  { border: 2px solid #2563EB; color: #2563EB; background: #fff; }
+        .btn-print { color: #fff; background: linear-gradient(135deg, #F59E0B, #EA580C); }
+
+        .index-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            width: 8.5in;
+            padding: 6px 0;
+        }
+        .index-link {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--navy);
+            text-decoration: none;
+            border: 1.5px solid var(--navy);
+            border-radius: 999px;
+            padding: 5px 12px;
+            background: #fff;
+        }
+        .index-link:hover { background: var(--soft-blue); }
+
+        /* ── Sheet (full page) ───────────────────────────── */
+        .sheet {
+            width: 8.5in;
+            min-height: 11in;
+            background: #fff;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ── Sheet header band ───────────────────────────── */
+        .sheet-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 28px 14px;
+            border-bottom: 5px solid var(--gold);
+        }
+        .sheet-header.navy   { background: var(--navy);    color: #fff; }
+        .sheet-header.crimson { background: var(--crimson); color: #fff; }
+
+        .sheet-header .sheet-num {
+            font-size: 11px;
+            font-weight: 700;
+            background: rgba(255,255,255,0.18);
+            border-radius: 6px;
+            padding: 2px 8px;
+            white-space: nowrap;
+        }
+        .sheet-header h1 {
+            font-size: 28px;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+        .sheet-header .sub {
+            font-size: 13px;
+            opacity: 0.85;
+            margin-top: 2px;
+        }
+
+        /* ── Sheet body ──────────────────────────────────── */
+        .sheet-body {
+            flex: 1;
+            padding: 24px 28px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* ── Sheet footer ────────────────────────────────── */
+        .sheet-footer {
+            background: rgba(13,27,42,0.95);
+            color: #f3f4f6;
+            font-size: 11px;
+            text-align: center;
+            padding: 9px 16px;
+            border-top: 3px solid var(--gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        .sheet-footer.crimson { background: var(--crimson); }
+
+        /* ── Cards ───────────────────────────────────────── */
+        .card {
+            border: 1px solid rgba(13,27,42,0.15);
+            border-radius: 12px;
+            background: #fff;
+            padding: 13px 15px;
+        }
+        .card.soft-blue { background: var(--soft-blue); border-color: rgba(13,27,42,0.2); }
+        .card.soft-red  { background: var(--soft-red);  border-color: rgba(165,28,48,0.2); }
+        .card.gold-border { border: 2px solid var(--gold); background: #fffbeb; }
+
+        h2 { color: var(--navy);    font-size: 16px; margin-bottom: 4px; }
+        h3 { color: var(--crimson); font-size: 14px; margin-bottom: 4px; }
+        p  { font-size: 13px; line-height: 1.5; }
+        ul { padding-left: 18px; }
+        li { font-size: 13px; line-height: 1.4; margin-bottom: 6px; }
+
+        /* ── Step cards ──────────────────────────────────── */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .step {
+            border-left: 5px solid var(--gold);
+            background: var(--ivory);
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+        .step strong { color: var(--navy); font-size: 13px; display: block; margin-bottom: 3px; }
+        .step p { font-size: 12px; }
+
+        /* ── Price boxes ─────────────────────────────────── */
+        .price-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .price-box {
+            text-align: center;
+            border: 2.5px solid var(--gold);
+            border-radius: 14px;
+            background: #fff7e5;
+            padding: 16px 10px;
+        }
+        .price-box .label { font-size: 12px; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+        .price-box .amount { font-size: 52px; font-weight: 900; line-height: 1; color: var(--crimson); }
+        .price-box .per    { font-size: 13px; color: var(--slate); }
+        .price-box p       { font-size: 11.5px; margin-top: 8px; }
+
+        /* ── Research citations ───────────────────────────── */
+        .cite-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        /* ── Contact grid ────────────────────────────────── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        /* ── Pills row ───────────────────────────────────── */
+        .pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        .pill {
+            border: 1.5px solid rgba(197,150,12,0.5);
+            border-radius: 999px;
+            padding: 7px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            background: var(--soft-blue);
+            color: var(--navy);
+        }
+
+        /* ── Cover sheet specifics ───────────────────────── */
+        .cover-inner {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 32px 60px 24px;
+        }
+        .cover-brand { text-align: center; }
+        .cover-brand img {
+            width: 100px;
+            height: 100px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.1);
+            padding: 6px;
+            margin-bottom: 12px;
+        }
+        .cover-brand h1 {
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 0.95;
+            color: #fff;
+        }
+        .cover-brand h1 span { color: var(--gold); }
+        .cover-tagline {
+            color: #e5e7eb;
+            font-size: 16px;
+            margin-top: 12px;
+            text-align: center;
+        }
+        .cover-pain .card.soft-red { max-width: 500px; margin: 0 auto; }
+        .cover-pain h3 { font-size: 16px; margin-bottom: 8px; }
+        .cover-pain li { font-size: 14px; }
+
+        /* ── Community Day callout ───────────────────────── */
+        .community-callout {
+            border: 3px solid var(--gold);
+            border-radius: 14px;
+            background: linear-gradient(180deg, #fff7e5 0%, #fffbeb 100%);
+            padding: 16px 18px 14px;
+        }
+        .community-callout h2 { font-size: 20px; color: var(--crimson); }
+        .community-callout .rate {
+            font-size: 40px;
+            font-weight: 900;
+            color: var(--navy);
+            margin: 8px 0 4px;
+            line-height: 1;
+        }
+
+        /* ── Sponsor callout ─────────────────────────────── */
+        .sponsor-callout {
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            background: #fffbeb;
+            padding: 14px 16px;
+        }
+        .sponsor-callout h2 { font-size: 17px; }
+
+        /* ── QR area ─────────────────────────────────────── */
+        .qr-area {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            background: #fff7e5;
+            padding: 14px 20px;
+        }
+        .qr-area img {
+            width: 130px;
+            height: 130px;
+            border-radius: 10px;
+            border: 5px solid #fff;
+            box-shadow: 0 6px 18px rgba(13,27,42,0.12);
+            background: #fff;
+            flex-shrink: 0;
+        }
+        .qr-area .qr-text h2 { font-size: 17px; }
+        .qr-area .qr-text p  { font-size: 13px; margin-top: 6px; }
+
+        /* ── Print styles ────────────────────────────────── */
+        @media print {
+            @page { size: 8.5in 11in portrait; margin: 0; }
+            body { background: none; padding: 0; gap: 0; }
+            .toolbar, .index-bar { display: none !important; }
+            .sheet {
+                box-shadow: none;
+                page-break-after: always;
+                page-break-inside: avoid;
+                min-height: 11in;
+                max-height: 11in;
+            }
+            .sheet:last-of-type { page-break-after: auto; }
+            /* keep cover dark bg on print */
+            .sheet.cover-sheet { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── Toolbar ─────────────────────────────────────────── -->
+    <div class="toolbar">
+        <a href="/brochure" class="btn btn-back">← Back to Brochure</a>
+        <button class="btn btn-print" onclick="window.print()">🖨️ Print All Sheets</button>
+    </div>
+
+    <!-- ── Quick-jump index ─────────────────────────────────── -->
+    <nav class="index-bar" aria-label="Sheet index">
+        <a href="#sheet-cover"    class="index-link">1 · Front Cover</a>
+        <a href="#sheet-why"      class="index-link">2 · Why Choose Us</a>
+        <a href="#sheet-method"   class="index-link">3 · The 5-Step Method</a>
+        <a href="#sheet-research" class="index-link">4 · Research Backing</a>
+        <a href="#sheet-pricing"  class="index-link">5 · Pricing</a>
+        <a href="#sheet-contact"  class="index-link">6 · Contact &amp; Next Steps</a>
+    </nav>
+
+    <!-- ════════════════════════════════════════════════════════
+         SHEET 1 — FRONT COVER / INTRODUCTION
+    ═══════════════════════════════════════════════════════════ -->
+    <section id="sheet-cover" class="sheet cover-sheet" style="background:var(--navy);" aria-label="Sheet 1: Front Cover">
+        <div class="sheet-header navy" style="border-bottom-color:var(--gold);">
+            <div class="sheet-num">Sheet 1 of 6</div>
+            <div>
+                <div class="sub" style="color:#e5e7eb;">Exam Experts — Presentation Sheet</div>
+            </div>
+        </div>
+
+        <div class="cover-inner">
+            <div class="cover-brand">
+                <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
+                <h1>EXAM<br><span>EXPERTS</span></h1>
+                <p class="cover-tagline">Expert-Led Tutoring · Proven Results · Every Student Deserves the Best</p>
+            </div>
+
+            <div class="cover-pain" style="width:100%;max-width:560px;">
+                <div class="card soft-red" style="margin:0 auto;">
+                    <h3>Does This Sound Like You?</h3>
+                    <ul>
+                        <li>"My child studies for hours, but test scores still don't improve."</li>
+                        <li>"We understand homework, but tests feel overwhelming."</li>
+                        <li>"My student freezes during exams, even when they know the material."</li>
+                    </ul>
+                    <p style="margin-top:10px;"><strong>How we help:</strong> We build deep understanding first, then confidence under test pressure — using a research-backed 5-step method.</p>
+                </div>
+            </div>
+
+            <div class="pills" style="width:100%;max-width:560px;">
+                <div class="pill">Live 1-on-1 Sessions</div>
+                <div class="pill">No Pressure at the Door</div>
+                <div class="pill">Expert Vetted Tutors</div>
+                <div class="pill">Personalized Learning Plans</div>
+                <div class="pill">97% Success Rate</div>
+                <div class="pill">200+ Students Helped</div>
+            </div>
+
+            <div style="text-align:center;">
+                <div style="color:var(--gold);font-weight:800;font-size:16px;">www.examexperts.org</div>
+                <div style="color:#e5e7eb;font-size:13px;margin-top:4px;">(281) 541-5928 · examexpertscontact@gmail.com</div>
+            </div>
+        </div>
+
+        <div class="sheet-footer crimson">
+            <span>K–12 · AP · SAT/ACT · MCAT/GRE · Nursing · College Coursework</span>
+            <span>Schedule Your FREE Consultation Today</span>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         SHEET 2 — WHY CHOOSE EXAM EXPERTS?
+    ═══════════════════════════════════════════════════════════ -->
+    <section id="sheet-why" class="sheet" aria-label="Sheet 2: Why Choose Exam Experts">
+        <div class="sheet-header crimson">
+            <div class="sheet-num">Sheet 2 of 6</div>
+            <div>
+                <h1>Why Choose Exam Experts?</h1>
+                <div class="sub">Who we are, what we believe, and how we're different.</div>
+            </div>
+        </div>
+
+        <div class="sheet-body">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                <div class="card soft-blue">
+                    <h2>Who We Are</h2>
+                    <p>Exam Experts provides personalized online tutoring for students who need measurable results on high-stakes exams. Our Houston-based team supports students locally and across the U.S. with structured 1-on-1 sessions, custom study plans, and clear weekly progress milestones. Every session is backed by expert-built, PhD-reviewed materials — not generic videos or rehashed textbooks.</p>
+                </div>
+                <div class="card">
+                    <h2>Our Mission</h2>
+                    <p>We believe every student deserves access to world-class education. Our mission is to provide personalized, expert-led mentoring that empowers students to reach their full academic potential — regardless of where they are starting from.</p>
+                </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+                <div class="card">
+                    <h3>Expert, Vetted Tutors</h3>
+                    <p>Strong content knowledge paired with clear, effective teaching communication.</p>
+                </div>
+                <div class="card">
+                    <h3>Truly Personalized Plans</h3>
+                    <p>We diagnose gaps first and target exactly what matters most for each student.</p>
+                </div>
+                <div class="card">
+                    <h3>Research-Based Method</h3>
+                    <p>Our 5-step framework emphasizes deep understanding and long-term transfer.</p>
+                </div>
+                <div class="card">
+                    <h3>Transparent Progress</h3>
+                    <p>Regular updates and measurable outcomes keep families informed every step.</p>
+                </div>
+                <div class="card soft-red">
+                    <h3>No Long-Term Contracts</h3>
+                    <p>Flexible scheduling including evenings &amp; weekends. Cancel anytime.</p>
+                </div>
+                <div class="card soft-blue">
+                    <h3>Free Toolkits Included</h3>
+                    <p>Test-anxiety toolkit and exam risk self-quiz provided to every student.</p>
+                </div>
+            </div>
+
+            <div class="card gold-border">
+                <h2>Who We Serve</h2>
+                <div class="pills" style="margin-top:8px;">
+                    <div class="pill">K–12</div>
+                    <div class="pill">AP Courses</div>
+                    <div class="pill">SAT / ACT</div>
+                    <div class="pill">MCAT / GRE</div>
+                    <div class="pill">Nursing &amp; NCLEX</div>
+                    <div class="pill">College Coursework</div>
+                </div>
+            </div>
+
+            <div class="card soft-blue">
+                <h2>🧠 Free Exam-Prep Toolkits — Included with Every Session</h2>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px;">
+                    <div>
+                        <h3>Test-Anxiety Toolkit</h3>
+                        <p>4 practical tools: box breathing, a pre-exam routine, timed practice simulation, and cognitive reframing scripts to keep students calm and performing their best.</p>
+                    </div>
+                    <div>
+                        <h3>Exam Risk Self-Quiz</h3>
+                        <p>A quick self-assessment identifying the highest-risk areas before the next exam. Includes 10 assessment activities and a score guide to prioritize next steps.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sheet-footer">
+            <span>97% success rate · 200+ students helped · 15+ education mentors</span>
+            <span>www.examexperts.org</span>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         SHEET 3 — THE 5-STEP ANALOGY METHOD
+    ═══════════════════════════════════════════════════════════ -->
+    <section id="sheet-method" class="sheet" aria-label="Sheet 3: The 5-Step Analogy Method">
+        <div class="sheet-header navy">
+            <div class="sheet-num">Sheet 3 of 6</div>
+            <div>
+                <h1>The 5-Step Analogy Method</h1>
+                <div class="sub">Our proprietary teaching sequence — from confusion to independent mastery in a single session.</div>
+            </div>
+        </div>
+
+        <div class="sheet-body">
+            <div class="card soft-blue" style="text-align:center;padding:10px 16px;">
+                <p><strong>What makes this different:</strong> Most tutoring starts at Step 3. We start at Step 1 — because a student who <em>understands</em> the concept will always outperform one who just memorized a procedure. Every Exam Experts tutor completes our proprietary Analogy Method Training.</p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step">
+                    <strong>🎈 Step 1 — Simple Analogy First</strong>
+                    <p>We open with a vivid real-world analogy so the concept "clicks" before a single definition is spoken. Understanding the <em>why</em> creates a mental hook that makes everything stick.</p>
+                    <p style="margin-top:6px;font-style:italic;font-size:11.5px;color:var(--slate);">Example: "Think of ATP like a rechargeable battery — your cells spend it for energy and recharge it through respiration."</p>
+                </div>
+                <div class="step">
+                    <strong>📖 Step 2 — The Real Definition</strong>
+                    <p>Once the concept is intuitive, we layer in the precise academic definition — exactly the language an exam expects. Students own both the intuition <em>and</em> the vocabulary needed to succeed.</p>
+                </div>
+                <div class="step">
+                    <strong>🔬 Step 3 — We Demonstrate</strong>
+                    <p>Your tutor fully solves a representative exam problem out loud — narrating every step, every decision, and every reason. You see the expert thought process in real time.</p>
+                </div>
+                <div class="step">
+                    <strong>🤝 Step 4 — You Try, With Support</strong>
+                    <p>You work through a similar problem while your tutor guides with Socratic prompts — steering your thinking, not giving answers. Mistakes become learning moments, not setbacks.</p>
+                </div>
+            </div>
+
+            <div class="step" style="border-left:5px solid var(--crimson);background:var(--soft-red);">
+                <strong style="color:var(--crimson);font-size:15px;">✅ Step 5 — Independent Mastery</strong>
+                <p>You tackle a fresh problem completely solo — start to finish. When you can solve it independently <em>and</em> explain your reasoning, your tutor confirms you're exam-ready. We never move on until you've genuinely got it.</p>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px;">
+                <div class="card gold-border">
+                    <h2>The Sequence at a Glance</h2>
+                    <ol style="padding-left:18px;margin-top:6px;">
+                        <li style="font-size:13px;margin-bottom:6px;"><strong>Analogy</strong> — concept clicks instantly</li>
+                        <li style="font-size:13px;margin-bottom:6px;"><strong>Definition</strong> — academic language owned</li>
+                        <li style="font-size:13px;margin-bottom:6px;"><strong>Demonstrate</strong> — expert model observed</li>
+                        <li style="font-size:13px;margin-bottom:6px;"><strong>Guide</strong> — Socratic scaffolding applied</li>
+                        <li style="font-size:13px;"><strong>Mastery</strong> — independent proof achieved</li>
+                    </ol>
+                </div>
+                <div class="card soft-blue">
+                    <h2>What Students Experience</h2>
+                    <ul style="margin-top:6px;">
+                        <li>Concepts that finally make intuitive sense</li>
+                        <li>Vocabulary they can use confidently on exams</li>
+                        <li>A replicable mental process — not just answers</li>
+                        <li>Genuine confidence built through demonstrated success</li>
+                        <li>Exam-ready, not just homework-ready</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="sheet-footer">
+            <span>Analogy → Definition → Demonstrate → Guide → Mastery</span>
+            <span>www.examexperts.org</span>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         SHEET 4 — RESEARCH BEHIND THE METHOD
+    ═══════════════════════════════════════════════════════════ -->
+    <section id="sheet-research" class="sheet" aria-label="Sheet 4: Research Behind Our Method">
+        <div class="sheet-header crimson">
+            <div class="sheet-num">Sheet 4 of 6</div>
+            <div>
+                <h1>The Research Behind Our Method</h1>
+                <div class="sub">Every step of our framework is grounded in peer-reviewed educational science.</div>
+            </div>
+        </div>
+
+        <div class="sheet-body">
+            <div class="cite-grid">
+                <div class="card soft-blue">
+                    <h2>Step 1 — Analogical Reasoning</h2>
+                    <p>Richland &amp; Simms (2015, <em>WIREs Cognitive Science</em>) confirmed that structural analogies accelerate schema formation — the brain maps new concepts onto familiar frameworks, reducing cognitive effort and dramatically improving retention.</p>
+                </div>
+                <div class="card">
+                    <h2>Step 2 — Precise Academic Language</h2>
+                    <p>Nagy &amp; Townsend (2012, <em>Reading Research Quarterly</em>) demonstrated that explicit instruction in academic vocabulary is a core lever of disciplinary literacy — students who learn the exact language of a field outperform peers on high-stakes assessments.</p>
+                </div>
+                <div class="card soft-red">
+                    <h2>Step 3 — Worked Examples Effect</h2>
+                    <p>Sweller, van Merriënboer &amp; Paas (2019, <em>Educational Psychology Review</em>) updated 20 years of Cognitive Load Theory: fully-worked examples reduce extraneous cognitive load, freeing working memory to build transferable mental schemas.</p>
+                </div>
+                <div class="card">
+                    <h2>Step 4 — Scaffolding &amp; ZPD</h2>
+                    <p>Belland, Walker, Kim &amp; Lefler (2017, <em>Review of Educational Research</em>) — a meta-analysis of 144 studies — found that structured scaffolding during problem-solving produces significant learning gains, especially when faded as competence grows.</p>
+                </div>
+                <div class="card soft-blue">
+                    <h2>Step 5 — Mastery Learning</h2>
+                    <p>Zimmerman &amp; Dibenedetto (2008, <em>Psychology in the Schools</em>) showed that requiring students to demonstrate independent mastery before advancing leads to substantially better outcomes in high-stakes testing contexts.</p>
+                </div>
+                <div class="card">
+                    <h2>Reinforcement Through Retrieval</h2>
+                    <p>Yang et al. (2021, <em>Psychological Bulletin</em>) — a meta-analysis of 222 experiments — confirmed that practice testing boosts long-term retention far beyond re-reading or passive review. Every session closes with active recall to lock in what was learned.</p>
+                </div>
+            </div>
+
+            <div class="card gold-border" style="text-align:center;">
+                <h2 style="font-size:18px;">Science-Backed · Expert-Led · Results-Driven</h2>
+                <p style="margin-top:6px;">When you choose Exam Experts, you're not choosing a tutor who "explains things nicely." You're choosing a structured, evidence-based system that has been proven to produce real academic outcomes for real students.</p>
+            </div>
+        </div>
+
+        <div class="sheet-footer crimson">
+            <span>Science-Backed • Expert-Led • Results-Driven</span>
+            <span>www.examexperts.org</span>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         SHEET 5 — PRICING
+    ═══════════════════════════════════════════════════════════ -->
+    <section id="sheet-pricing" class="sheet" aria-label="Sheet 5: Pricing">
+        <div class="sheet-header navy">
+            <div class="sheet-num">Sheet 5 of 6</div>
+            <div>
+                <h1>At-Door &amp; Brochure Pricing</h1>
+                <div class="sub">Transparent pricing — no hidden fees, no long-term commitments required.</div>
+            </div>
+        </div>
+
+        <div class="sheet-body">
+            <div class="price-row">
+                <div class="price-box" aria-label="At-door price">
+                    <div class="label">At-Door Price<br>(First 24 Hours) &amp;<br>Business Partner Rate</div>
+                    <div class="amount">$50</div>
+                    <div class="per">/ session</div>
+                    <p>Valid for the first 24 hours after our door visit, <strong>or</strong> for customers of businesses that partner with us to display our brochures.</p>
+                </div>
+                <div class="price-box" aria-label="Brochure price">
+                    <div class="label">Brochure Price<br>(Overrides After<br>24 Hours)</div>
+                    <div class="amount">$65</div>
+                    <div class="per">/ session</div>
+                    <p>After 24 hours, brochure pricing replaces the at-door price. Valid anytime you reference this sheet.</p>
+                </div>
+                <div class="price-box" aria-label="Normal price">
+                    <div class="label">Normal Price<br>(Standard Rate)</div>
+                    <div class="amount">$75</div>
+                    <div class="per">/ session</div>
+                    <p>Standard rate when at-door or brochure pricing does not apply.</p>
+                </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                <div class="card">
+                    <h2>Flexible 1-on-1 Online</h2>
+                    <p>Live tutoring tailored to your schedule, including evenings and weekends.</p>
+                </div>
+                <div class="card">
+                    <h2>Personalized Roadmap</h2>
+                    <p>Diagnostic assessment + targeted lesson plan built for measurable growth.</p>
+                </div>
+                <div class="card">
+                    <h2>Progress Tracking</h2>
+                    <p>Regular check-ins and updates so families always know next steps.</p>
+                </div>
+                <div class="card soft-blue">
+                    <h2>Trusted Results</h2>
+                    <p>97% success rate · 200+ students helped · 15+ education mentors.</p>
+                </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                <div class="card soft-red">
+                    <h2 style="color:var(--crimson);">FREE Consultation</h2>
+                    <p>Discuss current performance, identify gaps, and get a custom support plan — no cost and no obligation.</p>
+                </div>
+                <div class="card gold-border">
+                    <h2>Flexible Payments</h2>
+                    <p>Payment plans available for multi-session packages, including <strong>Klarna</strong> options for families who prefer to spread out payments.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sheet-footer">
+            <span>No hidden fees · Cancel anytime · Evenings &amp; weekends available</span>
+            <span>www.examexperts.org · (281) 541-5928</span>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         SHEET 6 — CONTACT & NEXT STEPS
+    ═══════════════════════════════════════════════════════════ -->
+    <section id="sheet-contact" class="sheet" aria-label="Sheet 6: Contact and Next Steps">
+        <div class="sheet-header crimson">
+            <div class="sheet-num">Sheet 6 of 6</div>
+            <div>
+                <h1>Contact Us &amp; Next Steps</h1>
+                <div class="sub">Ready to get started? Here's how to reach us and what comes next.</div>
+            </div>
+        </div>
+
+        <div class="sheet-body">
+            <div class="contact-grid">
+                <div class="card gold-border">
+                    <h2>📞 Reach Us Directly</h2>
+                    <ul style="margin-top:8px;list-style:none;padding:0;">
+                        <li style="margin-bottom:8px;"><strong>Phone:</strong> (281) 541-5928</li>
+                        <li style="margin-bottom:8px;"><strong>Email:</strong> examexpertscontact@gmail.com</li>
+                        <li style="margin-bottom:8px;"><strong>Website:</strong> www.examexperts.org</li>
+                        <li style="margin-bottom:8px;"><strong>Facebook:</strong> Exam Experts</li>
+                        <li><strong>TikTok:</strong> @examexperts1</li>
+                    </ul>
+                </div>
+                <div class="card soft-blue">
+                    <h2>🕐 Hours</h2>
+                    <p style="font-size:16px;font-weight:800;color:var(--navy);margin-top:8px;">7 Days a Week<br>8 AM – 10 PM EST</p>
+                    <p style="margin-top:10px;">Serving students online nationwide, based in Houston, Texas. K–12, college, and nursing support.</p>
+                </div>
+            </div>
+
+            <div class="qr-area">
+                <a href="/pricing#signup" aria-label="Open Stripe sign-up page">
+                    <img src="/images/stripe-signup-qr.svg" alt="QR code to the Stripe sign-up page">
+                </a>
+                <div class="qr-text">
+                    <h2>📱 Scan to Sign Up Now</h2>
+                    <p>Point your phone camera at the QR code to open our Stripe sign-up page and choose the plan that fits your student best. Takes less than 2 minutes.</p>
+                    <p style="margin-top:8px;font-weight:700;">Or visit: <a href="https://www.examexperts.org/pricing" style="color:var(--crimson);">www.examexperts.org/pricing</a></p>
+                </div>
+            </div>
+
+            <div class="community-callout" aria-label="In-home community day rate">
+                <h2>🏡 In-Home Community Day</h2>
+                <p style="font-weight:700;color:var(--navy);font-size:13px;margin-top:2px;">Perfect for HOAs, neighborhood leaders, and community groups.</p>
+                <div class="rate">$75<span style="font-size:16px;font-weight:700;"> / in-home session</span></div>
+                <p>Our team comes door-to-door to build interest in in-home tutoring before sessions begin.</p>
+                <ul style="margin-top:8px;">
+                    <li>Available when <strong>4 neighbors in the same neighborhood</strong> book for the same day.</li>
+                    <li>Great for HOA events, neighborhood family days, and local community outreach.</li>
+                    <li>Email us to coordinate your community day and reserve your area.</li>
+                </ul>
+            </div>
+
+            <div class="sponsor-callout" aria-label="Sponsor opportunity">
+                <h2>🤝 Become a Sponsor</h2>
+                <p style="margin-top:6px;font-weight:700;color:var(--crimson);">Partner with Exam Experts and get your brand in front of Houston families.</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px;">
+                    <div style="font-size:12.5px;"><strong>Brochures</strong> — distributed door-to-door across Houston neighborhoods</div>
+                    <div style="font-size:12.5px;"><strong>Website</strong> — featured on examexperts.org</div>
+                    <div style="font-size:12.5px;"><strong>T-Shirts</strong> — worn by tutors and team at events</div>
+                    <div style="font-size:12.5px;"><strong>Flyers &amp; Marketing</strong> — shared at schools and community events</div>
+                </div>
+                <p style="margin-top:8px;font-size:12.5px;">Interested? Email <a href="mailto:examexpertscontact@gmail.com" style="color:var(--navy);font-weight:700;">examexpertscontact@gmail.com</a> to learn about available packages.</p>
+            </div>
+        </div>
+
+        <div class="sheet-footer crimson">
+            <span>© 2026 Exam Experts. All rights reserved.</span>
+            <span>www.examexperts.org · (281) 541-5928</span>
+        </div>
+    </section>
+
+</body>
+</html>
