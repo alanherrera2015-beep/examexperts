@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <title>Exam Experts – Rep Business Cards</title>
+    <meta name="description" content="Printable business cards for Exam Experts field reps. Print front + back on a single duplex sheet and cut.">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy:   #0D1B2A;
+            --crimson:#A51C30;
+            --gold:   #C5960C;
+            --ivory:  #FAF8F2;
+            --slate:  #4A4A4A;
+        }
+
+        body {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #EFF6FF;
+            color: var(--slate);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 24px 12px 56px;
+        }
+
+        /* ── Toolbar ────────────────────────────────────────── */
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            border: none;
+            border-radius: 9999px;
+            padding: 10px 18px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-back  { border: 2px solid #2563EB; color: #2563EB; background: #fff; }
+        .btn-print { color: #fff; background: linear-gradient(135deg, #F59E0B, #EA580C); }
+
+        /* ── Print instructions ─────────────────────────────── */
+        .print-tip {
+            background: #fff;
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 12px 20px;
+            font-size: 13px;
+            max-width: 680px;
+            text-align: center;
+            line-height: 1.55;
+        }
+        .print-tip strong { color: var(--navy); }
+
+        /* ── Page label (screen only) ───────────────────────── */
+        .page-label {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--navy);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ── Sheet wrapper ──────────────────────────────────── */
+        .sheet {
+            width:  8.5in;
+            height: 11in;
+            background: #fff;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ── Card grid — 2 cols × 5 rows ───────────────────── */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 3.5in 3.5in;
+            grid-template-rows: repeat(5, 2in);
+            /* no gap so cut lines are the boundary */
+        }
+
+        /* ── Individual card ────────────────────────────────── */
+        .card {
+            width:  3.5in;
+            height: 2in;
+            overflow: hidden;
+            position: relative;
+            /* dashed cut guide on all sides */
+            border: 1px dashed rgba(0,0,0,0.18);
+        }
+
+        /* ════════════════════════════════════════════════════
+           FRONT DESIGN
+        ════════════════════════════════════════════════════ */
+        .card-front {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top two-thirds — navy brand area */
+        .cf-top {
+            background: var(--navy);
+            border-bottom: 3px solid var(--gold);
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 10px 13px 8px;
+        }
+        .cf-top img {
+            width:  40px;
+            height: 40px;
+            border-radius: 7px;
+            background: rgba(255,255,255,0.12);
+            padding: 3px;
+            flex-shrink: 0;
+        }
+        .cf-brand h1 {
+            color: #fff;
+            font-size: 19px;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: 0.3px;
+        }
+        .cf-brand h1 span { color: var(--gold); }
+        .cf-brand p {
+            color: #d1d5db;
+            font-size: 7.5px;
+            font-weight: 600;
+            margin-top: 2px;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+        }
+
+        /* Bottom third — ivory contact area */
+        .cf-bottom {
+            background: var(--ivory);
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 6px 13px 5px;
+            gap: 4px 8px;
+        }
+        .cf-contact-item {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+            font-size: 7.5px;
+            color: var(--slate);
+            line-height: 1.35;
+        }
+        .cf-contact-item .icon { font-size: 8px; }
+        .cf-contact-item strong { color: var(--navy); font-size: 7.5px; }
+
+        /* Stats ribbon */
+        .cf-stats {
+            background: var(--crimson);
+            color: #fff;
+            font-size: 7px;
+            font-weight: 700;
+            text-align: center;
+            padding: 3px 0;
+            letter-spacing: 0.5px;
+        }
+
+        /* ════════════════════════════════════════════════════
+           BACK DESIGN
+        ════════════════════════════════════════════════════ */
+        .card-back {
+            background: var(--navy);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px 9px;
+        }
+
+        .cb-top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+        }
+        .cb-top .cb-title {
+            color: var(--gold);
+            font-size: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .cb-qr-wrapper {
+            background: #fff;
+            border-radius: 8px;
+            border: 3px solid var(--gold);
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cb-qr-wrapper img {
+            width:  72px;
+            height: 72px;
+            display: block;
+        }
+
+        .cb-scan-label {
+            color: #e5e7eb;
+            font-size: 7.5px;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 2px;
+        }
+
+        /* Write-in section */
+        .cb-writein {
+            width: 100%;
+            border: 1.5px solid rgba(197,150,12,0.55);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.06);
+            padding: 5px 8px 6px;
+        }
+        .cb-writein-label {
+            color: var(--gold);
+            font-size: 7px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+        }
+        .cb-writein-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cb-writein-row span {
+            color: #9ca3af;
+            font-size: 7px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .cb-writein-line {
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.35);
+        }
+
+        .cb-website {
+            color: rgba(255,255,255,0.5);
+            font-size: 6.5px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        /* ── Print styles ───────────────────────────────────── */
+        @media print {
+            @page { size: 8.5in 11in portrait; margin: 0; }
+            body { background: none; padding: 0; gap: 0; }
+            .toolbar, .print-tip, .page-label { display: none !important; }
+            .sheet {
+                box-shadow: none;
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            .sheet:last-of-type { page-break-after: auto; }
+            .sheet,
+            .card-front .cf-top,
+            .card-front .cf-stats,
+            .card-back { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── Toolbar ──────────────────────────────────────────── -->
+    <div class="toolbar">
+        <a href="/rep-sheets" class="btn btn-back">← Back to Rep Sheets</a>
+        <button class="btn btn-print" onclick="window.print()">🖨️ Print Cards (Front + Back)</button>
+    </div>
+
+    <!-- ── Print instructions ───────────────────────────────── -->
+    <div class="print-tip">
+        <strong>How to print:</strong> Enable duplex (two-sided) printing in your printer settings and set flip to
+        <strong>"Flip on Short Edge."</strong> Print both pages, then cut along the dashed guides with scissors or a
+        paper cutter. Each sheet yields <strong>10 cards</strong> (5 rows × 2 columns).
+        The back is automatically mirrored so every card aligns perfectly after cutting.
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════
+         PAGE 1 — FRONTS (left column = odd positions, right = even)
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="page-label">Page 1 — Card Fronts (print first)</div>
+    <section class="sheet" aria-label="Business card fronts">
+        <div class="card-grid">
+
+            <!-- Repeat the same front card 10 times (2 cols × 5 rows) -->
+            <!-- Card front template -->
+            <article class="card card-front" aria-label="Business card front">
+                <div class="cf-top">
+                    <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
+                    <div class="cf-brand">
+                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <p>Expert-Led · Proven Results · Nationwide</p>
+                    </div>
+                </div>
+                <div class="cf-stats">97% Success Rate &nbsp;·&nbsp; 200+ Students Helped &nbsp;·&nbsp; 15+ Education Mentors</div>
+                <div class="cf-bottom">
+                    <div class="cf-contact-item"><span class="icon">🌐</span><strong>examexperts.org</strong></div>
+                    <div class="cf-contact-item"><span class="icon">📞</span>(281) 541-5928</div>
+                    <div class="cf-contact-item"><span class="icon">✉️</span>examexpertscontact@gmail.com</div>
+                    <div class="cf-contact-item"><span class="icon">📍</span>Houston, TX · Nationwide Online</div>
+                    <div class="cf-contact-item" style="grid-column:1/-1;"><span class="icon">🕐</span><span>7 Days/Week · 8 AM – 10 PM EST · FREE Consultation Available</span></div>
+                </div>
+            </article>
+
+            <article class="card card-front" aria-label="Business card front">
+                <div class="cf-top">
+                    <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
+                    <div class="cf-brand">
+                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <p>Expert-Led · Proven Results · Nationwide</p>
+                    </div>
+                </div>
+                <div class="cf-stats">97% Success Rate &nbsp;·&nbsp; 200+ Students Helped &nbsp;·&nbsp; 15+ Education Mentors</div>
+                <div class="cf-bottom">
+                    <div class="cf-contact-item"><span class="icon">🌐</span><strong>examexperts.org</strong></div>
+                    <div class="cf-contact-item"><span class="icon">📞</span>(281) 541-5928</div>
+                    <div class="cf-contact-item"><span class="icon">✉️</span>examexpertscontact@gmail.com</div>
+                    <div class="cf-contact-item"><span class="icon">📍</span>Houston, TX · Nationwide Online</div>
+                    <div class="cf-contact-item" style="grid-column:1/-1;"><span class="icon">🕐</span><span>7 Days/Week · 8 AM – 10 PM EST · FREE Consultation Available</span></div>
+                </div>
+            </article>
+
+            <article class="card card-front" aria-label="Business card front">
+                <div class="cf-top">
+                    <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
+                    <div class="cf-brand">
+                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <p>Expert-Led · Proven Results · Nationwide</p>
+                    </div>
+                </div>
+                <div class="cf-stats">97% Success Rate &nbsp;·&nbsp; 200+ Students Helped &nbsp;·&nbsp; 15+ Education Mentors</div>
+                <div class="cf-bottom">
+                    <div class="cf-contact-item"><span class="icon">🌐</span><strong>examexperts.org</strong></div>
+                    <div class="cf-contact-item"><span class="icon">📞</span>(281) 541-5928</div>
+                    <div class="cf-contact-item"><span class="icon">✉️</span>examexpertscontact@gmail.com</div>
+                    <div class="cf-contact-item"><span class="icon">📍</span>Houston, TX · Nationwide Online</div>
+                    <div class="cf-contact-item" style="grid-column:1/-1;"><span class="icon">🕐</span><span>7 Days/Week · 8 AM – 10 PM EST · FREE Consultation Available</span></div>
+                </div>
+            </article>
+
+            <article class="card card-front" aria-label="Business card front">
+                <div class="cf-top">
+                    <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
+                    <div class="cf-brand">
+                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <p>Expert-Led · Proven Results · Nationwide</p>
+                    </div>
+                </div>
+                <div class="cf-stats">97% Success Rate &nbsp;·&nbsp; 200+ Students Helped &nbsp;·&nbsp; 15+ Education Mentors</div>
+                <div class="cf-bottom">
+                    <div class="cf-contact-item"><span class="icon">🌐</span><strong>examexperts.org</strong></div>
+                    <div class="cf-contact-item"><span class="icon">📞</span>(281) 541-5928</div>
+                    <div class="cf-contact-item"><span class="icon">✉️</span>examexpertscontact@gmail.com</div>
+                    <div class="cf-contact-item"><span class="icon">📍</span>Houston, TX · Nationwide Online</div>
+                    <div class="cf-contact-item" style="grid-column:1/-1;"><span class="icon">🕐</span><span>7 Days/Week · 8 AM – 10 PM EST · FREE Consultation Available</span></div>
+                </div>
+            </article>
+
+            <article class="card card-front" aria-label="Business card front">
+                <div class="cf-top">
+                    <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
+                    <div class="cf-brand">
+                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <p>Expert-Led · Proven Results · Nationwide</p>
+                    </div>
+                </div>
+                <div class="cf-stats">97% Success Rate &nbsp;·&nbsp; 200+ Students Helped &nbsp;·&nbsp; 15+ Education Mentors</div>
+                <div class="cf-bottom">
+                    <div class="cf-contact-item"><span class="icon">🌐</span><strong>examexperts.org</strong></div>
+                    <div class="cf-contact-item"><span class="icon">📞</span>(281) 541-5928</div>
+                    <div class="cf-contact-item"><span class="icon">✉️</span>examexpertscontact@gmail.com</div>
+                    <div class="cf-contact-item"><span class="icon">📍</span>Houston, TX · Nationwide Online</div>
+                    <div class="cf-contact-item" style="grid-column:1/-1;"><span class="icon">🕐</span><span>7 Days/Week · 8 AM – 10 PM EST · FREE Consultation Available</span></div>
+                </div>
+            </article>
+
+            <article class="card card-front" aria-label="Business card front">
+                <div class="cf-top">
+                    <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
+                    <div class="cf-brand">
+                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <p>Expert-Led · Proven Results · Nationwide</p>
+                    </div>
+                </div>
+                <div class="cf-stats">97% Success Rate &nbsp;·&nbsp; 200+ Students Helped &nbsp;·&nbsp; 15+ Education Mentors</div>
+                <div class="cf-bottom">
+                    <div class="cf-contact-item"><span class="icon">🌐</span><strong>examexperts.org</strong></div>
+                    <div class="cf-contact-item"><span class="icon">📞</span>(281) 541-5928</div>
+                    <div class="cf-contact-item"><span class="icon">✉️</span>examexpertscontact@gmail.com</div>
+                    <div class="cf-contact-item"><span class="icon">📍</span>Houston, TX · Nationwide Online</div>
+                    <div class="cf-contact-item" style="grid-column:1/-1;"><span class="icon">🕐</span><span>7 Days/Week · 8 AM – 10 PM EST · FREE Consultation Available</span></div>
+                </div>
+            </article>
+
+            <article class="card card-front" aria-label="Business card front">
+                <div class="cf-top">
+                    <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
+                    <div class="cf-brand">
+                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <p>Expert-Led · Proven Results · Nationwide</p>
+                    </div>
+                </div>
+                <div class="cf-stats">97% Success Rate &nbsp;·&nbsp; 200+ Students Helped &nbsp;·&nbsp; 15+ Education Mentors</div>
+                <div class="cf-bottom">
+                    <div class="cf-contact-item"><span class="icon">🌐</span><strong>examexperts.org</strong></div>
+                    <div class="cf-contact-item"><span class="icon">📞</span>(281) 541-5928</div>
+                    <div class="cf-contact-item"><span class="icon">✉️</span>examexpertscontact@gmail.com</div>
+                    <div class="cf-contact-item"><span class="icon">📍</span>Houston, TX · Nationwide Online</div>
+                    <div class="cf-contact-item" style="grid-column:1/-1;"><span class="icon">🕐</span><span>7 Days/Week · 8 AM – 10 PM EST · FREE Consultation Available</span></div>
+                </div>
+            </article>
+
+            <article class="card card-front" aria-label="Business card front">
+                <div class="cf-top">
+                    <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
+                    <div class="cf-brand">
+                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <p>Expert-Led · Proven Results · Nationwide</p>
+                    </div>
+                </div>
+                <div class="cf-stats">97% Success Rate &nbsp;·&nbsp; 200+ Students Helped &nbsp;·&nbsp; 15+ Education Mentors</div>
+                <div class="cf-bottom">
+                    <div class="cf-contact-item"><span class="icon">🌐</span><strong>examexperts.org</strong></div>
+                    <div class="cf-contact-item"><span class="icon">📞</span>(281) 541-5928</div>
+                    <div class="cf-contact-item"><span class="icon">✉️</span>examexpertscontact@gmail.com</div>
+                    <div class="cf-contact-item"><span class="icon">📍</span>Houston, TX · Nationwide Online</div>
+                    <div class="cf-contact-item" style="grid-column:1/-1;"><span class="icon">🕐</span><span>7 Days/Week · 8 AM – 10 PM EST · FREE Consultation Available</span></div>
+                </div>
+            </article>
+
+            <article class="card card-front" aria-label="Business card front">
+                <div class="cf-top">
+                    <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
+                    <div class="cf-brand">
+                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <p>Expert-Led · Proven Results · Nationwide</p>
+                    </div>
+                </div>
+                <div class="cf-stats">97% Success Rate &nbsp;·&nbsp; 200+ Students Helped &nbsp;·&nbsp; 15+ Education Mentors</div>
+                <div class="cf-bottom">
+                    <div class="cf-contact-item"><span class="icon">🌐</span><strong>examexperts.org</strong></div>
+                    <div class="cf-contact-item"><span class="icon">📞</span>(281) 541-5928</div>
+                    <div class="cf-contact-item"><span class="icon">✉️</span>examexpertscontact@gmail.com</div>
+                    <div class="cf-contact-item"><span class="icon">📍</span>Houston, TX · Nationwide Online</div>
+                    <div class="cf-contact-item" style="grid-column:1/-1;"><span class="icon">🕐</span><span>7 Days/Week · 8 AM – 10 PM EST · FREE Consultation Available</span></div>
+                </div>
+            </article>
+
+            <article class="card card-front" aria-label="Business card front">
+                <div class="cf-top">
+                    <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
+                    <div class="cf-brand">
+                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <p>Expert-Led · Proven Results · Nationwide</p>
+                    </div>
+                </div>
+                <div class="cf-stats">97% Success Rate &nbsp;·&nbsp; 200+ Students Helped &nbsp;·&nbsp; 15+ Education Mentors</div>
+                <div class="cf-bottom">
+                    <div class="cf-contact-item"><span class="icon">🌐</span><strong>examexperts.org</strong></div>
+                    <div class="cf-contact-item"><span class="icon">📞</span>(281) 541-5928</div>
+                    <div class="cf-contact-item"><span class="icon">✉️</span>examexpertscontact@gmail.com</div>
+                    <div class="cf-contact-item"><span class="icon">📍</span>Houston, TX · Nationwide Online</div>
+                    <div class="cf-contact-item" style="grid-column:1/-1;"><span class="icon">🕐</span><span>7 Days/Week · 8 AM – 10 PM EST · FREE Consultation Available</span></div>
+                </div>
+            </article>
+
+        </div><!-- /card-grid -->
+    </section><!-- /fronts sheet -->
+
+    <!-- ════════════════════════════════════════════════════════
+         PAGE 2 — BACKS
+         For "flip on short edge" duplex, columns are mirrored:
+         front col-1 → back col-2, front col-2 → back col-1.
+         Since all backs are identical this just means the right
+         column prints first on the back page.
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="page-label">Page 2 — Card Backs (print second, duplex flip on short edge)</div>
+    <section class="sheet" aria-label="Business card backs">
+        <div class="card-grid">
+
+            <!-- 10 identical back cards; column order is mirrored vs. fronts
+                 so each back aligns with its matching front after cutting. -->
+
+            <!-- Row 1 (back): right col first, then left col -->
+            <article class="card card-back" aria-label="Business card back">
+                <div class="cb-top">
+                    <div class="cb-title">Scan to Sign Up</div>
+                </div>
+                <div class="cb-qr-wrapper">
+                    <img src="/images/stripe-signup-qr.svg" alt="QR code — Exam Experts sign-up page">
+                </div>
+                <div class="cb-scan-label">examexperts.org/pricing</div>
+                <div class="cb-writein">
+                    <div class="cb-writein-label">Your Rep</div>
+                    <div class="cb-writein-row">
+                        <span>Phone:</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                    <div class="cb-writein-row" style="margin-top:4px;">
+                        <span>Code:&nbsp;&nbsp;</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                </div>
+                <div class="cb-website">examexperts.org · (281) 541-5928</div>
+            </article>
+
+            <article class="card card-back" aria-label="Business card back">
+                <div class="cb-top">
+                    <div class="cb-title">Scan to Sign Up</div>
+                </div>
+                <div class="cb-qr-wrapper">
+                    <img src="/images/stripe-signup-qr.svg" alt="QR code — Exam Experts sign-up page">
+                </div>
+                <div class="cb-scan-label">examexperts.org/pricing</div>
+                <div class="cb-writein">
+                    <div class="cb-writein-label">Your Rep</div>
+                    <div class="cb-writein-row">
+                        <span>Phone:</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                    <div class="cb-writein-row" style="margin-top:4px;">
+                        <span>Code:&nbsp;&nbsp;</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                </div>
+                <div class="cb-website">examexperts.org · (281) 541-5928</div>
+            </article>
+
+            <article class="card card-back" aria-label="Business card back">
+                <div class="cb-top">
+                    <div class="cb-title">Scan to Sign Up</div>
+                </div>
+                <div class="cb-qr-wrapper">
+                    <img src="/images/stripe-signup-qr.svg" alt="QR code — Exam Experts sign-up page">
+                </div>
+                <div class="cb-scan-label">examexperts.org/pricing</div>
+                <div class="cb-writein">
+                    <div class="cb-writein-label">Your Rep</div>
+                    <div class="cb-writein-row">
+                        <span>Phone:</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                    <div class="cb-writein-row" style="margin-top:4px;">
+                        <span>Code:&nbsp;&nbsp;</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                </div>
+                <div class="cb-website">examexperts.org · (281) 541-5928</div>
+            </article>
+
+            <article class="card card-back" aria-label="Business card back">
+                <div class="cb-top">
+                    <div class="cb-title">Scan to Sign Up</div>
+                </div>
+                <div class="cb-qr-wrapper">
+                    <img src="/images/stripe-signup-qr.svg" alt="QR code — Exam Experts sign-up page">
+                </div>
+                <div class="cb-scan-label">examexperts.org/pricing</div>
+                <div class="cb-writein">
+                    <div class="cb-writein-label">Your Rep</div>
+                    <div class="cb-writein-row">
+                        <span>Phone:</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                    <div class="cb-writein-row" style="margin-top:4px;">
+                        <span>Code:&nbsp;&nbsp;</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                </div>
+                <div class="cb-website">examexperts.org · (281) 541-5928</div>
+            </article>
+
+            <article class="card card-back" aria-label="Business card back">
+                <div class="cb-top">
+                    <div class="cb-title">Scan to Sign Up</div>
+                </div>
+                <div class="cb-qr-wrapper">
+                    <img src="/images/stripe-signup-qr.svg" alt="QR code — Exam Experts sign-up page">
+                </div>
+                <div class="cb-scan-label">examexperts.org/pricing</div>
+                <div class="cb-writein">
+                    <div class="cb-writein-label">Your Rep</div>
+                    <div class="cb-writein-row">
+                        <span>Phone:</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                    <div class="cb-writein-row" style="margin-top:4px;">
+                        <span>Code:&nbsp;&nbsp;</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                </div>
+                <div class="cb-website">examexperts.org · (281) 541-5928</div>
+            </article>
+
+            <article class="card card-back" aria-label="Business card back">
+                <div class="cb-top">
+                    <div class="cb-title">Scan to Sign Up</div>
+                </div>
+                <div class="cb-qr-wrapper">
+                    <img src="/images/stripe-signup-qr.svg" alt="QR code — Exam Experts sign-up page">
+                </div>
+                <div class="cb-scan-label">examexperts.org/pricing</div>
+                <div class="cb-writein">
+                    <div class="cb-writein-label">Your Rep</div>
+                    <div class="cb-writein-row">
+                        <span>Phone:</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                    <div class="cb-writein-row" style="margin-top:4px;">
+                        <span>Code:&nbsp;&nbsp;</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                </div>
+                <div class="cb-website">examexperts.org · (281) 541-5928</div>
+            </article>
+
+            <article class="card card-back" aria-label="Business card back">
+                <div class="cb-top">
+                    <div class="cb-title">Scan to Sign Up</div>
+                </div>
+                <div class="cb-qr-wrapper">
+                    <img src="/images/stripe-signup-qr.svg" alt="QR code — Exam Experts sign-up page">
+                </div>
+                <div class="cb-scan-label">examexperts.org/pricing</div>
+                <div class="cb-writein">
+                    <div class="cb-writein-label">Your Rep</div>
+                    <div class="cb-writein-row">
+                        <span>Phone:</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                    <div class="cb-writein-row" style="margin-top:4px;">
+                        <span>Code:&nbsp;&nbsp;</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                </div>
+                <div class="cb-website">examexperts.org · (281) 541-5928</div>
+            </article>
+
+            <article class="card card-back" aria-label="Business card back">
+                <div class="cb-top">
+                    <div class="cb-title">Scan to Sign Up</div>
+                </div>
+                <div class="cb-qr-wrapper">
+                    <img src="/images/stripe-signup-qr.svg" alt="QR code — Exam Experts sign-up page">
+                </div>
+                <div class="cb-scan-label">examexperts.org/pricing</div>
+                <div class="cb-writein">
+                    <div class="cb-writein-label">Your Rep</div>
+                    <div class="cb-writein-row">
+                        <span>Phone:</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                    <div class="cb-writein-row" style="margin-top:4px;">
+                        <span>Code:&nbsp;&nbsp;</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                </div>
+                <div class="cb-website">examexperts.org · (281) 541-5928</div>
+            </article>
+
+            <article class="card card-back" aria-label="Business card back">
+                <div class="cb-top">
+                    <div class="cb-title">Scan to Sign Up</div>
+                </div>
+                <div class="cb-qr-wrapper">
+                    <img src="/images/stripe-signup-qr.svg" alt="QR code — Exam Experts sign-up page">
+                </div>
+                <div class="cb-scan-label">examexperts.org/pricing</div>
+                <div class="cb-writein">
+                    <div class="cb-writein-label">Your Rep</div>
+                    <div class="cb-writein-row">
+                        <span>Phone:</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                    <div class="cb-writein-row" style="margin-top:4px;">
+                        <span>Code:&nbsp;&nbsp;</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                </div>
+                <div class="cb-website">examexperts.org · (281) 541-5928</div>
+            </article>
+
+            <article class="card card-back" aria-label="Business card back">
+                <div class="cb-top">
+                    <div class="cb-title">Scan to Sign Up</div>
+                </div>
+                <div class="cb-qr-wrapper">
+                    <img src="/images/stripe-signup-qr.svg" alt="QR code — Exam Experts sign-up page">
+                </div>
+                <div class="cb-scan-label">examexperts.org/pricing</div>
+                <div class="cb-writein">
+                    <div class="cb-writein-label">Your Rep</div>
+                    <div class="cb-writein-row">
+                        <span>Phone:</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                    <div class="cb-writein-row" style="margin-top:4px;">
+                        <span>Code:&nbsp;&nbsp;</span>
+                        <div class="cb-writein-line"></div>
+                    </div>
+                </div>
+                <div class="cb-website">examexperts.org · (281) 541-5928</div>
+            </article>
+
+        </div><!-- /card-grid -->
+    </section><!-- /backs sheet -->
+
+</body>
+</html>
