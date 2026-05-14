@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light">
-    <title>Exam Experts – Vertical Tri-Fold Brochure</title>
-    <meta name="description" content="Vertical tri-fold brochure for Exam Experts with printable inside/outside panels and SVG export.">
+    <title>Exam Experts – Standard Tri-Fold Brochure</title>
+    <meta name="description" content="Standard letter tri-fold brochure (11in x 8.5in flat) for Exam Experts with printable inside/outside panels and SVG export.">
     <meta name="robots" content="noindex, nofollow, noarchive">
     <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any">
     <style>
@@ -20,6 +20,10 @@
             --slate: #4A4A4A;
             --soft-blue: #E8EDF2;
             --soft-red: #F9E8EB;
+            --sheet-width: 11in;
+            --sheet-height: 8.5in;
+            --panel-full: 3.6875in;
+            --panel-fold: 3.625in;
         }
 
         body {
@@ -59,28 +63,30 @@
         .btn-svg:disabled { opacity: 0.6; cursor: not-allowed; }
 
         .flyer {
-            width: 8.5in;
+            width: var(--sheet-width);
             background: transparent;
             display: flex;
             flex-direction: column;
-            gap: 0.25in;
+            gap: 0.2in;
         }
 
         .sheet {
-            width: 8.5in;
-            min-height: 11in;
+            width: var(--sheet-width);
+            min-height: var(--sheet-height);
             background: #fff;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
             overflow: hidden;
         }
+        .sheet.inside { grid-template-columns: var(--panel-full) var(--panel-full) var(--panel-fold); }
+        .sheet.outside { grid-template-columns: var(--panel-fold) var(--panel-full) var(--panel-full); }
 
         .panel {
             border-right: 1px dashed rgba(13, 27, 42, 0.25);
             display: flex;
             flex-direction: column;
-            min-height: 11in;
+            min-height: var(--sheet-height);
         }
         .panel:last-child { border-right: none; }
 
@@ -232,13 +238,24 @@
         .tutor-training-callout .highlight { color: var(--gold); }
 
         .tex-sheet-title {
-            width: 8.5in;
+            width: var(--sheet-width);
             text-align: center;
             font-weight: 800;
             color: var(--navy);
             margin: 2px 0;
             font-size: 14px;
         }
+        .print-spec-note {
+            width: var(--sheet-width);
+            background: #fff7e5;
+            border: 1px solid #f59e0b;
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-size: 12px;
+            line-height: 1.45;
+            color: #7c2d12;
+        }
+        .print-spec-note strong { color: #9a3412; }
         .tex-panel pre {
             white-space: pre-wrap;
             word-break: break-word;
@@ -248,9 +265,10 @@
         }
 
         @media print {
-            @page { size: 8.5in 11in portrait; margin: 0; }
+            @page { size: 11in 8.5in landscape; margin: 0; }
             body { background: none; padding: 0; }
             .toolbar { display: none !important; }
+            .print-spec-note { display: none !important; }
             .sheet { box-shadow: none; page-break-after: always; }
             .sheet:last-child { page-break-after: auto; }
         }
@@ -267,8 +285,12 @@
     </div>
 
     <div class="flyer">
+        <div class="print-spec-note" role="note" aria-label="Tri-fold print specifications">
+            <strong>Print spec:</strong> This layout is formatted to standard letter tri-fold dimensions (11in × 8.5in flat, landscape) with a narrower fold panel for proper closing.
+            For commercial press runs, request printer templates with bleed/safe zones and export final artwork at press-ready specs (typically 300 DPI for raster assets).
+        </div>
         <!-- PAGE 1 — INSIDE -->
-        <section class="sheet" aria-label="Inside brochure page">
+        <section class="sheet inside" aria-label="Inside brochure page">
             <article class="panel ivory">
                 <div class="band navy">The 5-Step Analogy Method</div>
                 <div class="content">
@@ -384,7 +406,7 @@
         </section>
 
         <!-- PAGE 2 — OUTSIDE -->
-        <section class="sheet" aria-label="Outside brochure page">
+        <section class="sheet outside" aria-label="Outside brochure page">
             <article class="panel ivory">
                 <div class="band navy">Contact Us</div>
                 <div class="content">
