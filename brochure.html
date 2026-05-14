@@ -76,6 +76,7 @@
             min-height: var(--sheet-height);
             background: #fff;
             display: grid;
+            /* Default equal columns for generated auxiliary sheets (e.g., main.tex content pages). */
             grid-template-columns: repeat(3, 1fr);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
             overflow: hidden;
@@ -288,7 +289,7 @@
     <div class="flyer">
         <div class="print-spec-note" role="note" aria-label="Tri-fold print specifications">
             <strong>Print spec:</strong> This layout is formatted to standard letter tri-fold dimensions (11in &times; 8.5in flat, landscape) with a narrower fold panel for proper closing.
-            For commercial press runs, request printer templates with bleed/safe zones and export final artwork at press-ready specs (typically 300 DPI for raster assets).
+            For commercial press runs, request printer templates with bleed/safe zones and export final artwork at press-ready specs (typically 300 DPI for raster assets; keep vector artwork in SVG/PDF whenever possible).
         </div>
         <!-- PAGE 1 — INSIDE -->
         <section class="sheet inside" aria-label="Inside brochure page">
