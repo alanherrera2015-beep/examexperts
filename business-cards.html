@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light">
     <title>Exam Experts – Rep Business Cards</title>
-    <meta name="description" content="Printable business cards for Exam Experts field reps. Print front + back on a single duplex sheet and cut.">
+    <meta name="description" content="High-quality business card design for Exam Experts field reps. One front and one back card for professional print upload.">
     <meta name="robots" content="noindex, nofollow, noarchive">
     <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any">
     <style>
@@ -87,13 +87,15 @@
             overflow: hidden;
         }
 
-        /* ── Card grid — 1 cols × 1 rows ───────────────────── */
+        /* ── Card grid — 1 card per sheet ───────────────────── */
         .card-grid {
             display: grid;
-            grid-template-columns: 3.5in 3.5in;
-            grid-template-rows: repeat(5, 2in);
-            /* no gap so cut lines are the boundary */
+            grid-template-columns: 3.5in;
+            grid-template-rows: 2in;
+            justify-content: center;
+            align-content: center;
         }
+        .card-grid .card:nth-child(n+2) { display: none; }
 
         /* ── Individual card ────────────────────────────────── */
         .card {
@@ -299,15 +301,15 @@
     <div class="print-tip">
         <strong>How to print:</strong> Enable duplex (two-sided) printing in your printer settings and set flip to
         <strong>"Flip on Short Edge."</strong> Print both pages, then cut along the dashed guides with scissors or a
-        paper cutter. Each sheet yields <strong>10 cards</strong> (5 rows × 2 columns).
-        The back is automatically mirrored so every card aligns perfectly after cutting.
+        paper cutter. Each sheet yields <strong>1 card</strong> (3.5in × 2in).
+        The back page is aligned for one matching card.
     </div>
 
     <!-- ════════════════════════════════════════════════════════
-         PAGE 1 — FRONTS (left column = odd positions, right = even)
+         PAGE 1 — FRONT
     ═══════════════════════════════════════════════════════════ -->
-    <div class="page-label">Page 1 — Card Fronts (print first)</div>
-    <section class="sheet" aria-label="Business card fronts">
+    <div class="page-label">Page 1 — Card Front (print first)</div>
+    <section class="sheet" aria-label="Business card front">
         <div class="card-grid">
 
     
@@ -334,7 +336,7 @@
                 <div class="cf-top">
                     <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
                     <div class="cf-brand">
-                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <h1>EXAM<span> EXPERTS</span></h1>
                         <p>Expert-Led · Proven Results · Nationwide</p>
                     </div>
                 </div>
@@ -352,7 +354,7 @@
                 <div class="cf-top">
                     <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
                     <div class="cf-brand">
-                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <h1>EXAM<span> EXPERTS</span></h1>
                         <p>Expert-Led · Proven Results · Nationwide</p>
                     </div>
                 </div>
@@ -370,7 +372,7 @@
                 <div class="cf-top">
                     <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
                     <div class="cf-brand">
-                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <h1>EXAM<span> EXPERTS</span></h1>
                         <p>Expert-Led · Proven Results · Nationwide</p>
                     </div>
                 </div>
@@ -388,7 +390,7 @@
                 <div class="cf-top">
                     <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
                     <div class="cf-brand">
-                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <h1>EXAM<span> EXPERTS</span></h1>
                         <p>Expert-Led · Proven Results · Nationwide</p>
                     </div>
                 </div>
@@ -406,7 +408,7 @@
                 <div class="cf-top">
                     <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
                     <div class="cf-brand">
-                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <h1>EXAM<span> EXPERTS</span></h1>
                         <p>Expert-Led · Proven Results · Nationwide</p>
                     </div>
                 </div>
@@ -424,7 +426,7 @@
                 <div class="cf-top">
                     <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
                     <div class="cf-brand">
-                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <h1>EXAM<span> EXPERTS</span></h1>
                         <p>Expert-Led · Proven Results · Nationwide</p>
                     </div>
                 </div>
@@ -442,7 +444,7 @@
                 <div class="cf-top">
                     <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
                     <div class="cf-brand">
-                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <h1>EXAM<span> EXPERTS</span></h1>
                         <p>Expert-Led · Proven Results · Nationwide</p>
                     </div>
                 </div>
@@ -460,7 +462,7 @@
                 <div class="cf-top">
                     <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
                     <div class="cf-brand">
-                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <h1>EXAM<span> EXPERTS</span></h1>
                         <p>Expert-Led · Proven Results · Nationwide</p>
                     </div>
                 </div>
@@ -478,7 +480,7 @@
                 <div class="cf-top">
                     <img src="/images/Logo.svg.svg" alt="Exam Experts logo">
                     <div class="cf-brand">
-                        <h1>EXAM<span>EXPERTS</span></h1>
+                        <h1>EXAM<span> EXPERTS</span></h1>
                         <p>Expert-Led · Proven Results · Nationwide</p>
                     </div>
                 </div>
@@ -496,18 +498,13 @@
     </section><!-- /fronts sheet -->
 
     <!-- ════════════════════════════════════════════════════════
-         PAGE 2 — BACKS
-         For "flip on short edge" duplex, columns are mirrored:
-         front col-1 → back col-2, front col-2 → back col-1.
-         Since all backs are identical this just means the right
-         column prints first on the back page.
+         PAGE 2 — BACK
     ═══════════════════════════════════════════════════════════ -->
-    <div class="page-label">Page 2 — Card Backs (print second, duplex flip on short edge)</div>
+    <div class="page-label">Page 2 — Card Back (print second, duplex flip on short edge)</div>
     <section class="sheet" aria-label="Business card backs">
         <div class="card-grid">
 
-            <!-- 10 identical back cards; column order is mirrored vs. fronts
-                 so each back aligns with its matching front after cutting. -->
+            <!-- One back card is shown for a single-card print-ready layout. -->
 
             <!-- Row 1 (back): right col first, then left col -->
             <article class="card card-back" aria-label="Business card back">
