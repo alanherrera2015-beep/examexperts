@@ -22,6 +22,7 @@
             --soft-red: #F9E8EB;
             --sheet-width: 11in;
             --sheet-height: 8.5in;
+            /* Standard tri-fold sizing: two full panels + one slightly narrower fold-in panel (1/16in reduction). */
             --panel-full: 3.6875in;
             --panel-fold: 3.625in;
         }
@@ -286,7 +287,7 @@
 
     <div class="flyer">
         <div class="print-spec-note" role="note" aria-label="Tri-fold print specifications">
-            <strong>Print spec:</strong> This layout is formatted to standard letter tri-fold dimensions (11in × 8.5in flat, landscape) with a narrower fold panel for proper closing.
+            <strong>Print spec:</strong> This layout is formatted to standard letter tri-fold dimensions (11in &times; 8.5in flat, landscape) with a narrower fold panel for proper closing.
             For commercial press runs, request printer templates with bleed/safe zones and export final artwork at press-ready specs (typically 300 DPI for raster assets).
         </div>
         <!-- PAGE 1 — INSIDE -->
@@ -534,10 +535,10 @@
                 if (!response.ok) throw new Error(`Failed to fetch main.tex: ${response.status} ${response.statusText}`);
                 const tex = await response.text();
                 const lines = tex.split('\n');
-                // Approximation for one 11in panel:
-                // 11in * 96px/in = 1056px; 9px * 1.25 = 11.25px/line; 1056 / 11.25 ≈ 93.8.
-                // Rounded/tuned to 95 lines to keep each panel readable without overflow.
-                const LINES_PER_PANEL = 95;
+                // Approximation for panel height of 8.5in:
+                // 8.5in * 96px/in = 816px; 9px * 1.25 = 11.25px/line; 816 / 11.25 ≈ 72.5.
+                // Rounded/tuned to 72 lines to keep each panel readable without overflow.
+                const LINES_PER_PANEL = 72;
                 const panelChunks = [];
                 for (let i = 0; i < lines.length; i += LINES_PER_PANEL) {
                     panelChunks.push(lines.slice(i, i + LINES_PER_PANEL).join('\n'));
