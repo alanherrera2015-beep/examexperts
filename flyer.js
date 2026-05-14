@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    function getExportSlug() {
+    function getExportFilename() {
         return document.title
             .trim()
             .toLowerCase()
@@ -18,13 +18,15 @@ document.addEventListener('DOMContentLoaded', function () {
             throw new Error('PDF export libraries are unavailable.');
         }
 
+        var PAGE_WIDTH = 11;
+        var PAGE_HEIGHT = 8.5;
         var jsPDF = window.jspdf.jsPDF;
         var pages = flyer.querySelectorAll('.sheet');
         var exportPages = pages.length ? Array.from(pages) : [flyer];
         var pdf = new jsPDF({
             orientation: 'landscape',
             unit: 'in',
-            format: [11, 8.5],
+            format: [PAGE_WIDTH, PAGE_HEIGHT],
             compress: true
         });
 
@@ -40,13 +42,13 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             if (i > 0) {
-                pdf.addPage([11, 8.5], 'landscape');
+                pdf.addPage([PAGE_WIDTH, PAGE_HEIGHT], 'landscape');
             }
 
-            pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 11, 8.5, undefined, 'FAST');
+            pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, PAGE_WIDTH, PAGE_HEIGHT, undefined, 'FAST');
         }
 
-        pdf.save(getExportSlug() + '.pdf');
+        pdf.save(getExportFilename() + '.pdf');
     }
 
     document.getElementById('btn-print').addEventListener('click', function () {
@@ -70,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     var svgDataUrl = await exportFlyerAsSvg(flyer);
                     var a = document.createElement('a');
                     a.href = svgDataUrl;
-                    a.download = getExportSlug() + '.svg';
+                    a.download = getExportFilename() + '.svg';
                     a.click();
                 }
 
