@@ -61,6 +61,7 @@
         .btn-back { border: 2px solid #2563EB; color: #2563EB; background: #fff; }
         .btn-print { color: #fff; background: linear-gradient(135deg, #F59E0B, #EA580C); }
         .btn-svg { color: #fff; background: linear-gradient(135deg, #10B981, #059669); }
+        .btn-press { color: #fff; background: linear-gradient(135deg, #7C3AED, #4F46E5); }
         .btn-svg:disabled { opacity: 0.6; cursor: not-allowed; }
 
         .flyer {
@@ -282,6 +283,11 @@
         <a href="/flyer" class="btn btn-back">← Back to Flyer</a>
         <button class="btn btn-print" id="btn-print">🖨️ Print / Save as PDF</button>
         <button class="btn btn-svg" id="btn-download-svg">⬇️ Download SVG (Vector)</button>
+        <a
+            class="btn btn-press"
+            href="mailto:?subject=Commercial%20Press%20Run%20Template%20Request%20-%20Tri-Fold%20Brochure&body=Hello%2C%0A%0APlease%20send%20your%20tri-fold%20brochure%20printer%20template%20that%20includes%20bleed%2C%20trim%2C%20and%20safe-zone%20guides.%20Please%20also%20confirm%20your%20preferred%20press-ready%20export%20specs%20(PDF%20standard%2C%20color%20profile%2C%20and%20recommended%20DPI).%0A%0AThank%20you."
+            aria-label="Request commercial press-run template with bleed and safe zones from printer"
+        >🏭 Commercial Press Run</a>
         <a href="/rep-sheets" class="btn" style="color:#fff;background:linear-gradient(135deg,#7C3AED,#4F46E5);">📋 Rep Presentation Sheets</a>
         <a href="/business-cards" class="btn" style="color:#fff;background:linear-gradient(135deg,#0D9488,#0891B2);">🪪 Business Cards</a>
     </div>
@@ -289,7 +295,7 @@
     <div class="flyer">
         <div class="print-spec-note" role="note" aria-label="Tri-fold print specifications">
             <strong>Print spec:</strong> This layout is formatted to standard letter tri-fold dimensions (11in &times; 8.5in flat, landscape) with a narrower fold panel for proper closing.
-            For commercial press runs, request printer templates with bleed/safe zones and export final artwork at press-ready specs (typically 300 DPI for raster assets; keep vector artwork in SVG/PDF whenever possible).
+            For commercial press runs, request printer templates with bleed/safe zones and export final artwork at press-ready specs at the highest practical DPI for clear output (minimum 300 DPI for raster assets, 600 DPI preferred when available; keep vector artwork in SVG/PDF whenever possible).
         </div>
         <!-- PAGE 1 — INSIDE -->
         <section class="sheet inside" aria-label="Inside brochure page">
