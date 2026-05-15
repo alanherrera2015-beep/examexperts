@@ -277,12 +277,14 @@
         }
     </style>
     <script src="/vendor/html-to-image.js"></script>
+    <script src="/vendor/html2canvas.min.js"></script>
+    <script src="/vendor/jspdf.umd.min.js"></script>
 </head>
 <body>
     <div class="toolbar">
         <a href="/flyer" class="btn btn-back">← Back to Flyer</a>
         <button class="btn btn-print" id="btn-print">🖨️ Print / Save as PDF</button>
-        <button class="btn btn-svg" id="btn-download-svg">⬇️ Download SVG (Vector)</button>
+        <button class="btn btn-svg" id="btn-download-svg" data-export-format="pdf">⬇️ Download PDF</button>
         <a
             class="btn btn-press"
             href="mailto:?subject=Commercial%20Press%20Run%20Template%20Request%20-%20Tri-Fold%20Brochure&body=Hello%2C%0A%0APlease%20send%20your%20tri-fold%20brochure%20printer%20template%20that%20includes%20bleed%2C%20trim%2C%20and%20safe-zone%20guides.%20Please%20also%20confirm%20your%20preferred%20press-ready%20export%20specs%20(PDF%20standard%2C%20color%20profile%2C%20and%20recommended%20DPI).%0A%0AThank%20you."
