@@ -382,11 +382,17 @@ if (signupForm) {
         const savedCode = (document.getElementById('signup-promo-code')?.value || '').trim();
         const enteredRepCode = (repCodeInput?.value || '').trim();
         const enteredPromoCode = (promoCodeInput?.value || '').trim();
-        const promoCode = plan === 'annual-member'
-            ? (enteredRepCode || savedCode || enteredPromoCode)
-            : plan === 'trial'
-                ? (enteredPromoCode || savedCode || enteredRepCode)
-                : (savedCode || enteredRepCode || enteredPromoCode);
+        // promoCode is the code used for checkout validation on the selected plan.
+        // attributionCode is for rep credit tracking metadata across all plans.
+        // Annual membership prioritizes rep-code input, while trial prioritizes promo-code input.
+        let promoCode = '';
+        if (plan === 'annual-member') {
+            promoCode = enteredRepCode || savedCode || enteredPromoCode;
+        } else if (plan === 'trial') {
+            promoCode = enteredPromoCode || savedCode || enteredRepCode;
+        } else {
+            promoCode = savedCode || enteredRepCode || enteredPromoCode;
+        }
         const attributionCode = enteredRepCode || enteredPromoCode || savedCode;
 
         if (!name || !email || !subject || !plan) {

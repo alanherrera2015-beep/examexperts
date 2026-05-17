@@ -3,6 +3,33 @@ const Stripe = require('stripe');
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
 const stripe = STRIPE_SECRET_KEY ? new Stripe(STRIPE_SECRET_KEY) : null;
 
+/**
+ * Build a normalized list of valid promo codes from one or more env vars.
+ * Supports comma, semicolon, and newline separators, trims whitespace,
+ * uppercases values, and removes duplicates.
+ * @param {string[]} envNames
+ * @returns {string[]}
+ */
+function loadPromoCodes(envNames = []) {
+  const merged = envNames
+    .map((name) => process.env[name])
+    .filter((value) => typeof value === 'string' && value.trim())
+    .join(',');
+
+  if (!merged) {
+    return [];
+  }
+
+  const uniqueCodes = new Set(
+    merged
+      .split(/[;,\n]/)
+      .map((code) => code.trim().toUpperCase())
+      .filter(Boolean)
+  );
+
+  return Array.from(uniqueCodes);
+}
+
 const VALID_REP_CODES = loadPromoCodes([
   'MEMBER_PROMO_CODES',
   'MEMBER_PROMO_CODE',
@@ -79,7 +106,7 @@ exports.handler = async function (event) {
         return { statusCode: 400, body: JSON.stringify({ error: 'A rep code is required for the Annual Member rate.' }) };
       }
       if (VALID_REP_CODES.length === 0) {
-        console.error('Annual member rep codes are not configured. Set MEMBER_PROMO_CODES (or REP_CODE variants) in Netlify env vars.');
+        console.error('Annual member rep codes are not configured. Set ANNUAL_MEMBER_REP_CODES (or ANNUAL_MEMBER_REP_CODE / REP_CODE variants) in Netlify env vars.');
         return { statusCode: 500, body: JSON.stringify({ error: 'Annual member code verification is temporarily unavailable. Please contact us directly.' }) };
       }
       if (!VALID_REP_CODES.includes(repCode)) {
@@ -92,7 +119,7 @@ exports.handler = async function (event) {
         return { statusCode: 400, body: JSON.stringify({ error: 'A promo code is required for the $1 Trial.' }) };
       }
       if (VALID_TRIAL_CODES.length === 0) {
-        console.error('Trial promo codes are not configured. Set TRIAL_PROMO_CODES (or TRIAL_PROMO_CODE) in Netlify env vars.');
+        console.error('Trial promo codes are not configured. Set TRIAL_PROMO_CODES or TRIAL_PROMO_CODE in Netlify env vars.');
         return { statusCode: 500, body: JSON.stringify({ error: 'Promo code verification is temporarily unavailable. Please contact us directly.' }) };
       }
       if (!VALID_TRIAL_CODES.includes(repCode)) {
@@ -219,24 +246,4 @@ function truncate(value, maxLength) {
 
   const visibleLength = maxLength - ellipsis.length;
   return `${normalized.slice(0, visibleLength)}${ellipsis}`;
-}
-
-function loadPromoCodes(envNames = []) {
-  const merged = envNames
-    .map((name) => process.env[name])
-    .filter((value) => typeof value === 'string' && value.trim())
-    .join(',');
-
-  if (!merged) {
-    return [];
-  }
-
-  const uniqueCodes = new Set(
-    merged
-      .split(/[;,\n]/)
-      .map((code) => code.trim().toUpperCase())
-      .filter(Boolean)
-  );
-
-  return Array.from(uniqueCodes);
 }
