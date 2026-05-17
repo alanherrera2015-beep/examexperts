@@ -4573,6 +4573,52 @@ section::before {
     font-size: 0.95rem;
 }
 
+.catalog-card-details {
+    margin-top: 16px;
+    border-top: 1px solid rgba(108, 99, 255, 0.12);
+    padding-top: 16px;
+}
+
+.catalog-card-details summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: #4338ca;
+    list-style: none;
+}
+
+.catalog-card-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.catalog-card-details summary::after {
+    content: '▾';
+    float: right;
+    transition: transform 0.2s ease;
+}
+
+.catalog-card-details[open] summary::after {
+    transform: rotate(180deg);
+}
+
+.catalog-card-source {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #7c3aed;
+    font-weight: 600;
+}
+
+.catalog-course-list {
+    margin: 12px 0 0;
+    padding-left: 18px;
+    color: #374151;
+    display: grid;
+    gap: 8px;
+}
+
+.catalog-course-list li {
+    line-height: 1.5;
+}
+
 .catalog-card-tags {
     display: flex;
     flex-wrap: wrap;

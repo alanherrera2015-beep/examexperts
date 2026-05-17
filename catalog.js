@@ -2,52 +2,191 @@ const academicPlans = [
     {
         title: 'K-8 Literacy Foundations',
         summary: 'Reading, writing, grammar, and vocabulary pathways aligned to K-8 course sequences.',
-        tags: ['K-8', 'literacy', 'reading', 'writing', 'academic']
+        tags: ['K-8', 'literacy', 'reading', 'writing', 'academic'],
+        source: 'k-8.tex',
+        courses: [
+            'Kindergarten English/Language Arts',
+            'Grade 1 English/Language Arts',
+            'Grade 2 English/Language Arts',
+            'Grade 3 English/Language Arts',
+            'Grade 4 English/Language Arts',
+            'Grade 5 English/Language Arts',
+            'Grade 6 English/Language Arts',
+            'Grade 7 English/Language Arts',
+            'Grade 8 English/Language Arts'
+        ]
     },
     {
         title: 'K-8 Math Pathways',
         summary: 'K-8 math progression from number sense and operations through fractions and pre-algebra readiness.',
-        tags: ['K-8', 'math', 'elementary', 'middle school', 'academic']
+        tags: ['K-8', 'math', 'elementary', 'middle school', 'academic'],
+        source: 'k-8.tex',
+        courses: [
+            'Kindergarten Mathematics',
+            'Grade 1 Mathematics',
+            'Grade 2 Mathematics',
+            'Grade 3 Mathematics',
+            'Grade 4 Mathematics',
+            'Grade 5 Mathematics',
+            'Grade 6 Mathematics',
+            'Grade 7 Mathematics',
+            'Grade 8 Mathematics'
+        ]
     },
     {
         title: 'K-8 Science Inquiry',
         summary: 'Hands-on K-8 science support including life science, physical science, earth science, and scientific thinking.',
-        tags: ['K-8', 'science', 'inquiry', 'academic']
+        tags: ['K-8', 'science', 'inquiry', 'academic'],
+        source: 'k-8.tex',
+        courses: [
+            'Kindergarten Science',
+            'Grade 1 Science',
+            'Grade 2 Science',
+            'Grade 3 Science',
+            'Grade 4 Science',
+            'Grade 5 Science',
+            'Grade 6 Science',
+            'Grade 7 Science',
+            'Grade 8 Science'
+        ]
     },
     {
         title: 'K-8 Social Studies',
         summary: 'Geography, civics, culture, economics, and history topics for elementary and middle school learners.',
-        tags: ['K-8', 'social studies', 'history', 'civics', 'academic']
+        tags: ['K-8', 'social studies', 'history', 'civics', 'academic'],
+        source: 'k-8.tex',
+        courses: [
+            'Kindergarten Social Studies',
+            'Grade 1 Social Studies',
+            'Grade 2 Social Studies',
+            'Grade 3 Social Studies',
+            'Grade 4 Social Studies',
+            'Grade 5 Social Studies',
+            'Grade 6 Social Studies',
+            'Grade 7 Social Studies',
+            'Grade 8 Social Studies'
+        ]
     },
     {
         title: 'High School Core Courses',
         summary: 'Comprehensive support for high school English, math, science, and social studies core classes.',
-        tags: ['high school', 'core', 'english', 'math', 'science', 'history', 'academic']
+        tags: ['high school', 'core', 'english', 'math', 'science', 'history', 'academic'],
+        source: 'highschool.tex',
+        courses: [
+            'English 9 (Freshman English)',
+            'Algebra 1',
+            'Geometry',
+            'Algebra 2',
+            'Pre-Calculus',
+            'Statistics',
+            'Biology',
+            'Chemistry',
+            'Physics',
+            'World History',
+            'United States History',
+            'US Government and Civics'
+        ]
     },
     {
         title: 'High School Honors & AP',
         summary: 'Rigorous honors and AP preparation, including exam-focused strategies and advanced coursework support.',
-        tags: ['high school', 'honors', 'AP', 'advanced', 'academic']
+        tags: ['high school', 'honors', 'AP', 'advanced', 'academic'],
+        source: 'highschool.tex',
+        courses: [
+            'Honors English 9',
+            'AP English Language and Composition',
+            'AP English Literature and Composition',
+            'Honors Algebra 1',
+            'Honors Geometry',
+            'Honors Algebra 2',
+            'Honors Pre-Calculus',
+            'AP Precalculus',
+            'AP Calculus AB',
+            'AP Calculus BC',
+            'AP Statistics',
+            'Honors Biology',
+            'AP Biology',
+            'Honors Chemistry',
+            'AP Chemistry',
+            'Honors Physics',
+            'AP Physics 1',
+            'AP Physics 2',
+            'AP Physics C: Mechanics',
+            'AP Physics C: Electricity and Magnetism',
+            'AP World History: Modern',
+            'AP United States History',
+            'AP United States Government and Politics'
+        ]
     },
     {
         title: 'High School Dual Credit',
         summary: 'Dual credit guidance for college-aligned coursework, placement readiness, and transcript planning.',
-        tags: ['high school', 'dual credit', 'college readiness', 'academic']
+        tags: ['high school', 'dual credit', 'college readiness', 'academic'],
+        source: 'highschool.tex',
+        courses: [
+            'Calculus I (Dual Credit)',
+            'Dual Credit English Composition I & II',
+            'Dual Credit Government and History'
+        ]
     },
     {
         title: 'College STEM Foundations',
         summary: 'College-level support for calculus, physics, chemistry, statistics, and foundational STEM performance.',
-        tags: ['college', 'STEM', 'calculus', 'physics', 'chemistry', 'statistics', 'academic']
+        tags: ['college', 'STEM', 'calculus', 'physics', 'chemistry', 'statistics', 'academic'],
+        source: 'college.tex',
+        courses: [
+            'Calculus I',
+            'Calculus II',
+            'Calculus III',
+            'Statistics and Data Analysis for Science',
+            'Physics I: Mechanics',
+            'Physics II: Electricity and Magnetism',
+            'General Chemistry I',
+            'General Chemistry II',
+            'General Biology I',
+            'General Biology II',
+            'Introduction to Programming I',
+            'Introduction to Programming II',
+            'Discrete Mathematics for Computer Science',
+            'Scientific Writing and Communication'
+        ]
     },
     {
         title: 'College Advanced Sequences',
         summary: 'Advanced college sequences including differential equations, linear algebra, and upper-level science tracks.',
-        tags: ['college', 'advanced', 'linear algebra', 'differential equations', 'academic']
+        tags: ['college', 'advanced', 'linear algebra', 'differential equations', 'academic'],
+        source: 'college.tex',
+        courses: [
+            'Linear Algebra',
+            'Differential Equations',
+            'Mathematical Modeling and Applications',
+            'Physics III: Modern Physics',
+            'Physics IV: Thermodynamics and Optics',
+            'Data Structures and Algorithms',
+            'Numerical Analysis',
+            'Probability Theory',
+            'Undergraduate Research Seminar'
+        ]
     },
     {
         title: 'College Biology & Chemistry Tracks',
         summary: 'Structured support for general biology, genetics, and organic chemistry course pathways.',
-        tags: ['college', 'biology', 'genetics', 'organic chemistry', 'academic']
+        tags: ['college', 'biology', 'genetics', 'organic chemistry', 'academic'],
+        source: 'college.tex',
+        courses: [
+            'Organic Chemistry I',
+            'Organic Chemistry II',
+            'Physical Chemistry',
+            'Genetics',
+            'Molecular Biology and Biochemistry',
+            'Ecology',
+            'Cell Biology',
+            'Microbiology',
+            'Human Physiology',
+            'Immunology',
+            'Analytical Chemistry',
+            'Inorganic Chemistry'
+        ]
     }
 ];
 
@@ -275,7 +414,9 @@ const filterPlans = (plans, query) => {
         const searchableText = [
             normalizeText(plan.title || ''),
             normalizeText(plan.summary || ''),
-            ...plan.tags.map(normalizeText)
+            normalizeText(plan.source || ''),
+            ...plan.tags.map(normalizeText),
+            ...(plan.courses || []).map(normalizeText)
         ].join(' ');
 
         return searchableText.includes(query);
@@ -301,6 +442,15 @@ const renderCatalog = (plans, targetId, variant) => {
             <div class="catalog-card-number">Plan ${index + 1}</div>
             <h3>${escapeHtml(plan.title)}</h3>
             <p>${escapeHtml(plan.summary)}</p>
+            ${variant === 'academic' && plan.courses?.length ? `
+                <details class="catalog-card-details">
+                    <summary>View ${plan.courses.length} included courses</summary>
+                    <p class="catalog-card-source">From ${escapeHtml(plan.source)}</p>
+                    <ul class="catalog-course-list">
+                        ${plan.courses.map(course => `<li>${escapeHtml(course)}</li>`).join('')}
+                    </ul>
+                </details>
+            ` : ''}
             <div class="catalog-card-tags">
                 ${plan.tags.map(tag => `<span class="catalog-card-tag">${escapeHtml(tag)}</span>`).join('')}
             </div>
@@ -316,17 +466,18 @@ const updateCounts = (academicCount, lifeCount) => {
     document.getElementById('lifeHeadingCount').textContent = lifeCount;
 };
 
-const renderAllCatalogs = (query = '') => {
-    const academicMatches = filterPlans(academicPlans, query);
-    const lifeMatches = filterPlans(lifeSkillsPlans, query);
+const renderAllCatalogs = (rawQuery = '') => {
+    const normalizedQuery = normalizeText(rawQuery);
+    const academicMatches = filterPlans(academicPlans, normalizedQuery);
+    const lifeMatches = filterPlans(lifeSkillsPlans, normalizedQuery);
     const totalMatches = academicMatches.length + lifeMatches.length;
 
     renderCatalog(academicMatches, 'academicCatalogGrid', 'academic');
     renderCatalog(lifeMatches, 'lifeSkillsCatalogGrid', 'life');
     updateCounts(academicMatches.length, lifeMatches.length);
 
-    catalogSearchStatus.textContent = query
-        ? `Showing ${totalMatches} matching plans for “${query}”.`
+    catalogSearchStatus.textContent = normalizedQuery
+        ? `Showing ${totalMatches} matching plans for “${rawQuery}”.`
         : `Showing all ${totalPlans} plans.`;
 };
 
@@ -350,15 +501,15 @@ filterChips.forEach(chip => {
             catalogSearch.value = value;
         }
         setQuickFilter(value);
-        renderAllCatalogs(normalizeText(value));
+        renderAllCatalogs(value);
     });
 });
 
 if (catalogSearch) {
     catalogSearch.addEventListener('input', (event) => {
-        const query = normalizeText(event.target.value);
-        syncQuickFilter(query);
-        renderAllCatalogs(query);
+        const rawQuery = event.target.value.trim();
+        syncQuickFilter(rawQuery);
+        renderAllCatalogs(rawQuery);
     });
 }
 
