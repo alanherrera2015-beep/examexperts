@@ -466,8 +466,9 @@ const updateCounts = (academicCount, lifeCount) => {
     document.getElementById('lifeHeadingCount').textContent = lifeCount;
 };
 
-const renderAllCatalogs = (rawQuery = '') => {
-    const normalizedQuery = normalizeText(rawQuery);
+const renderAllCatalogs = (searchQuery = '') => {
+    const trimmedQuery = searchQuery.trim();
+    const normalizedQuery = normalizeText(trimmedQuery);
     const academicMatches = filterPlans(academicPlans, normalizedQuery);
     const lifeMatches = filterPlans(lifeSkillsPlans, normalizedQuery);
     const totalMatches = academicMatches.length + lifeMatches.length;
@@ -477,7 +478,7 @@ const renderAllCatalogs = (rawQuery = '') => {
     updateCounts(academicMatches.length, lifeMatches.length);
 
     catalogSearchStatus.textContent = normalizedQuery
-        ? `Showing ${totalMatches} matching plans for “${rawQuery}”.`
+        ? `Showing ${totalMatches} matching plans for “${trimmedQuery}”.`
         : `Showing all ${totalPlans} plans.`;
 };
 
@@ -507,9 +508,9 @@ filterChips.forEach(chip => {
 
 if (catalogSearch) {
     catalogSearch.addEventListener('input', (event) => {
-        const rawQuery = event.target.value.trim();
-        syncQuickFilter(rawQuery);
-        renderAllCatalogs(rawQuery);
+        const searchQuery = event.target.value;
+        syncQuickFilter(searchQuery);
+        renderAllCatalogs(searchQuery);
     });
 }
 
