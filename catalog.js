@@ -443,7 +443,7 @@ const latexTextToPlainText = (value) => String(value || '')
     .replace(/\\cos/g, 'cos')
     .replace(/\\tan/g, 'tan')
     .replace(/\\to/g, '→')
-    // Only remove delimiter commands like \left( and \right) without touching commands such as \leftarrow.
+    // Only remove delimiter commands like \left( and \right) without touching commands such as \leftarrow or \rightarrow.
     .replace(/\\left(?![a-zA-Z])/g, '')
     .replace(/\\right(?![a-zA-Z])/g, '')
     .replace(/\\quad|\\qquad/g, ' ')
