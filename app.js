@@ -382,6 +382,13 @@ if (signupForm) {
         const phone = signupForm.phone.value.trim();
         const plan = document.querySelector('input[name="signup-plan"]:checked')?.value;
         const promoCode = (document.getElementById('signup-promo-code')?.value || '').trim();
+        const enteredRepCode = (repCodeInput?.value || '').trim();
+        const enteredPromoCode = (promoCodeInput?.value || '').trim();
+        // Attribution priority:
+        // 1) Rep code box, so reps are credited on any plan.
+        // 2) Hidden unlocked promo/rep code captured during "unlock" flows.
+        // 3) Promo code box as a final fallback.
+        const attributionCode = enteredRepCode || promoCode || enteredPromoCode;
 
         if (!name || !email || !subject || !plan) {
             setSignupStatus('Please complete your name, email, study focus, and plan before continuing.', 'error');
@@ -408,7 +415,7 @@ if (signupForm) {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ name, email, phone, subject, goals, plan, promoCode })
+                body: JSON.stringify({ name, email, phone, subject, goals, plan, promoCode, attributionCode })
             });
 
             const result = await response.json();

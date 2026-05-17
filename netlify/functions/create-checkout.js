@@ -62,6 +62,7 @@ exports.handler = async function (event) {
     const subject = String(body.subject || '').trim();
     const goals = String(body.goals || '').trim();
     const repCode = String(body.promoCode || '').trim().toUpperCase();
+    const attributionCode = String(body.attributionCode || body.promoCode || '').trim().toUpperCase();
 
     if (!PLAN_CONFIG[plan]) {
       return { statusCode: 400, body: JSON.stringify({ error: 'Please choose a valid plan.' }) };
@@ -94,6 +95,15 @@ exports.handler = async function (event) {
     const cancelUrl = `${baseUrl}/pricing?signup=canceled&plan=${encodeURIComponent(plan)}`;
     const selectedPlan = PLAN_CONFIG[plan];
     const safeSubject = sanitizeText(subject, 120);
+    const referralMetadata = {
+      plan,
+      student_name: truncate(name, 200),
+      phone: truncate(phone, 200),
+      subject: safeSubject,
+      goals: truncate(goals, 500),
+      promo_code: truncate(repCode, 50),
+      attribution_code: truncate(attributionCode, 50)
+    };
 
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
@@ -115,13 +125,9 @@ exports.handler = async function (event) {
           }
         }
       ],
-      metadata: {
-        plan,
-        student_name: truncate(name, 200),
-        phone: truncate(phone, 200),
-        subject: safeSubject,
-        goals: truncate(goals, 500),
-        promo_code: truncate(repCode, 50)
+      metadata: referralMetadata,
+      payment_intent_data: {
+        metadata: referralMetadata
       }
     });
 
