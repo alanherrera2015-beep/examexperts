@@ -162,13 +162,13 @@
                         <span class="signup-plan-price">$65/hr — $260 total</span>
                         <span class="signup-plan-desc">Pre-pay for four hours of tutoring at $65/hr ($260 total). Save $10/hr vs. single sessions — perfect for a deep dive.</span>
                     </label>
-                    <!-- Annual Member card — hidden until rep code is entered -->
-                    <label class="signup-plan-card" id="annualMemberCard" style="display:none;" aria-hidden="true">
+                    <!-- Annual Member card promoted to encourage requesting a rep code -->
+                    <label class="signup-plan-card signup-plan-card-featured" id="annualMemberCard">
                         <input type="radio" name="signup-plan" value="annual-member" form="signupForm" id="annualMemberRadio">
-                        <span class="signup-plan-badge signup-plan-badge-secured">🔐 Member Rate Unlocked</span>
+                        <span class="signup-plan-badge signup-plan-badge-secured">⭐ Most Savings</span>
                         <span class="signup-plan-name">Annual Member Rate</span>
                         <span class="signup-plan-price">$50/hr + $100/yr membership</span>
-                        <span class="signup-plan-desc">Exclusive rate for members. Pay the $100 annual membership today and tutor at $50/hr for 12 months.</span>
+                        <span class="signup-plan-desc">Exclusive rate for members. Pay the $100 annual membership today and tutor at $50/hr for 12 months. Need a rep code? Submit your contact info and we'll send one.</span>
                     </label>
                     <!-- Trial card — hidden until promo code is entered -->
                     <label class="signup-plan-card" id="trialPlanCard" style="display:none;" aria-hidden="true">
@@ -185,9 +185,9 @@
                     <p class="rep-code-unlock-label">🔐 Have a door rep code?</p>
                     <div class="rep-code-unlock-row">
                         <input type="text" id="repCodeInput" autocomplete="off" placeholder="Enter your rep code" maxlength="50" class="rep-code-input">
-                        <button type="button" id="repCodeUnlockBtn" class="btn rep-code-btn">Unlock Rate</button>
+                        <button type="button" id="repCodeUnlockBtn" class="btn rep-code-btn">Save Code</button>
                     </div>
-                    <p class="rep-code-unlock-help">Entering your rep code gives your rep credit, even if you choose a different plan.</p>
+                    <p class="rep-code-unlock-help">Need a rep code? <a href="/contact">Submit your contact info via our contact form</a> and we'll send one. Entering your rep code gives your rep credit, even if you choose a different plan.</p>
                     <p class="rep-code-unlock-status" id="repCodeStatus" aria-live="polite"></p>
                 </div>
                 <!-- Promo code unlock row — reveals the $1 Trial card -->

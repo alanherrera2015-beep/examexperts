@@ -265,8 +265,6 @@ if (signupForm) {
     const repCodeInput = document.getElementById('repCodeInput');
     const repCodeUnlockBtn = document.getElementById('repCodeUnlockBtn');
     const repCodeStatus = document.getElementById('repCodeStatus');
-    const annualMemberCard = document.getElementById('annualMemberCard');
-    const annualMemberRadio = document.getElementById('annualMemberRadio');
     const hiddenPromoCode = document.getElementById('signup-promo-code');
 
     const setRepCodeStatus = (message, type) => {
@@ -276,37 +274,37 @@ if (signupForm) {
         if (type) repCodeStatus.classList.add('rep-code-unlock-status-' + type);
     };
 
-    const unlockAnnualMember = () => {
+    const syncRepCode = () => {
         const code = repCodeInput ? repCodeInput.value.trim() : '';
+        if (hiddenPromoCode) {
+            hiddenPromoCode.value = code;
+        }
+        return code;
+    };
+
+    const saveRepCode = () => {
+        const code = syncRepCode();
         if (!code) {
             setRepCodeStatus('Please enter a rep code.', 'error');
             return;
         }
-        if (annualMemberCard) {
-            annualMemberCard.style.display = '';
-            annualMemberCard.removeAttribute('aria-hidden');
-            annualMemberCard.classList.add('signup-plan-card-unlocked');
-        }
-        if (annualMemberRadio) {
-            annualMemberRadio.checked = true;
-        }
-        if (hiddenPromoCode) {
-            hiddenPromoCode.value = code;
-        }
-        updateSignupPlan();
-        setRepCodeStatus('✅ Annual Member Rate unlocked! Select it above and continue.', 'success');
-        if (repCodeUnlockBtn) repCodeUnlockBtn.disabled = true;
-        if (repCodeInput) repCodeInput.disabled = true;
+        setRepCodeStatus('✅ Rep code saved. It will be verified during checkout.', 'success');
     };
 
     if (repCodeUnlockBtn) {
-        repCodeUnlockBtn.addEventListener('click', unlockAnnualMember);
+        repCodeUnlockBtn.addEventListener('click', saveRepCode);
     }
     if (repCodeInput) {
+        repCodeInput.addEventListener('input', () => {
+            syncRepCode();
+            if (!repCodeInput.value.trim()) {
+                setRepCodeStatus('', '');
+            }
+        });
         repCodeInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
-                unlockAnnualMember();
+                saveRepCode();
             }
         });
     }
@@ -381,14 +379,21 @@ if (signupForm) {
         const goals = signupForm.goals.value.trim();
         const phone = signupForm.phone.value.trim();
         const plan = document.querySelector('input[name="signup-plan"]:checked')?.value;
-        const promoCode = (document.getElementById('signup-promo-code')?.value || '').trim();
+        const savedCode = (document.getElementById('signup-promo-code')?.value || '').trim();
         const enteredRepCode = (repCodeInput?.value || '').trim();
         const enteredPromoCode = (promoCodeInput?.value || '').trim();
-        // Attribution priority:
-        // 1) Rep code box, so reps are credited on any plan.
-        // 2) Hidden unlocked promo/rep code captured during "unlock" flows.
-        // 3) Promo code box as a final fallback.
-        const attributionCode = enteredRepCode || promoCode || enteredPromoCode;
+        // promoCode is the code used for checkout validation on the selected plan.
+        // attributionCode is for rep credit tracking metadata across all plans.
+        // Annual membership prioritizes rep-code input, while trial prioritizes promo-code input.
+        let promoCode = '';
+        if (plan === 'annual-member') {
+            promoCode = enteredRepCode || savedCode || enteredPromoCode;
+        } else if (plan === 'trial') {
+            promoCode = enteredPromoCode || savedCode || enteredRepCode;
+        } else {
+            promoCode = savedCode || enteredRepCode || enteredPromoCode;
+        }
+        const attributionCode = enteredRepCode || enteredPromoCode || savedCode;
 
         if (!name || !email || !subject || !plan) {
             setSignupStatus('Please complete your name, email, study focus, and plan before continuing.', 'error');
@@ -396,7 +401,7 @@ if (signupForm) {
         }
 
         if (plan === 'annual-member' && !promoCode) {
-            setSignupStatus('Please enter the rep code to unlock the Annual Member rate.', 'error');
+            setSignupStatus('Please enter your rep code for Annual Membership. Need one? Submit your contact info and we will send it.', 'error');
             return;
         }
 
