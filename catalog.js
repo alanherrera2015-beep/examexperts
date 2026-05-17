@@ -443,6 +443,7 @@ const latexTextToPlainText = (value) => String(value || '')
     .replace(/\\cos/g, 'cos')
     .replace(/\\tan/g, 'tan')
     .replace(/\\to/g, '→')
+    // Only remove delimiter commands like \left( and \right) without touching commands such as \leftarrow.
     .replace(/\\left(?![a-zA-Z])/g, '')
     .replace(/\\right(?![a-zA-Z])/g, '')
     .replace(/\\quad|\\qquad/g, ' ')
@@ -679,7 +680,7 @@ const getSourceChapters = async (source) => {
     if (!sourceText) {
         const response = await fetch(source);
         if (!response.ok) {
-            throw new Error(`Unable to load ${source}`);
+            throw new Error(`Unable to load ${source}: ${response.status} ${response.statusText}`);
         }
         sourceText = await response.text();
         texSourceCache.set(source, sourceText);
@@ -944,7 +945,7 @@ if (catalogModalClose) {
 }
 
 document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
+    if (event.key === 'Escape' && catalogModal && !catalogModal.hidden) {
         closeCatalogModal();
     }
 });
