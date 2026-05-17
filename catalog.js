@@ -396,16 +396,385 @@ const lifeSkillsPlans = [
 const catalogSearch = document.getElementById('catalogSearch');
 const catalogSearchStatus = document.getElementById('catalogSearchStatus');
 const filterChips = document.querySelectorAll('.catalog-filter-chip');
+const academicCatalogGrid = document.getElementById('academicCatalogGrid');
+const lifeSkillsCatalogGrid = document.getElementById('lifeSkillsCatalogGrid');
+const catalogModal = document.getElementById('catalogModal');
+const catalogModalClose = document.getElementById('catalogModalClose');
+const catalogModalEyebrow = document.getElementById('catalogModalEyebrow');
+const catalogModalTitle = document.getElementById('catalogModalTitle');
+const catalogModalBody = document.getElementById('catalogModalBody');
 const totalPlans = academicPlans.length + lifeSkillsPlans.length;
 const FILTER_CHIP_NO_MATCH = '__filter-chip-no-match__';
+const texSourceCache = new Map();
+const texChapterCache = new Map();
+let lastFocusedCatalogTrigger = null;
 
 const normalizeText = (value) => (value || '').toLowerCase().trim();
+const normalizeLookupText = (value) => normalizeText(value)
+    .replace(/\\&/g, ' and ')
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 const escapeHtml = (value) => String(value)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+const findPlanByTitle = (variant, title) => (variant === 'academic' ? academicPlans : lifeSkillsPlans)
+    .find(plan => plan.title === title);
+
+const latexTextToPlainText = (value) => String(value || '')
+    .replace(/\\textbf\{([^}]*)\}/g, '$1')
+    .replace(/\\emph\{([^}]*)\}/g, '$1')
+    .replace(/\\tfrac\{([^}]*)\}\{([^}]*)\}/g, '$1/$2')
+    .replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g, '$1/$2')
+    .replace(/\\text\{([^}]*)\}/g, '$1')
+    .replace(/\\&/g, '&')
+    .replace(/\\%/g, '%')
+    .replace(/\\_/g, '_')
+    .replace(/\\#/g, '#')
+    .replace(/\\\$/g, '$')
+    .replace(/\\circ/g, '°')
+    .replace(/\\pi/g, 'π')
+    .replace(/\\theta/g, 'θ')
+    .replace(/\\sin/g, 'sin')
+    .replace(/\\cos/g, 'cos')
+    .replace(/\\tan/g, 'tan')
+    .replace(/\\to/g, '→')
+    // Only remove delimiter commands like \left( and \right) without touching commands such as \leftarrow or \rightarrow.
+    .replace(/\\left(?![a-zA-Z])/g, '')
+    .replace(/\\right(?![a-zA-Z])/g, '')
+    .replace(/\\quad|\\qquad/g, ' ')
+    .replace(/---/g, '—')
+    .replace(/--/g, '–')
+    .replace(/\$/g, '')
+    .replace(/[{}]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+const formatLatexInline = (value) => {
+    const placeholders = [];
+    const withPlaceholders = String(value || '')
+        .replace(/\\textbf\{([^}]*)\}/g, (_, content) => {
+            placeholders.push(`<strong>${escapeHtml(latexTextToPlainText(content))}</strong>`);
+            return `__CATALOG_TOKEN_${placeholders.length - 1}__`;
+        })
+        .replace(/\\emph\{([^}]*)\}/g, (_, content) => {
+            placeholders.push(`<em>${escapeHtml(latexTextToPlainText(content))}</em>`);
+            return `__CATALOG_TOKEN_${placeholders.length - 1}__`;
+        });
+
+    return escapeHtml(latexTextToPlainText(withPlaceholders))
+        .replace(/__CATALOG_TOKEN_(\d+)__/g, (_, index) => placeholders[Number(index)] || '');
+};
+
+const renderLatexBlock = (content) => {
+    const lines = String(content || '')
+        .replace(/\r\n/g, '\n')
+        .split('\n')
+        .map(line => line.replace(/\s+$/, ''));
+
+    const html = [];
+    let paragraphLines = [];
+    let listType = null;
+    let inTabular = false;
+
+    const flushParagraph = () => {
+        const text = paragraphLines
+            .map(line => line.trim())
+            .filter(Boolean)
+            .join(' ')
+            .trim();
+
+        if (text) {
+            html.push(`<p>${formatLatexInline(text)}</p>`);
+        }
+
+        paragraphLines = [];
+    };
+
+    const closeList = () => {
+        if (!listType) return;
+        html.push(listType === 'ol' ? '</ol>' : '</ul>');
+        listType = null;
+    };
+
+    const openList = (type) => {
+        if (listType === type) return;
+        closeList();
+        flushParagraph();
+        listType = type;
+        html.push(type === 'ol'
+            ? '<ol class="catalog-detail-list">'
+            : '<ul class="catalog-detail-list">');
+    };
+
+    lines.forEach(rawLine => {
+        const line = rawLine.trim();
+
+        if (!line) {
+            flushParagraph();
+            return;
+        }
+
+        if (line.startsWith('%')) {
+            return;
+        }
+
+        const sectionMatch = line.match(/^\\section\*?\{(.+)\}$/);
+        if (sectionMatch) {
+            closeList();
+            flushParagraph();
+            html.push(`<h3>${escapeHtml(latexTextToPlainText(sectionMatch[1]))}</h3>`);
+            return;
+        }
+
+        const subsectionMatch = line.match(/^\\subsection\*?\{(.+)\}$/);
+        if (subsectionMatch) {
+            closeList();
+            flushParagraph();
+            html.push(`<h4>${escapeHtml(latexTextToPlainText(subsectionMatch[1]))}</h4>`);
+            return;
+        }
+
+        if (/^\\begin\{itemize\}/.test(line)) {
+            openList('ul');
+            return;
+        }
+
+        if (/^\\begin\{enumerate\}/.test(line)) {
+            openList('ol');
+            return;
+        }
+
+        if (/^\\end\{itemize\}|^\\end\{enumerate\}/.test(line)) {
+            closeList();
+            return;
+        }
+
+        const itemMatch = line.match(/^\\item\s*(.*)$/);
+        if (itemMatch) {
+            if (!listType) {
+                openList('ul');
+            }
+            html.push(`<li>${formatLatexInline(itemMatch[1])}</li>`);
+            return;
+        }
+
+        if (/^\\begin\{tabular\}/.test(line)) {
+            inTabular = true;
+            return;
+        }
+
+        if (/^\\end\{tabular\}/.test(line)) {
+            inTabular = false;
+            return;
+        }
+
+        if (
+            /^\\begin\{center\}|^\\end\{center\}|^\\toprule|^\\midrule|^\\bottomrule/.test(line) ||
+            /^\\part\{/.test(line) ||
+            /^\\chapter\{/.test(line) ||
+            /^\\clearpage|^\\newpage|^\\maketitle|^\\tableofcontents/.test(line)
+        ) {
+            return;
+        }
+
+        if (inTabular && line.includes('&') && line.endsWith('\\\\')) {
+            closeList();
+            flushParagraph();
+            const cells = line
+                .replace(/\\\\$/, '')
+                .split('&')
+                .map(cell => latexTextToPlainText(cell))
+                .filter(Boolean);
+
+            if (cells.length) {
+                html.push(`
+                    <div class="catalog-detail-row">
+                        <span class="catalog-detail-row-label">${escapeHtml(cells[0])}</span>
+                        ${cells[1] ? `<span class="catalog-detail-row-value">${escapeHtml(cells.slice(1).join(' • '))}</span>` : ''}
+                    </div>
+                `);
+            }
+            return;
+        }
+
+        if (line === '\\[' || line === '\\]') {
+            return;
+        }
+
+        paragraphLines.push(line.replace(/\\\\$/, ''));
+    });
+
+    closeList();
+    flushParagraph();
+    return html.join('');
+};
+
+const getPlanActionLabel = (plan) => plan.courses?.length ? 'View plan and course details' : 'View plan details';
+
+const getAcademicPlanDetailHtml = (plan) => `
+    <p>${escapeHtml(plan.summary)}</p>
+    <div class="catalog-modal-section">
+        <h3>Included courses</h3>
+        <p>Select a course to open its curriculum breakdown.</p>
+        <div class="catalog-modal-course-grid">
+            ${plan.courses.map(course => `
+                <button
+                    type="button"
+                    class="catalog-course-button"
+                    data-course-trigger="true"
+                    data-course-title="${escapeHtml(course)}"
+                    data-course-source="${escapeHtml(plan.source)}"
+                    data-course-plan="${escapeHtml(plan.title)}"
+                >
+                    ${escapeHtml(course)}
+                </button>
+            `).join('')}
+        </div>
+    </div>
+`;
+
+const getLifePlanDetailHtml = (plan) => `
+    <p>${escapeHtml(plan.summary)}</p>
+    <div class="catalog-modal-section">
+        <h3>Focus areas</h3>
+        <div class="catalog-card-tags">
+            ${plan.tags.map(tag => `<span class="catalog-card-tag">${escapeHtml(tag)}</span>`).join('')}
+        </div>
+    </div>
+`;
+
+const setCatalogModalContent = ({ eyebrow = '', title = 'Catalog details', body = '' }) => {
+    catalogModalEyebrow.textContent = eyebrow;
+    catalogModalTitle.textContent = title;
+    catalogModalBody.innerHTML = body;
+};
+
+const openCatalogModal = (trigger) => {
+    lastFocusedCatalogTrigger = trigger || document.activeElement;
+    catalogModal.hidden = false;
+    document.body.classList.add('catalog-modal-open');
+    catalogModalClose.focus();
+};
+
+const closeCatalogModal = () => {
+    if (!catalogModal || catalogModal.hidden) return;
+    catalogModal.hidden = true;
+    document.body.classList.remove('catalog-modal-open');
+    if (lastFocusedCatalogTrigger && typeof lastFocusedCatalogTrigger.focus === 'function') {
+        lastFocusedCatalogTrigger.focus();
+    }
+};
+
+const getSourceChapters = async (source) => {
+    if (!source) return [];
+    if (texChapterCache.has(source)) {
+        return texChapterCache.get(source);
+    }
+
+    let sourceText = texSourceCache.get(source);
+    if (!sourceText) {
+        const response = await fetch(source);
+        if (!response.ok) {
+            throw new Error(`Unable to load ${source}: ${response.status} ${response.statusText}`);
+        }
+        sourceText = await response.text();
+        texSourceCache.set(source, sourceText);
+    }
+
+    const chapters = [];
+    const chapterRegex = /^\s*\\chapter\{([^}]*)\}/gm;
+    const matches = [...sourceText.matchAll(chapterRegex)];
+
+    matches.forEach((match, index) => {
+        if (typeof match.index !== 'number') {
+            return;
+        }
+        const startIndex = match.index + match[0].length;
+        const nextMatch = matches[index + 1];
+        const endIndex = typeof nextMatch?.index === 'number' ? nextMatch.index : sourceText.length;
+        chapters.push({
+            title: latexTextToPlainText(match[1]),
+            normalizedTitle: normalizeLookupText(match[1]),
+            content: sourceText.slice(startIndex, endIndex).trim()
+        });
+    });
+
+    texChapterCache.set(source, chapters);
+    return chapters;
+};
+
+const showPlanDetails = (plan, variant, trigger) => {
+    setCatalogModalContent({
+        eyebrow: variant === 'academic' ? 'Academic plan' : 'Life skills plan',
+        title: plan.title,
+        body: variant === 'academic'
+            ? getAcademicPlanDetailHtml(plan)
+            : getLifePlanDetailHtml(plan)
+    });
+    openCatalogModal(trigger);
+};
+
+const showCourseDetails = async ({ title, source, planTitle, trigger }) => {
+    setCatalogModalContent({
+        eyebrow: planTitle ? `${planTitle} course` : 'Course details',
+        title,
+        body: `
+            <div class="catalog-detail-loading">
+                <p>Loading the full course breakdown...</p>
+            </div>
+        `
+    });
+    openCatalogModal(trigger);
+
+    try {
+        const chapters = await getSourceChapters(source);
+        const chapter = chapters.find(entry => entry.normalizedTitle === normalizeLookupText(title));
+
+        if (!chapter) {
+            setCatalogModalContent({
+                eyebrow: planTitle ? `${planTitle} course` : 'Course details',
+                title,
+                body: `
+                    <div class="catalog-detail-empty">
+                        <p>A full chapter for this course is not available in the current curriculum guide yet.</p>
+                        <p>Please contact Exam Experts if you want the detailed syllabus added next.</p>
+                    </div>
+                `
+            });
+            return;
+        }
+
+        setCatalogModalContent({
+            eyebrow: planTitle ? `${planTitle} course` : 'Course details',
+            title,
+            body: `
+                <div class="catalog-modal-section">
+                    <p class="catalog-detail-intro">Full course breakdown from the curriculum guide.</p>
+                    <div class="catalog-detail-content">
+                        ${renderLatexBlock(chapter.content)}
+                    </div>
+                </div>
+            `
+        });
+    } catch (error) {
+        console.error('Catalog course load error:', error);
+        setCatalogModalContent({
+            eyebrow: planTitle ? `${planTitle} course` : 'Course details',
+            title,
+            body: `
+                <div class="catalog-detail-empty">
+                    <p>We could not load this course breakdown right now.</p>
+                    <p>Please refresh the page and try again.</p>
+                </div>
+            `
+        });
+    }
+};
 
 const filterPlans = (plans, query) => {
     if (!query) return plans;
@@ -442,12 +811,33 @@ const renderCatalog = (plans, targetId, variant) => {
             <div class="catalog-card-number">Plan ${index + 1}</div>
             <h3>${escapeHtml(plan.title)}</h3>
             <p>${escapeHtml(plan.summary)}</p>
+            <button
+                type="button"
+                class="catalog-card-action"
+                data-plan-trigger="true"
+                data-plan-variant="${escapeHtml(variant)}"
+                data-plan-title="${escapeHtml(plan.title)}"
+            >
+                ${escapeHtml(getPlanActionLabel(plan))}
+            </button>
             ${variant === 'academic' && plan.courses?.length ? `
                 <details class="catalog-card-details">
-                    <summary>View ${plan.courses.length} included courses</summary>
-                    <p class="catalog-card-source">From ${escapeHtml(plan.source)}</p>
+                    <summary>Show ${plan.courses.length} included courses</summary>
                     <ul class="catalog-course-list">
-                        ${plan.courses.map(course => `<li>${escapeHtml(course)}</li>`).join('')}
+                        ${plan.courses.map(course => `
+                            <li>
+                                <button
+                                    type="button"
+                                    class="catalog-course-button"
+                                    data-course-trigger="true"
+                                    data-course-title="${escapeHtml(course)}"
+                                    data-course-source="${escapeHtml(plan.source)}"
+                                    data-course-plan="${escapeHtml(plan.title)}"
+                                >
+                                    ${escapeHtml(course)}
+                                </button>
+                            </li>
+                        `).join('')}
                     </ul>
                 </details>
             ` : ''}
@@ -504,6 +894,60 @@ filterChips.forEach(chip => {
         setQuickFilter(value);
         renderAllCatalogs(value);
     });
+});
+
+[academicCatalogGrid, lifeSkillsCatalogGrid].forEach(grid => {
+    if (!grid) return;
+
+    grid.addEventListener('click', async (event) => {
+        const planTrigger = event.target.closest('[data-plan-trigger]');
+        if (planTrigger) {
+            const plan = findPlanByTitle(planTrigger.dataset.planVariant, planTrigger.dataset.planTitle);
+            if (plan) {
+                showPlanDetails(plan, planTrigger.dataset.planVariant, planTrigger);
+            }
+            return;
+        }
+
+        const courseTrigger = event.target.closest('[data-course-trigger]');
+        if (courseTrigger) {
+            await showCourseDetails({
+                title: courseTrigger.dataset.courseTitle,
+                source: courseTrigger.dataset.courseSource,
+                planTitle: courseTrigger.dataset.coursePlan,
+                trigger: courseTrigger
+            });
+        }
+    });
+});
+
+if (catalogModal) {
+    catalogModal.addEventListener('click', async (event) => {
+        if (event.target.matches('[data-catalog-close]')) {
+            closeCatalogModal();
+            return;
+        }
+
+        const courseTrigger = event.target.closest('[data-course-trigger]');
+        if (courseTrigger) {
+            await showCourseDetails({
+                title: courseTrigger.dataset.courseTitle,
+                source: courseTrigger.dataset.courseSource,
+                planTitle: courseTrigger.dataset.coursePlan,
+                trigger: courseTrigger
+            });
+        }
+    });
+}
+
+if (catalogModalClose) {
+    catalogModalClose.addEventListener('click', closeCatalogModal);
+}
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && catalogModal && !catalogModal.hidden) {
+        closeCatalogModal();
+    }
 });
 
 if (catalogSearch) {
