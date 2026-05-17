@@ -443,7 +443,8 @@ const latexTextToPlainText = (value) => String(value || '')
     .replace(/\\cos/g, 'cos')
     .replace(/\\tan/g, 'tan')
     .replace(/\\to/g, '→')
-    .replace(/\\left|\\right/g, '')
+    .replace(/\\left(?![a-zA-Z])/g, '')
+    .replace(/\\right(?![a-zA-Z])/g, '')
     .replace(/\\quad|\\qquad/g, ' ')
     .replace(/---/g, '—')
     .replace(/--/g, '–')
@@ -477,6 +478,7 @@ const renderLatexBlock = (content) => {
     const html = [];
     let paragraphLines = [];
     let listType = null;
+    let inTabular = false;
 
     const flushParagraph = () => {
         const text = paragraphLines
@@ -560,8 +562,18 @@ const renderLatexBlock = (content) => {
             return;
         }
 
+        if (/^\\begin\{tabular\}/.test(line)) {
+            inTabular = true;
+            return;
+        }
+
+        if (/^\\end\{tabular\}/.test(line)) {
+            inTabular = false;
+            return;
+        }
+
         if (
-            /^\\begin\{center\}|^\\end\{center\}|^\\begin\{tabular\}|^\\end\{tabular\}|^\\toprule|^\\midrule|^\\bottomrule/.test(line) ||
+            /^\\begin\{center\}|^\\end\{center\}|^\\toprule|^\\midrule|^\\bottomrule/.test(line) ||
             /^\\part\{/.test(line) ||
             /^\\chapter\{/.test(line) ||
             /^\\clearpage|^\\newpage|^\\maketitle|^\\tableofcontents/.test(line)
@@ -569,7 +581,7 @@ const renderLatexBlock = (content) => {
             return;
         }
 
-        if (line.includes('&') && line.endsWith('\\\\')) {
+        if (inTabular && line.includes('&') && line.endsWith('\\\\')) {
             closeList();
             flushParagraph();
             const cells = line
@@ -678,8 +690,12 @@ const getSourceChapters = async (source) => {
     const matches = [...sourceText.matchAll(chapterRegex)];
 
     matches.forEach((match, index) => {
+        if (typeof match.index !== 'number') {
+            return;
+        }
         const startIndex = match.index + match[0].length;
-        const endIndex = index < matches.length - 1 ? matches[index + 1].index : sourceText.length;
+        const nextMatch = matches[index + 1];
+        const endIndex = typeof nextMatch?.index === 'number' ? nextMatch.index : sourceText.length;
         chapters.push({
             title: latexTextToPlainText(match[1]),
             normalizedTitle: normalizeLookupText(match[1]),
@@ -719,6 +735,7 @@ const showCourseDetails = async ({ title, source, planTitle, trigger }) => {
         const chapter = chapters.find(entry => entry.normalizedTitle === normalizeLookupText(title));
 
         if (!chapter) {
+            console.warn('Catalog chapter not found for course:', title, 'in source:', source);
             setCatalogModalContent({
                 eyebrow: planTitle ? `${planTitle} course` : 'Course details',
                 title,
