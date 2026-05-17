@@ -735,7 +735,6 @@ const showCourseDetails = async ({ title, source, planTitle, trigger }) => {
         const chapter = chapters.find(entry => entry.normalizedTitle === normalizeLookupText(title));
 
         if (!chapter) {
-            console.warn('Catalog chapter not found for course:', title, 'in source:', source);
             setCatalogModalContent({
                 eyebrow: planTitle ? `${planTitle} course` : 'Course details',
                 title,
@@ -822,7 +821,7 @@ const renderCatalog = (plans, targetId, variant) => {
             </button>
             ${variant === 'academic' && plan.courses?.length ? `
                 <details class="catalog-card-details">
-                    <summary>View ${plan.courses.length} included courses</summary>
+                    <summary>Show ${plan.courses.length} included courses</summary>
                     <ul class="catalog-course-list">
                         ${plan.courses.map(course => `
                             <li>

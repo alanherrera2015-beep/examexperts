@@ -4738,7 +4738,7 @@ section::before {
 .catalog-modal-dialog {
     position: relative;
     width: min(900px, 100%);
-    max-height: min(85vh, 960px);
+    max-height: 85vh;
     overflow: auto;
     border-radius: 28px;
     background: #fff;
