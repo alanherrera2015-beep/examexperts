@@ -1,0 +1,4263 @@
+\documentclass[12pt,oneside]{book}
+\usepackage[margin=1in]{geometry}
+% \usepackage[utf-8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{makecell}
+\usepackage{tocloft}
+
+% Font and styling
+\usepackage{lmodern}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Section styling
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\Large\bfseries}
+  {Chapter \thechapter}{20pt}{\Huge}
+  
+\titleformat{\section}
+  {\normalfont\large\bfseries}
+  {\thesection}{1em}{}
+  
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}
+  {\thesubsection}{1em}{}
+
+% Color definitions
+\definecolor{darkblue}{rgb}{0.1, 0.2, 0.5}
+\definecolor{lightblue}{rgb}{0.9, 0.95, 1.0}
+
+\title{\textcolor{darkblue}{\textbf{COMPREHENSIVE COLLEGE GENERAL STEM \\ COURSE SYLLABI \\ COMPLETE EDITION \\ (EXPANDED VERSION)}}}
+\author{\textit{Undergraduate Curriculum Guide for Advanced STEM Programs}}
+\date{January 2026}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\vspace*{\fill}
+\noindent
+\textbf{Institutional-Grade Curriculum Documentation}
+
+\noindent
+Complete Curriculum Guide for General Education and Advanced STEM Courses
+
+\noindent
+Including:
+\begin{itemize}
+    \item Core Mathematics: Calculus I-III, Linear Algebra, Differential Equations
+    \item Advanced Mathematics: Statistics \& Data Analysis, Mathematical Modeling
+    \item Physics: Mechanics, Electricity and Magnetism, Modern Physics, Optics, Thermodynamics
+    \item Chemistry: General Chemistry I-II, Organic Chemistry I-II, Physical Chemistry
+    \item Biochemistry and Molecular Biology
+    \item Biology: General Biology I-II, Cell Biology, Genetics, Ecology, Microbiology
+    \item Advanced Life Sciences: Molecular Biology, Genetics, Ecology, Physiology
+    \item Computer Science: Programming, Data Structures, Algorithms
+\end{itemize}
+
+\noindent
+Developed in accordance with:
+\begin{itemize}
+    \item Association of American Universities (AAU) Standards
+    \item STEM Education Frameworks
+    \item American Chemical Society (ACS) Guidelines
+    \item American Society of Biochemistry and Molecular Biology Standards
+    \item Genetics Society Standards
+    \item Physics Education Standards
+    \item Next Generation Science Standards (NGSS)
+    \item ACM Computer Science Curricula
+\end{itemize}
+
+\vspace{\fill}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+
+This comprehensive curriculum documentation represents institutional-grade syllabi for all major general education and advanced STEM courses offered in a typical undergraduate program. These courses form the foundation of STEM degree programs including Engineering, Natural Sciences, Computer Science, Chemistry, Biology, and Pre-Health tracks.
+
+\section*{Purpose}
+
+This document serves multiple audiences:
+\begin{itemize}
+    \item \textbf{Students}: Preview course content, understand expectations, and plan academic pathways
+    \item \textbf{Faculty}: Comprehensive curriculum framework for instruction across all sections
+    \item \textbf{Administrators}: Documentation for program evaluation, accreditation, and quality assurance
+    \item \textbf{Advisors}: Guide students in appropriate course selection and degree planning
+    \item \textbf{Transfer Students}: Understand content alignment and learning outcomes
+\end{itemize}
+
+\section*{Course Level Organization}
+
+\textbf{General Education STEM Courses}: Foundational courses meeting degree requirements with standard rigor, serving non-majors and majors alike.
+
+\textbf{Introductory Major Courses}: First courses for declared STEM majors with grade-appropriate rigor and background development.
+
+\textbf{Intermediate Major Courses}: Second or third-level courses for STEM majors with deeper theoretical understanding and application.
+
+\textbf{Advanced Specialized Courses}: Upper-level courses with rigorous content and prerequisite knowledge requirements.
+
+\section*{Standards Alignment}
+
+All syllabi align with:
+\begin{itemize}
+    \item Association of American Universities (AAU) Framework
+    \item STEM Education Standards and Best Practices
+    \item Accreditation Board for Engineering and Technology (ABET) Standards
+    \item American Chemical Society Approved Programs
+    \item Physics Education Standards (AAPT)
+    \item Computing Accreditation Commission (CAC) Standards
+    \item Next Generation Science Standards (NGSS)
+    \item ASBMB (American Society of Biochemistry and Molecular Biology) Standards
+\end{itemize}
+
+\section*{General Course Policies}
+
+\subsection*{Attendance and Participation}
+
+Attendance is expected at all lectures and laboratory sessions. Regular attendance is essential for success in STEM courses due to the cumulative nature of the material. Absences should be reported to the instructor as soon as possible. Excessive absences may result in course withdrawal or failing grade.
+
+\subsection*{Academic Integrity}
+
+All work submitted must be original. Plagiarism and cheating are serious violations of academic integrity and will result in disciplinary action per university policy.
+
+\subsection*{Accommodations for Students with Disabilities}
+
+Students with documented disabilities should register with the Disability Services Office and provide instructors with documentation of needed accommodations.
+
+\subsection*{Grade Appeals}
+
+Students may appeal grades on assignments or exams within 7 days of grade posting with written justification.
+
+% ================================================================
+% PART I: MATHEMATICS (EXPANDED)
+% ================================================================
+
+\part{Mathematics and Statistics}
+
+\chapter{Calculus I}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & MATH 2413 \\
+\textbf{Course Title:} & Calculus I \\
+\textbf{Grade Level:} & Freshman \\
+\textbf{Semester:} & Fall and Spring (4 credit hours) \\
+\textbf{Lab Component:} & Integrated technology applications \\
+\end{tabular}
+
+\section{Prerequisites}
+
+Pre-Calculus or equivalent with grade of C or higher.
+
+\section{Course Description}
+
+Calculus I introduces differential calculus with applications. Topics include limits, continuity, derivatives of algebraic and transcendental functions, applications of derivatives to optimization and related rates problems, and an introduction to integration. The course emphasizes conceptual understanding, problem-solving, and real-world applications.
+
+\section{Course Goals and Learning Outcomes}
+
+Upon successful completion, students will be able to:
+
+\begin{enumerate}
+    \item Understand and compute limits using multiple approaches
+    \item Determine continuity and apply the Intermediate Value Theorem
+    \item Compute derivatives using definition, rules, and differentiation techniques
+    \item Apply derivatives to analyze function behavior and optimize real-world quantities
+    \item Understand and compute antiderivatives and definite integrals
+    \item Apply the Fundamental Theorem of Calculus
+    \item Model and solve applied problems using calculus
+    \item Communicate mathematical reasoning clearly
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Limits and Continuity (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Intuitive understanding of limits
+    \item Limit notation and one-sided limits
+    \item Limit laws and algebraic evaluation
+    \item Limits at infinity and infinite limits
+    \item Asymptotes (vertical, horizontal, oblique)
+    \item Continuity: definition and types of discontinuities
+    \item Intermediate Value Theorem and applications
+\end{itemize}
+
+\subsection{Unit 2: Derivatives---Definition and Computation (5--7 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Definition of derivative as a limit: $f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}$
+    \item Derivative as rate of change and slope of tangent line
+    \item Power rule, product rule, quotient rule, chain rule
+    \item Derivatives of exponential and logarithmic functions
+    \item Derivatives of trigonometric functions
+    \item Implicit differentiation
+    \item Higher-order derivatives
+\end{itemize}
+
+\subsection{Unit 3: Applications of Derivatives (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Related rates problems
+    \item Linear approximation and differentials
+    \item Extreme value problems and critical points
+    \item First and Second Derivative Tests
+    \item Optimization problems
+    \item Mean Value Theorem and L'Hôpital's Rule
+\end{itemize}
+
+\subsection{Unit 4: Introduction to Integration (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Antiderivatives and indefinite integrals
+    \item Basic integration rules
+    \item Riemann sums and definite integrals
+    \item Fundamental Theorem of Calculus
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 50\% exams, 20\% quizzes, 15\% homework, 10\% projects, 5\% participation.
+
+% ================================================================
+
+\chapter{Calculus II}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & MATH 2414 \\
+\textbf{Course Title:} & Calculus II \\
+\textbf{Grade Level:} & Freshman \\
+\textbf{Semester:} & Spring and Fall (4 credit hours) \\
+\end{tabular}
+
+\section{Prerequisites}
+
+MATH 2413 (Calculus I) with grade of C or higher.
+
+\section{Course Description}
+
+Calculus II continues integral calculus including techniques of integration, applications of integration, sequences and series, and differential equations. Students develop deeper understanding of integration, infinite series, and apply calculus to model complex phenomena.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Compute integrals using advanced techniques
+    \item Apply integration to solve real-world problems
+    \item Understand sequences and series convergence
+    \item Determine convergence and divergence of series
+    \item Use Taylor series for approximation and analysis
+    \item Solve basic differential equations
+    \item Model and solve applied problems
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Techniques of Integration (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Integration by parts: $\int u \, dv = uv - \int v \, du$
+    \item Trigonometric integrals
+    \item Trigonometric substitution
+    \item Partial fraction decomposition
+    \item Improper integrals and convergence
+    \item Numerical integration (Trapezoidal Rule, Simpson's Rule)
+\end{itemize}
+
+\subsection{Unit 2: Applications of Integration (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Area between curves
+    \item Volumes of solids of revolution
+    \item Cylindrical shells method
+    \item Arc length and surface area
+    \item Work, pressure, center of mass applications
+\end{itemize}
+
+\subsection{Unit 3: Sequences and Series (6--8 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Sequences and limits
+    \item Infinite series and convergence tests
+    \item Divergence, Integral, p-series tests
+    \item Comparison, Limit Comparison, Ratio, Root tests
+    \item Alternating Series Test
+    \item Absolute and conditional convergence
+    \item Power series and radius of convergence
+\end{itemize}
+
+\subsection{Unit 4: Taylor Series (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Taylor series: $f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n$
+    \item Maclaurin series
+    \item Common series expansions
+    \item Lagrange error bounds
+\end{itemize}
+
+\subsection{Unit 5: Differential Equations (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Separable differential equations
+    \item First-order linear differential equations
+    \item Growth and decay models
+    \item Initial value problems
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 50\% exams, 20\% quizzes, 15\% homework, 10\% projects, 5\% participation.
+
+% ================================================================
+
+\chapter{Calculus III}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & MATH 2415 \\
+\textbf{Course Title:} & Calculus III (Multivariable Calculus) \\
+\textbf{Grade Level:} & Sophomore \\
+\textbf{Semester:} & Fall and Spring (4 credit hours) \\
+\end{tabular}
+
+\section{Prerequisites}
+
+MATH 2414 (Calculus II) with grade of C or higher.
+
+\section{Course Description}
+
+Calculus III extends calculus to functions of multiple variables. Topics include partial derivatives, multiple integrals, vector calculus, and applications. Students develop spatial reasoning and apply multivariable calculus to complex problems.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Work with functions of multiple variables
+    \item Compute partial derivatives and optimize
+    \item Evaluate multiple integrals with applications
+    \item Understand vector calculus
+    \item Apply Green's and Stokes' Theorems
+    \item Model and solve multidimensional problems
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Vectors and 3D Geometry (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Vectors in 3D: magnitude, direction
+    \item Dot and cross products
+    \item Equations of lines and planes
+    \item Surfaces and surfaces of revolution
+\end{itemize}
+
+\subsection{Unit 2: Partial Derivatives (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Multivariable functions
+    \item Partial derivatives and higher-order derivatives
+    \item Chain rule for multiple variables
+    \item Directional derivatives and gradients
+    \item Tangent planes and linearization
+\end{itemize}
+
+\subsection{Unit 3: Optimization (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Critical points and classification
+    \item Second Partial Derivative Test
+    \item Lagrange multipliers
+    \item Constrained optimization applications
+\end{itemize}
+
+\subsection{Unit 4: Multiple Integrals (6--7 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Double integrals over rectangular and general regions
+    \item Polar coordinates: $\iint_R f(r,\theta) \, r \, dr \, d\theta$
+    \item Applications: area, volume, mass, center of mass
+    \item Triple integrals in Cartesian, cylindrical, spherical coordinates
+\end{itemize}
+
+\subsection{Unit 5: Vector Calculus (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Vector fields
+    \item Line integrals of scalar and vector fields
+    \item Conservative vector fields
+    \item Green's Theorem: $\oint_C (P \, dx + Q \, dy) = \iint_D \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right) dA$
+    \item Surface integrals and flux
+    \item Stokes' and Divergence Theorems
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 50\% exams, 20\% quizzes, 15\% homework, 10\% projects, 5\% participation.
+
+% ================================================================
+
+\chapter{Linear Algebra}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & MATH 2318 \\
+\textbf{Course Title:} & Linear Algebra \\
+\textbf{Grade Level:} & Sophomore \\
+\textbf{Semester:} & Fall and Spring (3 credit hours) \\
+\end{tabular}
+
+\section{Prerequisites}
+
+Calculus I or concurrent enrollment.
+
+\section{Course Description}
+
+Linear Algebra studies systems of linear equations, matrices, vector spaces, eigenvalues, and applications. The course emphasizes both theoretical understanding and computational skills with applications to STEM fields.
+
+\subsection{Course Goals and Learning Outcomes}
+
+Upon successful completion, students will be able to:
+
+\begin{enumerate}
+    \item Solve systems of linear equations using Gaussian elimination and matrix methods.
+    \item Perform matrix operations and compute determinants and inverses.
+    \item Understand and apply concepts of vector spaces, subspaces, and linear independence.
+    \item Determine bases and dimensions of vector spaces and subspaces.
+    \item Compute eigenvalues and eigenvectors and apply diagonalization techniques.
+    \item Apply linear algebra concepts to solve problems in science and engineering.
+    \item Use computational tools for matrix calculations and visualizations.
+    \item Communicate mathematical reasoning and solutions clearly.
+\end{enumerate}
+
+
+\section{Units of Study}
+
+\subsection{Unit 1: Systems and Gaussian Elimination (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Systems of linear equations
+    \item Gaussian elimination and row reduction
+    \item Reduced row echelon form
+    \item Consistent and inconsistent systems
+\end{itemize}
+
+\subsection{Unit 2: Matrices and Operations (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Matrix operations: addition, multiplication, transpose
+    \item Determinants and inverses
+    \item Matrix representation of systems
+\end{itemize}
+
+\subsection{Unit 3: Vector Spaces (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Vector spaces and subspaces
+    \item Linear independence and bases
+    \item Dimension and rank
+    \item Row, column, and null spaces
+\end{itemize}
+
+\subsection{Unit 4: Eigenvalues and Diagonalization (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Characteristic polynomials
+    \item Eigenvalues and eigenvectors
+    \item Diagonalization and similar matrices
+\end{itemize}
+
+\subsection{Unit 5: Applications (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Least-squares solutions
+    \item Engineering and science applications
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 45\% exams, 25\% quizzes, 20\% homework, 10\% projects.
+
+% ================================================================
+
+\chapter{Differential Equations}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & MATH 2450 \\
+\textbf{Course Title:} & Differential Equations \\
+\textbf{Grade Level:} & Junior \\
+\textbf{Semester:} & Spring and Fall (3 credit hours) \\
+\end{tabular}
+
+\section{Prerequisites}
+
+MATH 2415 with grade of C or higher; MATH 2318 recommended.
+
+\section{Course Description}
+
+Differential Equations provides comprehensive study of ordinary differential equations including solution techniques, systems of equations, and applications. The course emphasizes modeling, analysis, and computational methods.
+
+\subsection{Course Goals and Learning Outcomes}
+
+Upon successful completion, students will be able to:
+
+\begin{enumerate}
+    \item Classify and solve first-order differential equations using appropriate techniques.
+    \item Solve higher-order linear differential equations using characteristic equations and variation of parameters.
+    \item Analyze systems of differential equations using eigenvalue methods and phase plane analysis.
+    \item Apply Laplace transforms to solve initial value problems.
+    \item Use series methods to solve differential equations near ordinary and regular singular points.
+    \item Model real-world phenomena using differential equations in physics, biology, chemistry, and engineering.
+    \item Analyze stability and long-term behavior of solutions.
+    \item Use computational tools to visualize solutions and verify analytical results.
+\end{enumerate}
+
+
+\section{Units of Study}
+
+\subsection{Unit 1: First-Order Equations (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Separable equations
+    \item Linear first-order equations with integrating factors
+    \item Slope fields and Euler's method
+    \item Existence and uniqueness
+\end{itemize}
+
+\subsection{Unit 2: Higher-Order Linear Equations (6--7 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Homogeneous equations and characteristic equation
+    \item Method of undetermined coefficients
+    \item Variation of parameters
+    \item Applications: harmonic oscillators, RLC circuits
+\end{itemize}
+
+\subsection{Unit 3: Systems of Differential Equations (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Systems in matrix form: $\vec{x}' = A\vec{x}$
+    \item Eigenvalue methods
+    \item Phase plane analysis and stability
+\end{itemize}
+
+\subsection{Unit 4: Laplace Transforms (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Definition and properties
+    \item Inverse transforms
+    \item Solving differential equations
+\end{itemize}
+
+\subsection{Unit 5: Series Solutions (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Power series solutions
+    \item Frobenius method
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 50\% exams, 20\% quizzes, 15\% homework, 10\% projects, 5\% participation.
+
+% ================================================================
+
+\chapter{Statistics and Data Analysis for Science}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & MATH 3341 / STAT 3301 \\
+\textbf{Course Title:} & Statistics and Data Analysis for Science \\
+\textbf{Grade Level:} & Junior \\
+\textbf{Semester:} & Fall and Spring (3 credit hours) \\
+\textbf{Lab Component:} & Computational (R or Python) \\
+\end{tabular}
+
+\section{Prerequisites}
+
+Calculus I or equivalent; concurrent enrollment in Calculus II acceptable.
+
+\section{Course Description}
+
+This course applies statistical methods to scientific research and data analysis. Students learn exploratory data analysis, probability distributions, hypothesis testing, regression, and statistical modeling. Emphasis on applications in biology, chemistry, physics, and other STEM disciplines using modern software tools (R, Python, or equivalent).
+
+\section{Course Goals and Learning Outcomes}
+
+Upon successful completion, students will be able to:
+
+\begin{enumerate}
+    \item Describe and visualize data using exploratory analysis
+    \item Understand and apply probability concepts and distributions
+    \item Conduct hypothesis testing and interpret results
+    \item Perform and interpret regression analysis
+    \item Apply statistical modeling to scientific problems
+    \item Use statistical software for data analysis
+    \item Communicate statistical results effectively
+    \item Recognize limitations and appropriate use of statistical methods
+\end{enumerate}
+
+\section{Required Materials}
+
+\begin{itemize}
+    \item Software: R (free, open-source) or Python with statistical libraries (NumPy, SciPy, Pandas, Matplotlib)
+    \item Textbook: \textit{Statistics for the Life Sciences} (Recommended: Samuels, Witmer) or \textit{Statistical Rethinking} (McElreath)
+    \item Graphing software: Excel, R ggplot2, or Python Matplotlib/Seaborn
+\end{itemize}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Exploratory Data Analysis (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Data types and collection
+    \item Descriptive statistics: mean, median, variance, standard deviation
+    \item Data visualization: histograms, box plots, scatter plots, violin plots
+    \item Measures of location and spread
+    \item Distribution shapes: skewness, kurtosis
+    \item Outlier detection and handling
+    \item Data cleaning and preprocessing
+\end{itemize}
+
+\textbf{Learning Outcomes:} Students can summarize data, identify patterns, and detect anomalies.
+
+\subsection{Unit 2: Probability and Distributions (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Probability fundamentals and rules
+    \item Conditional probability and independence
+    \item Discrete distributions: binomial, Poisson, geometric
+    \item Continuous distributions: normal, exponential, chi-square, t-distribution
+    \item Central Limit Theorem
+    \item Z-scores and standardization
+    \item Quantile-quantile (Q-Q) plots
+\end{itemize}
+
+\textbf{Learning Outcomes:} Students understand probability theory and can apply appropriate distributions.
+
+\subsection{Unit 3: Hypothesis Testing (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Null and alternative hypotheses
+    \item Type I and Type II errors
+    \item P-values and significance levels
+    \item One-sample t-tests: $t = \frac{\bar{x} - \mu_0}{s/\sqrt{n}}$
+    \item Two-sample t-tests: paired and unpaired
+    \item Chi-square tests for independence and goodness-of-fit
+    \item ANOVA (Analysis of Variance): $F = \frac{MS_{between}}{MS_{within}}$
+    \item Post-hoc tests: Tukey, Bonferroni
+    \item Assumptions and diagnostics
+    \item Non-parametric alternatives: Mann-Whitney U, Kruskal-Wallis
+\end{itemize}
+
+\textbf{Learning Outcomes:} Students can formulate hypotheses, select appropriate tests, and interpret results.
+
+\subsection{Unit 4: Correlation and Regression (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Correlation: Pearson and Spearman
+    \item Covariance and correlation coefficient: $r = \frac{\text{Cov}(X,Y)}{s_X s_Y}$
+    \item Linear regression: $\hat{y} = a + bx$
+    \item Least squares estimation
+    \item $R^2$ and coefficient of determination
+    \item Confidence intervals for regression
+    \item Residual analysis and diagnostics
+    \item Multiple regression: $\hat{y} = b_0 + b_1x_1 + b_2x_2 + \cdots + b_px_p$
+    \item Model selection and AIC/BIC
+    \item Prediction vs. explanation
+\end{itemize}
+
+\textbf{Learning Outcomes:} Students can fit regression models, assess fit, and make predictions.
+
+\subsection{Unit 5: Statistical Modeling (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Generalized linear models (GLMs)
+    \item Logistic regression for binary outcomes
+    \item Poisson regression for count data
+    \item Model assumptions and diagnostics
+    \item Goodness-of-fit tests
+    \item Cross-validation and overfitting
+    \item Introduction to Bayesian thinking (optional)
+\end{itemize}
+
+\textbf{Learning Outcomes:} Students can build and evaluate statistical models.
+
+\subsection{Unit 6: Applications in Science (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Experimental design and statistical power
+    \item Effect sizes and confidence intervals
+    \item Multiple comparisons and correction (Bonferroni, FDR)
+    \item Time series analysis basics
+    \item Survival analysis basics
+    \item Case studies from biology, chemistry, physics
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Real datasets from scientific papers
+    \item Computational projects using R/Python
+    \item Data presentation and interpretation
+    \item Reproducible research practices
+\end{itemize}
+
+\section{Assessment}
+
+\subsection{Grading Breakdown}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lc}
+\toprule
+\textbf{Assessment Component} & \textbf{Weight} \\
+\midrule
+Examinations (2--3) & 35\% \\
+Quizzes (periodic) & 15\% \\
+Computational Assignments & 30\% \\
+Final Project (data analysis) & 15\% \\
+Class Participation & 5\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Computational Projects}
+
+Students complete computational assignments analyzing real scientific datasets. Projects involve data exploration, statistical testing, visualization, and interpretation. Final project is comprehensive analysis with written report.
+
+% ================================================================
+
+\chapter{Mathematical Modeling and Applications}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & MATH 3325 \\
+\textbf{Course Title:} & Mathematical Modeling and Applications \\
+\textbf{Grade Level:} & Junior \\
+\textbf{Semester:} & Spring (3 credit hours) \\
+\end{tabular}
+
+\section{Prerequisites}
+
+MATH 2415 (Calculus III); MATH 2450 (Differential Equations) recommended.
+
+\section{Course Description}
+
+Mathematical Modeling teaches students to formulate real-world problems mathematically, solve them, validate solutions, and interpret results. Students work on projects from multiple disciplines including biology, physics, chemistry, engineering, and environmental science.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Translate real-world problems into mathematical models
+    \item Select and apply appropriate mathematical techniques
+    \item Validate models against experimental data
+    \item Interpret mathematical solutions in context
+    \item Communicate modeling results effectively
+    \item Work in teams on complex projects
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Modeling Process (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Problem formulation
+    \item Assumptions and simplifications
+    \item Model selection
+    \item Solving and analyzing models
+    \item Validation and sensitivity analysis
+\end{itemize}
+
+\subsection{Unit 2: Discrete Models (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Linear recurrence relations
+    \item Difference equations
+    \item Applications: population dynamics, compound interest, algorithms
+\end{itemize}
+
+\subsection{Unit 3: Continuous Models (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Differential equation models
+    \item Growth and decay
+    \item Predator-prey models (Lotka-Volterra)
+    \item Epidemiological models (SIR)
+    \item Chemical reaction kinetics
+\end{itemize}
+
+\subsection{Unit 4: Statistical Models (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Regression models
+    \item Parameter estimation
+    \item Model fitting and validation
+\end{itemize}
+
+\subsection{Unit 5: Optimization Models (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Linear programming
+    \item Nonlinear optimization
+    \item Constraint handling
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 30\% projects, 25\% final project, 20\% exams, 15\% quizzes, 10\% participation.
+
+% ================================================================
+% PART II: PHYSICS (EXPANDED)
+% ================================================================
+
+\part{Physics}
+
+\chapter{Physics I: Mechanics}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & PHYS 1411 \\
+\textbf{Course Title:} & Physics I: Mechanics \\
+\textbf{Grade Level:} & Freshman \\
+\textbf{Semester:} & Fall and Spring (4 credit hours) \\
+\textbf{Lab Component:} & 1 hour weekly \\
+\end{tabular}
+
+\section{Prerequisites}
+
+College Algebra; concurrent or prior Calculus I.
+
+\section{Course Description}
+
+Physics I introduces fundamental principles of mechanics including kinematics, dynamics, energy, momentum, rotation, and oscillations. Students develop understanding through lectures, problem-solving, and laboratory investigations using modern equipment.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Analyze motion using kinematic equations
+    \item Apply Newton's laws to dynamics problems
+    \item Understand work-energy theorem
+    \item Analyze collisions and momentum conservation
+    \item Understand rotational motion and angular momentum
+    \item Analyze simple harmonic motion and waves
+    \item Conduct laboratory investigations
+    \item Apply physics principles to real-world problems
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Kinematics (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Vectors and displacement
+    \item Velocity and acceleration
+    \item Kinematic equations: $v = v_0 + at$, $x = x_0 + v_0t + \frac{1}{2}at^2$
+    \item Projectile motion
+    \item Circular motion: $a_c = \frac{v^2}{r}$
+\end{itemize}
+
+\subsection{Unit 2: Forces and Newton's Laws (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Newton's Laws of Motion
+    \item Forces: gravity, normal, friction, tension
+    \item Friction: $f = \mu N$
+    \item Free-body diagrams
+    \item Applications to inclines and pulleys
+\end{itemize}
+
+\subsection{Unit 3: Work, Energy, Power (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Work: $W = \vec{F} \cdot \vec{d}$
+    \item Kinetic energy: $KE = \frac{1}{2}mv^2$
+    \item Potential energy: gravitational and elastic
+    \item Work-Energy Theorem
+    \item Conservation of energy
+    \item Power: $P = \frac{dW}{dt}$
+\end{itemize}
+
+\subsection{Unit 4: Momentum and Collisions (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Linear momentum: $\vec{p} = m\vec{v}$
+    \item Impulse-momentum theorem
+    \item Conservation of momentum
+    \item Elastic and inelastic collisions
+    \item Center of mass
+\end{itemize}
+
+\subsection{Unit 5: Rotational Motion (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Angular motion and kinematics
+    \item Moment of inertia: $I = \sum m_i r_i^2$
+    \item Rotational dynamics: $\tau = I\alpha$
+    \item Rotational kinetic energy
+    \item Angular momentum: $\vec{L} = I\vec{\omega}$
+    \item Rolling without slipping
+\end{itemize}
+
+\subsection{Unit 6: Oscillations and Waves (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Simple harmonic motion: $x(t) = A\cos(\omega t + \phi)$
+    \item Spring-mass systems and pendulums
+    \item Wave properties and equations
+    \item Doppler effect and sound
+\end{itemize}
+
+\subsection{Unit 7: Gravity (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Universal Gravitation: $F = G\frac{m_1 m_2}{r^2}$
+    \item Orbital motion and Kepler's laws
+\end{itemize}
+
+\subsection{Unit 8: Fluids (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Pressure and density
+    \item Buoyancy and Archimedes' Principle
+    \item Fluid dynamics and continuity
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 40\% exams, 20\% quizzes, 20\% labs, 15\% homework, 5\% participation.
+
+% ================================================================
+
+\chapter{Physics II: Electricity and Magnetism}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & PHYS 1412 \\
+\textbf{Course Title:} & Physics II: Electricity and Magnetism \\
+\textbf{Grade Level:} & Freshman--Sophomore \\
+\textbf{Semester:} & Spring and Fall (4 credit hours) \\
+\textbf{Lab Component:} & 1 hour weekly \\
+\end{tabular}
+
+\section{Prerequisites}
+
+Physics I (Mechanics); Calculus I.
+
+\section{Course Description}
+
+Physics II covers electric forces, fields, and potentials; capacitance; current and resistance; magnetic forces and fields; electromagnetic induction; and Maxwell's equations. Students apply concepts through problem-solving and laboratory work.
+
+\subsection{Course Goals and Learning Outcomes}
+
+Upon successful completion, students will be able to:
+
+\begin{enumerate}
+    \item Apply Coulomb's Law and calculate electric fields for point charges and charge distributions.
+    \item Apply Gauss's Law to determine electric fields using symmetry arguments.
+    \item Understand electric potential, voltage, and capacitance in various configurations.
+    \item Analyze DC and AC circuits using Ohm's Law, Kirchhoff's laws, and circuit analysis techniques.
+    \item Calculate magnetic forces on moving charges and current-carrying conductors.
+    \item Apply Ampère's Law and Biot-Savart Law to determine magnetic fields.
+    \item Understand electromagnetic induction and apply Faraday's Law and Lenz's Law.
+    \item Analyze AC circuits with inductors, capacitors, and resistors.
+    \item Understand Maxwell's equations and their physical significance.
+    \item Conduct laboratory investigations of electric and magnetic phenomena.
+    \item Apply electromagnetic principles to real-world applications and technology.
+\end{enumerate}
+
+
+\section{Units of Study}
+
+\subsection{Unit 1: Electric Charges and Fields (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Electric charge and Coulomb's Law: $F = k\frac{|q_1 q_2|}{r^2}$
+    \item Electric field: $\vec{E} = \frac{\vec{F}}{q}$
+    \item Gauss's Law: $\oint \vec{E} \cdot d\vec{A} = \frac{Q_{enc}}{\epsilon_0}$
+    \item Field of point charges and continuous distributions
+\end{itemize}
+
+\subsection{Unit 2: Potential and Capacitance (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Electric potential and voltage
+    \item Capacitance: $C = \frac{Q}{V}$
+    \item Parallel plate capacitor
+    \item Energy storage: $U = \frac{1}{2}CV^2$
+    \item Dielectrics and circuits
+\end{itemize}
+
+\subsection{Unit 3: Current and Resistance (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Current and Ohm's Law: $V = IR$
+    \item Resistance and resistivity
+    \item Power dissipation: $P = I^2R$
+    \item EMF and internal resistance
+\end{itemize}
+
+\subsection{Unit 4: Circuits (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Kirchhoff's laws
+    \item Series and parallel circuits
+    \item RC circuits: charging and discharging
+    \item Network analysis
+\end{itemize}
+
+\subsection{Unit 5: Magnetic Forces and Fields (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Magnetic force: $\vec{F} = q\vec{v} \times \vec{B}$
+    \item Force on current-carrying wires
+    \item Ampère's Law: $\oint \vec{B} \cdot d\vec{l} = \mu_0 I_{enc}$
+    \item Magnetic field sources
+\end{itemize}
+
+\subsection{Unit 6: Electromagnetic Induction (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Magnetic flux: $\Phi_B = \int \vec{B} \cdot d\vec{A}$
+    \item Faraday's Law: $\varepsilon = -\frac{d\Phi_B}{dt}$
+    \item Lenz's Law and motional EMF
+    \item Inductance and RL circuits
+    \item Transformers
+\end{itemize}
+
+\subsection{Unit 7: AC Circuits (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item AC voltage and current
+    \item Reactance and impedance
+    \item RLC circuits and resonance
+    \item Power in AC circuits
+\end{itemize}
+
+\subsection{Unit 8: Maxwell's Equations (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Maxwell's equations
+    \item Electromagnetic waves and light
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 40\% exams, 20\% quizzes, 20\% labs, 15\% homework, 5\% participation.
+
+% ================================================================
+
+\chapter{Physics III: Modern Physics}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & PHYS 2413 \\
+\textbf{Course Title:} & Physics III: Modern Physics \\
+\textbf{Grade Level:} & Sophomore \\
+\textbf{Semester:} & Fall and Spring (3 credit hours) \\
+\textbf{Lab Component:} & Integrated experiments \\
+\end{tabular}
+
+\section{Prerequisites}
+
+PHYS 1412 (Physics II) with grade of C or higher; MATH 2415 (Calculus III) recommended.
+
+\section{Course Description}
+
+Modern Physics introduces quantum mechanics, special relativity, atomic structure, nuclear physics, and solid state physics. The course explores phenomena at atomic and subatomic scales that cannot be explained by classical physics.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Understand limitations of classical physics
+    \item Understand special relativity and relativistic mechanics
+    \item Understand quantum mechanics and wave-particle duality
+    \item Analyze atomic structure and spectroscopy
+    \item Understand nuclear physics and radioactivity
+    \item Understand solid state physics basics
+    \item Apply quantum and relativistic concepts
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Special Relativity (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Limitations of classical mechanics
+    \item Einstein's postulates
+    \item Time dilation: $\Delta t = \gamma \Delta t_0$ where $\gamma = \frac{1}{\sqrt{1-v^2/c^2}}$
+    \item Length contraction: $L = L_0\sqrt{1-v^2/c^2}$
+    \item Relativistic momentum and energy
+    \item E=mc$^2$ and mass-energy equivalence
+\end{itemize}
+
+\subsection{Unit 2: Quantum Mechanics Basics (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Blackbody radiation and Planck's hypothesis
+    \item Photoelectric effect: $E = h\nu$
+    \item Compton scattering
+    \item Wave-particle duality and de Broglie wavelength: $\lambda = \frac{h}{p}$
+    \item Uncertainty principle: $\Delta x \Delta p \geq \frac{\hbar}{2}$
+    \item Schrödinger equation (time-independent)
+    \item Wave functions and probability
+    \item Particle in a box
+\end{itemize}
+
+\subsection{Unit 3: Atomic Physics (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Bohr model of hydrogen
+    \item Quantum numbers: $n$, $l$, $m_l$, $m_s$
+    \item Electron spin and Pauli Exclusion Principle
+    \item Periodic table and electron configuration
+    \item Atomic spectra and transitions
+    \item X-rays and X-ray spectroscopy
+    \item Laser principles
+\end{itemize}
+
+\subsection{Unit 4: Nuclear Physics (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Nuclear structure and stability
+    \item Radioactive decay: $N(t) = N_0 e^{-\lambda t}$, $t_{1/2} = \frac{\ln 2}{\lambda}$
+    \item Alpha, beta, gamma radiation
+    \item Nuclear reactions and binding energy: $BE = [Zm_p + Nm_n - m_{nucleus}]c^2$
+    \item Fission and fusion
+\end{itemize}
+
+\subsection{Unit 5: Solid State Physics Basics (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Band theory
+    \item Semiconductors and conductors
+    \item p-n junctions and diodes
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 45\% exams, 25\% quizzes, 20\% homework, 10\% projects.
+
+% ================================================================
+
+\chapter{Physics IV: Thermodynamics and Optics}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & PHYS 2414 \\
+\textbf{Course Title:} & Thermodynamics and Optics \\
+\textbf{Grade Level:} & Sophomore \\
+\textbf{Semester:} & Spring (3 credit hours) \\
+\textbf{Lab Component:} & Optical experiments \\
+\end{tabular}
+
+\section{Prerequisites}
+
+PHYS 1411 or 1412 with grade of C or higher.
+
+\section{Course Description}
+
+This course covers thermodynamics and optics. Thermodynamics covers temperature, heat, entropy, and the laws of thermodynamics. Optics covers light propagation, reflection, refraction, interference, and diffraction.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Understand temperature and heat
+    \item Apply thermodynamic laws to analyze systems
+    \item Understand entropy and thermodynamic processes
+    \item Understand light and geometric optics
+    \item Apply interference and diffraction
+    \item Conduct optical experiments
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Temperature and Heat (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Temperature scales and thermal equilibrium
+    \item Heat and internal energy
+    \item Thermal conductivity and convection
+    \item Specific heat and calorimetry
+\end{itemize}
+
+\subsection{Unit 2: First Law of Thermodynamics (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Internal energy and the First Law: $\Delta U = Q - W$
+    \item Work done by gases: $W = \int P \, dV$
+    \item Heat capacity at constant volume and pressure
+    \item Isothermal, adiabatic, isochoric, isobaric processes
+    \item Applications to ideal gases
+\end{itemize}
+
+\subsection{Unit 3: Second Law and Entropy (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Heat engines and Carnot efficiency
+    \item Second Law of Thermodynamics
+    \item Entropy: $dS = \frac{dQ_{rev}}{T}$
+    \item Entropy of ideal gases
+    \item Third Law of Thermodynamics
+    \item Gibbs free energy applications
+\end{itemize}
+
+\subsection{Unit 4: Geometric Optics (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Light propagation and Snell's law: $n_1\sin\theta_1 = n_2\sin\theta_2$
+    \item Reflection and refraction
+    \item Mirrors and lenses
+    \item Lens equations: $\frac{1}{s_o} + \frac{1}{s_i} = \frac{1}{f}$
+    \item Magnification and ray tracing
+    \item Optical instruments: microscopes, telescopes
+\end{itemize}
+
+\subsection{Unit 5: Wave Optics (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Light as electromagnetic wave
+    \item Double slit interference: $d\sin\theta = m\lambda$
+    \item Single slit diffraction
+    \item Diffraction grating
+    \item Polarization and Malus's Law
+    \item Dispersion and rainbows
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 45\% exams, 25\% quizzes, 20\% labs, 10\% homework.
+
+% ================================================================
+% PART III: CHEMISTRY (EXPANDED)
+% ================================================================
+
+\part{Chemistry}
+
+\chapter{General Chemistry I}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & CHEM 1411 \\
+\textbf{Course Title:} & General Chemistry I \\
+\textbf{Grade Level:} & Freshman \\
+\textbf{Semester:} & Fall and Spring (4 credit hours) \\
+\textbf{Lab Component:} & 3 hours weekly \\
+\end{tabular}
+
+\section{Prerequisites}
+
+College Algebra; high school chemistry recommended.
+
+\section{Course Description}
+
+General Chemistry I provides comprehensive introduction to chemistry including atomic structure, bonding, states of matter, stoichiometry, and reactions. The course combines theoretical principles with experimental investigation through laboratory work.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Understand atomic structure and periodic trends
+    \item Predict chemical bonding and molecular geometry
+    \item Balance chemical equations and perform stoichiometric calculations
+    \item Apply gas laws and understand intermolecular forces
+    \item Understand solution chemistry
+    \item Conduct laboratory investigations
+    \item Apply mathematical problem-solving
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Matter and Measurement (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Classification of matter
+    \item SI units and significant figures
+    \item Dimensional analysis and density
+\end{itemize}
+
+\subsection{Unit 2: Atoms and Periodic Table (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Fundamental particles and atomic structure
+    \item Isotopes and atomic mass
+    \item Bohr model and electron configuration
+    \item Periodic trends and periodic table
+\end{itemize}
+
+\subsection{Unit 3: Chemical Bonding (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Ionic bonding
+    \item Covalent bonding and Lewis structures
+    \item VSEPR theory and molecular geometry
+    \item Bond polarity and electronegativity
+\end{itemize}
+
+\subsection{Unit 4: Stoichiometry (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Balancing equations
+    \item The mole concept: $N = n \times N_A$
+    \item Stoichiometric calculations
+    \item Empirical and molecular formulas
+    \item Limiting reactants and percent yield
+\end{itemize}
+
+\subsection{Unit 5: Thermochemistry (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Enthalpy: $\Delta H = H_{products} - H_{reactants}$
+    \item Hess's Law
+    \item Calorimetry and heat capacity
+    \item Bond energy calculations
+\end{itemize}
+
+\subsection{Unit 6: Gases (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Kinetic Molecular Theory
+    \item Gas laws: Boyle's, Charles's, Combined, Ideal Gas Law: $PV = nRT$
+    \item Dalton's Law and partial pressures
+    \item Graham's Law of effusion
+\end{itemize}
+
+\subsection{Unit 7: Liquids and Solids (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Intermolecular forces
+    \item Vapor pressure and boiling point
+    \item Phase diagrams and crystal structures
+\end{itemize}
+
+\subsection{Unit 8: Solutions (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Concentration units: molarity, molality, percent
+    \item Colligative properties
+    \item Henry's Law and osmotic pressure
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 40\% exams, 20\% quizzes, 20\% labs, 15\% homework, 5\% participation.
+
+% ================================================================
+
+\chapter{General Chemistry II}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & CHEM 1412 \\
+\textbf{Course Title:} & General Chemistry II \\
+\textbf{Grade Level:} & Freshman \\
+\textbf{Semester:} & Spring and Fall (4 credit hours) \\
+\textbf{Lab Component:} & 3 hours weekly \\
+\end{tabular}
+
+\section{Prerequisites}
+
+CHEM 1411 (General Chemistry I) with grade of C or higher.
+
+\section{Course Description}
+
+General Chemistry II covers chemical equilibrium, acid-base chemistry, solubility equilibria, electrochemistry, kinetics, and thermodynamics. Students explore reversible reactions, properties of aqueous solutions, and apply equilibrium principles.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Understand and apply equilibrium concepts
+    \item Analyze acid-base systems and pH
+    \item Apply solubility and complex ion equilibria
+    \item Understand electrochemical cells and corrosion
+    \item Understand reaction kinetics and mechanisms
+    \item Understand thermodynamics and free energy
+    \item Conduct advanced laboratory investigations
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Chemical Equilibrium (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Reversible reactions and dynamic equilibrium
+    \item Equilibrium constant: $K = \frac{[C]^c[D]^d}{[A]^a[B]^b}$
+    \item $K_p$ and $K_c$ relationships
+    \item Le Chatelier's Principle
+    \item Effect of pressure, temperature, concentration
+    \item Equilibrium calculations
+\end{itemize}
+
+\subsection{Unit 2: Acid-Base Equilibria (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Brønsted-Lowry acids and bases
+    \item Water ionization and pH: $pH = -\log[H^+]$
+    \item Weak acids and bases: $K_a = \frac{[H^+][A^-]}{[HA]}$
+    \item Buffer solutions and Henderson-Hasselbalch equation
+    \item Titration curves and indicators
+    \item Polyprotic acids
+\end{itemize}
+
+\subsection{Unit 3: Solubility Equilibria (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Solubility product constant: $K_{sp} = [M^+]^m[X^-]^x$
+    \item Common ion effect
+    \item Complex ion equilibria
+    \item Precipitation and dissolution
+\end{itemize}
+
+\subsection{Unit 4: Electrochemistry (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Oxidation-reduction (redox) reactions
+    \item Electrodes and half-reactions
+    \item Electrochemical cells and EMF
+    \item Nernst equation: $E = E^\circ - \frac{0.0592}{n}\log Q$
+    \item Galvanic cells and batteries
+    \item Electrolysis and Faraday's laws
+    \item Corrosion and cathodic protection
+\end{itemize}
+
+\subsection{Unit 5: Kinetics (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Reaction rates and rate laws
+    \item Order of reactions and rate constants
+    \item Arrhenius equation: $k = A e^{-E_a/RT}$
+    \item Activation energy and catalysts
+    \item Reaction mechanisms and elementary steps
+    \item Integrated rate laws
+\end{itemize}
+
+\subsection{Unit 6: Thermodynamics (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Gibbs free energy: $\Delta G = \Delta H - T\Delta S$
+    \item Spontaneity and equilibrium
+    \item Standard free energy change: $\Delta G^\circ = -RT\ln K$
+    \item Temperature effects on spontaneity
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 40\% exams, 20\% quizzes, 20\% labs, 15\% homework, 5\% participation.
+
+% ================================================================
+
+\chapter{Organic Chemistry I}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & CHEM 2423 \\
+\textbf{Course Title:} & Organic Chemistry I \\
+\textbf{Grade Level:} & Sophomore \\
+\textbf{Semester:} & Fall and Spring (4 credit hours) \\
+\textbf{Lab Component:} & 3 hours weekly \\
+\end{tabular}
+
+\section{Prerequisites}
+
+CHEM 1412 (General Chemistry II) with grade of C or higher.
+
+\section{Course Description}
+
+Organic Chemistry I covers structure and properties of organic compounds, bonding, isomerism, and fundamental reaction mechanisms. Students learn systematic nomenclature, reaction types, and apply structure-property relationships. Laboratory includes synthesis and characterization.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Understand organic molecular structure and bonding
+    \item Name organic compounds using IUPAC nomenclature
+    \item Predict reactivity based on structure
+    \item Understand reaction mechanisms
+    \item Synthesize organic compounds
+    \item Characterize compounds using spectroscopy
+    \item Understand stereochemistry and isomerism
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Structure and Bonding (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Carbon bonding and hybridization: sp, sp$^2$, sp$^3$
+    \item $\sigma$ and $\pi$ bonds
+    \item Functional groups overview
+\end{itemize}
+
+\subsection{Unit 2: Alkanes and Cycloalkanes (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item IUPAC nomenclature
+    \item Structural isomerism
+    \item Conformations and Newman projections
+    \item Cyclohexane chair conformations
+    \item Physical properties
+\end{itemize}
+
+\subsection{Unit 3: Alkenes and Alkynes (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Nomenclature and E-Z isomerism
+    \item Preparation: elimination reactions (E1, E2)
+    \item Addition reactions to alkenes
+    \item Markovnikov's rule and carbocation stability
+    \item Hydroboration and oxidation
+    \item Alkyne chemistry basics
+\end{itemize}
+
+\subsection{Unit 4: Aromatic Compounds (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Aromaticity and Hückel's rule
+    \item Benzene structure and resonance
+    \item Aromatic nomenclature
+    \item Electrophilic aromatic substitution
+    \item Directing effects: ortho/para vs. meta
+    \item Friedel-Crafts reactions
+\end{itemize}
+
+\subsection{Unit 5: Alcohols and Ethers (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Nomenclature and classification
+    \item Preparation from alkenes and carbonyls
+    \item Reactions: SN1, SN2, elimination, oxidation
+    \item Tosylates
+    \item Ether synthesis and cleavage
+\end{itemize}
+
+\subsection{Unit 6: Carbonyl Compounds I (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Aldehyde and ketone nomenclature
+    \item Preparation and reactions
+    \item Nucleophilic addition
+    \item Acetals and hemiacetals
+    \item Aldol condensation
+    \item Wittig reaction
+\end{itemize}
+
+\subsection{Unit 7: Carboxylic Acids and Derivatives (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Nomenclature and acidity
+    \item Preparation and reactions
+    \item Esterification and Fischer esterification
+    \item Acid derivatives: esters, amides, anhydrides
+    \item Nucleophilic acyl substitution
+    \item Hydrolysis and saponification
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 45\% exams, 20\% quizzes, 20\% labs, 10\% homework, 5\% participation.
+
+% ================================================================
+
+\chapter{Organic Chemistry II}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & CHEM 2424 \\
+\textbf{Course Title:} & Organic Chemistry II \\
+\textbf{Grade Level:} & Sophomore \\
+\textbf{Semester:} & Spring (4 credit hours) \\
+\textbf{Lab Component:} & 3 hours weekly \\
+\end{tabular}
+
+\section{Prerequisites}
+
+CHEM 2423 (Organic Chemistry I) with grade of C or higher.
+
+\section{Course Description}
+
+Organic Chemistry II covers advanced topics including spectroscopy, aromatic chemistry, polynuclear aromatics, amines, heterocycles, and natural products. Students learn to identify compounds using spectroscopic techniques and synthesize complex molecules.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Use spectroscopy to determine structure
+    \item Understand advanced aromatic chemistry
+    \item Understand amines and their reactions
+    \item Understand heterocyclic compounds
+    \item Plan multi-step syntheses
+    \item Understand natural products chemistry
+    \item Apply concepts to biochemistry
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Spectroscopy (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Mass spectrometry and fragmentation
+    \item Infrared spectroscopy and functional group identification
+    \item Nuclear Magnetic Resonance (NMR): $^1$H and $^{13}$C
+    \item UV-Vis spectroscopy and conjugation
+    \item Structure determination from spectroscopy
+\end{itemize}
+
+\subsection{Unit 2: Advanced Aromatic Chemistry (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Polynuclear aromatic hydrocarbons (PAH)
+    \item Naphthalene and anthracene
+    \item Reactions of aromatic compounds
+    \item Directed synthesis
+    \item Protecting groups
+\end{itemize}
+
+\subsection{Unit 3: Amines (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Amine nomenclature and basicity
+    \item Preparation of amines
+    \item Reactions of amines
+    \item Diazo compounds
+    \item Amine oxides and Cope elimination
+\end{itemize}
+
+\subsection{Unit 4: Heterocyclic Compounds (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Furan, pyrrole, thiophene
+    \item Pyridine and pyrimidine
+    \item Five- and six-membered rings
+    \item Reactivity and substitution
+    \item Applications in natural products
+\end{itemize}
+
+\subsection{Unit 5: Synthesis Planning (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Retrosynthetic analysis
+    \item Disconnection approach
+    \item Synthetic equivalents
+    \item Protection and deprotection strategies
+    \item Multi-step synthesis planning
+\end{itemize}
+
+\subsection{Unit 6: Natural Products (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Terpenoids
+    \item Alkaloids
+    \item Phenolic compounds
+    \item Carbohydrates structure
+    \item Lipids and fats
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 45\% exams, 20\% quizzes, 20\% labs, 10\% homework, 5\% participation.
+
+% ================================================================
+
+\chapter{Physical Chemistry}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & CHEM 3431 \\
+\textbf{Course Title:} & Physical Chemistry \\
+\textbf{Grade Level:} & Junior \\
+\textbf{Semester:} & Fall and Spring (4 credit hours) \\
+\textbf{Lab Component:} & 3 hours weekly \\
+\end{tabular}
+
+\section{Prerequisites}
+
+CHEM 1412 (General Chemistry II), MATH 2415 (Calculus III), PHYS 1412 with grades of C or higher.
+
+\section{Course Description}
+
+Physical Chemistry applies physical principles to chemical systems. Topics include thermodynamics, kinetics, quantum chemistry, and spectroscopy. Students develop quantitative understanding of chemical behavior using calculus and theoretical models.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Apply thermodynamic principles to chemical systems
+    \item Understand and apply kinetic theory
+    \item Understand quantum mechanics applications to chemistry
+    \item Apply spectroscopy to molecular structure
+    \item Conduct thermodynamic and kinetic experiments
+    \item Use computational chemistry tools
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Thermodynamics Review and Extensions (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item First Law: $dU = \delta q + \delta w$
+    \item Enthalpy and heat capacity
+    \item Entropy and disorder
+    \item Second and Third Laws
+    \item Gibbs and Helmholtz energies
+    \item Thermodynamic relations and Maxwell equations
+\end{itemize}
+
+\subsection{Unit 2: Chemical Equilibrium from Thermodynamics (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Standard states and activities
+    \item Equilibrium constant from free energy
+    \item Temperature dependence of K: van't Hoff equation
+    \item Phase equilibria
+\end{itemize}
+
+\subsection{Unit 3: Kinetics (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Rate laws and mechanisms
+    \item Integrated rate laws
+    \item Activation energy and Arrhenius equation
+    \item Collision theory
+    \item Transition state theory
+    \item Reaction coordinates and energy diagrams
+    \item Catalysis mechanisms
+\end{itemize}
+
+\subsection{Unit 4: Quantum Chemistry (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Schrödinger equation
+    \item Particle in a box
+    \item Harmonic oscillator
+    \item Hydrogen atom and orbitals
+    \item Variational principle
+    \item Perturbation theory basics
+    \item Molecular orbital theory
+\end{itemize}
+
+\subsection{Unit 5: Spectroscopy Applications (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Electromagnetic spectrum
+    \item Molecular spectroscopy
+    \item Rotational spectroscopy
+    \item Vibrational spectroscopy
+    \item Electronic spectroscopy
+    \item Selection rules
+\end{itemize}
+
+\subsection{Unit 6: Advanced Topics (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Electrochemistry applications
+    \item Surface chemistry
+    \item Polymer chemistry basics
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 45\% exams, 20\% quizzes, 20\% labs, 10\% homework, 5\% participation.
+
+% ================================================================
+% PART IV: BIOLOGY AND LIFE SCIENCES (EXPANDED)
+% ================================================================
+
+\part{Biology and Life Sciences}
+
+\chapter{General Biology I}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & BIOL 1411 \\
+\textbf{Course Title:} & General Biology I \\
+\textbf{Grade Level:} & Freshman \\
+\textbf{Semester:} & Fall and Spring (4 credit hours) \\
+\textbf{Lab Component:} & 3 hours weekly \\
+\end{tabular}
+
+\section{Prerequisites}
+
+None.
+
+\section{Course Description}
+
+General Biology I surveys principles and diversity of life. Topics include cell structure and function, genetics, molecular biology, evolution, and ecology. Students conduct laboratory investigations and learn scientific methodology through hands-on work.
+
+\subsection{Course Goals and Learning Outcomes}
+
+Upon successful completion, students will be able to:
+
+\begin{enumerate}
+    \item Understand the characteristics of life and the scientific method.
+    \item Explain the chemical basis of life including water properties and macromolecule structure and function.
+    \item Describe cell structure and function in prokaryotic and eukaryotic cells.
+    \item Understand cellular respiration and photosynthesis and their role in energy transformation.
+    \item Explain the cell cycle, mitosis, and meiosis and their significance in growth and reproduction.
+    \item Apply Mendelian genetics principles to predict inheritance patterns.
+    \item Understand the molecular basis of genetics including DNA structure, replication, and gene expression.
+    \item Explain the mechanisms of evolution and evidence supporting evolutionary theory.
+    \item Understand ecological principles including population dynamics, community interactions, and ecosystem function.
+    \item Conduct laboratory investigations using microscopy, experimental design, and data analysis.
+    \item Apply biological concepts to contemporary issues and real-world problems.
+\end{enumerate}
+
+
+\section{Units of Study}
+
+\subsection{Unit 1: Introduction to Biology (2 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Characteristics of life
+    \item Organization levels
+    \item Scientific method
+    \item Evolution as unifying principle
+\end{itemize}
+
+\subsection{Unit 2: Chemistry of Life (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Atomic and molecular structure
+    \item Water properties
+    \item Macromolecules: carbohydrates, lipids, proteins, nucleic acids
+    \item Enzymes and catalysis
+\end{itemize}
+
+\subsection{Unit 3: Cell Structure and Function (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Cell theory
+    \item Prokaryotic vs. eukaryotic cells
+    \item Organelle structure and function
+    \item Cell membrane and transport
+    \item Microscopy techniques
+\end{itemize}
+
+\subsection{Unit 4: Cellular Respiration and Photosynthesis (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Aerobic respiration: glycolysis, Krebs cycle, electron transport
+    \item Anaerobic respiration
+    \item Photosynthesis: light reactions, Calvin cycle
+    \item Chemiosmosis
+\end{itemize}
+
+\subsection{Unit 5: Cell Division (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Cell cycle and mitosis
+    \item Meiosis and gametogenesis
+    \item Chromosome behavior
+\end{itemize}
+
+\subsection{Unit 6: Genetics and Inheritance (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Mendelian genetics
+    \item Punnett squares
+    \item Multiple alleles and gene linkage
+    \item Pedigree analysis
+\end{itemize}
+
+\subsection{Unit 7: Molecular Biology (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item DNA structure and replication
+    \item Transcription and translation
+    \item Gene expression regulation
+    \item Mutations
+    \item Biotechnology
+\end{itemize}
+
+\subsection{Unit 8: Evolution (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Evidence for evolution
+    \item Natural selection and mechanisms
+    \item Population genetics
+    \item Speciation and phylogenetics
+\end{itemize}
+
+\subsection{Unit 9: Ecology (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Ecological organization
+    \item Population dynamics
+    \item Community interactions
+    \item Energy flow and cycling
+    \item Biodiversity
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 40\% exams, 25\% quizzes, 20\% labs, 10\% homework, 5\% participation.
+
+% ================================================================
+
+\chapter{General Biology II}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & BIOL 1412 \\
+\textbf{Course Title:} & General Biology II \\
+\textbf{Grade Level:} & Freshman \\
+\textbf{Semester:} & Spring (4 credit hours) \\
+\textbf{Lab Component:} & 3 hours weekly \\
+\end{tabular}
+
+\section{Prerequisites}
+
+BIOL 1411 (General Biology I) with grade of C or higher.
+
+\section{Course Description}
+
+General Biology II covers plant biology, animal physiology, development, ecology and conservation. Students explore diversity of multicellular organisms and ecosystem dynamics through lectures, discussions, and laboratory investigations.
+
+\subsection{Course Goals and Learning Outcomes}
+
+Upon successful completion, students will be able to:
+
+\begin{enumerate}
+    \item Understand plant structure, function, and physiology including photosynthesis and transport mechanisms.
+    \item Explain the structure and function of animal organ systems including nervous, muscular, endocrine, circulatory, respiratory, digestive, excretory, and immune systems.
+    \item Understand principles of homeostasis and physiological regulation in animals.
+    \item Explain animal reproduction, fertilization, and embryonic development.
+    \item Understand ecological principles including population ecology, community interactions, and biogeochemical cycles.
+    \item Apply conservation biology principles to biodiversity and environmental issues.
+    \item Understand human impact on ecosystems and approaches to sustainability.
+    \item Conduct laboratory investigations of plant and animal physiology and ecology.
+    \item Analyze and interpret biological data and experimental results.
+    \item Apply biological concepts to human health, agriculture, and environmental management.
+\end{enumerate}
+
+
+\section{Units of Study}
+
+\subsection{Unit 1: Plant Biology (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Plant structure and anatomy
+    \item Photosynthesis and carbon fixation
+    \item Plant transport: xylem and phloem
+    \item Plant reproduction and development
+    \item Plant responses: tropisms, hormones
+    \item Nutrient uptake and soil
+\end{itemize}
+
+\subsection{Unit 2: Animal Physiology I (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Homeostasis and regulation
+    \item Nervous system and neurons
+    \item Synaptic transmission
+    \item Sensory systems
+    \item Muscle contraction
+\end{itemize}
+
+\subsection{Unit 3: Animal Physiology II (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Endocrine system
+    \item Circulatory system
+    \item Respiratory system
+    \item Digestive system
+    \item Excretory system
+    \item Immune system
+\end{itemize}
+
+\subsection{Unit 4: Reproduction and Development (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Gametogenesis
+    \item Fertilization and embryonic development
+    \item Cleavage, gastrulation, organogenesis
+    \item Differential gene expression
+    \item Developmental signaling
+\end{itemize}
+
+\subsection{Unit 5: Ecology and Conservation (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Biomes and ecosystems
+    \item Population ecology
+    \item Community ecology and succession
+    \item Biogeochemical cycles
+    \item Conservation biology
+    \item Human impact
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 40\% exams, 25\% quizzes, 20\% labs, 10\% homework, 5\% participation.
+
+% ================================================================
+
+\chapter{Genetics}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & BIOL 2410 \\
+\textbf{Course Title:} & Genetics \\
+\textbf{Grade Level:} & Sophomore \\
+\textbf{Semester:} & Fall and Spring (3 credit hours) \\
+\textbf{Lab Component:} & 3 hours weekly \\
+\end{tabular}
+
+\section{Prerequisites}
+
+BIOL 1411 with grade of C or higher.
+
+\section{Course Description}
+
+Genetics provides comprehensive study of heredity and variation. Topics include Mendelian genetics, molecular genetics, population genetics, and genetic engineering. Students use Drosophila, yeast, and molecular techniques in laboratory work.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Understand principles of inheritance
+    \item Predict outcomes of genetic crosses
+    \item Understand molecular basis of genetics
+    \item Apply population genetics
+    \item Understand genetic engineering
+    \item Conduct genetic experiments
+    \item Analyze genetic data
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Mendelian Genetics (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Mendel's laws of inheritance
+    \item Monohybrid and dihybrid crosses
+    \item Punnett squares
+    \item Test crosses
+    \item Independent assortment
+    \item Chi-square analysis
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Drosophila crosses
+    \item Pea plant genetics (if available)
+    \item Chi-square analysis
+\end{itemize}
+
+\subsection{Unit 2: Extensions of Mendelian Genetics (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Incomplete dominance and codominance
+    \item Multiple alleles
+    \item Epistasis and gene interaction
+    \item Polygenic inheritance
+    \item Sex-linked inheritance
+    \item Pedigree analysis
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Human pedigree analysis
+    \item Multiple allele systems
+\end{itemize}
+
+\subsection{Unit 3: Gene Linkage and Mapping (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Linkage and crossing over
+    \item Recombination frequencies
+    \item Gene mapping
+    \item Three-point crosses
+    \item Cytological mapping
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Linkage analysis
+    \item Gene mapping problems
+\end{itemize}
+
+\subsection{Unit 4: Molecular Genetics (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item DNA structure and replication
+    \item Gene expression: transcription and translation
+    \item Gene regulation
+    \item Mutations: types and effects
+    \item Mutagenesis
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item DNA extraction
+    \item DNA sequencing analysis
+    \item Mutation studies
+\end{itemize}
+
+\subsection{Unit 5: Population Genetics (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Hardy-Weinberg equilibrium: $p^2 + 2pq + q^2 = 1$
+    \item Allele frequencies
+    \item Causes of evolution: mutation, selection, drift, migration
+    \item Natural selection: directional, stabilizing, disruptive
+    \item Genetic drift
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Hardy-Weinberg calculations
+    \item Population simulations
+\end{itemize}
+
+\subsection{Unit 6: Genetic Engineering and Biotechnology (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Restriction enzymes
+    \item Recombinant DNA technology
+    \item PCR and cloning
+    \item DNA sequencing techniques
+    \item Gene therapy basics
+    \item Transgenic organisms and GMOs
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Gel electrophoresis
+    \item PCR simulation
+    \item Restriction mapping
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 40\% exams, 20\% quizzes, 25\% labs, 10\% homework, 5\% participation.
+
+% ================================================================
+
+\chapter{Molecular Biology and Biochemistry}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & BIOL 3413 \\
+\textbf{Course Title:} & Molecular Biology and Biochemistry \\
+\textbf{Grade Level:} & Junior \\
+\textbf{Semester:} & Fall and Spring (4 credit hours) \\
+\textbf{Lab Component:} & 3 hours weekly \\
+\end{tabular}
+
+\section{Prerequisites}
+
+BIOL 1412 and CHEM 1412 with grades of C or higher; CHEM 2423 recommended.
+
+\section{Course Description}
+
+Molecular Biology and Biochemistry covers the molecular basis of life. Topics include protein structure and function, enzyme kinetics, metabolic pathways, and gene expression regulation. Students use molecular and biochemical techniques in the laboratory.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Understand biomolecular structure and function
+    \item Understand enzyme kinetics and catalysis
+    \item Understand metabolic pathways
+    \item Understand gene expression and regulation
+    \item Conduct biochemical experiments
+    \item Use molecular techniques
+    \item Analyze molecular data
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Amino Acids and Protein Structure (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Amino acid structure and classification
+    \item Peptide bonds
+    \item Primary, secondary, tertiary, quaternary structure
+    \item $\alpha$-helices and $\beta$-sheets
+    \item Protein folding and stability
+    \item Domain structures
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Protein extraction and purification
+    \item Protein electrophoresis
+    \item Protein identification
+\end{itemize}
+
+\subsection{Unit 2: Enzyme Kinetics and Mechanism (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Enzyme classification and nomenclature
+    \item Enzyme active site
+    \item Michaelis-Menten kinetics: $v = \frac{V_{max}[S]}{K_m + [S]}$
+    \item Lineweaver-Burk plots
+    \item Enzyme regulation: feedback inhibition, allosteric
+    \item Cofactors and coenzymes
+    \item Enzyme mechanism and catalysis
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Enzyme extraction and assay
+    \item Kinetics measurement
+    \item Inhibition studies
+\end{itemize}
+
+\subsection{Unit 3: Carbohydrate Metabolism (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Glycolysis and regulation
+    \item Citric Acid Cycle (Krebs Cycle)
+    \item Electron transport chain and oxidative phosphorylation
+    \item ATP synthesis
+    \item Gluconeogenesis
+    \item Glycogen metabolism
+    \item Pentose phosphate pathway
+\end{itemize}
+
+\subsection{Unit 4: Lipid and Protein Metabolism (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Fatty acid oxidation ($\beta$-oxidation)
+    \item Fatty acid synthesis
+    \item Cholesterol metabolism
+    \item Amino acid metabolism
+    \item Protein synthesis and degradation
+    \item Integration of pathways
+\end{itemize}
+
+\subsection{Unit 5: Gene Expression (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item DNA replication and repair
+    \item Transcription and RNA processing
+    \item Translation and protein synthesis
+    \item Gene regulation in prokaryotes: lac operon, trp operon
+    \item Gene regulation in eukaryotes
+    \item Chromatin structure and epigenetics
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Gene expression analysis
+    \item PCR and qPCR
+    \item RNA extraction
+\end{itemize}
+
+\subsection{Unit 6: Cell Signaling and Regulation (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Signal transduction pathways
+    \item Cell surface receptors
+    \item G-protein coupled receptors
+    \item Receptor tyrosine kinases
+    \item Second messengers
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 40\% exams, 20\% quizzes, 25\% labs, 10\% homework, 5\% participation.
+
+% ================================================================
+
+\chapter{Ecology}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & BIOL 3314 \\
+\textbf{Course Title:} & Ecology \\
+\textbf{Grade Level:} & Junior \\
+\textbf{Semester:} & Spring (4 credit hours) \\
+\textbf{Lab Component:} & 3 hours weekly (field studies) \\
+\end{tabular}
+
+\section{Prerequisites}
+
+BIOL 1411 or 1412 with grade of C or higher.
+
+\section{Course Description}
+
+Ecology studies interactions between organisms and their environment. Topics include population dynamics, community interactions, ecosystem functioning, biogeochemical cycling, and conservation. Students conduct field studies and environmental sampling.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Understand population dynamics and regulation
+    \item Understand community interactions
+    \item Understand ecosystem functions and energy flow
+    \item Understand biogeochemical cycling
+    \item Understand biodiversity and conservation
+    \item Conduct field studies and environmental analysis
+    \item Apply ecological principles to conservation
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Population Ecology (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Population size estimation
+    \item Exponential growth: $N_t = N_0 e^{rt}$
+    \item Logistic growth: $\frac{dN}{dt} = rN\left(1 - \frac{N}{K}\right)$
+    \item Life tables and survivorship
+    \item Reproductive strategies
+    \item Population regulation
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Population counting and estimation
+    \item Mark-recapture studies
+    \item Population modeling
+\end{itemize}
+
+\subsection{Unit 2: Community Ecology (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Species interactions: competition, predation, herbivory, parasitism, mutualism
+    \item Competitive exclusion principle
+    \item Niche differentiation
+    \item Community structure and diversity
+    \item Succession: primary and secondary
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Community sampling
+    \item Species diversity indices
+    \item Habitat assessment
+\end{itemize}
+
+\subsection{Unit 3: Ecosystem Ecology (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Energy flow and trophic levels
+    \item Productivity: primary and secondary
+    \item Food chains and food webs
+    \item Ecological efficiency: 10\% rule
+    \item Biomes and their characteristics
+    \item Terrestrial and aquatic ecosystems
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Energy flow analysis
+    \item Productivity measurements
+    \item Biome surveys
+\end{itemize}
+
+\subsection{Unit 4: Biogeochemical Cycling (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Carbon cycle and greenhouse effect
+    \item Nitrogen cycle
+    \item Phosphorus cycle
+    \item Sulfur cycle
+    \item Water cycle
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Water quality analysis
+    \item Nutrient cycling experiments
+\end{itemize}
+
+\subsection{Unit 5: Biodiversity and Conservation (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Biodiversity patterns and hotspots
+    \item Threats to biodiversity
+    \item Conservation strategies
+    \item Protected areas and management
+    \item Restoration ecology
+    \item Conservation genetics
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Biodiversity surveys
+    \item GIS and mapping
+    \item Case studies in conservation
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 35\% exams, 20\% quizzes, 30\% field projects, 10\% homework, 5\% participation.
+
+% ================================================================
+
+\chapter{Cell Biology}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & BIOL 2411 \\
+\textbf{Course Title:} & Cell Biology \\
+\textbf{Grade Level:} & Sophomore \\
+\textbf{Semester:} & Fall (4 credit hours) \\
+\textbf{Lab Component:} & 3 hours weekly \\
+\end{tabular}
+
+\section{Prerequisites}
+
+BIOL 1411 and CHEM 1412 with grades of C or higher.
+
+\section{Course Description}
+
+Cell Biology focuses on cellular structure and function. Topics include organelles, membrane biology, cell signaling, cell division, and cell communication. Students use microscopy, cell culture, and molecular techniques.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Understand cell structure and ultrastructure
+    \item Understand cellular transport mechanisms
+    \item Understand cell cycle and division
+    \item Understand cell signaling pathways
+    \item Conduct cell biology experiments
+    \item Use microscopy and cell culture techniques
+    \item Analyze cellular processes
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Cell Structure (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Prokaryotic vs. eukaryotic structure
+    \item Nuclear structure and function
+    \item Endomembrane system
+    \item Mitochondria and energy production
+    \item Chloroplasts (in plant cells)
+    \item Cytoskeleton structure and dynamics
+    \item Cell-cell junctions
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Cell observation and ultrastructure
+    \item Electron microscopy images
+    \item Cell isolation
+\end{itemize}
+
+\subsection{Unit 2: Membrane Biology (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Membrane structure: phospholipid bilayer
+    \item Membrane proteins
+    \item Passive transport: diffusion, osmosis
+    \item Active transport and pumps
+    \item Endocytosis and exocytosis
+    \item Membrane dynamics
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Osmosis experiments
+    \item Transport mechanism studies
+\end{itemize}
+
+\subsection{Unit 3: Cell Signaling (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Signal molecules and receptors
+    \item Signal transduction cascades
+    \item Gene expression changes
+    \item Cell communication networks
+\end{itemize}
+
+\subsection{Unit 4: Cell Cycle and Division (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Cell cycle phases: G1, S, G2, M
+    \item Cyclin-dependent kinases
+    \item Mitosis and cytokinesis
+    \item Meiosis
+    \item Cell cycle checkpoints
+    \item Apoptosis and cell death
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Cell cycle observation
+    \item Mitosis stage identification
+    \item Cell counting and growth curves
+\end{itemize}
+
+\subsection{Unit 5: Cell Culture and Techniques (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Cell culture basics
+    \item Media and growth conditions
+    \item Cell viability assessment
+    \item Microscopy techniques
+    \item Flow cytometry
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 40\% exams, 20\% quizzes, 25\% labs, 10\% homework, 5\% participation.
+
+% ================================================================
+
+\chapter*{Conclusion}
+\addcontentsline{toc}{chapter}{Conclusion}
+
+This comprehensive expanded curriculum guide provides institutional-grade documentation for general education and advanced STEM courses. These courses form the complete academic foundation of STEM degree programs and provide essential preparation for professional, graduate, and specialized training.
+
+Faculty should adapt these syllabi to reflect institutional policies, specific course emphases, and emerging developments in their disciplines. Students are encouraged to review course syllabi carefully, understand expectations, and communicate with instructors regarding any questions or concerns.
+
+The STEM fields are dynamic and rapidly evolving. This curriculum reflects current standards and best practices while maintaining flexibility for instructors to incorporate emerging topics, technologies, and pedagogical innovations.
+
+\section*{Recommended Course Sequences}
+
+\subsection*{General STEM Track}
+
+\textbf{Freshman:} Calculus I \& II, Physics I \& II, General Chemistry I \& II, General Biology I \& II
+
+\textbf{Sophomore:} Calculus III, Linear Algebra, Organic Chemistry I \& II, Genetics, Cell Biology
+
+\textbf{Junior:} Differential Equations, Physical Chemistry, Molecular Biology \& Biochemistry, Ecology, Statistics \& Data Analysis
+
+\textbf{Senior:} Advanced electives, mathematical modeling, research projects
+
+\subsection*{Pre-Health Track}
+
+\textbf{Freshman:} Calculus I, Physics I \& II, General Chemistry I \& II, General Biology I \& II
+
+\textbf{Sophomore:} Organic Chemistry I \& II, Genetics, Biochemistry, Cell Biology
+
+\textbf{Junior:} Physical Chemistry (optional), Molecular Biology, Ecology, Statistics
+
+\textbf{Senior:} Electives in health-related sciences
+
+\subsection*{Chemistry/Biochemistry Track}
+
+\textbf{Freshman:} Calculus I \& II, Physics I \& II, General Chemistry I \& II
+
+\textbf{Sophomore:} Calculus III, Linear Algebra, Organic Chemistry I \& II, General Biology I
+
+\textbf{Junior:} Differential Equations, Physical Chemistry, Biochemistry, Statistics
+
+\textbf{Senior:} Advanced organic, analytical chemistry, research
+
+\subsection*{Biology/Ecology Track}
+
+\textbf{Freshman:} Calculus I, Physics I, General Chemistry I \& II, General Biology I \& II
+
+\textbf{Sophomore:} Linear Algebra, Organic Chemistry I, Genetics, Cell Biology
+
+\textbf{Junior:} Statistics \& Data Analysis, Biochemistry, Ecology, Mathematical Modeling
+
+\textbf{Senior:} Advanced biology electives, research, conservation topics
+
+% ================================================================
+% NEW PART: COMPUTER SCIENCE
+% ================================================================
+
+\part{Computer Science}
+
+\chapter{Introduction to Programming I}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & COSC 1315 \\
+\textbf{Course Title:} & Introduction to Programming I \\
+\textbf{Grade Level:} & Freshman \\
+\textbf{Semester:} & Fall and Spring (3 credit hours) \\
+\textbf{Lab Component:} & 2 hours weekly (scheduled lab or recitation) \\
+\end{tabular}
+
+\section{Prerequisites}
+
+College Algebra or equivalent; no prior programming experience required.
+
+\section{Course Description}
+
+Introduction to Programming I provides a foundations-first approach to computer programming using a high-level language (such as Python or Java). Students learn problem-solving, algorithmic thinking, and core programming constructs including variables, control flow, functions, and basic data structures. Emphasis is on writing clear, correct, and well-documented code to solve scientific and real-world problems.
+
+\section{Course Goals and Learning Outcomes}
+
+Upon successful completion, students will be able to:
+
+\begin{enumerate}
+    \item Use an integrated development environment (IDE) and basic software tools.
+    \item Implement programs using variables, expressions, and data types.
+    \item Use selection (\texttt{if/elif/else}) and iteration (\texttt{for}, \texttt{while}) constructs.
+    \item Organize code using functions and modular design.
+    \item Work with basic data structures such as lists/arrays and strings.
+    \item Use file input/output for reading and writing data.
+    \item Apply debugging strategies and testing techniques.
+    \item Solve introductory computational problems in STEM contexts.
+\end{enumerate}
+
+\section{Required Materials}
+
+\begin{itemize}
+    \item Textbook: Introductory programming text (Python, Java, or C++ based).
+    \item Computer with internet access and installed IDE (VS Code, PyCharm, Eclipse, etc.).
+    \item Access to version control platform (recommended: Git and GitHub).
+\end{itemize}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Introduction and Programming Environment (1--2 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item What is a program? Algorithms vs. implementation.
+    \item Installing and configuring an IDE.
+    \item Compiled vs. interpreted languages (overview).
+    \item Writing, running, and debugging a first program (\texttt{Hello, World}).
+    \item Basic console input/output.
+\end{itemize}
+
+\subsection{Unit 2: Data Types, Variables, and Expressions (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Primitive data types (integers, floating-point, booleans, characters).
+    \item Variables and assignment.
+    \item Arithmetic, relational, and logical operators.
+    \item Operator precedence.
+    \item Type conversion and casting.
+    \item Simple STEM calculations and formulas.
+\end{itemize}
+
+\subsection{Unit 3: Control Flow I -- Selection (3--4 weeks)}
+
+\textbf{Topics}
+\begin{itemize}
+    \item Boolean expressions and truth tables.
+    \item Selection statements: \texttt{if}, \texttt{if-else}, and \texttt{if-elif-else}.
+    \item Nested conditionals.
+    \item Common branching patterns: minimum/maximum and classification.
+    \item Input validation and basic defensive programming.
+\end{itemize}
+
+
+\subsection{Unit 4: Control Flow II: Loops (3–4 weeks)}
+
+\subsubsection{Topics}
+
+\begin{itemize}
+    \item Definite vs. indefinite loops
+    \item \texttt{for} loops and common iteration patterns
+    \item \texttt{while} loops and sentinel-controlled loops
+    \item Off-by-one errors and infinite loops
+    \item Simple simulations and numerical approximations
+\end{itemize}
+
+\subsubsection{Suggested Activities and Practice}
+
+\begin{itemize}
+    \item Writing programs that sum or average sequences of numbers using loops
+    \item Implementing input-validation loops for user-entered data
+    \item Constructing simple numerical approximations (e.g., estimating \(\pi\) or areas under curves using repeated addition)
+    \item Creating menu-driven console applications that rely on looping constructs
+\end{itemize}
+
+\subsubsection*{Learning Objectives}
+
+By the end of this unit, students will be able to:
+
+\begin{itemize}[leftmargin=*]
+    \item Distinguish between definite and indefinite loops and choose an appropriate construct
+    \item Implement \texttt{for} and \texttt{while} loops to perform repeated computations
+    \item Detect and correct off-by-one and infinite loop errors
+    \item Use loops to perform data processing tasks in introductory STEM applications
+\end{itemize}
+
+\subsection{Unit 5: Functions and Modular Design (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Defining and calling functions.
+    \item Parameters and return values.
+    \item Variable scope and lifetime.
+    \item Top-down design and decomposition.
+    \item Standard libraries and reuse.
+\end{itemize}
+
+\subsection{Unit 6: Basic Data Structures and Strings (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Lists/arrays: indexing, iteration, basic operations.
+    \item Common list algorithms: searching, counting, simple aggregations.
+    \item Strings and string methods.
+    \item Simple parsing tasks (e.g., processing CSV-like data).
+\end{itemize}
+
+\subsection{Unit 7: Files and Basic Error Handling (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Text file input and output.
+    \item Reading data line by line.
+    \item Writing results to files.
+    \item Basic error handling (e.g., \texttt{try/except} in Python or equivalent).
+\end{itemize}
+
+\section{Assessment}
+
+\subsection{Grading Breakdown}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lc}
+\toprule
+\textbf{Assessment Component} & \textbf{Weight} \\
+\midrule
+Programming Projects (4--6) & 40\% \\
+Exams (2 midterms + final) & 30\% \\
+Quizzes & 10\% \\
+Lab Exercises / In-class Work & 15\% \\
+Participation and Professionalism & 5\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Course Policies}
+
+Late project submissions typically incur a 10\% per-day penalty up to 3 days. Collaboration on high-level design discussions is allowed; sharing code is not. All submitted code must be original.
+
+% ---------------------------------------------------------------
+
+\chapter{Introduction to Programming II}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & COSC 1320 \\
+\textbf{Course Title:} & Introduction to Programming II \\
+\textbf{Grade Level:} & Freshman--Sophomore \\
+\textbf{Semester:} & Fall and Spring (3 credit hours) \\
+\textbf{Lab Component:} & 2 hours weekly \\
+\end{tabular}
+
+\section{Prerequisites}
+
+COSC 1315 (Introduction to Programming I) or equivalent with grade of C or higher.
+
+\section{Course Description}
+
+Introduction to Programming II deepens programming skills with emphasis on object-oriented programming (OOP), more complex data structures, and program design. Students implement medium-sized programs, use classes and objects, and improve software quality through testing and documentation.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Use object-oriented principles: classes, objects, encapsulation.
+    \item Design and implement classes with appropriate interfaces.
+    \item Use arrays/lists of objects and basic collection types.
+    \item Apply recursion to appropriate problems.
+    \item Use basic debugging, profiling, and testing strategies.
+    \item Implement small software systems using multiple source files/modules.
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Review and Software Design (1--2 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Review of core Programming I concepts.
+    \item Problem analysis and requirements.
+    \item Pseudocode and UML class diagrams (basic).
+\end{itemize}
+
+\subsection{Unit 2: Object-Oriented Programming Basics (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Classes and objects.
+    \item Fields (attributes) and methods.
+    \item Constructors and initialization.
+    \item Encapsulation and information hiding.
+\end{itemize}
+
+\subsection{Unit 3: Arrays, Lists, and Collections (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item One-dimensional arrays or dynamic lists.
+    \item Arrays/lists of objects.
+    \item Iteration patterns with collections.
+    \item Common operations: insert, delete, search.
+\end{itemize}
+
+\subsection{Unit 4: Inheritance and Polymorphism (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Class hierarchies and \textit{is-a} relationships.
+    \item Inheritance and method overriding.
+    \item Abstract classes and interfaces (where applicable).
+    \item Polymorphism and dynamic dispatch.
+\end{itemize}
+
+\subsection{Unit 5: Exception Handling and Robustness (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Exceptions vs. error codes.
+    \item Try-catch/finally constructs.
+    \item Designing robust input handling.
+\end{itemize}
+
+\subsection{Unit 6: Recursion and Algorithmic Thinking (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Concept of recursion and base cases.
+    \item Classic examples: factorial, Fibonacci, search in recursive structures.
+    \item Comparing recursive and iterative solutions.
+\end{itemize}
+
+\subsection{Unit 7: Larger Programming Project (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Integrated project using OOP, collections, and file I/O.
+    \item Documentation and code style.
+    \item Basic unit testing.
+\end{itemize}
+
+\section{Assessment}
+
+Grading follows: 45\% projects, 30\% exams, 10\% quizzes, 10\% labs, 5\% participation.
+
+% ---------------------------------------------------------------
+
+\chapter{Discrete Mathematics for Computer Science}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & COSC 2315 / MATH 2305 \\
+\textbf{Course Title:} & Discrete Mathematics for Computer Science \\
+\textbf{Grade Level:} & Sophomore \\
+\textbf{Semester:} & Fall and Spring (3 credit hours) \\
+\end{tabular}
+
+\section{Prerequisites}
+
+Calculus I (may be concurrent) and Introduction to Programming I recommended.
+
+\section{Course Description}
+
+Discrete Mathematics for Computer Science introduces fundamental mathematical structures used in computer science. Topics include logic, proof techniques, sets, functions, relations, combinatorics, graphs, and basic number theory. Emphasis is on reasoning, proof writing, and applications to algorithms and data structures.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Use propositional and predicate logic to reason about statements and programs.
+    \item Construct direct, contrapositive, contradiction, and induction proofs.
+    \item Work with sets, functions, relations, and equivalence relations.
+    \item Apply basic counting techniques and combinatorics.
+    \item Understand graphs, trees, and their applications in computer science.
+    \item Apply discrete structures to recursion and algorithm analysis.
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Logic and Proofs (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Propositional logic, connectives, truth tables.
+    \item Logical equivalence and implication.
+    \item Predicate logic and quantifiers.
+    \item Methods of proof: direct, contrapositive, contradiction.
+    \item Proof by cases.
+\end{itemize}
+
+\subsection{Unit 2: Mathematical Induction and Recursion (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Principle of mathematical induction.
+    \item Strong induction and well-ordering principle.
+    \item Recursive definitions and sequences.
+    \item Induction proofs for correctness and runtime.
+\end{itemize}
+
+\subsection{Unit 3: Sets, Functions, and Relations (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Sets, subsets, set operations, power sets.
+    \item Functions: injective, surjective, bijective.
+    \item Inverse and composite functions.
+    \item Relations, equivalence relations, partial orders.
+\end{itemize}
+
+\subsection{Unit 4: Counting and Combinatorics (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Sum and product rules.
+    \item Permutations and combinations:
+    \[
+        \binom{n}{k} = \frac{n!}{k!(n-k)!}
+    \]
+    \item Pigeonhole principle.
+    \item Inclusion-exclusion principle.
+    \item Applications to probability and algorithm analysis.
+\end{itemize}
+
+\subsection{Unit 5: Graphs and Trees (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Graph terminology and representations.
+    \item Paths, cycles, connectivity.
+    \item Special graphs: complete, bipartite.
+    \item Trees and rooted trees.
+    \item Spanning trees, minimal spanning tree (conceptual).
+    \item Applications: networks, game trees, decision trees.
+\end{itemize}
+
+\section{Assessment}
+
+Typical grading: 40\% exams, 25\% quizzes, 25\% problem sets, 10\% participation.
+
+% ---------------------------------------------------------------
+
+\chapter{Data Structures and Algorithms}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & COSC 2436 \\
+\textbf{Course Title:} & Data Structures and Algorithms \\
+\textbf{Grade Level:} & Sophomore--Junior \\
+\textbf{Semester:} & Fall and Spring (4 credit hours) \\
+\textbf{Lab Component:} & Weekly programming lab \\
+\end{tabular}
+
+\section{Prerequisites}
+
+Introduction to Programming II and Discrete Mathematics for Computer Science with grades of C or higher.
+
+\section{Course Description}
+
+Data Structures and Algorithms introduces classical data structures and algorithm design/analysis techniques. Students implement structures such as lists, stacks, queues, trees, and hash tables, and analyze algorithm efficiency using Big-O notation. Emphasis is on selecting appropriate data structures and writing efficient, maintainable code.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Understand and analyze time and space complexity using Big-O notation.
+    \item Implement and use core data structures: lists, stacks, queues, trees, graphs, hash tables.
+    \item Implement and analyze sorting and searching algorithms.
+    \item Apply recursion and divide-and-conquer techniques.
+    \item Choose appropriate data structures for given problems.
+    \item Implement medium-sized software systems integrating multiple data structures.
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Algorithm Analysis (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Review of recursion and iteration.
+    \item Growth of functions and Big-O, Big-$\Theta$, Big-$\Omega$.
+    \item Empirical vs. theoretical analysis.
+    \item Simple recurrence relations (conceptual).
+\end{itemize}
+
+\subsection{Unit 2: Linear Data Structures (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Arrays and dynamic arrays.
+    \item Linked lists: singly, doubly linked.
+    \item Stacks and queues; applications (e.g., parsing, BFS).
+    \item Implementation trade-offs.
+\end{itemize}
+
+\subsection{Unit 3: Trees and Balanced Search Trees (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Tree terminology and traversal (preorder, inorder, postorder).
+    \item Binary search trees (BSTs).
+    \item Balanced trees (e.g., AVL or Red-Black, high-level).
+    \item Priority queues and heaps.
+\end{itemize}
+
+\subsection{Unit 4: Hashing and Dictionaries (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Hash tables and hash functions.
+    \item Collision resolution: chaining, open addressing.
+    \item Dictionaries/maps and sets.
+    \item Performance considerations.
+\end{itemize}
+
+\subsection{Unit 5: Sorting and Searching Algorithms (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Searching: linear, binary search.
+    \item Elementary sorting: selection, insertion, bubble.
+    \item Efficient sorting: merge sort, quicksort, heap sort.
+    \item Stability and in-place algorithms.
+\end{itemize}
+
+\subsection{Unit 6: Graph Algorithms (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Graph representations (adjacency list, matrix).
+    \item Breadth-first search (BFS) and depth-first search (DFS).
+    \item Shortest path (Dijkstra’s algorithm, high-level).
+    \item Minimum spanning tree (conceptual).
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 45\% programming projects, 30\% exams, 10\% quizzes, 10\% lab work, 5\% participation.
+
+% ================================================================
+% MICROBIOLOGY, PHYSIOLOGY, IMMUNOLOGY
+% ================================================================
+
+\part{Advanced Biological Sciences}
+
+\chapter{Microbiology}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & BIOL 2420 \\
+\textbf{Course Title:} & Microbiology \\
+\textbf{Grade Level:} & Sophomore--Junior \\
+\textbf{Semester:} & Fall and Spring (4 credit hours) \\
+\textbf{Lab Component:} & 3 hours weekly \\
+\end{tabular}
+
+\section{Prerequisites}
+
+General Biology I and General Chemistry I with grades of C or higher.
+
+\section{Course Description}
+
+Microbiology examines microorganisms including bacteria, viruses, fungi, and protozoa, with emphasis on structure, metabolism, genetics, and control. The course covers microbial diversity, pathogenesis, host-microbe interactions, and applications in medicine, industry, and the environment. Laboratory focuses on aseptic technique, culture methods, staining, identification, and antimicrobial testing.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Describe microbial cell structure, growth, and metabolism.
+    \item Explain microbial genetics and mechanisms of gene transfer.
+    \item Understand host-microbe interactions and principles of disease.
+    \item Apply aseptic techniques and culture microorganisms safely.
+    \item Perform staining, isolation, and identification of bacteria.
+    \item Interpret antimicrobial susceptibility tests.
+    \item Apply microbiology concepts to health, industry, and environment.
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Introduction and Microbial World (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item History and scope of microbiology.
+    \item Classification and domains of life.
+    \item Overview of bacteria, archaea, viruses, fungi, protozoa, helminths.
+\end{itemize}
+
+\subsection{Unit 2: Microbial Cell Structure and Function (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Prokaryotic vs. eukaryotic cell structure.
+    \item Bacterial cell wall types (Gram-positive, Gram-negative).
+    \item Capsules, endospores, flagella, pili.
+    \item Biofilms and their significance.
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Microscopy and measurement.
+    \item Simple and differential stains (Gram stain).
+    \item Negative staining and spore staining.
+\end{itemize}
+
+\subsection{Unit 3: Microbial Growth and Metabolism (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Nutritional requirements and culture media.
+    \item Binary fission and growth curves.
+    \item Environmental factors affecting growth (temperature, pH, oxygen).
+    \item Metabolism: catabolism, anabolism, energy generation.
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Aseptic technique and streak plate isolation.
+    \item Growth curve determination.
+    \item Effects of temperature and disinfectants on growth.
+\end{itemize}
+
+\subsection{Unit 4: Microbial Genetics (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Bacterial chromosome and plasmids.
+    \item Mutation and DNA repair.
+    \item Horizontal gene transfer: transformation, transduction, conjugation.
+    \item Antibiotic resistance mechanisms.
+\end{itemize}
+
+\subsection{Unit 5: Control of Microbial Growth (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Physical methods: heat, filtration, radiation.
+    \item Chemical methods: disinfectants, antiseptics, sterilants.
+    \item Antimicrobial agents: mechanisms of action.
+    \item Principles of antimicrobial therapy.
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Disk diffusion (Kirby-Bauer) tests.
+    \item MIC determination (if available).
+\end{itemize}
+
+\subsection{Unit 6: Host-Microbe Interactions and Epidemiology (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Normal microbiota and opportunistic pathogens.
+    \item Pathogenicity, virulence factors.
+    \item Mechanisms of disease transmission.
+    \item Epidemiological measures (incidence, prevalence).
+    \item Emerging and re-emerging infectious diseases.
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 35\% exams, 20\% quizzes, 25\% lab reports, 10\% case studies, 10\% participation.
+
+% ---------------------------------------------------------------
+
+\chapter{Human Physiology}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & BIOL 3320 \\
+\textbf{Course Title:} & Human Physiology \\
+\textbf{Grade Level:} & Junior \\
+\textbf{Semester:} & Fall and Spring (3--4 credit hours, with optional lab) \\
+\end{tabular}
+
+\section{Prerequisites}
+
+General Biology I and II; General Chemistry I; Anatomy or Cell Biology recommended.
+
+\section{Course Description}
+
+Human Physiology examines the function of organ systems in the human body with emphasis on homeostasis, control mechanisms, and integration. Topics include neurophysiology, muscle physiology, cardiovascular, respiratory, renal, endocrine, and digestive systems. The course is designed for pre-health and life science majors.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Explain homeostatic control mechanisms and feedback loops.
+    \item Describe cellular and membrane physiology (resting potentials, transport).
+    \item Understand function of major organ systems and their regulation.
+    \item Apply quantitative reasoning to physiological processes.
+    \item Interpret basic clinical data and physiological measurements.
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Introduction and Homeostasis (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Levels of organization and body fluid compartments.
+    \item Homeostasis and negative feedback.
+    \item Membrane transport and resting membrane potential.
+\end{itemize}
+
+\subsection{Unit 2: Nervous System Physiology (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Neuron structure and function.
+    \item Action potentials and synaptic transmission.
+    \item Sensory receptors and pathways.
+    \item Autonomic nervous system.
+\end{itemize}
+
+\subsection{Unit 3: Muscle Physiology (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Skeletal muscle structure and excitation-contraction coupling.
+    \item Motor units and muscle force.
+    \item Smooth and cardiac muscle.
+\end{itemize}
+
+\subsection{Unit 4: Cardiovascular Physiology (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Heart anatomy and electrical conduction.
+    \item Cardiac cycle and heart sounds.
+    \item Blood pressure and flow.
+    \item Regulation of cardiac output and vascular resistance.
+\end{itemize}
+
+\subsection{Unit 5: Respiratory and Renal Physiology (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Mechanics of breathing.
+    \item Gas exchange and transport.
+    \item Control of respiration.
+    \item Kidney structure and nephron function.
+    \item Filtration, reabsorption, secretion.
+    \item Acid-base balance.
+\end{itemize}
+
+\subsection{Unit 6: Endocrine and Digestive Systems (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Hormone types and mechanisms of action.
+    \item Hypothalamic-pituitary axis.
+    \item Metabolic regulation and blood glucose control.
+    \item GI tract motility and secretion.
+    \item Nutrient digestion and absorption.
+\end{itemize}
+
+\section{Assessment}
+
+Typical grading: 50\% exams, 15\% quizzes, 15\% homework, 20\% (optional) lab/practical or case studies.
+
+% ---------------------------------------------------------------
+
+\chapter{Immunology}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & BIOL 4330 \\
+\textbf{Course Title:} & Immunology \\
+\textbf{Grade Level:} & Junior--Senior \\
+\textbf{Semester:} & Fall (3 credit hours) \\
+\end{tabular}
+
+\section{Prerequisites}
+
+Genetics and Cell Biology or Molecular Biology with grades of C or higher.
+
+\section{Course Description}
+
+Immunology explores the components and function of the immune system, including innate and adaptive immunity, antigen recognition, lymphocyte development, and immune effector mechanisms. The course also addresses immunological disorders, vaccination, and current topics in immunotherapy.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Describe cells, tissues, and organs of the immune system.
+    \item Distinguish innate and adaptive immune responses.
+    \item Explain antigen recognition, processing, and presentation.
+    \item Understand B-cell and T-cell development and activation.
+    \item Describe hypersensitivity, autoimmunity, and immunodeficiency.
+    \item Interpret basic immunological assays and clinical applications.
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Overview and Cells of the Immune System (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Organs of the immune system (primary and secondary).
+    \item Hematopoiesis.
+    \item Innate immune cells: neutrophils, macrophages, NK cells.
+    \item Adaptive immune cells: B and T lymphocytes.
+\end{itemize}
+
+\subsection{Unit 2: Innate Immunity (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Barriers, pattern recognition receptors (PRRs).
+    \item Inflammation and cytokines.
+    \item Complement system pathways.
+\end{itemize}
+
+\subsection{Unit 3: Antigens and Antibodies (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Antigen structure and epitopes.
+    \item Antibody structure and isotypes.
+    \item Antigen-antibody interactions.
+    \item Monoclonal antibodies and uses.
+\end{itemize}
+
+\subsection{Unit 4: Lymphocyte Development and Activation (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item B-cell development, V(D)J recombination.
+    \item T-cell development and selection.
+    \item Major histocompatibility complex (MHC) I and II.
+    \item T-cell receptor and co-stimulation.
+    \item Clonal expansion and memory.
+\end{itemize}
+
+\subsection{Unit 5: Immune Responses and Regulation (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Humoral vs. cell-mediated immunity.
+    \item Th1/Th2/Th17/Treg subsets.
+    \item Immune tolerance.
+    \item Mucosal immunity.
+\end{itemize}
+
+\subsection{Unit 6: Clinical Immunology (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Hypersensitivity reactions (Type I--IV).
+    \item Autoimmune diseases.
+    \item Immunodeficiencies.
+    \item Transplantation and graft rejection.
+    \item Vaccines and immunization strategies.
+    \item Cancer immunology and immunotherapy (introduction).
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 50\% exams, 20\% quizzes, 20\% article critiques/presentations, 10\% participation.
+
+% ================================================================
+% ANALYTICAL AND INORGANIC CHEMISTRY + NUMERICAL ANALYSIS + PROBABILITY
+% ================================================================
+
+% Place these under the Chemistry and Mathematics parts respectively.
+
+% ---------------------------------------------------------------
+% CHEMISTRY: ANALYTICAL AND INORGANIC
+% ---------------------------------------------------------------
+
+\chapter{Analytical Chemistry}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & CHEM 3341 \\
+\textbf{Course Title:} & Analytical Chemistry \\
+\textbf{Grade Level:} & Junior \\
+\textbf{Semester:} & Fall and Spring (3–4 credit hours with lab) \\
+\textbf{Lab Component:} & 3 hours weekly (for 4-credit version) \\
+\textbf{Laboratory Activities:}
+\end{tabular}
+\begin{itemize}
+    \item Calibration curve preparation using UV-Vis spectrophotometry.
+    \item Quantitative determination of analyte concentration via Beer-Lambert Law.
+    \item Analysis of unknown sample by spectrophotometric methods.
+    \item Introduction to gas chromatography (GC) or high-performance liquid chromatography (HPLC).
+    \item Separation and identification of mixture components.
+    \item Retention time measurements and peak integration.
+    \item Chromatographic resolution and efficiency calculations.
+    \item Spectroscopic and chromatographic method comparison and validation.
+\end{itemize}
+
+
+
+\section{Prerequisites}
+
+General Chemistry II (CHEM 1412) with grade of C or higher.
+
+\section{Course Description}
+
+Analytical Chemistry covers quantitative chemical analysis, error analysis, equilibrium-based methods, and instrumental techniques. Emphasis is placed on solution equilibria, titrations, electrochemistry, and spectroscopic methods, along with rigorous laboratory practice in data collection and error evaluation.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Perform quantitative chemical analyses with proper technique.
+    \item Apply concepts of accuracy, precision, and error propagation.
+    \item Use equilibrium principles to design and interpret titrations.
+    \item Apply electroanalytical and spectrophotometric methods.
+    \item Analyze and present experimental data using appropriate statistics.
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Analytical Measurements and Error Analysis (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Types of analytical methods (classical vs. instrumental).
+    \item Significant figures and rounding.
+    \item Systematic and random errors.
+    \item Mean, standard deviation, confidence intervals.
+    \item Propagation of uncertainty.
+    \item Calibration curves and linear regression.
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Analytical balance and volumetric glassware use.
+    \item Replicate measurements and basic statistics.
+\end{itemize}
+
+\subsection{Unit 2: Chemical Equilibria in Analytical Systems (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Aqueous equilibria and mass-balance concepts.
+    \item Activity and activity coefficients (introductory).
+    \item Acid-base equilibria review.
+    \item Buffer solutions and Henderson–Hasselbalch equation.
+    \item Complexation and chelation equilibria.
+    \item Solubility equilibria and selective precipitation.
+\end{itemize}
+
+\subsection{Unit 3: Titrimetric Methods (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Titration stoichiometry and titration curves.
+    \item Strong acid–base titrations.
+    \item Weak acid and weak base titrations.
+    \item Polyprotic systems.
+    \item Complexometric titrations (EDTA).
+    \item Redox titrations and indicators.
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Standardization of acid and base solutions.
+    \item Determination of hardness of water by EDTA titration.
+    \item Redox titration (e.g., iron determination).
+\end{itemize}
+
+\subsection{Unit 4: Electroanalytical Methods (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Electrochemical cells and Nernst equation.
+    \item Potentiometry and pH electrodes.
+    \item Ion-selective electrodes.
+    \item Conductometry (overview).
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item pH measurements and buffer capacity.
+    \item Potentiometric titration.
+\end{itemize}
+
+\subsection{Unit 5: Spectroscopic and Chromatographic Methods (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Beer–Lambert Law: \[A = \epsilon b c\].
+    \item UV–Vis absorption spectrophotometry.
+    \item Fluorescence (intro).
+    \item Overview of IR and atomic spectroscopy.
+    \item Basics of chromatography: partitioning, plate theory, resolution.
+    \item Gas chromatography (GC) and high-performance liquid chromatography (HPLC).
+\end{itemize}
+
+\textbf{Laboratory Activities:}
+\begin{itemize}
+    \item Calibration curve using UV–Vis.
+    \item Quantification of analyte concentration via absorbance.
+    \item Simple chromatography experiment.
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 35\% exams, 15\% quizzes, 30\% lab reports, 10\% homework, 10\% participation.
+
+% ---------------------------------------------------------------
+
+\chapter{Inorganic Chemistry}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & CHEM 3323 \\
+\textbf{Course Title:} & Inorganic Chemistry \\
+\textbf{Grade Level:} & Junior \\
+\textbf{Semester:} & Fall and Spring (3 credit hours; lab optional/linked) \\
+\end{tabular}
+
+\section{Prerequisites}
+
+General Chemistry II; Organic Chemistry I recommended.
+
+\section{Course Description}
+
+Inorganic Chemistry explores the structures, bonding, and reactivity of inorganic compounds, including main-group and transition metal chemistry. Topics include atomic structure, symmetry, molecular orbital and crystal field theories, coordination chemistry, and reactivity trends.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Explain periodic trends and atomic structure.
+    \item Apply valence bond and molecular orbital theory to simple molecules.
+    \item Describe coordination complexes and ligand field theory.
+    \item Predict geometries and magnetic properties of transition metal complexes.
+    \item Understand reactivity patterns across the periodic table.
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Atomic Structure and Periodicity (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Quantum numbers and atomic orbitals.
+    \item Electron configurations and periodic trends.
+    \item Ionization energy, electron affinity, and electronegativity.
+    \item Relativistic effects (overview for heavier elements).
+\end{itemize}
+
+\subsection{Unit 2: Bonding in Inorganic Compounds (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Ionic vs. covalent bonding.
+    \item Lewis structures and VSEPR theory.
+    \item Valence bond and hybridization concepts.
+    \item Molecular orbital (MO) theory for diatomics.
+\end{itemize}
+
+\subsection{Unit 3: Symmetry and Group Theory (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Symmetry elements and operations.
+    \item Point groups for simple molecules.
+    \item Character tables (introductory).
+    \item Applications to vibrational spectroscopy and MO diagrams (conceptual).
+\end{itemize}
+
+\subsection{Unit 4: Coordination Chemistry (5--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Coordination complexes and nomenclature.
+    \item Coordination numbers and geometries.
+    \item Isomerism in coordination compounds.
+    \item Crystal field theory and d-orbital splitting.
+    \item High-spin vs. low-spin, magnetic properties.
+    \item Ligand field stabilization energy (LFSE) (qualitative).
+\end{itemize}
+
+\subsection{Unit 5: Main Group and Organometallic Chemistry (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Chemistry of s- and p-block elements.
+    \item Inert pair effect and hypervalency.
+    \item Organometallic basics: metal–carbon bonds.
+    \item Oxidative addition, reductive elimination (overview).
+    \item Catalysis concepts (e.g., cross-coupling, hydrogenation).
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 45\% exams, 20\% quizzes, 20\% problem sets, 15\% (optional) lab/mini-projects.
+
+% ---------------------------------------------------------------
+% MATHEMATICS: NUMERICAL ANALYSIS AND PROBABILITY THEORY
+% ---------------------------------------------------------------
+
+\chapter{Numerical Analysis}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & MATH 3342 \\
+\textbf{Course Title:} & Numerical Analysis \\
+\textbf{Grade Level:} & Junior \\
+\textbf{Semester:} & Fall and Spring (3 credit hours) \\
+\end{tabular}
+
+\section{Prerequisites}
+
+Calculus II; Linear Algebra recommended; basic programming experience strongly recommended.
+
+\section{Course Description}
+
+Numerical Analysis introduces numerical methods for solving mathematical problems on computers. Topics include root-finding, interpolation, numerical differentiation and integration, numerical linear algebra, and numerical solutions of ordinary differential equations. Emphasis is on algorithm derivation, error analysis, and implementation.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Implement numerical algorithms in a programming language or computational environment.
+    \item Analyze truncation and round-off errors.
+    \item Approximate roots of nonlinear equations.
+    \item Interpolate data and approximate functions.
+    \item Apply numerical integration and differentiation methods.
+    \item Solve linear systems numerically and understand stability issues.
+    \item Use numerical methods for initial value problems in ODEs.
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Errors and Computer Arithmetic (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Floating-point number systems.
+    \item Round-off error and machine epsilon.
+    \item Absolute and relative error.
+    \item Conditioning vs. stability.
+\end{itemize}
+
+\subsection{Unit 2: Root-Finding Methods (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Bisection method and convergence.
+    \item Fixed-point iteration.
+    \item Newton’s method and secant method.
+    \item Convergence order and stopping criteria.
+\end{itemize}
+
+\subsubsection{Unit 3: Interpolation and Approximation (4–5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Polynomial interpolation: Lagrange form and uniqueness.
+    \item Newton divided differences and forward/backward differences.
+    \item Piecewise interpolation and splines.
+    \item Cubic splines: natural, clamped, and periodic boundary conditions.
+    \item Runge phenomenon and Chebyshev nodes (conceptual).
+    \item Least-squares approximation: fitting data to polynomials and other functions.
+    \item Error analysis for interpolation methods.
+    \item Applications to curve fitting and data smoothing.
+\end{itemize}
+
+\subsection{Unit 4: Numerical Differentiation and Integration (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Finite difference approximations for derivatives.
+    \item Trapezoidal Rule and Simpson’s Rule.
+    \item Composite rules and error estimates.
+\end{itemize}
+
+\subsection{Unit 5: Numerical Linear Algebra (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Gaussian elimination and pivoting.
+    \item LU factorization.
+    \item Iterative methods (Jacobi, Gauss–Seidel, overview).
+    \item Condition number and sensitivity.
+\end{itemize}
+
+\subsection{Unit 6: Numerical Solutions of ODEs (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Euler’s method.
+    \item Improved Euler and Runge–Kutta methods.
+    \item Stability considerations for step size.
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 30\% exams, 20\% quizzes, 30\% programming assignments, 15\% written homework, 5\% participation.
+
+% ---------------------------------------------------------------
+
+\chapter{Probability Theory}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & MATH 3350 \\
+\textbf{Course Title:} & Probability Theory \\
+\textbf{Grade Level:} & Junior \\
+\textbf{Semester:} & Fall and Spring (3 credit hours) \\
+\end{tabular}
+
+\section{Prerequisites}
+
+Calculus II (including integration techniques); familiarity with series and sequences.
+
+\section{Course Description}
+
+Probability Theory provides a rigorous treatment of probability based on measure over sample spaces. Topics include probability spaces, random variables, distributions, expectation, conditional probability, and limit theorems. This course complements applied Statistics and Data Analysis with a more theoretical foundation.
+
+\section{Course Goals and Learning Outcomes}
+
+\begin{enumerate}
+    \item Construct and analyze probability spaces for discrete and continuous models.
+    \item Work with random variables and probability distributions.
+    \item Compute expectations, variances, and higher moments.
+    \item Apply conditional probability and Bayes’ Theorem.
+    \item Use common distributions (binomial, Poisson, normal, etc.).
+    \item Understand and apply the Law of Large Numbers and Central Limit Theorem.
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Probability Spaces and Events (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Sample spaces and events.
+    \item Axioms of probability.
+    \item Inclusion–exclusion principle.
+    \item Counting techniques for probability (combinatorics review).
+\end{itemize}
+
+\subsection{Unit 2: Conditional Probability and Independence (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Conditional probability: \(P(A \mid B) = \frac{P(A \cap B)}{P(B)}\) (for \(P(B) > 0\)).
+    \item Independence of events.
+    \item Bayes’ Theorem:
+    \[
+        P(A_i \mid B) = \frac{P(B \mid A_i)P(A_i)}{\sum_j P(B \mid A_j)P(A_j)}.
+    \]
+    \item Law of total probability.
+\end{itemize}
+
+\subsection{Unit 3: Random Variables and Distributions (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Discrete random variables and probability mass functions (pmf).
+    \item Continuous random variables and probability density functions (pdf).
+    \item Cumulative distribution functions (cdf).
+    \item Joint, marginal, and conditional distributions (intro).
+\end{itemize}
+
+\subsection{Unit 4: Expectation, Variance, and Moments (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Expectation of discrete and continuous random variables.
+    \item Linearity of expectation.
+    \item Variance and covariance.
+    \item Moment generating functions (optional/intro).
+\end{itemize}
+
+\subsection{Unit 5: Common Distributions (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Discrete: Bernoulli, binomial, geometric, Poisson.
+    \item Continuous: uniform, exponential, normal.
+    \item Relationship between binomial and Poisson.
+    \item Sums of independent random variables (normal approximation).
+\end{itemize}
+
+\subsection{Unit 6: Limit Theorems (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Weak Law of Large Numbers (concept and statement).
+    \item Central Limit Theorem and applications.
+    \item Approximation of sampling distributions.
+\end{itemize}
+
+\section{Assessment}
+
+Grading: 40\% exams, 25\% quizzes, 25\% problem sets, 10\% participation.
+
+% ================================================================
+% SCIENTIFIC WRITING AND RESEARCH SEMINAR
+% ================================================================
+
+\part{Professional Skills and Research}
+
+\chapter{Scientific Writing and Communication}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & SCI 3301 \\
+\textbf{Course Title:} & Scientific Writing and Communication \\
+\textbf{Grade Level:} & Sophomore--Junior \\
+\textbf{Semester:} & Fall and Spring (3 credit hours) \\
+\end{tabular}
+
+\section{Prerequisites}
+
+At least one 2000-level STEM course (e.g., Biology, Chemistry, Physics, or Mathematics); English Composition I and II recommended.
+
+\section{Course Description}
+
+Scientific Writing and Communication develops the skills needed to read, write, and present scientific information effectively. Students learn to structure scientific papers, write lab reports and research proposals, create figures and tables, and deliver oral and poster presentations. Emphasis is placed on clarity, organization, audience awareness, and ethical communication of data.
+
+\section{Course Goals and Learning Outcomes}
+
+Upon successful completion, students will be able to:
+
+\begin{enumerate}
+    \item Analyze and summarize primary scientific literature.
+    \item Plan, draft, revise, and edit scientific documents.
+    \item Write clear and concise lab reports and research papers.
+    \item Create effective figures, tables, and captions.
+    \item Cite sources using appropriate scientific style (e.g., ACS, APA, AMA).
+    \item Prepare and deliver oral and poster presentations.
+    \item Recognize issues in scientific ethics, authorship, and plagiarism.
+\end{enumerate}
+
+\section{Units of Study}
+
+\subsection{Unit 1: Foundations of Scientific Communication (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Purpose and audiences for scientific communication.
+    \item Types of scientific documents (papers, reports, proposals, reviews).
+    \item IMRaD structure (Introduction, Methods, Results, Discussion).
+    \item Clarity, conciseness, and style guidelines.
+\end{itemize}
+
+\textbf{Assignments:}
+\begin{itemize}
+    \item Diagnostic writing sample.
+    \item Short summary of a popular science article vs. primary paper.
+\end{itemize}
+
+\subsection{Unit 2: Reading and Summarizing Scientific Literature (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Structure of primary research articles.
+    \item Strategies for efficient reading and note-taking.
+    \item Identifying hypotheses, methods, results, and conclusions.
+    \item Writing abstracts and article summaries.
+\end{itemize}
+
+\textbf{Assignments:}
+\begin{itemize}
+    \item Article summary (1–2 pages).
+    \item Annotated bibliography of 3–5 articles on a chosen topic.
+\end{itemize}
+
+\subsection{Unit 3: Writing Lab Reports and Methods Sections (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Purpose and structure of lab reports.
+    \item Writing clear methods and materials sections.
+    \item Reporting quantitative data with units and uncertainty.
+    \item Integrating figures and tables into reports.
+\end{itemize}
+
+\textbf{Assignments:}
+\begin{itemize}
+    \item Full lab report based on a provided or concurrent experiment.
+\end{itemize}
+
+\subsection{Unit 4: Results, Figures, and Data Presentation (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Organizing results logically.
+    \item Writing effective figure legends and table titles.
+    \item Choosing appropriate graphs and visualizations.
+    \item Avoiding misleading graphics.
+\end{itemize}
+
+\textbf{Assignments:}
+\begin{itemize}
+    \item Data presentation assignment using a dataset.
+    \item Revision of results/figures based on feedback.
+\end{itemize}
+
+\subsection{Unit 5: Introductions, Discussions, and Proposals (4--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Crafting an introduction: context, gap, and objective.
+    \item Writing a discussion: interpreting results and limitations.
+    \item Framing research questions and hypotheses.
+    \item Structure of a research proposal (background, aims, methods).
+\end{itemize}
+
+\textbf{Assignments:}
+\begin{itemize}
+    \item Draft of introduction and discussion for a mini-project.
+    \item Short research proposal (4–6 pages).
+\end{itemize}
+
+\subsection{Unit 6: Oral and Poster Presentations (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Designing slides: visual hierarchy and readability.
+    \item Poster design principles.
+    \item Verbal delivery, pacing, and handling questions.
+    \item Communicating to technical vs. non-technical audiences.
+\end{itemize}
+
+\textbf{Assignments:}
+\begin{itemize}
+    \item 8–10 minute oral presentation.
+    \item Scientific poster based on proposal or project.
+\end{itemize}
+
+\subsection{Unit 7: Ethics in Scientific Communication (1--2 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Plagiarism and proper citation practices.
+    \item Data fabrication, falsification, and selective reporting.
+    \item Authorship criteria and conflicts of interest.
+    \item Responsible conduct in peer review.
+\end{itemize}
+
+\section{Assessment}
+
+\subsection{Grading Breakdown}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lc}
+\toprule
+\textbf{Assessment Component} & \textbf{Weight} \\
+\midrule
+Major Writing Assignments (2–3 papers) & 40\% \\
+Short Writing Tasks / Summaries & 15\% \\
+Oral Presentation & 15\% \\
+Poster or Visual Project & 15\% \\
+Participation, Peer Review, Workshops & 15\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Course Policies}
+
+This is a writing-intensive course. Multiple drafts and revisions are required. Peer review and workshop participation are essential components of the learning process. All writing must be original and properly cited.
+
+% ---------------------------------------------------------------
+
+\chapter{Undergraduate Research Seminar}
+
+\section{Course Information}
+
+\begin{tabular}{ll}
+\textbf{Course Number:} & SCI 4301 \\
+\textbf{Course Title:} & Undergraduate Research Seminar \\
+\textbf{Grade Level:} & Junior--Senior \\
+\textbf{Semester:} & Fall and/or Spring (1–3 credit hours) \\
+\end{tabular}
+
+\section{Prerequisites}
+
+Junior or senior standing in a STEM major; research mentor approval or concurrent enrollment in an independent research course recommended.
+
+\section{Course Description}
+
+Undergraduate Research Seminar provides a structured environment for students engaged in research to develop professional skills, present their work, and engage with current scientific literature. Activities include research updates, journal club presentations, proposal development, and a culminating seminar or poster presentation.
+
+\section{Course Goals and Learning Outcomes}
+
+Upon successful completion, students will be able to:
+
+\begin{enumerate}
+    \item Describe the research process from question to dissemination.
+    \item Critically evaluate primary research articles.
+    \item Present research progress clearly to peers and faculty.
+    \item Prepare an abstract and presentation suitable for a conference.
+    \item Discuss ethical issues in research and authorship.
+    \item Reflect on their own development as researchers.
+\end{enumerate}
+
+\section{Course Structure}
+
+This course is typically discussion- and presentation-based with limited formal lecturing. Students meet weekly to:
+
+\begin{itemize}
+    \item Present research progress.
+    \item Lead and participate in journal clubs.
+    \item Work on abstracts, posters, and talks.
+    \item Discuss professional development topics (e.g., grad school, careers).
+\end{itemize}
+
+\section{Units of Study}
+
+\subsection{Unit 1: The Research Process and Project Planning (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Research question formulation and hypothesis development.
+    \item Experimental or computational design overview.
+    \item Timeline, milestones, and project management.
+    \item Roles of mentor, collaborators, and lab teams.
+\end{itemize}
+
+\textbf{Assignments:}
+\begin{itemize}
+    \item One-page project description.
+    \item Preliminary timeline and goals for the semester.
+\end{itemize}
+
+\subsection{Unit 2: Journal Club and Literature Analysis (3--5 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Selecting appropriate articles from the literature.
+    \item Reading critically: methods, results, and limitations.
+    \item Reproducibility and robustness in research.
+\end{itemize}
+
+\textbf{Assignments:}
+\begin{itemize}
+    \item One journal club presentation per student.
+    \item Brief written critique or reflection for each article discussed.
+\end{itemize}
+
+\subsection{Unit 3: Research Progress Presentations (4--6 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Structuring a research talk (background, methods, results, future work).
+    \item Data visualization and storytelling.
+    \item Responding to questions and feedback.
+\end{itemize}
+
+\textbf{Assignments:}
+\begin{itemize}
+    \item Mid-semester progress presentation (10–15 minutes).
+    \item Updated written summary of research aims and progress.
+\end{itemize}
+
+\subsection{Unit 4: Abstracts, Posters, and Conference Preparation (3--4 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Writing effective scientific abstracts.
+    \item Designing conference posters.
+    \item Preparing slide decks for short talks.
+    \item Submission processes for conferences and symposia.
+\end{itemize}
+
+\textbf{Assignments:}
+\begin{itemize}
+    \item Draft and final conference-style abstract.
+    \item Poster or slide deck suitable for a research symposium.
+\end{itemize}
+
+\subsection{Unit 5: Ethics, Authorship, and Professional Development (2--3 weeks)}
+
+\textbf{Topics:}
+\begin{itemize}
+    \item Responsible conduct of research.
+    \item Authorship criteria and collaboration agreements.
+    \item Data management and open science practices.
+    \item Applying to graduate programs and fellowships.
+\end{itemize}
+
+\textbf{Assignments:}
+\begin{itemize}
+    \item Short reflection on ethical scenario or case study.
+    \item Draft CV or résumé and professional statement (optional but recommended).
+\end{itemize}
+
+\section{Assessment}
+
+\subsection{Grading Breakdown}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lc}
+\toprule
+\textbf{Assessment Component} & \textbf{Weight} \\
+\midrule
+Research Progress Presentations & 35\% \\
+Journal Club Presentation & 20\% \\
+Abstract and Final Poster/Talk & 25\% \\
+Participation and Discussion & 20\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Course Policies}
+
+Attendance is essential due to the seminar format. Students are expected to provide constructive feedback to peers, maintain confidentiality about unpublished work, and adhere to ethical standards in all research and presentations.
+
+\end{document}
