@@ -512,7 +512,7 @@ const renderLatexBlock = (content) => {
     };
 
     lines.forEach(rawLine => {
-        const line = rawLine.trim();
+        const line = rawLine.trim().replace(/^\\noindent\s*/, '');
 
         if (!line) {
             flushParagraph();
@@ -536,6 +536,14 @@ const renderLatexBlock = (content) => {
             closeList();
             flushParagraph();
             html.push(`<h4>${escapeHtml(latexTextToPlainText(subsectionMatch[1]))}</h4>`);
+            return;
+        }
+
+        const subsubsectionMatch = line.match(/^\\subsubsection\*?\{(.+)\}$/);
+        if (subsubsectionMatch) {
+            closeList();
+            flushParagraph();
+            html.push(`<h5>${escapeHtml(latexTextToPlainText(subsubsectionMatch[1]))}</h5>`);
             return;
         }
 
@@ -575,6 +583,7 @@ const renderLatexBlock = (content) => {
 
         if (
             /^\\begin\{center\}|^\\end\{center\}|^\\toprule|^\\midrule|^\\bottomrule/.test(line) ||
+            /^\\hline|^\\centering|^\\appendix|^\\addcontentsline/.test(line) ||
             /^\\part\{/.test(line) ||
             /^\\chapter\{/.test(line) ||
             /^\\clearpage|^\\newpage|^\\maketitle|^\\tableofcontents/.test(line)
@@ -606,7 +615,11 @@ const renderLatexBlock = (content) => {
             return;
         }
 
+        const hasExplicitBreak = /\\\\$/.test(line);
         paragraphLines.push(line.replace(/\\\\$/, ''));
+        if (hasExplicitBreak) {
+            flushParagraph();
+        }
     });
 
     closeList();
