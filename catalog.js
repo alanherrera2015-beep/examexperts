@@ -616,7 +616,8 @@ const renderLatexBlock = (content) => {
         }
 
         const hasExplicitBreak = /\\\\$/.test(line);
-        paragraphLines.push(line.replace(/\\\\$/, ''));
+        const paragraphLine = hasExplicitBreak ? line.slice(0, -2) : line;
+        paragraphLines.push(paragraphLine);
         if (hasExplicitBreak) {
             flushParagraph();
         }
