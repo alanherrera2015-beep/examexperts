@@ -509,7 +509,10 @@ if (viewServicesBtn) {
             }, i * 30);
         }
         
-        window.location.href = 'services.html';
+        const href = viewServicesBtn.getAttribute('href') || '';
+        if (!href.startsWith('#')) {
+            window.location.href = 'services.html';
+        }
     });
 }
 
