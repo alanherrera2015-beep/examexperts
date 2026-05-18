@@ -806,6 +806,50 @@ const filterPlans = (plans, query) => {
     });
 };
 
+const filterCourses = (plans, query) => {
+    const results = [];
+    plans.forEach(plan => {
+        (plan.courses || []).forEach(course => {
+            if (normalizeText(course).includes(query)) {
+                results.push({ course, plan });
+            }
+        });
+    });
+    return results;
+};
+
+const renderCourseCatalog = (courseMatches, targetId) => {
+    const grid = document.getElementById(targetId);
+    if (!grid) return;
+
+    if (!courseMatches.length) {
+        grid.innerHTML = `
+            <div class="catalog-empty-state">
+                <h3>No matches yet</h3>
+                <p>Try a different keyword or tap one of the quick filters above.</p>
+            </div>
+        `;
+        return;
+    }
+
+    grid.innerHTML = courseMatches.map(({ course, plan }) => `
+        <article class="catalog-card catalog-card-academic">
+            <p class="catalog-card-plan-label">${escapeHtml(plan.title)}</p>
+            <h3>${escapeHtml(course)}</h3>
+            <button
+                type="button"
+                class="catalog-card-action"
+                data-course-trigger="true"
+                data-course-title="${escapeHtml(course)}"
+                data-course-source="${escapeHtml(plan.source)}"
+                data-course-plan="${escapeHtml(plan.title)}"
+            >
+                View course details
+            </button>
+        </article>
+    `).join('');
+};
+
 const renderCatalog = (plans, targetId, variant) => {
     const grid = document.getElementById(targetId);
     if (!grid) return;
@@ -873,18 +917,23 @@ const updateCounts = (academicCourseCount, academicCount, lifeCount) => {
 const renderAllCatalogs = (searchQuery = '') => {
     const trimmedQuery = searchQuery.trim();
     const normalizedQuery = normalizeText(trimmedQuery);
-    const academicMatches = filterPlans(academicPlans, normalizedQuery);
-    const academicCourseMatches = academicMatches.reduce((total, plan) => total + (plan.courses?.length || 0), 0);
     const lifeMatches = filterPlans(lifeSkillsPlans, normalizedQuery);
-    const totalMatches = academicMatches.length + lifeMatches.length;
 
-    renderCatalog(academicMatches, 'academicCatalogGrid', 'academic');
-    renderCatalog(lifeMatches, 'lifeSkillsCatalogGrid', 'life');
-    updateCounts(academicCourseMatches, academicMatches.length, lifeMatches.length);
-
-    catalogSearchStatus.textContent = normalizedQuery
-        ? `Showing ${totalMatches} matching catalog results for “${trimmedQuery}”.`
-        : `Showing all ${totalPlans} catalog options.`;
+    if (normalizedQuery) {
+        const courseMatches = filterCourses(academicPlans, normalizedQuery);
+        renderCourseCatalog(courseMatches, 'academicCatalogGrid');
+        renderCatalog(lifeMatches, 'lifeSkillsCatalogGrid', 'life');
+        const totalMatches = courseMatches.length + lifeMatches.length;
+        updateCounts(courseMatches.length, courseMatches.length, lifeMatches.length);
+        catalogSearchStatus.textContent = `Showing ${totalMatches} matching catalog results for “${trimmedQuery}”.`;
+    } else {
+        const academicMatches = filterPlans(academicPlans, normalizedQuery);
+        const academicCourseMatches = academicMatches.reduce((total, plan) => total + (plan.courses?.length || 0), 0);
+        renderCatalog(academicMatches, 'academicCatalogGrid', 'academic');
+        renderCatalog(lifeMatches, 'lifeSkillsCatalogGrid', 'life');
+        updateCounts(academicCourseMatches, academicMatches.length, lifeMatches.length);
+        catalogSearchStatus.textContent = `Showing all ${totalPlans} catalog options.`;
+    }
 };
 
 const setQuickFilter = (value) => {
