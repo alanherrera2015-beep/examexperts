@@ -883,8 +883,8 @@ const renderAllCatalogs = (searchQuery = '') => {
     updateCounts(academicCourseMatches, academicMatches.length, lifeMatches.length);
 
     catalogSearchStatus.textContent = normalizedQuery
-        ? `Showing ${totalMatches} matching plans for “${trimmedQuery}”.`
-        : `Showing all ${totalPlans} plans.`;
+        ? `Showing ${totalMatches} matching catalog results for “${trimmedQuery}”.`
+        : `Showing all ${totalPlans} catalog options.`;
 };
 
 const setQuickFilter = (value) => {
