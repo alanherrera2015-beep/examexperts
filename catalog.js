@@ -862,8 +862,8 @@ const renderCatalog = (plans, targetId, variant) => {
     `).join('');
 };
 
-const updateCounts = (academicCount, lifeCount) => {
-    document.getElementById('academicPlanCount').textContent = academicCount;
+const updateCounts = (academicCourseCount, academicCount, lifeCount) => {
+    document.getElementById('academicPlanCount').textContent = academicCourseCount;
     document.getElementById('lifeSkillsPlanCount').textContent = lifeCount;
     document.getElementById('totalPlanCount').textContent = academicCount + lifeCount;
     document.getElementById('academicHeadingCount').textContent = academicCount;
@@ -874,12 +874,13 @@ const renderAllCatalogs = (searchQuery = '') => {
     const trimmedQuery = searchQuery.trim();
     const normalizedQuery = normalizeText(trimmedQuery);
     const academicMatches = filterPlans(academicPlans, normalizedQuery);
+    const academicCourseMatches = academicMatches.reduce((total, plan) => total + (plan.courses?.length || 0), 0);
     const lifeMatches = filterPlans(lifeSkillsPlans, normalizedQuery);
     const totalMatches = academicMatches.length + lifeMatches.length;
 
     renderCatalog(academicMatches, 'academicCatalogGrid', 'academic');
     renderCatalog(lifeMatches, 'lifeSkillsCatalogGrid', 'life');
-    updateCounts(academicMatches.length, lifeMatches.length);
+    updateCounts(academicCourseMatches, academicMatches.length, lifeMatches.length);
 
     catalogSearchStatus.textContent = normalizedQuery
         ? `Showing ${totalMatches} matching plans for “${trimmedQuery}”.`
